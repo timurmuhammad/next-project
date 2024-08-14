@@ -1,0 +1,18 @@
+@import '../../ui/vars-and-utils.scss';
+
+.body{
+    display: flex;
+    gap: 8px;
+}
+
+.image{
+    width: adaptive($width_container, 40, 24);
+    height: auto;
+    object-fit: cover;
+}
+
+.text{
+    font-size: adaptive($width_container, 40, 24);
+    font-weight: 500;
+    line-height: 100%;
+}

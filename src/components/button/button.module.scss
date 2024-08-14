@@ -1,0 +1,14 @@
+@import '../../ui/vars-and-utils.scss';
+
+.body{
+	height: 40px;
+	width: fit-content;
+	background: #E4FAFC;
+	padding: 0px 14px;
+	gap: 10px;
+	border-radius: 23px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #00B2C8;
+}

@@ -1,0 +1,9 @@
+@import '../../ui/vars-and-utils.scss';
+
+.span{
+	@apply leading-[100%] text-[12px] flex justify-center items-center absolute h-full aspect-square bg-[#ebebeb] font-[400px] rounded-[50%] cursor-pointer;
+
+	top: 50%;
+	left: calc(100% + 7px);
+	transform: translate(0px, -50%);
+}

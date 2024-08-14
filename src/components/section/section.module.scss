@@ -1,0 +1,68 @@
+@import '../../ui/vars-and-utils.scss';
+
+
+.body{
+	position: relative;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 40px;
+
+	@media (max-width: $media_screen) {
+		justify-content: center;
+		flex-direction: column;
+    div,p,h1,h2,h3,h4,h5 {
+			justify-content: center !important;
+      text-align: center !important;
+			align-items: center !important;
+    }
+  }
+
+	.image{
+		flex: 0 0 adaptive($width_container, 528, 300);
+		display: flex;
+		justify-content: end;
+		position: relative;
+		z-index: 1;
+	
+		> img{
+			max-width: 100%;
+			min-width: 100px;
+			object-fit: cover;
+		}
+	}
+
+	&.preview_top{
+		.image{
+			justify-content: center;
+		}
+	}
+
+	&.reverse{
+		.image{
+			justify-content: start;
+		}
+		flex-direction: row-reverse;
+		@media (max-width: $media_screen) {
+			flex-direction: column;
+		}
+		button{
+			justify-content: end;
+		}
+		.section_inner{
+			> div,p,h1,h2,h3,h4,h5,h6 {
+				text-align: end;
+				justify-content: end;
+			}
+		}
+	}
+}
+
+.section_inner{
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	position: relative;
+	z-index: 1;
+}

@@ -1,0 +1,14 @@
+@import '../vars-and-utils.scss';
+
+.body{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 32px;
+	width: 100%;
+	flex-wrap: wrap;
+
+	img{
+		filter: contrast(0);
+	}
+}

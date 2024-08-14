@@ -1,0 +1,29 @@
+@import '../../ui/vars-and-utils.scss';
+
+.body{
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	/*adpative*/
+}
+
+.circle{
+	background-color: #00B2C8;
+	border-radius: 50%;
+	width: 27px;
+	aspect-ratio: 1/1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.text{
+
+	&::after{
+		content: '';
+		display: block;
+		background: linear-gradient(282.54deg, #01B091 2%, #00B2C8 100%);
+		width: 30px;
+		height: 1px;
+	}
+}

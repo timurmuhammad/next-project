@@ -1,0 +1,167 @@
+@import '../../ui/vars-and-utils.scss';
+
+
+.rectangle{
+	margin: 0 0 40px 0;
+	@apply flex justify-center items-start flex-grow-0 flex-shrink-0 h-[17px] relative gap-6;
+
+	>button{
+		@apply self-stretch flex-grow-0 flex-shrink-0 w-[33px] bg-[#d9d9d9];
+
+		&.active{
+			background-color: #00b2c8;
+		}
+	}
+
+	@media (max-width: $media-laptop) {
+		display: none;
+	}
+
+}
+
+
+.main{
+	@apply flex border-solid border border-[#ebebeb];
+
+	@media (max-width: $media-laptop) {
+		display: none;
+	}
+}
+
+.top_bar{
+	@apply rounded-[6px] border border-solid border-[#ebebeb];
+	border-radius: 6px 6px 0 0;
+	overflow: hidden;
+
+	@media (max-width: $media-laptop) {
+		border: none;
+	}
+}
+
+
+.list_wrapper{
+	display: flex;
+	flex-wrap: wrap;
+	gap: 24px;
+	justify-content: center;
+	position: relative;
+}
+
+
+.list{
+	@apply flex justify-between items-center p-[16px];
+	position: absolute;
+	z-index: -1;
+	flex: 1 1 auto;
+	row-gap: 24px;
+	transform: translate(-100%, 0px);
+	opacity: 0;
+	visibility: hidden;
+	width: 100%;
+	text-wrap: nowrap;
+	transition: 0.2s;
+	overflow: hidden;
+
+	&:first-child{
+		position: relative;
+	}
+
+	@media (max-width: $media-laptop) {
+		@apply rounded-[6px] border border-solid border-[#cecece];
+		flex-direction: column;
+		flex: 1 0 300px;
+		max-width: 500px;
+		border-radius: 6px;
+		opacity: 1;
+		visibility: visible;
+		transform: translate(0, 0);
+		position: relative;
+	}
+
+	&.active{
+		opacity: 1;
+		visibility: visible;
+		z-index: 1;
+		transform: translate(0px, 0px);
+	}
+}
+
+.company{
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	justify-content: center;
+
+	@media (max-width: $media-laptop) {
+		flex-direction: column;
+	}
+
+	p{
+		font-size: adaptive($width_container, 24, 20);
+		font-weight: 400;
+
+		span{
+			display: none;
+
+			span{
+				display: none;
+			}
+		}
+
+	}
+}
+
+
+.button{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 6px;
+	padding: 0px 10px;
+	height: 40px;
+	overflow: hidden;
+	position: relative;
+
+	&:before{
+		content: '';
+		border-radius: 4px;
+		background: #fafafa;
+		border: 1px solid #d9d9d9;
+		z-index: -1;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: 0;
+	}
+
+	&:after{
+		content: '';
+		background-image: linear-gradient(282.54deg, #01B091 2%, #00B2C8 100%);
+		z-index: -2;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+
+	&.active{
+		&:before{
+			margin: 2px;
+			border: none;
+		}
+	}
+}
+
+
+.calculate{
+	@apply flex flex-col gap-[30px] border-solid border border-[#cecece] p-[24px] rounded-[6px] mt-[24px];
+
+	display: none;
+
+	@media (max-width: $media-screen) {
+		display: flex;
+	}
+}

@@ -1,0 +1,74 @@
+@import '../../ui/vars-and-utils.scss';
+
+%tpl_body{
+	display: flex;
+	flex-direction: column
+}
+
+.body{
+	@extend %tpl_body;
+}
+
+.h1{
+	@extend %tpl_body;
+	gap: 24px;
+
+	.title{
+		font-size: adaptive($width_container, 40, 24);
+	}
+}
+
+.h2{
+	@extend %tpl_body;
+	max-width: 820px;
+	gap: 16px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+
+	.title{
+		font-size: adaptive($width_container, 32, 20);
+		color: #000000;
+	}
+	.text{
+		font-size: 16px;
+	}
+}
+
+.h3{
+	@extend %tpl_body;
+	gap: adaptive($width_container, 24, 8);
+
+	.title{
+		font-size: adaptive($width_container, 32, 20);
+		color: #000000;
+	}
+	.text{
+		font-size: 16px;
+	}
+}
+
+.h4{
+	@extend %tpl_body;
+	gap: 16px;
+
+	.title{
+		font-size: adaptive($width_container, 24, 18);
+		color: #000000;
+	}
+	.text{
+		font-size: adaptive($width_container, 16, 14);
+	}
+}
+
+.h5{
+	@extend %tpl_body;
+
+	.title{
+		font-size: adaptive($width_container, 20, 14);
+	}
+	.text{
+		font-size: adaptive($width_container, 16, 12);
+	}
+}
+
