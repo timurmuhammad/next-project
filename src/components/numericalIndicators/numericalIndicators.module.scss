@@ -1,0 +1,18 @@
+@import '../../ui/vars-and-utils.scss';
+
+.numbers{
+	@apply text-center flex justify-between items-center flex-wrap gap-[24px] w-full;
+
+	@media (max-width: $media-screen) {
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	h6{
+		font-size: adaptive($width_container, 36, 24);
+	}
+
+	p{
+		font-size: adaptive($width_container, 16, 14);
+	}
+}

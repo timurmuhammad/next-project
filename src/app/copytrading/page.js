@@ -19,6 +19,7 @@ import gradient from "@/ui/images/gradient.png";
 import mediaScreenMobile from "@/ui/images/mobile_copytrading.png";
 import { Product } from "@/components/product"
 import { goods } from "@/types/products";
+import { NumericalIndicators } from "@/components/numericalIndicators"
 
 
 export default function CopyTrading() {
@@ -53,41 +54,13 @@ export default function CopyTrading() {
 
 
 
-		<div className={cn(styles.inner, '_container')}>
-			<div className={styles.numbers}>
-				<div className="flex flex-col items-center gap-[8px]">
-					<p>
-						Exchanges
-					</p>
-					<h6>9</h6>
-				</div>
-				<div className="flex flex-col items-center gap-[8px]">
-					<p>Bots</p>
-					<h6>36</h6>
-				</div>
-				<div className="flex flex-col items-center gap-[8px]">
-					<p>
-						trades
-					</p>
-					<h6>
-						40124
-					</h6>
-				</div>
-				<div className="flex flex-col items-center gap-[8px]">
-					<p>
-						Total Profit
-					</p>
-					<h6>
-						987% APY
-					</h6>
-				</div>
-			</div> 
-		</div>
+		<div className="_container w-full"><NumericalIndicators></NumericalIndicators></div>
+
 
 
 		<div className={cn(styles.botCard, '_container')}>
 			{goods.map((item, index) => (
-				<Product item = {item} key={index} ></Product>
+				index < 3 && <Product item = {item} key={index} ></Product>
 			))}
 		</div>
 

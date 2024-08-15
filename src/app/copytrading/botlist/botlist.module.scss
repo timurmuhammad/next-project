@@ -1,0 +1,37 @@
+@import '../../../ui/vars-and-utils.scss';
+
+.top{
+	display: flex;
+	flex-direction: column;
+	gap: adaptive($width_container, 96, 24);
+	padding-top: adaptive($width_container, 80, 60);
+}
+
+.main{
+  display: flex;
+  flex-direction: column;
+  // gap: $interval_sections;
+  padding-bottom: $interval_sections;
+}
+
+.background{
+	@apply absolute top-0 left-0 z-[-1] mt-[-50px];
+
+	@media(max-width: $media-screen) {
+		margin-top: 0px;
+	}
+}
+
+.list{
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 357px);
+	justify-content: center;
+	column-gap: adaptive($width_container, 48, 30);
+	row-gap: adaptive($width_container, 90, 30);
+	width: 100%;
+}
+
+.breadcrumb{
+	margin-top: 96px;
+	margin-bottom: 96px;
+}

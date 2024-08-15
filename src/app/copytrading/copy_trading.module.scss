@@ -2,9 +2,10 @@
 
 .botCard{
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(360px, 370px));
+	grid-template-columns: repeat(auto-fit, 360px);
 	justify-content: center;
-	gap: 24px;
+	gap: 44px;
+	width: 100%;
 
 	@media (max-width: $media-laptop) {
 		>div{

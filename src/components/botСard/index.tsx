@@ -1,9 +1,5 @@
 
-import cn from 'classnames'
-
-type Props = {}
-
-export const BotCard: React.FC<Props> = ({  }) => {
+export const BotCard = () => {
 	return 		<div className="flex justify-center items-start flex-grow-0 flex-shrink-0 w-[1272px] gap-12">
   <div className="flex flex-col justify-start items-start self-stretch flex-grow relative overflow-hidden gap-8 p-4 rounded-md border border-[#ebebeb]">
     <div className="flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-2">
