@@ -1,9 +1,13 @@
-@import '../../ui//vars-and-utils.scss';
+@import '@/ui/vars-and-utils.scss';
 
 .body{
 	display: flex;
 	flex-direction: column;
 	gap: adaptive($width_container, 40, 24);
+	@media(min-width:$media_laptop) {
+		flex-direction: column-reverse;
+		gap: 20px;
+	}
 }
 
 .inner{
@@ -219,19 +223,21 @@
 
 .plan__calculation{
 	.calc{
-		@apply flex items-center justify-between text-[14px] font-[300] border-solid border-b-[1px] border-b-[#cecece];
+		@apply flex items-center justify-between text-[14px] font-[300] border-solid border-b-[1px] border-b-[#cecece] w-full;
 		height: adaptive($width_container, 62, 56);
 
 		&:last-child{
 			border-bottom: none;
 		}
 
-		transform: scaleX();
+		// transform: scaleX();
 
 		p{
 			position: relative;
 		}
+
 		span{
+			position: relative;
 			.span{
 				@apply leading-[100%] text-[8px] flex justify-center items-center absolute w-[14px] h-[14px] bg-[#ebebeb] rounded-[50%] cursor-pointer;
 	
@@ -239,7 +245,7 @@
 				left: calc(100% + 7px);
 			}
 		}
-		
+
 	}
 
 	
@@ -262,13 +268,14 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
+	// grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 	font-size: 14px;
 	border-radius: 6px;
 	gap: 20px;
 
 	.box{
 		flex: 1 0 150px;
-		max-width: fit-content;
+		// max-width: fit-content;
 		display: flex;
 		align-items: center;
 		gap: 12px;

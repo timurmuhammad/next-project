@@ -1,6 +1,6 @@
 'use client'
 
-import { use, useState } from 'react'
+import { useState } from 'react'
 import styles from './strategy.module.scss'
 import cn from 'classnames'
 import { Typography } from '../typography'
