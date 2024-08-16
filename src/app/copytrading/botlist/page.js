@@ -20,11 +20,12 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/shadcn/ui/breadcrumb"
+import { ButtonBlue } from "@/components/buttonBlue"
 
 const items = [
   { href: "#", label: "Home" },
-  { href: "#", label: "Documentation" },
-  { href: "#", label: "Building Your Application" },
+  { href: "#", label: "Copy Trading" },
+  { href: "#", label: "Bot list" },
 ]
 
 // export const metadata = {
@@ -35,7 +36,7 @@ const items = [
 export default function BotList() {
 
 	return <div className={styles.main}> 	
-		<div className="relative">
+		<div className="relative w-full">
 			<div className={cn("_container", styles.top)}>
 				<Typography
 					size="h2"
@@ -81,6 +82,12 @@ export default function BotList() {
 					
 				</Product>
 			))}
+		</div>
+
+		<div className="_container">
+			<ButtonBlue
+				text='Back to Copy Trading page'
+			></ButtonBlue>
 		</div>
 	</div>
 }
