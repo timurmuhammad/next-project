@@ -8,9 +8,10 @@ type iconType = 'blue' | 'green'| 'orange'
 type Props =  {
   icon?: iconType
   text: string
+  title?: string
 }
 
-export const ChecklistItem: React.FC<Props> = ({ icon = 'blue', text }) => {
+export const ChecklistItem: React.FC<Props> = ({ icon = 'blue', title, text }) => {
 	return <div className='flex items-center gap-[6px]'>
     {
       icon === 'green' ? <Image src={changeGreen} width={21} height={21} alt='icon'></Image>
@@ -19,6 +20,7 @@ export const ChecklistItem: React.FC<Props> = ({ icon = 'blue', text }) => {
     }
 
     <p className="text-black text-nowrap">
+      {title && <span className='font-[500]' >{title}</span>}
       {text}
     </p>
 	</div>

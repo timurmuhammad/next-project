@@ -20,7 +20,8 @@
   }
 
 	.image{
-		flex: 0 0 adaptive($width_container, 528, 300);
+		// flex: 0 0 adaptive($width_container, 528, 300);
+		flex: 0 0 adaptive($width_container, 514, 300);
 		display: flex;
 		justify-content: end;
 		position: relative;

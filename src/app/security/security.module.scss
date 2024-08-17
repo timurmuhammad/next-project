@@ -1,0 +1,71 @@
+@import '@/ui/vars-and-utils.scss';
+
+.check_list{
+	@apply flex flex-wrap gap-6 flex-col;
+}
+
+.card{
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	gap: 16px;
+	border: 1px solid #cecece;
+	border-radius: 6px;
+	padding: 32px 24px;
+	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+	flex: 1 0 373px;
+	max-width: 500px;
+
+	h6{
+		font-size: 20px;
+		text-align: center;
+		color: #000;
+	}
+
+	span{
+		color: #000;
+	}
+
+	>div{
+		align-items: start;
+	}
+
+	p{
+		text-wrap: wrap;
+	}
+}
+
+
+.check_box{
+	@media (max-width: $media_tablet) {
+		justify-content: center;
+	}
+
+	@apply flex justify-end gap-6 flex-wrap;
+
+	>div{
+		flex-direction: row-reverse;
+	}
+}
+
+.text{
+	@apply text-[16px] text-[#00b2c8];
+	letter-spacing: 0.25em;
+
+
+}
+
+
+.section{
+	@apply flex justify-center items-center flex-wrap gap-[32px];
+
+	@media (max-width: $media_tablet) {
+		flex-direction: column;
+		text-align: center;
+		>div{
+			align-items: center;
+			justify-content: start;
+			flex: 1 1 auto;
+		}
+	}
+}
