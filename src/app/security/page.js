@@ -283,7 +283,7 @@ export default function Security() {
 			<Image className="absolute z-0 bottom-0 w-full" src={backgroundBlue} alt="img" width={1440} height={280}></Image>
 			<Image className="h-[376px] w-full" src={blue} alt="img" width={1440} height={376}></Image>
 
-			<div className="_container absolute z-10 top-0 left-0 w-full h-full flex justify-center items-center flex-col text-center">
+			<div className="_container absolute z-10 top-0 min-w-full h-full flex justify-center items-center flex-col text-center">
 				<h3 className="font-normal text-[32px]">Commitment to Security and Trust</h3>
 				<p className="font-normal text-[16px] max-w-[857px]">Our Fund Insurance Program reflects our unwavering commitment to the security and trust of our clients. By pledging our own capital and continuously monitoring risks, we ensure that your investments are protected against unforeseen events. This program, combined with our extensive security measures, provides a comprehensive safety net for your financial future.</p>
 				<button className="font-normal text-xl flex items-center last:justify-center rounded py-0 px-[48px] h-[62px] bg-[#E4FAFC] text-black w-fit mx-auto hover:bg-white">Sign Up</button>
