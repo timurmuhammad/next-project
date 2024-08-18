@@ -1,7 +1,16 @@
 @import '@/ui/vars-and-utils.scss';
 
+.card_wrapper{
+	@apply flex flex-wrap gap-[24px] justify-center;
+
+	@media (max-width: $media_screen) {
+		flex-direction: column;
+	}
+}
+
 .check_list{
 	@apply flex flex-wrap gap-6 flex-col;
+
 }
 
 .card{
@@ -15,6 +24,10 @@
 	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
 	flex: 1 0 373px;
 	max-width: 500px;
+
+	@media (max-width: $media_screen) {
+		flex: 1 1 0%;
+	}
 
 	h6{
 		font-size: 20px;
@@ -69,3 +82,83 @@
 		}
 	}
 }
+
+
+.reserve{
+	@apply flex justify-center;
+
+	@media (max-width: $media_screen) {
+		flex-direction: column;
+		text-align: center;
+		>div{
+			justify-content: start !important;
+			width: auto !important;
+			flex: 1 1 auto !important;
+		}
+	}
+
+	p{
+		text-wrap: wrap;
+	}
+
+	.string{
+		font-size: 14px;
+		>div {
+			align-items: start;
+		}
+	}
+
+	.image{
+		@apply flex flex-col justify-center items-center w-[450px] gap-4 text-black text-right;
+
+		flex: 1 1 450px;
+		min-width: 250px;
+	}
+}
+
+
+.typography{
+	@apply max-w-[580px] text-right;
+
+	font-size: adaptive($width_container, 18, 16);
+	@media(max-width: $media_tablet){
+		text-align: center;
+	}
+}
+
+
+.automatic{
+	@apply flex justify-center items-center gap-[40px] mt-[40px];
+	>p{
+		flex: 1 1 50%;
+	}
+
+	@media(max-width: $media_tablet){
+		flex-direction: column-reverse;
+	}
+}
+
+
+.blue{
+	position: relative;
+	color: #fff;
+	>div{
+		gap: adaptive($width_container, 36, 24);
+	}
+	@media(max-width: $media_laptop){
+		padding-left: 16px;
+  	padding-right: 16px;
+		>div{
+			background-color: #00b2c8;
+			position: relative;
+			border-radius: 8px;
+			padding: 40px 16px;
+		}
+		>img{
+			display: none;
+		}
+	}
+
+}
+
+

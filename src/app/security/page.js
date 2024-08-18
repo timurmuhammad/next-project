@@ -11,12 +11,9 @@ import interface_id from "@/ui/icons/interface_id.svg";
 import advanced from "@/ui/icons/advanced.svg";
 import identification from "@/ui/icons/identification.svg";
 import safe from "@/ui/icons/safe.svg";
+import backgroundBlue from "@/ui/icons/background_blue.svg";
+import blue from "@/ui/images/blue.png";
 
-
-{/* <Image src={interface_id} width={41} height={41} alt='icon'></Image>
-<Image src={advanced} width={42} height={51} alt='icon'></Image>
-<Image src={identification} width={42} height={41} alt='icon'></Image>
-<Image src={safe} width={200} height={201} alt='icon'></Image> */}
 
 
 export default function Security() {
@@ -64,7 +61,7 @@ export default function Security() {
 
 
 		
-		<div className="flex flex-wrap gap-[24px] justify-center _container">
+		<div className={cn(styles.card_wrapper, '_container')}>
 			<div className={styles.card}>
 			<Image src={interface_id} width={41} height={41} alt='icon'></Image>
 				<h6>Advanced Data Protection and Privacy</h6>
@@ -194,11 +191,103 @@ export default function Security() {
 
 
 
-		<div className='_container'>
+		<div className={cn(styles.reserve, '_container')}>
+			<div className="flex flex-col gap-6 max-w-[750px]">
+				<p className={styles.text}>
+					DEDICATED FUND
+				</p>
+
+				<p className="text-[16px]">
+					This dedicated fund ensures that we have the financial capacity to cover potential claims
+					without impacting our operational stability.
+				</p>
+				
+				<div className={styles.string}>
+					<ChecklistItem
+						text="We have set aside a substantial amount of our capital specifically for the Fund Insurance Program. This dedicated fund ensures that we have the financial capacity to cover potential claims without impacting our operational stability."
+					></ChecklistItem>
+				</div>
+
+				<div className={styles.string}>
+					<ChecklistItem
+						text="Our capital reserve is regularly reviewed and replenished as necessary to maintain adequate coverage levels. This ensures continuous protection for our clients’ investments."
+					></ChecklistItem>
+				</div>
+			</div>
+
+			<div className={styles.image}>
+				<Image src={safe} width={200} height={201} alt='img' ></Image>
+
+				<p className="text-[28px]">$18.4m</p>
+				<p className="text-[12px]">UNDER INSURANCE</p>
+			</div>
+		</div>
+
+
+
+
+
+		<div className={'_container'}>
 			<Typography
 				size="h2"
 				title="Automatic Growth of Our Fund Insurance Program"
 			></Typography>
+			
+			<div className={styles.automatic}>
+				<p className="max-w-[580px] text-[14px">
+					<span className="text-[14px] font-semibold">
+						1. Client Profit Generated:
+					</span>
+					<span className="max-w-[580px] text-[14px] "> Clients generate profits from their investments.
+					</span>
+					<br />
+					<span className="text-[14px] font-semibold"> 
+						2. Small Portion Allocated to Insurance Fund:
+					</span>
+					<span className="max-w-[580px] text-[14px] "> A small portion of each client’s profit is automatically allocated to the insurance fund.
+					</span>
+					<br />
+					<span className="text-[14px] font-semibold"> 
+						3. Fund Insurance Program Grows:
+					</span>
+					<span className="max-w-[580px] text-[14px] "> This allocation helps the Fund Insurance Program grow over time.
+					</span>
+					<br />
+					<span className="text-[14px] font-semibold"> 
+						4. Coverage for Potential Losses Ensured:
+					</span>
+					<span className="max-w-[580px] text-[14px] "> The growing fund ensures coverage for any potential losses.
+					</span>
+					<br />
+					<span className="text-[14px] font-semibold"> 
+						5. Investment Offers and Returns Unaffected:
+					</span>
+					<span className="max-w-[580px] text-[14px] "> This process does not affect the investment offers and returns described on our site.
+					</span>
+					<br />
+				</p>
+				<p className={styles.typography}>
+					Our Fund Insurance Program is designed to grow automatically by taking a small portion of each
+					client’s profit. This process ensures that the fund remains robust and capable of covering
+					potential losses, without affecting the investment offers and returns described on our site.
+					This approach allows us to maintain the highest standards of security and protection for all
+					our clients, while still delivering the exceptional investment performance you expect.
+				</p>
+			</div>
+		</div>
+
+
+
+
+		<div className={styles.blue}>
+			<Image className="absolute z-0 bottom-0 w-full" src={backgroundBlue} alt="img" width={1440} height={280}></Image>
+			<Image className="h-[376px] w-full" src={blue} alt="img" width={1440} height={376}></Image>
+
+			<div className="_container absolute z-10 top-0 left-0 w-full h-full flex justify-center items-center flex-col text-center">
+				<h3 className="font-normal text-[32px]">Commitment to Security and Trust</h3>
+				<p className="font-normal text-[16px] max-w-[857px]">Our Fund Insurance Program reflects our unwavering commitment to the security and trust of our clients. By pledging our own capital and continuously monitoring risks, we ensure that your investments are protected against unforeseen events. This program, combined with our extensive security measures, provides a comprehensive safety net for your financial future.</p>
+				<button className="font-normal text-xl flex items-center last:justify-center rounded py-0 px-[48px] h-[62px] bg-[#E4FAFC] text-black w-fit mx-auto hover:bg-white">Sign Up</button>
+			</div>
 		</div>
 	</div>
 }
