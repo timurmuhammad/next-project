@@ -1,0 +1,50 @@
+@import '@/ui/vars-and-utils.scss';
+
+
+.body{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0px 16px;
+	height: 46px;
+	position: relative;
+	overflow: hidden;
+	font-weight: 400;
+	font-size: 20px;
+	border-radius: 5px;
+
+	&:before{
+		content: '';
+		border: 1px solid #00b2c8;
+		border-radius: 4px;
+		background-color: #fff;
+		z-index: -1;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: 0;
+		transition: all 0.2s;
+	}
+
+	&:after{
+		content: '';
+		border-radius: 4px;
+		background-image: linear-gradient(282.54deg, #01B091 2%, #00B2C8 100%);
+		z-index: -2;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+
+	}
+
+	&:hover{
+		&:before{
+			margin: 2px;
+			border: none;
+		}
+	}
+}

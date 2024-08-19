@@ -1,0 +1,60 @@
+@import '@/ui/vars-and-utils.scss';
+
+
+.body{
+	display: flex;
+	gap: 24px;
+
+	@media(max-width:$media_tablet) {
+		flex-direction: column;
+	}
+
+	>div{
+		flex: 1 1 0%;
+	}
+}
+
+
+.post_details{
+	@apply flex  items-center     gap-[16px];
+
+	flex-wrap: nowrap;
+	text-wrap: nowrap;
+}
+
+.image{
+	@apply opacity-30  rounded-[10px] bg-[#82d3dd];
+
+	aspect-ratio: 282/165;
+	width: 100%;
+}
+
+.list{
+	@apply flex gap-[24px] items-center;
+
+	@media(max-width:$media_screen) {
+		flex-direction: column;
+	}
+
+	>div{
+		max-width: 500px;
+	}
+}
+
+
+.subtitle{
+	@apply text-[28px] text-black font-[400];
+}
+
+
+.posts{
+	display: flex;
+	gap: 24px;
+	flex-wrap: wrap;
+	justify-content: center;
+
+	>div{
+		flex: 1 1 300px;
+		max-width: 500px;
+	}
+}
