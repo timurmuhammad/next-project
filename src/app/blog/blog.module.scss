@@ -61,21 +61,6 @@
 }
 
 
-.pagination{
-	@apply w-[33px] bg-[#d9d9d9];
-	transition: 0.2s;
-
-	&.active{
-		@apply bg-[#00b2c8];
-	}
-}
-
-
-.media{
-	@apply flex flex-col;
-	gap: adaptive($width_container, 48, 24);
-}
-
 
 .section{
 	@apply flex flex-col;

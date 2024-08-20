@@ -1,0 +1,34 @@
+@import '@/ui/vars-and-utils.scss';
+
+
+.image{
+	@apply opacity-30  rounded-[10px] bg-[#82d3dd];
+
+	aspect-ratio: 282/165;
+	width: 100%;
+}
+
+.subtitle{
+	@apply text-[28px] text-black font-[400];
+}
+
+.pagination{
+	@apply w-[33px] bg-[#d9d9d9];
+	transition: 0.2s;
+
+	&.active{
+		@apply bg-[#00b2c8];
+	}
+}
+
+
+.media{
+	@apply flex flex-col;
+	gap: adaptive($width_container, 48, 24);
+}
+
+
+.section{
+	@apply flex flex-col;
+	gap: adaptive($width_container, 48, 18);
+}

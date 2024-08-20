@@ -1,0 +1,29 @@
+@import '@/ui/vars-and-utils.scss';
+
+.body{
+	display: flex;
+	gap: 24px;
+	flex-direction: row;
+	position: relative;
+
+	@media(max-width: $media_tablet) {
+		flex-direction: column;
+	}
+}
+
+.nav{
+	@apply flex flex-col gap-[40px];
+
+	overflow: auto;
+	max-width: 383px;
+	width: 100%;
+	flex-shrink: 0;
+
+	@media(max-width: $media_tablet) {
+		position: static;
+	}
+}
+
+.left{
+	transform: rotate(180deg);
+}
