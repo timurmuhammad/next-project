@@ -14,6 +14,6 @@ $width_container: 1200;
 $media_screen: 670px;
 $media_tablet: 830px;
 $media_laptop: 1100px; 
-$interval_sections: adaptive($width_container, 96, 24);
+$interval_sections: adaptive($width_container, 96, 40);
 $height_header: adaptive($width_container, 80, 60);
 $padding_container: 16px;

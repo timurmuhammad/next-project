@@ -152,6 +152,6 @@ main{
   display: flex;
   flex-direction: column;
   gap: $interval_sections;
-  padding-top: adaptive($width_container, 40, 32);
+  padding-top: adaptive($width_container, 70, 32);
   padding-bottom: 96px;
 }

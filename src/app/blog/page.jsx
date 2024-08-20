@@ -7,32 +7,36 @@ import Image from 'next/image'
 import { ButtonBorder } from '@/components/buttonBorder';
 import { Carousel, CarouselContent, CarouselItem } from '@/shadcn/ui/carousel';
 import { useEffect, useState } from 'react'
-import useEmblaCarousel from 'embla-carousel-react'
-
+import cn from "classnames";
 
 
 
 export default function Security() {
 	const pagination = Math.ceil(media.length / 3)
-	const pagination1 = Math.ceil(media.length / 2)
+	const paginationLg = Math.ceil(media.length / 2)
+	const paginationMd = Math.ceil(media.length / 1)
 	const [ currentSlide, setCurrentSlide ] = useState(0)
-	const slidesshow = 3
+	const [ currentSlidesshow, setCurrentSlidesshow ] = useState(0)
 
-	const [matches, setMatches] = useState(
-    window.matchMedia("(min-width: 768px)").matches
+	const [md, setMd] = useState(
+    window.matchMedia("(max-width: 768px)").matches
+  )
+	const [lg, setLg] = useState(
+    window.matchMedia("(max-width: 1024px)").matches
   )
 
   useEffect(() => {
     window
-    .matchMedia("(min-width: 768px)")
-    .addEventListener('change', e => setMatches( e.matches ));
+    .matchMedia("(max-width: 768px)")
+    .addEventListener('change', e => setMd( e.matches ));
+
+		window
+    .matchMedia("(max-width: 1024px)")
+    .addEventListener('change', e => setLg( e.matches ));
   }, []);
 
 
-	// console.log(currentSlide)
-
 	return <div className="main _container">
-
 		<div className="text-center">
 			<Typography
 				size='h1'
@@ -116,9 +120,9 @@ export default function Security() {
 					</div>
 				</div>
 				<div className={styles.list}>
-					<div className="flex flex-col flex-1    gap-[16px]">
+					<div className="flex flex-col flex-1 gap-[16px]">
 						<div className={styles.image} />
-						<div className="flex flex-col       gap-[8px]">
+						<div className="flex flex-col gap-[8px]">
 							<p className=" text-[20px]  text-black font-[400]">
 								Lorem Ipsum Lorem ipsum dolor sit amet consectetur.
 							</p>
@@ -161,11 +165,13 @@ export default function Security() {
 
 
 
-		<div className=''>
+		<div className={styles.section}>
+			<p className={styles.subtitle}>Media</p>
+
 			<Carousel
 				opts={{
 					align: "center",
-					slidesToScroll: 3,
+					slidesToScroll: md ? 1 : lg ? 2 : 3,
 					watchDrag: false,
 				}}
 				pagination={currentSlide}
@@ -186,22 +192,19 @@ export default function Security() {
 				</CarouselContent>
 			</Carousel>
 
-			{media.length > 3 && <div className="flex justify-center h-[17px] gap-6">
-				{Array.from({ length: matches ? pagination : pagination1 }, (_, index) => (
-	        <div onClick={() => setCurrentSlide(index)} key={index} className="w-[33px] bg-[#d9d9d9]" />
+			{media.length > 3 && <div className="flex justify-center h-[17px] gap-[24px]">
+				{Array.from({ length: md ? paginationMd : lg ? paginationLg : pagination }, (_, index) => (
+	        <button onClick={() => {
+						setCurrentSlide(index)
+						setCurrentSlidesshow(index)
+					}} key={index} className={cn(styles.pagination, {[styles.active]: index === currentSlidesshow})} />
 	      ))}
-			</div>}
-
-			
-			{/* <div className="flex justify-center h-[17px] gap-6">
-				<div className="w-[33px] bg-[#00b2c8]" />
-				
-			</div> */}
+			</div>}			
 		</div>
 
 
 
-		<div className='flex flex-col gap-[48px]'>
+		<div className={styles.section}>
 			<p className={styles.subtitle}>Latest posts</p>
 
 			<div className={styles.posts}>

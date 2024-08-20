@@ -24,8 +24,7 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-		margin: 0;
-		transition: all 0.2s;
+		margin: 2px;
 	}
 
 	&:after{
@@ -38,13 +37,13 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-
+		opacity: 0;
+		transition: all 0.2s;
 	}
 
 	&:hover{
-		&:before{
-			margin: 2px;
-			border: none;
+		&:after{
+			opacity: 1;
 		}
 	}
 }
