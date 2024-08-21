@@ -11,6 +11,14 @@
 	}
 }
 
+.title{
+	margin: 0 auto;
+	display: none;
+	@media(max-width: $media_tablet) {
+		display: block;
+	}
+}
+
 .nav{
 	@apply flex flex-col gap-[40px];
 
@@ -26,4 +34,49 @@
 
 .left{
 	transform: rotate(180deg);
+}
+
+.description{
+	@apply flex flex-col  flex-1 gap-[24px];
+	@media(max-width: $media_tablet) {
+		>p{
+			text-align: center;
+		}
+	}
+}
+
+.advantages{
+	.child{
+		transition: 0.2s;
+		cursor: pointer;
+		margin-top: 8px;
+		&::before{
+			content: url(../../ui/icons/arrow_grey.svg);
+			margin-right: 8px;
+		}
+	}
+
+	.child.active{
+		color: #00B2C8;
+		&::before{
+			content: url(../../ui/icons/double_arrow.svg);
+		}
+	}
+
+	button{
+		flex-direction: row-reverse;
+		justify-content: start;
+	}
+
+	> [data-state="open"] {
+		button{
+			p{
+				color: #00B2C8;
+				transition: 0.1s !important;
+			}
+			svg{
+				color: #00B2C8;
+			}
+		}
+	}
 }

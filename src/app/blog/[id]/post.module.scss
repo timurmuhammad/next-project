@@ -1,0 +1,15 @@
+@import '@/ui/vars-and-utils.scss';
+
+.body{
+	button{
+		width: 100%;
+	}
+	@media(max-width:$media_screen) {
+		p{
+			text-align: center;
+		}
+		.button{
+			width: 100%;
+		}
+	}
+}

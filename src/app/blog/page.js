@@ -1,11 +1,10 @@
 'use client'
 import styles from './blog.module.scss'
-import views from "@/ui/icons/views.svg";
 import { Typography } from '@/components/typography'
-import Image from 'next/image'
 import { ButtonBorder } from '@/components/buttonBorder';
 import { PostSdider } from '@/components/postSdider';
-
+import { media } from '@/types/blogType'
+import { PostDetails } from '@/components/postDetails';
 
 export default function Security() {
 
@@ -28,23 +27,15 @@ export default function Security() {
 				<div className={styles.image} />
 				<div className="flex gap-[100px]" />
 				<p className=" text-[24px]  text-black font-[400]">
-					Lorem Ipsum Lorem ipsum dolor sit amet consectetur.
+					{media[0].title}
 				</p>
 				<p className="text-[16px] font-light">
-					Lorem Ipsum Lorem ipsum dolor sit amet consectetur. Lorem Ipsum Lorem ipsum dolor sit amet
-					consectetur. Lorem Ipsum Lorem ipsum dolor sit amet consectetur.
+					{media[0].text}
 				</p>
-				<div className={styles.post_details}>
-					<p className="  text-[14px] font-extralight  text-black">
-						01 Jun 2024
-					</p>
-					<div className="flex  items-center   gap-[8px]">
-						<Image src={views} width={19} height={14} alt='icon'></Image>
-						<p className="  text-[14px] font-extralight text-center text-black">
-							244
-						</p>
-					</div>
-				</div>
+				<PostDetails
+					data={media[0].data}
+					viewsAmount={media[0].views}
+				></PostDetails>
 			</div>
 			<div className="flex flex-col gap-[24px]">
 				<div className="flex flex-col justify-center      gap-[16px]">
@@ -56,38 +47,24 @@ export default function Security() {
 							<div className={styles.image} />
 							<div className="flex flex-col       gap-[8px]">
 								<p className="text-[20px]  text-black font-[400]">
-									Lorem Ipsum Lorem ipsum dolor sit amet consectetur.
+									{media[0].title}
 								</p>
-								<div className={styles.post_details}>
-									<p className="  text-[14px] font-extralight  text-black">
-										01 Jun 2024
-									</p>
-									<div className="flex  items-center   gap-[8px]">
-										<Image src={views} width={19} height={14} alt='icon'></Image>
-										<p className="  text-[14px] font-extralight text-center text-black">
-											244
-										</p>
-									</div>
-								</div>
+								<PostDetails
+									data={media[0].data}
+									viewsAmount={media[0].views}
+								></PostDetails>
 							</div>
 						</div>
 						<div className="flex flex-col flex-1    gap-[16px]">
 							<div className={styles.image} />
 							<div className="flex flex-col       gap-[8px]">
 								<p className="text-[20px]  text-black font-[400]">
-									Lorem Ipsum Lorem ipsum dolor sit amet consectetur.
+									{media[0].title}
 								</p>
-								<div className={styles.post_details}>
-									<p className="  text-[14px] font-extralight  text-black">
-										01 Jun 2024
-									</p>
-									<div className="flex  items-center   gap-[8px]">
-										<Image src={views} width={19} height={14} alt='icon'></Image>
-										<p className="  text-[14px] font-extralight text-center text-black">
-											244
-										</p>
-									</div>
-								</div>
+								<PostDetails
+									data={media[0].data}
+									viewsAmount={media[0].views}
+								></PostDetails>
 							</div>
 						</div>
 					</div>
@@ -97,38 +74,24 @@ export default function Security() {
 						<div className={styles.image} />
 						<div className="flex flex-col gap-[8px]">
 							<p className=" text-[20px]  text-black font-[400]">
-								Lorem Ipsum Lorem ipsum dolor sit amet consectetur.
+								{media[0].title}
 							</p>
-							<div className={styles.post_details}>
-								<p className="  text-[14px] font-extralight  text-black">
-									01 Jun 2024
-								</p>
-								<div className="flex  items-center   gap-[8px]">
-									<Image src={views} width={19} height={14} alt='icon'></Image>
-									<p className="  text-[14px] font-extralight text-center text-black">
-										244
-									</p>
-								</div>
-							</div>
+							<PostDetails
+								data={media[0].data}
+								viewsAmount={media[0].views}
+							></PostDetails>
 						</div>
 					</div>
 					<div className="flex flex-col flex-1    gap-[16px]">
 						<div className={styles.image} />
 						<div className="flex flex-col       gap-[8px]">
 							<p className="text-[20px]  text-black font-[400]">
-								Lorem Ipsum Lorem ipsum dolor sit amet consectetur.
+								{media[0].title}
 							</p>
-							<div className={styles.post_details}>
-								<p className="  text-[14px] font-extralight  text-black">
-									01 Jun 2024
-								</p>
-								<div className="flex  items-center   gap-[8px]">
-									<Image src={views} width={19} height={14} alt='icon'></Image>
-									<p className="  text-[14px] font-extralight text-center text-black">
-										244
-									</p>
-								</div>
-							</div>
+							<PostDetails
+								data={media[0].data}
+								viewsAmount={media[0].views}
+							></PostDetails>
 						</div>
 					</div>
 				</div>
@@ -150,57 +113,36 @@ export default function Security() {
 					<div className={styles.image} />
 					<div className="flex flex-col       gap-[8px]">
 						<p className="    text-[20px]  text-black font-[400]">
-							Lorem Ipsum Lorem ipsum dolor sit amet consectetur.
+							{media[0].title}
 						</p>
-						<div className="flex  items-center     gap-[16px]">
-							<p className="  text-[14px] font-extralight  text-black">
-								01 Jun 2024
-							</p>
-							<div className="flex  items-center   gap-[8px]">
-								<Image src={views} width={19} height={14} alt='icon'></Image>
-								<p className="  text-[14px] font-extralight text-center text-black">
-									244
-								</p>
-							</div>
-						</div>
+						<PostDetails
+							data={media[0].data}
+							viewsAmount={media[0].views}
+						></PostDetails>
 					</div>
 				</div>
 				<div className="flex flex-col     gap-[16px]">
 					<div className={styles.image} />
 					<div className="flex flex-col       gap-[8px]">
 						<p className="    text-[20px]  text-black font-[400]">
-							Lorem Ipsum Lorem ipsum dolor sit amet consectetur.
+							{media[0].title}
 						</p>
-						<div className="flex  items-center     gap-[16px]">
-							<p className="  text-[14px] font-extralight  text-black">
-								01 Jun 2024
-							</p>
-							<div className="flex  items-center   gap-[8px]">
-								<Image src={views} width={19} height={14} alt='icon'></Image>
-								<p className="  text-[14px] font-extralight text-center text-black">
-									244
-								</p>
-							</div>
-						</div>
+						<PostDetails
+							data={media[0].data}
+							viewsAmount={media[0].views}
+						></PostDetails>
 					</div>
 				</div>
 				<div className="flex flex-col     gap-[16px]">
 					<div className={styles.image} />
 					<div className="flex flex-col       gap-[8px]">
 						<p className="    text-[20px]  text-black font-[400]">
-							Lorem Ipsum Lorem ipsum dolor sit amet consectetur.
+							{media[0].title}
 						</p>
-						<div className="flex  items-center     gap-[16px]">
-							<p className="  text-[14px] font-extralight  text-black">
-								01 Jun 2024
-							</p>
-							<div className="flex  items-center   gap-[8px]">
-								<Image src={views} width={19} height={14} alt='icon'></Image>
-								<p className="  text-[14px] font-extralight text-center text-black">
-									244
-								</p>
-							</div>
-						</div>
+						<PostDetails
+							data={media[0].data}
+							viewsAmount={media[0].views}
+						></PostDetails>
 					</div>
 				</div>
 			</div>
@@ -213,57 +155,36 @@ export default function Security() {
 					<div className={styles.image} />
 					<div className="flex flex-col       gap-[8px]">
 						<p className="    text-[20px]  text-black font-[400]">
-							Lorem Ipsum Lorem ipsum dolor sit amet consectetur.
+							{media[0].title}
 						</p>
-						<div className="flex  items-center     gap-[16px]">
-							<p className="  text-[14px] font-extralight  text-black">
-								01 Jun 2024
-							</p>
-							<div className="flex  items-center   gap-[8px]">
-								<Image src={views} width={19} height={14} alt='icon'></Image>
-								<p className="  text-[14px] font-extralight text-center text-black">
-									244
-								</p>
-							</div>
-						</div>
+						<PostDetails
+							data={media[0].data}
+							viewsAmount={media[0].views}
+						></PostDetails>
 					</div>
 				</div>
 				<div className="flex flex-col     gap-[16px]">
 					<div className={styles.image} />
 					<div className="flex flex-col       gap-[8px]">
 						<p className="    text-[20px]  text-black font-[400]">
-							Lorem Ipsum Lorem ipsum dolor sit amet consectetur.
+							{media[0].title}
 						</p>
-						<div className="flex  items-center     gap-[16px]">
-							<p className="  text-[14px] font-extralight  text-black">
-								01 Jun 2024
-							</p>
-							<div className="flex  items-center   gap-[8px]">
-								<Image src={views} width={19} height={14} alt='icon'></Image>
-								<p className="  text-[14px] font-extralight text-center text-black">
-									244
-								</p>
-							</div>
-						</div>
+						<PostDetails
+							data={media[0].data}
+							viewsAmount={media[0].views}
+						></PostDetails>
 					</div>
 				</div>
 				<div className="flex flex-col     gap-[16px]">
 					<div className={styles.image} />
 					<div className="flex flex-col       gap-[8px]">
 						<p className="    text-[20px]  text-black font-[400]">
-							Lorem Ipsum Lorem ipsum dolor sit amet consectetur.
+							{media[0].title}
 						</p>
-						<div className="flex  items-center     gap-[16px]">
-							<p className="  text-[14px] font-extralight  text-black">
-								01 Jun 2024
-							</p>
-							<div className="flex  items-center   gap-[8px]">
-								<Image src={views} width={19} height={14} alt='icon'></Image>
-								<p className="  text-[14px] font-extralight text-center text-black">
-									244
-								</p>
-							</div>
-						</div>
+						<PostDetails
+							data={media[0].data}
+							viewsAmount={media[0].views}
+						></PostDetails>
 					</div>
 				</div>
 			</div>

@@ -5,6 +5,7 @@ import { media } from '@/types/blogType'
 import styles from './post_sdider.module.scss'
 import cn from 'classnames'
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 
 export const PostSdider = () => {
   const pagination = Math.ceil(media.length / 3)
@@ -44,14 +45,14 @@ export const PostSdider = () => {
         <CarouselContent>
           {media.map((item, index) => (
             <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-              <div className="flex flex-col gap-[16px]">
+              <Link href={`/blog/${encodeURIComponent(item.id)}`} className="flex flex-col gap-[16px] cursor-pointer">
                 <div className={styles.image} />
                 <div className="flex flex-col gap-[8px]">
                   <p className="text-[20px] text-black font-[400]">
                     {item.title}
                   </p>
                 </div>
-              </div>
+              </Link>
             </CarouselItem>
           ))}
         </CarouselContent>

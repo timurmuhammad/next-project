@@ -1,0 +1,7 @@
+@import '@/ui/vars-and-utils.scss';
+
+.body{
+	@media(max-width:$media_screen) {
+		text-align: center;
+	}
+}

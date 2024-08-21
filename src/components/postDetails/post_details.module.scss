@@ -1,0 +1,8 @@
+@import '@/ui/vars-and-utils.scss';
+
+.body{
+	@apply flex  items-center     gap-[16px];
+
+	flex-wrap: nowrap;
+	text-wrap: nowrap;
+}
