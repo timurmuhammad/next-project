@@ -5,5 +5,5 @@ type Props = {
 }
 
 export const ButtonBlue: React.FC<Props> = ({ text = '' }) => {
-	return <button className={styles.text}>{text}</button>
+	return <button type='submit' className={styles.text}>{text}</button>
 }

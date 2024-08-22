@@ -1,0 +1,58 @@
+@import '@/ui/vars-and-utils.scss';
+
+.button{
+	height: 36px;
+	padding-right: 12px;
+	padding-left: 12px;
+	border: 1px solid #00B2C8;
+	border-radius: 4px;
+	display: flex;
+	align-items: center;
+	transition: all 0.2s;
+	color: #FFFFFF;
+	background: #00B2C8;
+	position: relative;
+	z-index: 100;
+
+	&:before {
+    border-radius: inherit;
+		background: linear-gradient(282.54deg, #01B091 2%, #00B2C8 100%);
+    content: '';    
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+    opacity: 0;
+    width: 100%;
+    z-index: -100;
+    transition: all 0.2s;
+
+  }
+  
+  &:hover {
+    &:before {
+      opacity: 1;
+    }
+  }
+}
+
+
+
+.list{
+	@apply flex justify-between gap-y-[40px];
+	column-gap: adaptive($width_container, 96, 40);
+
+	@media(max-width:$media_screen) {
+		flex-direction: column;
+	}
+}
+
+.input{
+	margin-bottom: 4px;
+	width: 100%;
+}
+
+
+.password{
+	@apply cursor-pointer flex items-center justify-center w-[20px] h-[20px] absolute top-[50%] translate-y-[-50%] right-[13px];
+}
