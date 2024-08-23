@@ -52,9 +52,9 @@ export default function Login() {
 
 	return <div className="main _container">
 		<Form {...form}>
-			<form onSubmit={form.handleSubmit(onSubmit)} className="">
+			<form onSubmit={form.handleSubmit(onSubmit)}>
 				<div className='mx-auto max-w-[443px] border border-solid border-[#c9cccc] rounded-[6px]'>
-					<div className="mx-auto max-w-[331px] flex flex-col  items-center    gap-[24px] px-[40px] py-[40px]">
+					<div className="mx-auto max-w-[340px] flex flex-col  items-center    gap-[24px] px-[40px] py-[40px]">
 						<Image src={logo_icon} width={40} height={34} alt='logo'></Image>
 						<p className=" text-[28px] text-center text-black">Login</p>
 						<p className=" text-[16px] text-center">
