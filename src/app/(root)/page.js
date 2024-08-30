@@ -6,25 +6,25 @@ import './page.module.scss';
 import { UnderlineButton } from "@/components/underlineButton";
 import { Typography } from "@/components/typography";
 import { Button } from "@/components/button";
-import backgroundGeometric from '../ui/images/background_geometric.png'
-import diagram from '../ui/images/diagram.png';
-import daily from '../ui/icons/daily.svg';
-import portfolio from '../ui/icons/portfolio.svg';
-import statistics from '../ui/icons/statistics.svg';
-import persons from '../ui/images/persons.png';
-import video from '../ui/images/video.png';
-import appstore from '../ui/images/appstore.png';
-import googlePlay from '../ui/images/google_play.png';
-import mobile from '../ui/images/mobile.png';
-import lines from '../ui/icons/lines.svg';
-import gradient from '../ui/images/gradient.png';
-import mediaScreenMobile from '../ui/images/media_screen_mobile.png';
-import automaticTrading from '../ui/images/automaticTrading.png';
-import commission from '../ui/icons/commission.svg';
-import getStarted from '../ui/icons/get_started.svg';
-import invite from '../ui/icons/invite.svg';
+import backgroundGeometric from '@/ui/images/background_geometric.png'
+import diagram from '@/ui/images/diagram.png';
+import daily from '@/ui/icons/daily.svg';
+import portfolio from '@/ui/icons/portfolio.svg';
+import statistics from '@/ui/icons/statistics.svg';
+import persons from '@/ui/images/persons.png';
+import video from '@/ui/images/video.png';
+import appstore from '@/ui/images/appstore.png';
+import googlePlay from '@/ui/images/google_play.png';
+import mobile from '@/ui/images/mobile.png';
+import lines from '@/ui/icons/lines.svg';
+import gradient from '@/ui/images/gradient.png';
+import mediaScreenMobile from '@/ui/images/media_screen_mobile.png';
+import automaticTrading from '@/ui/images/automaticTrading.png';
+import commission from '@/ui/icons/commission.svg';
+import getStarted from '@/ui/icons/get_started.svg';
+import invite from '@/ui/icons/invite.svg';
 import cn from 'classnames'
-import { Section } from "../components/section";
+import { Section } from "@/components/section";
 
 // export const metadata = {
 //   title: 'Home',

@@ -1,12 +1,12 @@
 import styles from './footer.module.scss';
-import backgroudFooter from '../../ui/images/backgroud_footer.png';
+import backgroudFooter from '@/ui/images/backgroud_footer.png';
 import Image from 'next/image';
 import { SocialMedia } from '@/ui/socialMedia';
 import cn from 'classnames'
 import { Logo } from '@/ui/logo';
-import email from '../../ui/icons/email.svg';
-import t_me from '../../ui/icons/t_me.svg';
-import chat from '../../ui/icons/chat.svg'; 
+import email from '@/ui/icons/email.svg';
+import t_me from '@/ui/icons/t_me.svg';
+import chat from '@/ui/icons/chat.svg'; 
 import Link from 'next/link';
 import { Languages } from '../languages';
 

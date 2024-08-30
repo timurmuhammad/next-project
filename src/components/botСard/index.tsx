@@ -1,6 +1,6 @@
 
 export const BotCard = () => {
-	return 		<div className="flex justify-center items-start flex-grow-0 flex-shrink-0 w-[1272px] gap-12">
+	return <div className="flex justify-center items-start flex-grow-0 flex-shrink-0 w-[1272px] gap-12">
   <div className="flex flex-col justify-start items-start self-stretch flex-grow relative overflow-hidden gap-8 p-4 rounded-md border border-[#ebebeb]">
     <div className="flex justify-start items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-2">
       <div className="flex-grow-0 flex-shrink-0 w-[43px] h-[43px] relative">
@@ -274,9 +274,6 @@ export const BotCard = () => {
               </g>
             </g>
             <defs>
-              {/* <clippath id="clip0_168_1281">
-                <rect width={25} height={25} fill="white" />
-              </clippath> */}
             </defs>
           </svg>
           <p className="flex-grow-0 flex-shrink-0 text-lg font-light text-left text-[#303030]">
@@ -420,11 +417,6 @@ export const BotCard = () => {
                 fill="white"
               />
             </g>
-            <defs>
-              {/* <clippath id="clip0_168_1264">
-                <rect width={25} height={25} fill="white" />
-              </clippath> */}
-            </defs>
           </svg>
           <p className="flex-grow-0 flex-shrink-0 text-lg font-light text-left text-[#303030]">
             USDC

@@ -1,5 +1,5 @@
 import styles from './languages.module.scss';
-import en from '../../ui/icons/en.svg';
+import en from '@/ui/icons/en.svg';
 import Image from 'next/image';
 
 export const Languages = () => {

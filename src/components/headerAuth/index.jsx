@@ -1,6 +1,6 @@
 'use client'
 
-import styles from './header.module.scss';
+import styles from './header_auth.module.scss';
 import { Logo } from '@/ui/logo';
 import {productsType} from '../../types/products.ts';
 import { useEffect, useState } from "react";
@@ -15,12 +15,19 @@ import polygon from '@/ui/icons/polygon.svg';
 import { Languages } from '../languages';
 import { SocialMedia } from '@/ui/socialMedia';
 
+import person from "@/ui/icons//person.png";
+import notify from "@/ui/icons/notify.svg";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/shadcn/ui/breadcrumb';
+import Link from 'next/link';
+import { Sidebar } from '@/components/sidebar';
+
 const accordion = 'Products'
 
-export const Header = () => {
+export const HeaderAuth = () => {
 	const [ burgerActive, setBurgerActive ] = useState(false)
 	const [ category, setCategory] = useState('')
 	const [ open, setOpen ] =  useState(false)
+	const [ activeTab, setActiveTab ] = useState('dashboard')
 
 	function onChangeCategory() { 
 		category !== accordion ? setOpen(true) : setOpen(!open)
@@ -39,6 +46,11 @@ export const Header = () => {
 	}, [burgerActive]);
 
 	return <div className={cn(styles.body, {[styles.active]: burgerActive})}>
+		{/* <Sidebar
+			activeTab={activeTab}
+			setActiveTab={setActiveTab}
+		></Sidebar> */}
+
 		<div className={styles.container + ' _container'}>
 			<div className={styles.burger} onClick={() => setBurgerActive(!burgerActive)}>
 				{
@@ -47,27 +59,34 @@ export const Header = () => {
 				}
 			</div>
 
-			<Logo></Logo>
+			{/* <Logo></Logo> */}
 
-			<ul className={styles.nav_desktop}>
-				<li className={styles.nav_desktop__item}>About</li>
-				<li className={cn(styles.nav_desktop__item, styles.popup_list)}>
-
-					<p 
-						className={cn(styles.popup_list__title, {[styles.active]: open})}>
-						<a>Products</a>
-						<Image src={polygon} alt='icon' width={10} height={8}></Image>
-					</p>
-
-					<ul className={cn(styles.popup_list__body, {[styles.active]: open}) }>
-						{ productsType.map( (listItem, index) => <li key={index}>{listItem.name}</li> )}
-					</ul>
-
-				</li>
-				<li className={styles.nav_desktop__item}>Security</li>
-				<li className={styles.nav_desktop__item}>Security</li>
-				<li className={styles.nav_desktop__item}>Help Hub</li>
+			<ul className={styles.nav_icons}>
+				<SocialMedia></SocialMedia>
 			</ul>
+
+			<div className={styles.breadcrumb}>
+				<Breadcrumb>
+					<BreadcrumbList>
+						<BreadcrumbItem>
+							<BreadcrumbLink>
+								<Link href="/">Home</Link>
+							</BreadcrumbLink>
+						</BreadcrumbItem>
+						<BreadcrumbSeparator />
+						<BreadcrumbItem>
+							<BreadcrumbLink>
+								<Link href="/copytrading">Copy Trading</Link>
+							</BreadcrumbLink>
+						</BreadcrumbItem>
+						<BreadcrumbSeparator />
+						<BreadcrumbItem>
+							<div className='font-[400] text-[#000]'><BreadcrumbPage>Bot list</BreadcrumbPage></div>
+						</BreadcrumbItem>
+					</BreadcrumbList>
+				</Breadcrumb>
+			</div>
+
 
 			<ul className={cn(styles.nav_mobile, {[styles.active]: burgerActive})}>
 
@@ -104,9 +123,9 @@ export const Header = () => {
 			</ul>
 
 			<div className={styles.auth}>
-				<button className={styles.dashboard}><Image src={dashboard} alt='icon' width={21} height={20}></Image></button>
-				<button className={styles.login}><p>Login</p></button>
-				<button className={styles.sign_up}>Sign Up</button>
+				<div className='w-[36px] h-[36px] cursor-pointer overflow-hidden rounded-[10px] border-solid border border-[#e6e6e6]'><Image className='w-full h-full' src={person} alt='icon' width={36} height={36}></Image></div>
+				<div className='w-[36px] h-[36px] cursor-pointer flex items-center justify-center overflow-hidden rounded-[10px] border-solid border border-[#e6e6e6]'><Image src={notify} alt='icon' width={16} height={20}></Image></div>
+				<div className={styles.lang}><Languages></Languages></div>
 			</div>
 		</div>
 	</div>

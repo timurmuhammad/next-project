@@ -1,4 +1,4 @@
-@import '../../ui/vars-and-utils.scss';
+@import '@/ui/vars-and-utils.scss';
 
 .body{
 	padding-bottom: 96px;
@@ -115,7 +115,7 @@
 					display: flex;
 					justify-content: end;
 					opacity: 0.9;
-					content: url(../../ui/icons/triangle_blue.svg);
+					content: url(../../../ui/icons/triangle_blue.svg);
 				}
 			}
 		}

@@ -51,7 +51,7 @@
 		cursor: pointer;
 		margin-top: 8px;
 		&::before{
-			content: url(../../ui/icons/arrow_grey.svg);
+			content: url(../../../ui/icons/arrow_grey.svg);
 			margin-right: 8px;
 		}
 	}
@@ -59,7 +59,7 @@
 	.child.active{
 		color: #00B2C8;
 		&::before{
-			content: url(../../ui/icons/double_arrow.svg);
+			content: url(../../..//ui/icons/double_arrow.svg);
 		}
 	}
 

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import Image from 'next/image'
-import arrowWhite from '../../ui/icons/arrow_white.svg';
+import arrowWhite from '@/ui/icons/arrow_white.svg';
 
 type Props = {
 	text: string

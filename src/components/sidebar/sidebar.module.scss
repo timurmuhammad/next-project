@@ -1,0 +1,49 @@
+@import '@/ui/vars-and-utils.scss';
+
+.body{
+	overflow-y: auto;
+
+	@apply flex flex-col items-center relative gap-12 px-4 py-12 bg-[#e4fafc];
+
+	@media(max-width: $media_tablet) {
+		display: none;
+	}
+
+	align-self: flex-start;
+	z-index: 2;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	color: #131313;
+	height: 100vh;
+	width: fit-content;
+	padding-bottom: 320px;
+}
+
+
+.tab{
+	@apply flex flex-col justify-center items-center gap-[10px] p-[16px] rounded-[6px] w-[120px];
+	cursor: pointer;
+	transition: 0.1s;
+
+	img{
+		transition: 0.1s;
+		filter: brightness(0);
+	}
+
+	p{
+		@apply text-[13px] text-center uppercase;
+		transition: all 0.2s;
+	}
+
+	&.active{
+		background-color: white;
+		img{
+			filter: brightness(1);
+		}
+
+		p{
+			@apply text-[#00b2c8] font-medium;
+		}
+	}
+}

@@ -1,5 +1,10 @@
 @import '@/ui/vars-and-utils.scss';
 
+
+
+
+
+
 .button {
   background-size: 100%;
   background-image: linear-gradient(#fff, #ccc);
@@ -15,35 +20,35 @@
   z-index: 100;
 }
 
-.body{
-	width: 100%;
-	border-bottom: 0.5px solid #B9B9B9;
-	box-shadow: 0px 1px 6.8px 0px #0000001A;
-	max-height: 80px;
-	height: $height_header;
-	border-radius: 0px 0px 4px 4px;
-}
-.body.active{
-	box-shadow: none;
-	border-color: transparent;
-}
+// .body{
+// 	width: 100%;
+// 	border-bottom: 0.5px solid #B9B9B9;
+// 	box-shadow: 0px 1px 6.8px 0px #0000001A;
+// 	max-height: 80px;
+// 	height: $height_header;
+// 	border-radius: 0px 0px 4px 4px;
+// }
+// .body.active{
+// 	box-shadow: none;
+// 	border-color: transparent;
+// }
 
-.container{
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	height: 100%;
-	font-size: 16px;
-	gap: 20px;
-}
+// .container{
+// 	display: flex;
+// 	align-items: center;
+// 	justify-content: space-between;
+// 	height: 100%;
+// 	font-size: 16px;
+// 	gap: 32px;
+// }
 
-.auth{
-	display: flex;
-	gap: adaptive($width_container, 16, 12);
-	align-items: center;
-	justify-content: space-between;
-	min-width: 110px;
-}
+// .auth{
+// 	display: flex;
+// 	gap: adaptive($width_container, 16, 12);
+// 	align-items: center;
+// 	justify-content: space-between;
+// 	min-width: 110px;
+// }
 
 .login{
 	height: adaptive($width_container, 36, 32);
@@ -372,6 +377,103 @@
 			border-radius: 10px;
 			filter: contrast(1);
 			border: 1px solid #E6E6E6
+		}
+	}
+}
+
+
+.container{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 100%;
+	font-size: 16px;
+	gap: 32px;
+	flex: 1 1 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.body{
+	width: 100%;
+	border-bottom: 0.5px solid #B9B9B9;
+	box-shadow: 0px 1px 6.8px 0px #0000001A;
+	max-height: 80px;
+	height: adaptive($width_container, 80, 60);
+	border-radius: 0px 0px 4px 4px;
+	display: flex;
+}
+.body.active{
+	box-shadow: none;
+	border-color: transparent;
+}
+
+
+
+.nav_icons{
+	opacity: 0.6;
+	> div{
+		gap: 16px;
+		img{
+			width: 36px;
+			height: 36px;
+			padding: 8px;
+			border-radius: 10px;
+			filter: contrast(1);
+			border: 1px solid #E6E6E6;
+		}
+	}
+	@media (max-width: $media_tablet) {
+		display: none;
+	}
+}
+
+.auth{
+	display: flex;
+	gap: adaptive($width_container, 16, 12);
+	align-items: center;
+
+	@media (max-width: $media_tablet) {
+		flex-direction: row-reverse;
+
+		.lang{
+			display: none;
+		}
+	}
+	
+}
+
+
+
+// .breadcrumb{
+// 	margin-top: 96px;
+// 	margin-bottom: 96px;
+// }
+
+.breadcrumb{
+	flex: 1 1 auto;
+
+	@media (max-width: $media_laptop) {
+		display: none;
+	}
+
+	nav{
+		width: fit-content;
+		ol{
+			flex-wrap: nowrap;
+			text-wrap: nowrap;
+		}
+		li{
+			font-size: 12px;
 		}
 	}
 }

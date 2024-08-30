@@ -1,6 +1,6 @@
 import styles from './underline-button.module.scss';
 import Image from 'next/image';
-import Arrow from '../../ui/icons/arrow.svg';
+import Arrow from '@/ui/icons/arrow.svg';
 
 export const UnderlineButton = ({ text }) => {
 	return <button className={styles.body}>

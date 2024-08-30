@@ -1,4 +1,4 @@
-@import '../../ui/vars-and-utils.scss';
+@import '@/ui/vars-and-utils.scss';
 
 .span{
 	@apply leading-[100%] text-[12px] flex justify-center items-center absolute h-full aspect-square bg-[#ebebeb] font-[400px] rounded-[50%] cursor-pointer;

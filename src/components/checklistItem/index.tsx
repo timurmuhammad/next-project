@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import checkCircle from "../../ui/icons/check_circle.svg";
+import checkCircle from "@/ui/icons/check_circle.svg";
 import changeGreen from "@/ui/icons/change_green.svg";
 import changeOrange from "@/ui/icons/change_orange.svg";
 

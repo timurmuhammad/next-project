@@ -7,29 +7,29 @@ import { Typography } from "@/components/typography"
 import { UnderlineButton } from "@/components/underlineButton"
 import { Button } from "@/components/button"
 import Image from "next/image"
-import  persons  from "../../ui/icons/persons.svg";
-import { ChecklistItem } from "../../components/checklistItem"
-import clockHistory from "../../ui/icons/clock-history.svg";
-import dollarCrosshair from "../../ui/icons/dollar-crosshair.svg";
-import dollar from "../../ui/icons/dollar.svg";
-import dollarSwirl from "../../ui/icons/dollar-swirl.svg";
-import list from "../../ui/icons/list.svg";
-import click from "../../ui/icons/click.svg";
-import markingLine from "../../ui/icons/marking_line.svg";
-import collectTests from "../../ui/icons/collect-tests.svg";
-import lookingglassCheck from "../../ui/icons/lookingglass_check.svg";
-import marketArbitrage from "../../ui/icons/market-arbitrage.svg";
-import diagram from "../../ui/icons/diagram.svg";
-import backgroundBlue from "../../ui/icons/background_blue.svg";
-import blue from "../../ui/images/blue.png";
-import excellent from "../../ui/images/excellent.png";
-import map from "../../ui/images/map.svg";
-import line from "../../ui/images/line.svg";
-import benzingaSeeklogo from "../../ui/icons/benzinga-seeklogo.svg";
-import marketwatch from "../../ui/icons/marketwatch.svg";
-import fox from "../../ui/icons/fox.svg";
-import yahoo from "../../ui/icons/yahoo.svg";
-import shield from "../../ui/images/shield.svg";
+import  persons  from "@/ui/icons/persons.svg";
+import { ChecklistItem } from "@/components/checklistItem"
+import clockHistory from "@/ui/icons/clock-history.svg";
+import dollarCrosshair from "@/ui/icons/dollar-crosshair.svg";
+import dollar from "@/ui/icons/dollar.svg";
+import dollarSwirl from "@/ui/icons/dollar-swirl.svg";
+import list from "@/ui/icons/list.svg";
+import click from "@/ui/icons/click.svg";
+import markingLine from "@/ui/icons/marking_line.svg";
+import collectTests from "@/ui/icons/collect-tests.svg";
+import lookingglassCheck from "@/ui/icons/lookingglass_check.svg";
+import marketArbitrage from "@/ui/icons/market-arbitrage.svg";
+import diagram from "@/ui/icons/diagram.svg";
+import backgroundBlue from "@/ui/icons/background_blue.svg";
+import blue from "@/ui/images/blue.png";
+import excellent from "@/ui/images/excellent.png";
+import map from "@/ui/images/map.svg";
+import line from "@/ui/images/line.svg";
+import benzingaSeeklogo from "@/ui/icons/benzinga-seeklogo.svg";
+import marketwatch from "@/ui/icons/marketwatch.svg";
+import fox from "@/ui/icons/fox.svg";
+import yahoo from "@/ui/icons/yahoo.svg";
+import shield from "@/ui/images/shield.svg";
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/shadcn/ui/accordion.tsx"
 import { ButtonBlue } from "@/components/buttonBlue"
 

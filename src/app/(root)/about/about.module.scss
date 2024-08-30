@@ -1,9 +1,9 @@
-@import '../../ui/vars-and-utils';
+@import '@/ui/vars-and-utils';
 
 .button{
 	>button{
 		&:before{
-			content: url(../../ui/icons/pdf.svg);
+			content: url(../../../ui/icons/pdf.svg);
 		}
 	}
 }
@@ -59,7 +59,7 @@
 					display: flex;
 					justify-content: end;
 					opacity: 0.9;
-					content: url(../../ui/icons/triangle_blue.svg);
+					content: url(../../../ui/icons/triangle_blue.svg);
 				}
 			}
 		}

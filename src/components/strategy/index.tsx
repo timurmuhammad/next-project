@@ -9,12 +9,12 @@ import dynamicImg from "@/ui/icons/dynamic.svg";
 import staticImg from "@/ui/icons/static.svg";
 import { Slider } from '@/shadcn/ui/slider'
 import { Switch } from '@/shadcn/ui/switch'
-import candle from "../../ui/icons/candle.svg";
-import sell from "../../ui/icons/sell.svg";
-import clockHistoryBlack from "../../ui/icons/clock-history-black.svg";
-import dollarCrosshairBlack from "../../ui/icons/dollar-crosshair-black.svg";
-import dollarSwirlBlack from "../../ui/icons/dollar-swirl-black.svg";
-import bag from "../../ui/icons/bag.svg";
+import candle from "@/ui/icons/candle.svg";
+import sell from "@/ui/icons/sell.svg";
+import clockHistoryBlack from "@/ui/icons/clock-history-black.svg";
+import dollarCrosshairBlack from "@/ui/icons/dollar-crosshair-black.svg";
+import dollarSwirlBlack from "@/ui/icons/dollar-swirl-black.svg";
+import bag from "@/ui/icons/bag.svg";
 
 
 type PlanItem = {

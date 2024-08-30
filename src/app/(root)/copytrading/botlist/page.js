@@ -57,7 +57,7 @@ export default function BotList() {
 	      <BreadcrumbList>
 	        <BreadcrumbItem>
 	          <BreadcrumbLink>
-	            <Link href="/">Home</Link>
+	            <Link href="/">Personal account</Link>
 	          </BreadcrumbLink>
 	        </BreadcrumbItem>
 	        <BreadcrumbSeparator />

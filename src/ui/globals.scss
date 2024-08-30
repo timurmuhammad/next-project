@@ -59,20 +59,19 @@
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
+// @layer base {
+//   * {
+//     @apply border-border;
+//   }
+//   body {
+//     @apply bg-background text-foreground;
+//   }
+// }
 
 
 
 
-
-@import '../ui/vars-and-utils.scss';
+@import '@/ui/vars-and-utils.scss';
 
 
 *{
@@ -138,6 +137,10 @@ body{
   flex-direction: column;
 }
 
+.inner_auth{
+  display: flex;
+}
+
 ._container {
   padding-left: 16px;
   padding-right: 16px;
@@ -148,6 +151,7 @@ body{
 main{
   flex: 1 1 auto;
 }
+
 .main{
   display: flex;
   flex-direction: column;
