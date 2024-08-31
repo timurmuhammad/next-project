@@ -108,7 +108,7 @@ export const HeaderAuth = () => {
 						{tabs.map((item, index) => {
 							return item.childs ? <AccordionItem className={styles.item} key={item.key} value={item.key}>
 								<div onClick={() => handleClick(item)}>
-									<AccordionTrigger className="px-0 pb-0 pt-0">
+									<AccordionTrigger className="pb-0 pt-0 pl-0 pr-0">
 										<div className={styles.box}>
 											<Image src={item.icon} alt='icon' width={24} height={24}></Image>
 											<a className={styles.text}>{item.text}</a>
@@ -117,7 +117,7 @@ export const HeaderAuth = () => {
 									</AccordionTrigger>
 
 								</div>
-								<AccordionContent className='pb-0 px-0 pl-[32px]'>
+								<AccordionContent className={styles.content}>
 									{item.childs && item.childs.map((child, childsIndex) => <div className={cn(styles.child, { [styles.active]: child === current })} key={childsIndex} onClick={() => handleClick(child)}>
 										<Image src={child.icon} alt='icon' width={24} height={24}></Image>
 										<p className='text-[14px]'>{child.text}</p>

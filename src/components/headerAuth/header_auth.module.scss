@@ -381,6 +381,10 @@
 	}
 }
 
+.content{
+	@apply px-0 pl-[32px] pb-0;
+	padding-bottom: 0px !important;
+}
 
 .container{
 	display: flex;
