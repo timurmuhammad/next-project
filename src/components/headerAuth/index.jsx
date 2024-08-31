@@ -1,39 +1,64 @@
 'use client'
 
 import styles from './header_auth.module.scss';
-import { Logo } from '@/ui/logo';
 import {productsType} from '../../types/products.ts';
 import { useEffect, useState } from "react";
 import burgerClose from '@/ui/icons/burger_close.svg';
 import burgerOpen from '@/ui/icons/burger_open.svg';
 import Image from 'next/image';
 import cn from 'classnames';
-import dashboard from '@/ui/icons/dashboard.svg';
 import {menuMobileType} from '../../types/menuMobile';
 import arrow from '@/ui/icons/arrow_up.svg';
-import polygon from '@/ui/icons/polygon.svg';
 import { Languages } from '../languages';
 import { SocialMedia } from '@/ui/socialMedia';
-
 import person from "@/ui/icons//person.png";
 import notify from "@/ui/icons/notify.svg";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/shadcn/ui/breadcrumb';
 import Link from 'next/link';
-import { Sidebar } from '@/components/sidebar';
+import { usePathname } from 'next/navigation';
+import { tabs } from '@/types/auth';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/shadcn/ui/accordion';
+import arrow_up from '@/ui/icons/arrow_up.svg'
 
-const accordion = 'Products'
+
 
 export const HeaderAuth = () => {
+	const [ value, setValue ] = useState('')
 	const [ burgerActive, setBurgerActive ] = useState(false)
-	const [ category, setCategory] = useState('')
-	const [ open, setOpen ] =  useState(false)
-	const [ activeTab, setActiveTab ] = useState('dashboard')
+	const pathname = usePathname()
+  const params = pathname.split('/').pop();
+  const activeTab = tabs.find((item) => item.link === params);
+	const [ current, setCurrent ] = useState(activeTab)
 
-	function onChangeCategory() { 
-		category !== accordion ? setOpen(true) : setOpen(!open)
-		console.log(category)
-		console.log(open)
-	}
+	function handleClick(item) {
+		setCurrent(item)
+
+		for(let i = 0; i < tabs.length; i++) {
+
+			if (tabs[i].key === item.key) {
+				setValue(tabs[i].key)
+			}
+			if(current && item.key === current.key && tabs[i].key === item.key) {
+				setCurrent()
+				setValue('')
+			} 
+
+			const child = tabs[i].childs
+			if (child) {
+				for(let j = 0; j < child.length; j++) {
+					if (child[j] === item) {
+						setValue(tabs[i].key)
+					}
+					if (current && child[j].key === current.key && item.key === tabs[i].key) {
+						setCurrent()
+						setValue('')
+					}
+				}
+			}
+		}
+}
+
+
 
 	useEffect(() => {
 		if (typeof document !== 'undefined') {
@@ -46,11 +71,6 @@ export const HeaderAuth = () => {
 	}, [burgerActive]);
 
 	return <div className={cn(styles.body, {[styles.active]: burgerActive})}>
-		{/* <Sidebar
-			activeTab={activeTab}
-			setActiveTab={setActiveTab}
-		></Sidebar> */}
-
 		<div className={styles.container + ' _container'}>
 			<div className={styles.burger} onClick={() => setBurgerActive(!burgerActive)}>
 				{
@@ -59,7 +79,6 @@ export const HeaderAuth = () => {
 				}
 			</div>
 
-			{/* <Logo></Logo> */}
 
 			<ul className={styles.nav_icons}>
 				<SocialMedia></SocialMedia>
@@ -70,18 +89,12 @@ export const HeaderAuth = () => {
 					<BreadcrumbList>
 						<BreadcrumbItem>
 							<BreadcrumbLink>
-								<Link href="/">Home</Link>
+								<Link href="/">Personal account</Link>
 							</BreadcrumbLink>
 						</BreadcrumbItem>
 						<BreadcrumbSeparator />
 						<BreadcrumbItem>
-							<BreadcrumbLink>
-								<Link href="/copytrading">Copy Trading</Link>
-							</BreadcrumbLink>
-						</BreadcrumbItem>
-						<BreadcrumbSeparator />
-						<BreadcrumbItem>
-							<div className='font-[400] text-[#000]'><BreadcrumbPage>Bot list</BreadcrumbPage></div>
+							<div className='font-[400] text-[#000]'><BreadcrumbPage className='flex gap-[4px] items-center'>{activeTab.text}</BreadcrumbPage></div>
 						</BreadcrumbItem>
 					</BreadcrumbList>
 				</Breadcrumb>
@@ -90,30 +103,37 @@ export const HeaderAuth = () => {
 
 			<ul className={cn(styles.nav_mobile, {[styles.active]: burgerActive})}>
 
-				<div>
-					{menuMobileType.map((item, index) => (
-						<div onClick={() => {
-							burgerActive && setCategory(item)
-						}}
-							key={index} 
-							className={(item === accordion ? styles.nav__accordion : styles.nav_mobile__item)}>
-								{item === accordion ? <div className={cn(styles.nav_accordion__body, {[styles.active]: category === item && open})}>
-									
-									<p onClick={() => onChangeCategory()} className={styles.nav_accordion__title}>
-										<a>{item}</a>
-										<Image src={arrow} alt='icon' width={14} height={8}></Image>
-									</p>
-	
-									<ul className={styles.nav_accordion__list}>
-										{productsType.map((item, index) => (
-											<p className={styles.nav_accordion__item} key={index}>{item.name}</p>
-										))}
-									</ul>
-	
-								</div> : <p onClick={() => onChangeCategory()} className={cn(styles.nav_mobile__text, {[styles.active]: category === item})}>{item}</p>}
-						</div>
-					))}
-				</div>
+				<Accordion type="single" collapsible value={value} onValueChange={setValue}>
+					<div className={cn(styles.advantages)}>
+						{tabs.map((item, index) => {
+							return item.childs ? <AccordionItem className={styles.item} key={item.key} value={item.key}>
+								<div onClick={() => handleClick(item)}>
+									<AccordionTrigger className="px-0 pb-0 pt-0">
+										<div className={styles.box}>
+											<Image src={item.icon} alt='icon' width={24} height={24}></Image>
+											<a className={styles.text}>{item.text}</a>
+											<Image className={styles.arrov} src={arrow_up} alt='icon' width={14} height={8}></Image>
+										</div>
+									</AccordionTrigger>
+
+								</div>
+								<AccordionContent className='pb-0 px-0 pl-[32px]'>
+									{item.childs && item.childs.map((child, childsIndex) => <div className={cn(styles.child, { [styles.active]: child === current })} key={childsIndex} onClick={() => handleClick(child)}>
+										<Image src={child.icon} alt='icon' width={24} height={24}></Image>
+										<p className='text-[14px]'>{child.text}</p>
+									</div>)}
+								</AccordionContent>
+							</AccordionItem>
+							: <p onClick={() => handleClick(item)} key={item.key} className={cn(styles.box, {[styles.active]: item === current})}>
+								<Image src={item.icon} alt='icon' width={24} height={24}></Image>
+								<span className={styles.text}>{item.text}</span>
+							</p>
+						})
+						}
+					</div>
+				</Accordion>
+
+
 
 				<div className={styles.nav_mobile__icons}>
 					<Languages></Languages>

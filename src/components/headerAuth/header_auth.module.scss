@@ -399,10 +399,6 @@
 
 
 
-
-
-
-
 .body{
 	width: 100%;
 	border-bottom: 0.5px solid #B9B9B9;
@@ -454,11 +450,6 @@
 
 
 
-// .breadcrumb{
-// 	margin-top: 96px;
-// 	margin-bottom: 96px;
-// }
-
 .breadcrumb{
 	flex: 1 1 auto;
 
@@ -475,5 +466,88 @@
 		li{
 			font-size: 12px;
 		}
+	}
+}
+
+
+
+
+
+.advantages{
+	.child{
+		cursor: pointer;
+		height: 46px;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		transition: 0.2s;
+	}
+
+	button{
+		> svg{
+			display: none;
+		}
+	}
+
+
+	.box{
+		border-left: 2px solid transparent;
+		padding: 0px 16px;
+		height: 46px;
+		padding: 0px 16px;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		width: 100%;
+		transition: 0.2s;
+		cursor: pointer;
+		user-select: none;
+		&.active {
+			background-color: #E4FAFC;
+			border-left: 2px solid #00b2c8;
+	
+			img {
+				filter: brightness(1);
+			}
+	
+			.text {
+				font-weight: 400;
+			}
+	
+		}
+
+		
+		img{
+			filter: brightness(0);
+		}
+		.arrov{
+			transition: 0.2s;
+		}
+	
+	}
+	.text{
+		width: 100%;
+		max-width: 160px;
+		font-size: 14px;
+		color: #131313;
+		font-weight: 300;
+		text-align: start;
+	}
+
+	> [data-state="open"] {
+		.box{
+			background-color: #E4FAFC;
+			border-left: 2px solid #00b2c8;
+			img{
+				filter: brightness(1);
+			}
+			.arrov{
+				transform: rotate(-180deg);
+			}
+		}
+		.text{
+			font-weight: 400;
+		}
+
 	}
 }
