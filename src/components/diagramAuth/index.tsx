@@ -12,7 +12,7 @@ import mark from "@/ui/icons/mark.svg";
 import invested from "@/ui/icons/invested.svg";
 import withdrawn from "@/ui/icons/withdrawn.svg";
 import balance from "@/ui/icons/balance.svg";
-import Earned from "@/ui/icons/Earned.svg";
+import earned from "@/ui/icons/earned.svg";
 
 const chartType = ['Week', 'Month', 'All time']
 
@@ -144,7 +144,7 @@ export const DiagramAuth = () => {
 			</div>
 			<div className="flex flex-col justify-center     gap-[16px] px-[16px] py-[18px] rounded-[6px] bg-white border border-solid border-[#e6e6e6]">
 				<div className="flex  items-center     gap-[8px]">
-					<Image src={Earned} width={24} height={24} alt="icon"></Image>
+					<Image src={earned} width={24} height={24} alt="icon"></Image>
 
 					<p className="w-[117px] text-[12px] font-medium  uppercase text-[#828282]">
 						Earned
