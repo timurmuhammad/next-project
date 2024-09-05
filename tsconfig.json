@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/**/*.(ts, tsx)", "src/components/sidebar/index.jsx", "src/components/sidebar/index.jsx", "src/app/(auth)/wallets/page.jsx", "src/app/(auth)/dashboard/page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/**/*.(ts, tsx)", "src/components/sidebar/index.jsx", "src/components/sidebar/index.jsx"],
   "exclude": ["node_modules"]
 }

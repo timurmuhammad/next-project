@@ -36,7 +36,6 @@ import {
   ChartTooltipContent,
 } from "@/shadcn/ui/chart"
 
-export const description = "A donut chart"
 
 const chartData = [
   { browser: "static", visitors: 275, fill: "#00b2c8" },
