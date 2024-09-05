@@ -2,9 +2,7 @@
 
 .body{
 	overflow-y: auto;
-
-	@apply flex flex-col items-center relative gap-12 px-4 py-12 bg-[#e4fafc];
-
+	@apply flex flex-col items-center gap-12 px-4 py-12 bg-[#e4fafc];
 	@media(max-width: $media_tablet) {
 		display: none;
 	}
@@ -15,8 +13,9 @@
 	left: 0;
 	bottom: 0;
 	color: #131313;
-	height: 100vh;
-	width: fit-content;
+	width: 156px;
+	flex: 0 0 156px;
+	overflow-x: hidden;
 	padding-bottom: 320px;
 }
 
