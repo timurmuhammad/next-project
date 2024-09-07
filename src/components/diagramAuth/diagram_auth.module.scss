@@ -22,13 +22,24 @@
 .chart_content{
 	padding: 0 !important;
 	position: relative;
+	*{
+		min-width: 0 !important;
+		flex: 1 1 0% !important;
+		padding: 0 !important;
+		margin: 0 !important;
+	}
+	svg{
+		min-width: 0 !important;
+		flex: 1 1 0% !important;
+	}
 }
 
 
 .main{
-	@apply flex border-solid border border-[#e6e6e6] rounded-[6px] flex-col justify-between w-full basis-auto gap-[32px]  py-[32px] px-[32px];
+	@apply flex border-solid border border-[#e6e6e6] rounded-[6px] flex-col justify-between w-full basis-auto gap-[32px];
 	width: 100%;
 	flex: 1 1 auto;
+	padding: adaptive($width_container, 32, 24);
 }
 
 
@@ -182,5 +193,47 @@
 	
 	@media (max-width: $media-laptop) {
 		display: none;
+	}
+}
+
+
+.stats{
+	@apply flex flex-col justify-center gap-[16px] px-[16px] py-[18px] rounded-[6px];
+	position: relative;
+	overflow: hidden;
+
+	@apply border border-solid border-[#e6e6e6];
+
+	&:before{
+		content: '';
+		background-color: #fff;
+		border-radius: 4px;
+		z-index: -1;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin-right: 5px;
+	}
+
+	&:after{
+		content: '';
+		border-radius: 4px;
+		background-color: #00B2C8;
+		z-index: -2;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		opacity: 0;
+		transition: all 0.2s;
+	}
+
+	&:hover{
+		&:after{
+			opacity: 1;
+		}
 	}
 }

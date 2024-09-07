@@ -4,10 +4,53 @@
 	display: flex;
 	gap: 24px;
 	padding-top: 47px;
+	padding-bottom: adaptive($width_container, 128, 96);
+	width: 100%;
+
+	>div:last-child{
+		width: 282px;
+	}
 
 	@media(max-width:$media_laptop) {
 			flex-direction: column;
+			>div:last-child{
+				width: auto;
+				display: grid;
+				position: relative;
+				grid-template-columns: 1fr 1.5fr;
+				grid-template-rows: auto;
+				gap: 24px;
+				>div{
+					grid-column: 2;
+				}
+
+				>div:nth-child(2){
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 40%;
+					grid-column: 1;
+					grid-row: 1 / -1;
+					border: none;
+				}
+			}
 	}
+
+	@media(max-width:$media_screen) {
+		>div:last-child{
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+	
+			>div:nth-child(2){
+				position: static;
+				width: auto;
+				@apply border border-[#e6e6e6] border-solid;
+			}
+		}
+	}	
+	
+
 }
 
 .main{
@@ -42,7 +85,21 @@
 
 	.add{
 		@apply flex  items-center h-[88px] px-[16px] justify-center border-dashed rounded-[6px] border-[#d9d9d9] border-[1px];
+		transition: 0.2s;
 		cursor: pointer;
+		>div{
+			filter: brightness(0);
+			opacity: 0.4;
+		}
+
+		&:hover{
+			border-color: #00b2c8;
+
+			>div{
+				filter: brightness(1);
+				opacity: 1;
+			}
+		}
 
 		flex: 1 1 88px;
 		@media(max-width:$media_screen) {
@@ -51,8 +108,57 @@
 	}
 
 	.counter{
-		@apply flex  items-center justify-between w-[282px] border-solid h-[88px] rounded-[6px] border-[#d9d9d9] border-[1px];
-		
+		@apply flex  items-center justify-between w-[282px] border-solid h-[88px] overflow-hidden rounded-[6px] border-[#d9d9d9] border-[1px];
+		.icon{
+			filter: brightness(0);
+			opacity: 0.3;
+		}
+		>div:last-child{
+			>div{
+				p{
+					line-height: 200%;
+				}
+				&:hover{
+					background-color: #e4fafc;
+					font-weight: 500;
+				}
+			}
+		}
+		&:hover{
+			border-color: #00b2c8;
+			div{
+				border-color: #00b2c8;
+			}
+			.icon{
+				filter: brightness(1);
+				opacity: 1;
+			}
+		}
+
+		@media(max-width:$media_screen) {
+			flex-direction: column-reverse;
+			height: auto;
+			flex: 1 1 211px;
+
+			>div:first-child{
+				padding: 16px;
+			}
+
+			>div:last-child{
+					border-bottom: 1px solid #d9d9d9;
+					flex-direction: row;
+					width: 100%;
+					height: 44px;
+					>div{
+						width: 50%;
+						height: auto;
+						border: none;
+						&:last-child{
+							border-left: 1px solid #d9d9d9;
+						}
+					}
+			}
+		}
 	}
 }
 
@@ -89,7 +195,6 @@
 	}
 }
 
-
 .pagination{
 	@apply w-[10px] bg-[#d9d9d9];
 	transition: 0.2s;
@@ -98,7 +203,6 @@
 		@apply bg-[#00b2c8];
 	}
 }
-
 
 .image{
 	@apply opacity-30  rounded-[10px] bg-[#82d3dd];
@@ -164,6 +268,18 @@
 			}
 		}
 	}
+
+	@media (max-width: $media-screen) {
+		div{
+			padding-left: 16px;
+			padding-right: 16px;
+			width: auto !important;
+		}
+		div{
+			width: 50%;
+			flex: 1 1 50%;
+		}
+	}
 }
 
 .card{
@@ -173,7 +289,7 @@
 		flex-wrap: wrap;
 	}
 
-	@media(max-width:568px) {
+	@media(max-width:420px) {
 		>div{
 			&:nth-child(2){
 				flex-direction: row;
@@ -190,5 +306,220 @@
 
 	@media(max-width:1320px) {
 		display: none;
+	}
+}
+
+
+.statistics{
+	@apply flex flex-col overflow-hidden px-[24px] gap-[24px] py-[40px] rounded-[6px] border-solid bg-white border border-[#e6e6e6];
+
+	@media (max-width: $media-screen) {
+		padding-left: 0;
+		padding-right: 0;
+		padding-bottom: 0;
+		padding-top: 24px;
+	}
+}
+
+.progress_activities{
+	flex: 1 1 auto;
+	display: none;
+
+	@media(max-width:$media-screen) {
+		display: block;
+	}
+
+	div{
+		border-radius: 6px;
+		height: 6px;
+		div{
+			background: linear-gradient(-48.33deg, #01b091 5.18%, #00b2c8 100%);
+		}
+	}
+}
+
+
+.available{
+	@apply flex items-center uppercase justify-center h-[300px] p-[16px];
+
+	@media(max-width:$media-screen) {
+		height: 85px;
+	}
+}
+
+
+.new_plan{
+	@apply flex flex-col justify-center items-center w-full gap-[16px] p-[16px] rounded-[6px]  border border-[#cecece] border-dashed;
+	cursor: pointer;
+		>div{
+			filter: brightness(0);
+			opacity: 0.4;
+		}
+		p{
+			color: #cecece;
+			transition: 0.2s;
+		}
+
+		&:hover{
+			border-color: #00b2c8;
+			p{
+				color: #00b2c8;
+			}
+			>div{
+				filter: brightness(1);
+				opacity: 1;
+			}
+		}
+}
+
+
+.trading{
+	@apply flex  items-center gap-[24px] p-[22px] rounded-[6px];
+	>div:last-child{
+		filter: brightness(0);
+	}
+	&:hover{
+		>div:last-child{
+			filter: brightness(1);
+		}
+	}
+
+	position: relative;
+	overflow: hidden;
+	font-weight: 400;
+	font-size: 20px;
+
+	&:before{
+		content: '';
+		@apply border border-solid border-[#e6e6e6];
+		border-radius: 4px;
+		background-color: #fff;
+		z-index: -1;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: 1px;
+	}
+
+	&:after{
+		content: '';
+		border-radius: 4px;
+		background-image: linear-gradient(282.54deg, #01B091 2%, #00B2C8 100%);
+		z-index: -2;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		opacity: 0;
+		transition: all 0.2s;
+	}
+
+	&:hover{
+		&:after{
+			opacity: 1;
+		}
+	}
+}
+
+.get_bonus{
+	@apply flex justify-center items-center  flex-shrink-0 px-2 py-1 rounded border-2 cursor-pointer border-solid border-white;
+	transition: 0.1s;
+	&:hover{
+		font-weight: 500;
+	}
+}
+
+
+.help{
+	@apply flex justify-center items-center gap-[8px] px-[8px] py-[4px] rounded-tl rounded-bl border-t border-solid border-r-0 border-b border-l border-[#00b2c8];
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+
+	&:before{
+		content: '';
+		background-color: #fff;
+		border-radius: 2px;
+		z-index: -1;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin-left: 3px;
+		transition: all 0.2s;
+	}
+
+	&:after{
+		content: '';
+		border-radius: 2px;
+		background-color: #00B2C8;
+		z-index: -2;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		opacity: 0;
+		transition: all 0.2s;
+	}
+
+	&:hover{
+		&:after{
+			opacity: 1;
+		}
+		&:before{
+			background-color: #e4fafc;
+		}
+	}
+}
+
+
+.start{
+	@apply flex justify-center items-center gap-[8px] px-[8px] py-[4px] border-solid rounded-tr rounded-br border border-[#00b2c8];
+
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+
+
+	&:before{
+		content: '';
+		background-color: #fff;
+		border-radius: 2px;
+		z-index: -1;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin-right: 3px;
+		transition: all 0.2s;
+	}
+
+	&:after{
+		content: '';
+		border-radius: 2px;
+		background-color: #00B2C8;
+		z-index: -2;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		opacity: 0;
+		transition: all 0.2s;
+	}
+
+	&:hover{
+		&:after{
+			opacity: 1;
+		}
+		&:before{
+			background-color: #e4fafc;
+		}
 	}
 }

@@ -1,5 +1,6 @@
 'use client'
 
+import dynamic from 'next/dynamic';
 import { Progress } from '@/shadcn/ui/progress'
 import styles from './dashboard.module.scss'
 import cn from 'classnames'
@@ -17,44 +18,7 @@ import automatic_trading from "@/ui/icons/automatic_trading.svg";
 import copy_trading_auth from "@/ui/icons/copy_trading_auth.svg";
 import { UnderlineButton } from '@/components/underlineButton'
 import { TrendingUp } from "lucide-react"
-import { Pie, PieChart } from "recharts"
-
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/shadcn/ui/card"
-import {
-  ChartConfig,
-  ChartContainer,
-	ChartLegend,
-	ChartLegendContent,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/shadcn/ui/chart"
-
-
-const chartData = [
-  { browser: "static", visitors: 275, fill: "#00b2c8" },
-  { browser: "dinamic", visitors: 200, fill: "#b7f2f8" },
-]
-const chartConfig = {
-  visitors: {
-    label: "Visitors",
-  },
-  static: {
-    label: "Static",
-    color: "hsl(var(--chart-1))",
-  },
-  dinamic: {
-    label: "Dinamic",
-    color: "hsl(var(--chart-2))",
-  },
-}
-
+const Chart = dynamic(() => import('@/components/chart'));
 
 const tabs = [
 	{name: 'Automatic Trading'},
@@ -84,7 +48,7 @@ export default function Dashboard() {
 			<div className={styles.counters}>
 				<div className={styles.counter}>
 					<div className="flex  items-center   gap-[16px] px-[16px]">
-						<Image src={btc} width={50} height={50} alt='icon'></Image>
+						<div className={styles.icon}><Image src={btc} width={50} height={50} alt='icon'></Image></div>
 						<div className="flex flex-col justify-center gap-[8px]">
 							<p className="text-[14px] font-[400]">Bitcoin </p>
 							<p className='text-[16px]'>
@@ -93,18 +57,18 @@ export default function Dashboard() {
 						</div>
 					</div>
 					<div className="flex flex-col h-full">
-						<div className="border-l-[1px] border-b-[1px] border-solid border-[#d9d9d9] h-[50%] aspect-[1/1] flex items-center justify-center cursor-pointer">
-							<p className="text-[20px]">+</p>
+						<div className="border-l-[1px] border-b-[1px] border-solid border-[#d9d9d9] h-[50%] aspect-[1/1] flex items-center justify-center cursor-pointer ">
+							<p className="text-[20px] transition">+</p>
 						</div>
 						<div className="border-l-[1px] border-solid border-[#d9d9d9] h-[50%] aspect-[1/1] flex items-center justify-center cursor-pointer">
-							<p className="text-[20px]">-</p>
+							<p className="text-[20px] transition">-</p>
 						</div>
 					</div>
 				</div>
 	
 				<div className={styles.counter}>
 					<div className="flex  items-center   gap-[16px] px-[16px]">
-						<Image src={usdt} width={50} height={50} alt='icon'></Image>
+						<div className={styles.icon}><Image src={usdt} width={50} height={50} alt='icon'></Image></div>
 						<div className="flex flex-col justify-center gap-[8px]">
 							<p className="text-[14px] font-[400]">Tether TRC20 </p>
 							<p className='text-[16px]'>
@@ -113,17 +77,17 @@ export default function Dashboard() {
 						</div>
 					</div>
 					<div className="flex flex-col h-full">
-						<div className="border-l-[1px] border-b-[1px] border-solid border-[#d9d9d9] h-[50%] aspect-[1/1] flex items-center justify-center cursor-pointer">
-							<p className="text-[20px]">+</p>
+						<div className="border-l-[1px] border-b-[1px] border-solid border-[#d9d9d9] h-[50%] aspect-[1/1] flex items-center justify-center cursor-pointer ">
+							<p className="text-[20px] transition">+</p>
 						</div>
 						<div className="border-l-[1px] border-solid border-[#d9d9d9] h-[50%] aspect-[1/1] flex items-center justify-center cursor-pointer">
-							<p className="text-[20px]">-</p>
+							<p className="text-[20px] transition">-</p>
 						</div>
 					</div>
 				</div>
 	
 				<div className={styles.add}>
-					<Image src={eth} width={50} height={50} alt='icon'></Image>
+					<div><Image src={eth} width={50} height={50} alt='icon'></Image></div>
 				</div>
 			</div>
 
@@ -135,18 +99,18 @@ export default function Dashboard() {
 
 
 
-				<p className="flex-grow-0 flex-shrink-0 text-[14px] font-medium  uppercase text-[#828282]"> Investment Activation </p>
+				<p className=" flex-shrink-0 text-[14px] font-medium  uppercase text-[#828282]"> Investment Activation </p>
 
 
 
 
 				<div className="flex justify-between flex-wrap gap-[24px]">
-  <div className="flex  items-center    gap-[24px] flex-grow-0 flex-shrink-0 p-[22px] rounded-[6px] bg-white border border-solid border-[#e6e6e6]">
-    <div className="flex flex-col justify-center    gap-[20px]">
+  <div className={styles.trading}>
+    <div className="flex flex-col justify-center    gap-[20px] flex-1">
       <p className="  text-[20px]  ">
         Automatic Trading
       </p>
-      <p className="   w-[265px] text-[16px]  ">
+      <p className="   max-w-[265px] text-[16px]  ">
         Short term strategies with fixed or flexible returns
       </p>
       <div className='text-[16px]'>
@@ -155,12 +119,12 @@ export default function Dashboard() {
 				></UnderlineButton>
       </div>
     </div>
-    <Image src={automatic_trading} width={83} height={78} alt='icon'></Image>
+    <div><Image src={automatic_trading} width={83} height={78} alt='icon'></Image></div>
   </div>
-  <div className="flex  items-center    gap-[24px] flex-grow-0 flex-shrink-0 p-[22px] rounded-[6px] bg-white border border-solid border-[#e6e6e6]">
-    <div className="flex flex-col justify-center    gap-[20px]">
+  <div className={styles.trading}>
+    <div className="flex flex-col justify-center    gap-[20px] flex-1">
       <p className="  text-[20px]  ">Copy Trading</p>
-      <p className="   w-[265px] text-[16px]  ">
+      <p className="   max-w-[265px] text-[16px]  ">
         Long-term strategies with flexible and highest returns
       </p>
       <div className="  w-[156px] h-[27px] ">
@@ -171,16 +135,16 @@ export default function Dashboard() {
       </div>
       </div>
     </div>
-    <Image src={copy_trading_auth} width={83} height={78} alt='icon'></Image>
+    <div><Image src={copy_trading_auth} width={83} height={78} alt='icon'></Image></div>
   </div>
 </div>
 
 
 
-			<div className="flex flex-col overflow-hidden px-[24px] gap-[24px] py-[40px] rounded-[6px] border-solid bg-white border border-[#e6e6e6]">
+			<div className={styles.statistics}>
 
 				<div className={styles.buttons}>
-				<div className="flex items-center justify-center flex-grow-0 flex-shrink-0 relative gap-[16px]">
+				<div className="flex items-center justify-center  flex-shrink-0 relative gap-[16px]">
 						{tabs.map((item, index) => (
 							<p onClick={() => setTab(item)} key={index} className={cn(styles.tab, { [styles.active]: item.name === tab.name })}>
 								{item.name}
@@ -191,82 +155,51 @@ export default function Dashboard() {
 
 
 				<div className={styles.card}>
-					<div className="flex flex-col justify-between items-center flex-grow-0 flex-shrink-0 w-[188px] relative gap-[24px]">
-						<p className="flex-grow-0 flex-shrink-0 text-[14px]   ">
+					<div className="flex flex-col justify-between items-center  flex-shrink-0 w-[188px] relative gap-[24px]">
+						<p className=" flex-shrink-0 text-[14px]   ">
 							Assets Allocation
 						</p>
-						<Card className="w-full">
-      <CardContent className={styles.chart}>
-        <ChartContainer
-          config={chartConfig}
-          className="mx-[-50%] my-[-12%] aspect-square max-h-[100%]"
-        >
-          <PieChart>
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent hideLabel />}
-            />
-            <Pie
-              data={chartData}
-              dataKey="visitors"
-              nameKey="browser"
-              innerRadius={65}
-            />
-						{/* <ChartLegend
-              content={<ChartLegendContent nameKey="browser" />}
-              className="-translate-y-2 flex-wrap gap-2 [&>*]:basis-1/4 [&>*]:justify-center"
-            /> */}
-          </PieChart>
-        </ChartContainer>
-      </CardContent>
-    </Card>
-						<div className="flex flex-col justify-center items-center self-stretch flex-grow-0 flex-shrink-0">
-							<div className="flex  items-center flex-grow-0 flex-shrink-0 relative gap-[24px]">
-								<div className="flex-grow-0 flex-shrink-0 w-[20px] h-[8px] bg-[#00b2c8]" />
-								<p className="flex-grow-0 flex-shrink-0 text-[12px]   text-black">
+						<Chart></Chart>
+
+						<div className="flex flex-col justify-center items-center self-stretch  flex-shrink-0">
+							<div className="flex  items-center  flex-shrink-0 relative gap-[24px]">
+								<div className=" flex-shrink-0 w-[20px] h-[8px] bg-[#00b2c8]" />
+								<p className=" flex-shrink-0 text-[12px]   text-black">
 									Static strategy
 								</p>
 							</div>
-							<div className="flex  items-center flex-grow-0 flex-shrink-0 relative gap-[24px]">
-								<div className="flex-grow-0 flex-shrink-0 w-[20px] h-[8px] bg-[#b7f2f8]" />
-								<p className="flex-grow-0 flex-shrink-0 text-[12px]   text-black">
+							<div className="flex  items-center  flex-shrink-0 relative gap-[24px]">
+								<div className=" flex-shrink-0 w-[20px] h-[8px] bg-[#b7f2f8]" />
+								<p className=" flex-shrink-0 text-[12px]   text-black">
 									Dynamic strategy
 								</p>
 							</div>
 						</div>
 					</div>
-					<div className="flex flex-col justify-between items-center self-stretch">
-						<div className="flex flex-col justify-center relative gap-[8px] px-[24px] pb-[16px] rounded-[6px]">
+					<div className="flex flex-col justify-between self-stretch gap-[40px]">
+						<div className="flex flex-col px-[24px] relative gap-[8px] rounded-[6px]">
 							<p className="text-[14px]   ">
 								Invested
 							</p>
-							<div className="flex w-[132px] h-[24px] relative">
-								<p className="absolute left-0 top-0 text-[16px]  ">$345 942</p>
-							</div>
+							<p className="text-[16px]">$345 942</p>
 						</div>
-						<div className="flex flex-col justify-center items-center h-[88px] gap-[8px] px-[24px] [16px] rounded-[6px]">
-							<div className="flex flex-col justify-center relative gap-[8px]">
+							<div className="flex flex-col px-[24px] relative gap-[8px]">
 								<p className="text-[14px]   ">
-									Pool Load{" "}
+									Pool Load
 								</p>
-								<div className="flex w-[132px] h-[24px] relative">
-									<p className="absolute left-0 top-0 text-[16px]  ">35%</p>
-								</div>
+									<p className="text-[16px]  ">35%</p>
 								<div className={cn(styles.progress, 'max-w-[100%] w-full')}><Progress value={35}></Progress></div>
 							</div>
-						</div>
-						<div className="flex flex-col justify-centeк relative gap-[8px] px-[24px] pt-[16px] rounded-[6px]">
-							<p className="text-[14px]   ">
+						<div className="flex flex-col px-[24px] relative gap-[8px] rounded-[6px]">
+							<p className="text-[14px] ">
 								Total Profit
 							</p>
-							<div className="flex w-[132px] h-[24px] relative">
-								<p className="absolute left-0 top-0 text-[16px]  ">456% / 100 000</p>
+								<p className="text-[16px]  ">456% / 100 000</p>
 							</div>
-						</div>
 					</div>
-					<div className="flex flex-col justify-between  self-stretch flex-grow gap-[24px]">
+					<div className="flex flex-col justify-between  self-stretch  gap-[24px]">
 						<div className={styles.buttons_list}>
-							<div className="flex items-center flex-grow-0 flex-shrink-0 relative gap-[16px]">
+							<div className="flex items-center  flex-shrink-0 relative gap-[16px]">
 								{tabs.map((item, index) => (
 									<p onClick={() => setTab(item)} key={index} className={cn(styles.tab, {[styles.active]: item.name === tab.name})}>
 										{item.name}
@@ -280,81 +213,132 @@ export default function Dashboard() {
 
 						<div className={styles.list}>
 							<div className="flex flex-col">
-								<div className="flex flex-col justify-center gap-[8px] px-[22px] py-[16px] rounded-[6px] ">
+								<div className="flex flex-col justify-center gap-[8px] px-[22px] py-[16px] ">
 									<p className="  text-[14px] text-nowrap ">
 										Strategies
 									</p>
-									<p className="  text-[16px] ">6</p>
+									<p className="font-[500] text-[16px] ">6</p>
 								</div>
-								<div className="flex flex-col justify-center gap-[8px] px-[22px] py-[16px] rounded-[6px]">
+								<div className="flex flex-col justify-center gap-[8px] px-[22px] py-[16px]">
 									<p className="  text-[14px] text-nowrap ">
 										Runtime
 									</p>
-									<p className=" text-[16px] ">132 Days</p>
+									<p className="font-[500] text-[16px] ">132 Days</p>
 								</div>
 							</div>
 
 
 							<div className="flex flex-col">
-								<div className="flex flex-col justify-center gap-[8px] px-[22px] py-[16px] rounded-[6px] ">
+								<div className="flex flex-col justify-center gap-[8px] px-[22px] py-[16px] ">
 									<p className="  text-[14px] text-nowrap ">
 									Last day Profit
 									</p>
-									<p className="  text-[16px] ">2.3%</p>
+									<p className="font-[500] text-[16px] ">2.3%</p>
 								</div>
-								<div className="flex flex-col justify-center gap-[8px] px-[22px] py-[16px] rounded-[6px]">
+								<div className="flex flex-col justify-center gap-[8px] px-[22px] py-[16px]">
 									<p className="  text-[14px] text-nowrap ">
 									W/L Ratio
 									</p>
-									<p className=" text-[16px] ">19423 / 241</p>
+									<p className="font-[500] text-[16px] ">19423 / 241</p>
 								</div>
 							</div>
 
 
 							<div className="flex flex-col">
-								<div className="flex flex-col justify-center gap-[8px] px-[22px] py-[16px] rounded-[6px] ">
+								<div className="flex flex-col justify-center gap-[8px] px-[22px] py-[16px] ">
 									<p className="  text-[14px] text-nowrap ">
 									Total Trades
 									</p>
-									<p className="  text-[16px] ">19664</p>
+									<p className="font-[500] text-[16px] ">19664</p>
 								</div>
-								<div className="flex flex-col justify-center gap-[8px] px-[22px] py-[16px] rounded-[6px]">
+								<div className="flex flex-col justify-center gap-[8px] px-[22px] py-[16px]">
 									<p className="  text-[14px] text-nowrap ">
 									Total Users
 									</p>
-									<p className=" text-[16px] ">2162</p>
+									<p className="font-[500] text-[16px] ">2162</p>
 								</div>
 							</div>
 						</div>
-
-
-
-
 					</div>
 				</div>
 			</div>
+
+
+
+
+			<p className="  font-medium text-[14px]  uppercase text-[#828282]">
+					Last Activities
+				</p>
+
+
+
+				<div className="flex flex-col w-full rounded-[6px] border border-solid border-[#e6e6e6]">
+					<div className="flex gap-[16px] items-center justify-between flex-wrap w-full rounded-[6px] bg-[#f3fbfc] px-[32px] py-[24px] border-solid border-b border-[#e6e6e6] text-[12px]">
+
+						<p>Date</p>
+						<p>Type</p>
+						<p>Currency</p>
+						<p>$ Amount</p>
+						<p>TXid</p>
+						<p>Status</p>
+
+					</div>
+					<div className={styles.progress_activities}>
+					<Progress value={55}></Progress>
+					</div>
+					<p className={styles.available}>
+						No Available Data
+					</p>
+				</div>
+
+
+
+
+				<p className="  font-medium  text-[14px] uppercase text-[#828282]">
+					Active plans
+				</p>
+
+
+				<div className={styles.new_plan}>
+					<div className={styles.add}>
+						<Image src={eth} width={50} height={50} alt='icon'></Image>
+					</div>
+					<p className="text-[12px]">ACTIVATE NEW PLAN</p>
+				</div>
 		</div>
 
 
 
 
-		<div className="flex flex-col  items-start flex-grow-0 flex-shrink-0 w-[282px] gap-[24px]">
-			<div className="flex flex-col justify-between items-start self-stretch flex-grow-0 flex-shrink-0 h-[219px] relative overflow-hidden p-[24px] rounded-[6px] bg-white border-2 border-solid border-[#e4fafc] gap-[16px]">
-				<p className="flex-grow-0 flex-shrink-0 text-[14px] font-medium  uppercase text-[#828282]">
+		<div className="flex flex-col gap-[24px]">
+			<div className="flex flex-col relative overflow-hidden p-[24px] rounded-[6px] border-2 border-solid border-[#e4fafc] gap-[16px]">
+<div className='absolute top-0 right-0'>
+				<svg width="282" height="219" viewBox="0 0 282 219" fill="none" xmlns="http://www.w3.org/2000/svg">
+	  <path opacity="0.0788889" d="M764.287 102.236L504.237 -79.1842L464.441 182.709L-46.1854 -112.02" stroke="#00B2C8" />
+	  <path opacity="0.157778" d="M718.898 88.9758L487.881 -71.7701L452.368 160.507L-1.28403 -100.587" stroke="#00B2C8" />
+	  <path opacity="0.236667" d="M673.508 75.7159L471.525 -64.356L440.295 138.306L43.6175 -89.1529" stroke="#00B2C8" />
+	  <path opacity="0.315556" d="M628.115 62.4552L455.165 -56.9425L428.218 116.104L88.5151 -77.7198" stroke="#00B2C8" />
+	  <path opacity="0.394444" d="M582.728 49.1983L438.81 -49.5253L416.147 93.9055L133.418 -66.2831" stroke="#00B2C8" />
+	  <path opacity="0.473333" d="M537.335 35.9371L422.45 -42.1124L404.07 71.7029L178.316 -54.8507" stroke="#00B2C8" />
+	  <path opacity="0.552222" d="M491.944 22.6747L406.092 -34.7008L391.995 49.499L223.216 -43.4195" stroke="#00B2C8" />
+	  <path opacity="0.631111" d="M446.557 9.41626L389.738 -27.2851L379.924 27.2991L268.119 -31.9842" stroke="#00B2C8" />
+	</svg>
+</div>
+				<p className=" flex-shrink-0 text-[14px] font-medium  uppercase text-[#828282]">
 					Need help?
 				</p>
-				<p className="self-stretch flex-grow-0 flex-shrink-0 w-[234px] text-[12px]   ">
+				<p className=" text-[12px]   ">
 					Visit our Help Center or start our Site Guide to get started with Company.
 				</p>
-				<div className="flex  items-start flex-grow-0 flex-shrink-0 w-[234px]">
-					<div className="flex justify-center items-center flex-grow relative gap-[8px] px-2 py-1 rounded-tl rounded-bl bg-white border-t border-solid border-r-0 border-b border-l border-[#00b2c8]">
+				<div className="flex">
+					<div className={styles.help}>
 						<svg
 							width={18}
 							height={17}
 							viewBox="0 0 18 17"
 							fill="none"
 							xmlns="http://www.w3.org/2000/svg"
-							className="flex-grow-0 flex-shrink-0 w-4 h-4"
+							className=" flex-shrink-0 w-4 h-4"
 							preserveAspectRatio="xMidYMid meet"
 						>
 							<path
@@ -382,20 +366,20 @@ export default function Dashboard() {
 								stroke-miterlimit={10}
 							/>
 						</svg>
-						<div className="flex justify-center items-center flex-grow-0 flex-shrink-0 relative gap-1">
-							<p className="flex-grow-0 flex-shrink-0 text-[12px]  text-center ">
+						<div className="flex justify-center items-center  flex-shrink-0 relative gap-1">
+							<p className=" flex-shrink-0 text-[12px]  text-center ">
 								Helpdesk
 							</p>
 						</div>
 					</div>
-					<div className="flex justify-center items-center flex-grow relative gap-[8px] px-2 py-1 border-solid rounded-tr rounded-br bg-white border border-[#00b2c8]">
+					<div className={styles.start}>
 						<svg
 							width={21}
 							height={21}
 							viewBox="0 0 21 21"
 							fill="none"
 							xmlns="http://www.w3.org/2000/svg"
-							className="flex-grow-0 flex-shrink-0 w-[20px] h-5 relative"
+							className=" flex-shrink-0 w-[20px] h-5 relative"
 							preserveAspectRatio="xMidYMid meet"
 						>
 							<path
@@ -458,27 +442,27 @@ export default function Dashboard() {
 								stroke-miterlimit={10}
 							/>
 						</svg>
-						<p className="flex-grow-0 flex-shrink-0 text-[12px]  text-center ">
+						<p className=" flex-shrink-0 text-[12px]  text-center ">
 							Start Guide
 						</p>
 					</div>
 				</div>
 			</div>
-			<div className="flex flex-col  items-start self-stretch flex-grow-0 flex-shrink-0 overflow-hidden gap-[16px] p-[24px] rounded-[6px] bg-white border border-[#e6e6e6] border-solid">
-				<div className="flex  items-start self-stretch flex-grow-0 flex-shrink-0 relative gap-[16px]">
-					<p className="flex-grow-0 flex-shrink-0 text-[14px] font-medium  uppercase text-[#828282]">
+			<div className="flex flex-col gap-[16px] p-[24px] rounded-[6px] bg-white border border-[#e6e6e6] border-solid">
+				<div className="flex  gap-[16px]">
+					<p className="text-[14px] font-medium  uppercase text-[#828282]">
 						Getting started
 					</p>
 				</div>
 				<div className="flex flex-col justify-center relative gap-[8px]">
-					<div className="flex  items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-[8px] px-[16px] py-[8px] rounded-[6px]">
+					<div className="flex  items-center gap-[8px] px-[16px] py-[8px] rounded-[6px]">
 						<svg
 							width={32}
 							height={32}
 							viewBox="0 0 32 32"
 							fill="none"
 							xmlns="http://www.w3.org/2000/svg"
-							className="flex-grow-0 flex-shrink-0 w-[32px] h-[32px] relative"
+							className=" flex-shrink-0 w-[32px] h-[32px] relative"
 							preserveAspectRatio="none"
 						>
 							<g clip-path="url(#clip0_2183_2060)">
@@ -494,25 +478,25 @@ export default function Dashboard() {
 								</clippath>
 							</defs>
 						</svg>
-						<div className="flex flex-col justify-center items-start flex-grow relative">
-							<p className="flex-grow-0 flex-shrink-0 text-[14px] text-center  font-[400]">
+						<div className="flex flex-col justify-center relative">
+							<p className="text-[14px]  font-[400]">
 								Activate Account
 							</p>
-							<p className="self-stretch flex-grow-0 flex-shrink-0 w-[162px] text-[12px]   ">
+							<p className=" text-[12px]">
 								Follow the link sent to the email specified during registration to activate your
 								account.
 							</p>
 						</div>
 					</div>
-					<div className="flex-grow-0 flex-shrink-0 w-[2px] h-[63px] relative bg-[#00b2c8] left-[33px]"></div>
-					<div className="flex  items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-[8px] px-[16px] py-[8px] rounded-[6px]">
+					<div className=" flex-shrink-0 w-[2px] h-[63px] relative bg-[#00b2c8] left-[33px]"></div>
+					<div className="flex  items-center gap-[8px] px-[16px] py-[8px] rounded-[6px]">
 						<svg
 							width={32}
 							height={32}
 							viewBox="0 0 32 32"
 							fill="none"
 							xmlns="http://www.w3.org/2000/svg"
-							className="flex-grow-0 flex-shrink-0 w-[32px] h-[32px] relative"
+							className=" flex-shrink-0 w-[32px] h-[32px] relative"
 							preserveAspectRatio="none"
 						>
 							<g clip-path="url(#clip0_2183_2071)">
@@ -528,60 +512,60 @@ export default function Dashboard() {
 								</clippath>
 							</defs>
 						</svg>
-						<div className="flex flex-col justify-center items-start flex-grow relative">
-							<p className="flex-grow-0 flex-shrink-0 text-[14px] text-center  font-[400]">
+						<div className="flex flex-col justify-center relative">
+							<p className="text-[14px]  font-[400]">
 								Top up Your Balance
 							</p>
-							<p className="self-stretch flex-grow-0 flex-shrink-0 w-[162px] text-[12px]   ">
+							<p className=" text-[12px]">
 								Open the “Wallets” page and top up any available cryptocurrency.
 							</p>
 						</div>
 					</div>
-					<div className="flex-grow-0 flex-shrink-0 w-[2px] h-[63px] relative bg-[#00b2c8] left-[33px]"></div>
-					<div className="flex  items-center flex-grow-0 flex-shrink-0 w-[234px] relative gap-[8px] px-[16px] py-[8px] rounded-[6px]">
+					<div className=" flex-shrink-0 w-[2px] h-[63px] relative bg-[#00b2c8] left-[33px]"></div>
+					<div className="flex  items-center relative gap-[8px] px-[16px] py-[8px] rounded-[6px]">
 						<div className={styles.number}>
 							<p className="text-[14px] text-center text-[#242e39]">3</p>
 						</div>
-						<div className="flex flex-col justify-center items-start flex-grow relative">
-							<p className="flex-grow-0 flex-shrink-0 text-[14px] text-center  font-[400]">
+						<div className="flex flex-col justify-center relative">
+							<p className="text-[14px]  font-[400]">
 								Activate Investment
 							</p>
-							<p className="self-stretch flex-grow-0 flex-shrink-0 w-[162px] text-[12px]   ">
+							<p className=" text-[12px]">
 								Select a suitable investment offer and activate your investment
 							</p>
 						</div>
 					</div>
-					<div className="flex-grow-0 flex-shrink-0 w-[2px] h-[63px] relative bg-[#a1aebe] left-[33px]"></div>
-					<div className="flex  items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-[8px] px-[16px] py-[8px] rounded-[6px]">
+					<div className=" flex-shrink-0 w-[2px] h-[63px] relative bg-[#a1aebe] left-[33px]"></div>
+					<div className="flex  items-center gap-[8px] px-[16px] py-[8px] rounded-[6px]">
 						<div className={styles.number}>
 							<p className="text-[14px] text-center text-[#242e39]">4</p>
 						</div>
-						<div className="flex flex-col justify-center items-start flex-grow relative">
-							<p className="flex-grow-0 flex-shrink-0 text-[14px] text-center  font-[400]">
+						<div className="flex flex-col justify-center ">
+							<p className="text-[14px]  font-[400]">
 								Secure your Account
 							</p>
-							<p className="self-stretch flex-grow-0 flex-shrink-0 w-[162px] text-[12px]   ">
+							<p className=" text-[12px]">
 								Open your profile settings to set 2FA and PIN Code
 							</p>
 						</div>
 					</div>
-					<div className="flex-grow-0 flex-shrink-0 w-[2px] h-[63px] relative bg-[#a1aebe] left-[33px]"></div>
-					<div className="flex  items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-[8px] px-[16px] py-[8px] rounded-[6px]">
+					<div className=" flex-shrink-0 w-[2px] h-[63px] relative bg-[#a1aebe] left-[33px]"></div>
+					<div className="flex  items-center gap-[8px] px-[16px] py-[8px] rounded-[6px]">
 						<div className={styles.number}>
 							<p className="text-[14px] text-center text-[#242e39]">5</p>
 						</div>
-						<div className="flex flex-col justify-center items-start flex-grow relative">
-							<p className="flex-grow-0 flex-shrink-0 text-[14px] text-center  font-[400]">
+						<div className="flex flex-col justify-center items-start  relative">
+							<p className="text-[14px] font-[400]">
 								Withdraw Profit
 							</p>
-							<p className="self-stretch flex-grow-0 flex-shrink-0 w-[162px] text-[12px]   ">
+							<p className=" text-[12px]">
 								After accrual, go to “Wallets” to withdraw profit
 							</p>
 						</div>
 					</div>
 				</div>
-				<div className="flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 w-[234px] relative py-[8px]">
-					<p className="flex-grow-0 flex-shrink-0 text-[16px]   uppercase text-[#828282]">
+				<div className="flex flex-col justify-center items-center py-[8px]">
+					<p className="text-[16px]   uppercase text-[#828282]">
 						Collapse
 					</p>
 					<svg
@@ -590,7 +574,6 @@ export default function Dashboard() {
 						viewBox="0 0 18 15"
 						fill="none"
 						xmlns="http://www.w3.org/2000/svg"
-						className="flex-grow-0 flex-shrink-0"
 						preserveAspectRatio="xMidYMid meet"
 					>
 						<path d="M9 -1.74846e-06L17.6603 15L0.339748 15L9 -1.74846e-06Z" fill="#919191" />
@@ -598,26 +581,24 @@ export default function Dashboard() {
 				</div>
 			</div>
 			<div
-				className="flex flex-col  items-end self-stretch flex-grow-0 flex-shrink-0 relative overflow-hidden gap-[16px] p-[24px] rounded-[6px] border border-[#e6e6e6]"
+				className="flex flex-col relative gap-[16px] p-[24px] rounded-[6px] border border-[#e6e6e6]"
 				style={{ background: "linear-gradient(-48.33deg, #01b091 5.18%, #00b2c8 100%)" }}
 			>
-				<p className="self-stretch flex-grow-0 flex-shrink-0 w-[234px] text-[14px] font-medium  uppercase text-white">
+				<p className="text-[14px] font-medium  uppercase text-white">
 					Trustpilot Review
 				</p>
-				<div className="flex justify-center items-center self-stretch flex-grow-0 flex-shrink-0 gap-[16px]">
-					<div className="flex flex-col justify-between items-start self-stretch flex-grow relative">
-						<p className="self-stretch flex-grow-0 flex-shrink-0 w-[103px] text-[12px]   text-white">
-							Already using Company? Tell everyone about your experience and get 5 USDT to your wallet.
-						</p>
-					</div>
-					<div className="flex flex-col justify-between items-center self-stretch flex-grow-0 flex-shrink-0 w-[115px] relative">
+				<div className="flex justify-center items-center gap-[16px]">
+					<p className="text-[12px] text-white">
+						Already using Company? Tell everyone about your experience and get 5 USDT to your wallet.
+					</p>
+					<div className="flex flex-col justify-between items-center gap-[16px]">
 						<svg
 							width={81}
 							height={75}
 							viewBox="0 0 81 75"
 							fill="none"
 							xmlns="http://www.w3.org/2000/svg"
-							className="flex-grow-0 flex-shrink-0 w-[81px] h-[75px] relative"
+							className=" flex-shrink-0 w-[81px] h-[75px] relative"
 							preserveAspectRatio="xMidYMid meet"
 						>
 							<g clip-path="url(#clip0_241_2258)">
@@ -636,14 +617,14 @@ export default function Dashboard() {
 								</clippath>
 							</defs>
 						</svg>
-						<div className="flex justify-center items-center flex-grow-0 flex-shrink-0 px-2 py-1 rounded border-2 border-solid border-white">
-							<div className="flex justify-center items-center flex-grow-0 flex-shrink-0 relative gap-1">
-								<p className="flex-grow-0 flex-shrink-0 text-[14px] text-center text-white">Get Bonus</p>
+						<div className={styles.get_bonus}>
+							<div className="flex justify-center items-center  flex-shrink-0 relative gap-1">
+								<p className=" flex-shrink-0 text-[14px] text-center text-white">Get Bonus</p>
 							</div>
 						</div>
 					</div>
 				</div>
-				<svg className='flex-grow-0 flex-shrink-0 absolute bottom-0 right-0' width="265" height="232" viewBox="0 0 265 232" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<svg className='flex-shrink-0 absolute bottom-0 right-0 z-[-1]' width="265" height="232" viewBox="0 0 265 232" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path opacity="0.0788889" d="M538.894 -120.498L241.619 129.617L538.894 259.885L27.9531 770.537" stroke="#E4FAFC" />
 					<path opacity="0.157778" d="M508.788 -70.9961L245.199 151.328L508.788 267.122L55.7441 721.035" stroke="#E4FAFC" />
 					<path opacity="0.236667" d="M478.68 -21.4943L248.776 173.04L478.68 274.359L83.5332 671.533" stroke="#E4FAFC" />
@@ -654,19 +635,24 @@ export default function Dashboard() {
 					<path opacity="0.631111" d="M328.148 226.015L266.672 281.596L328.148 310.545L222.486 424.023" stroke="#E4FAFC" />
 				</svg>
 			</div>
-			<div className="flex flex-col border-solid justify-center items-start self-stretch flex-grow-0 flex-shrink-0 relative overflow-hidden gap-[24px] p-[24px] rounded-[6px] bg-white border border-[#e6e6e6]">
-				<p className="self-stretch flex-grow-0 flex-shrink-0 w-[234px] text-[14px] font-medium  uppercase text-[#828282]">
+			<div className="flex flex-col border-solid gap-[24px] p-[24px] rounded-[6px] border border-[#e6e6e6]">
+				<p className="text-[14px] font-medium  uppercase text-[#828282]">
 					Affiliate rewards
 				</p>
-				<div className="flex justify-center items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-[16px]">
-					<div className="flex flex-col  items-start flex-grow relative gap-[24px]">
-						<p className="self-stretch flex-grow-0 flex-shrink-0 w-[118px] text-[12px]   ">
+				<div className="flex justify-between items-center gap-[16px]">
+					<div className="flex flex-col gap-[24px]">
+						<p className="text-[12px]   ">
 							Earn up to $ 100 000 by inviting friends. achieve turnover and receive instant bonuses
 						</p>
 					</div>
-					<Image className="flex-grow-0 flex-shrink-0 w-[100px] h-[100px] object-cover" src={rocket} width={100} height={100} alt='icon'></Image>
+					<Image className=" flex-shrink-0 w-[100px] h-[100px] object-cover" src={rocket} width={100} height={100} alt='icon'></Image>
 				</div>
-				<div className="flex-grow-0 flex-shrink-0 w-[156px] h-[27px] relative">
+				<div className='text-[16px]'>
+					<UnderlineButton
+						text='Invite friends'
+					></UnderlineButton>
+				</div>
+				{/* <div className=" flex-shrink-0 w-[156px] h-[27px] relative">
 					<svg
 						width={27}
 						height={27}
@@ -709,14 +695,14 @@ export default function Dashboard() {
 							</lineargradient>
 						</defs>
 					</svg>
-				</div>
+				</div> */}
 			</div>
-			<div className="flex flex-col  items-start self-stretch flex-grow-0 flex-shrink-0 relative overflow-hidden gap-[16px] p-[24px] rounded-[6px] bg-white border border-solid border-[#e6e6e6]">
-				<div className="flex  items-center self-stretch flex-grow-0 flex-shrink-0 relative gap-[16px]">
-					<p className="flex-grow-0 flex-shrink-0 text-[14px] font-medium  uppercase text-[#828282]">
+			<div className="flex flex-col w-full overflow-hidden gap-[16px] p-[24px] rounded-[6px] bg-white border border-solid border-[#e6e6e6]">
+				<div className="flex  items-center gap-[16px]">
+					<p className="text-[14px] font-medium  uppercase text-[#828282]">
 						Featured news
 					</p>
-					<div className="flex  items-start flex-grow-0 flex-shrink-0 relative gap-[8px].5">
+					<div className="flex relative gap-[8px].5">
 						<div className="flex justify-center h-[10px] gap-[10px]">
 							{Array.from({ length: 5 }, (_, index) => (
 								<button
@@ -742,21 +728,19 @@ export default function Dashboard() {
 				>
 					<CarouselContent>
 						{media.map((item, index) => (
-							<CarouselItem key={index} className="">
+							<CarouselItem key={index}>
 								<Link href={`/blog/${encodeURIComponent(item.id)}`} className="flex flex-col gap-[16px] cursor-pointer">
 									<div className={styles.image} />
-									<div className="flex flex-col gap-[8px]">
-										<p className="text-[12px]">
-											<span>
-												Lorem ipsum dolor sit amet consectetur. Tempus nam convallis integer malesuada. Dis nec nunc
-												faucibus cras adipiscing nulla nisi sit sagittis. Nec montes odio ut et leo tempor
-												consectetur. Tellus faucibus iaculis...{" "}
-											</span>
-											<span className="text-[#00b2c8]">
-												Read more
-											</span>
-										</p>
-									</div>
+									<p className="text-[12px] text-wrap w-full">
+										<span>
+											Lorem ipsum dolor sit amet consectetur. Tempus nam convallis integer malesuada. Dis nec nunc
+											faucibus cras adipiscing nulla nisi sit sagittis. Nec montes odio ut et leo tempor
+											consectetur. Tellus faucibus iaculis...
+										</span>
+										<span className="text-[#00b2c8]">
+											Read more
+										</span>
+									</p>
 								</Link>
 							</CarouselItem>
 						))}

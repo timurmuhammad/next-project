@@ -113,7 +113,7 @@ export const DiagramAuth = () => {
 			<p className="   w-[181px] text-[14px] font-medium  uppercase text-[#828282]">
 				Statistics
 			</p>
-			<div className="flex flex-col justify-center     gap-[16px] px-[16px] py-[18px] rounded-[6px] bg-white border border-solid border-[#e6e6e6]">
+			<div className={styles.stats}>
 				<div className="flex  items-center     gap-[16px]">
 					<Image src={invested} width={24} height={24} alt="icon"></Image>
 					<p className="  text-[14px] font-medium  uppercase text-[#828282]">
@@ -122,7 +122,7 @@ export const DiagramAuth = () => {
 				</div>
 				<p className="   font-medium  ">$ 0.00</p>
 			</div>
-			<div className="flex flex-col justify-center     gap-[16px] px-[16px] py-[18px] rounded-[6px] bg-white border border-solid border-[#e6e6e6]">
+			<div className={styles.stats}>
 				<div className="flex  items-center     gap-[8px]">
 					<Image src={withdrawn} width={24} height={24} alt="icon"></Image>
 
@@ -132,7 +132,7 @@ export const DiagramAuth = () => {
 				</div>
 				<p className="   font-medium  ">$ 0.00</p>
 			</div>
-			<div className="flex flex-col justify-center     gap-[16px] px-[16px] py-[18px] rounded-[6px] bg-white border border-solid border-[#e6e6e6]">
+			<div className={styles.stats}>
 				<div className="flex  items-center     gap-[8px]">
 					<Image src={balance} width={24} height={24} alt="icon"></Image>
 
@@ -142,7 +142,7 @@ export const DiagramAuth = () => {
 				</div>
 				<p className="   font-medium  ">$ 0.00</p>
 			</div>
-			<div className="flex flex-col justify-center     gap-[16px] px-[16px] py-[18px] rounded-[6px] bg-white border border-solid border-[#e6e6e6]">
+			<div className={styles.stats}>
 				<div className="flex  items-center     gap-[8px]">
 					<Image src={earned} width={24} height={24} alt="icon"></Image>
 

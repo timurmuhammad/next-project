@@ -420,7 +420,14 @@
 
 
 .nav_icons{
-	opacity: 0.6;
+	a{
+		opacity: 0.6;
+		&:hover{
+			opacity: 1;
+		}
+		transition: 0.2s;
+	}
+
 	> div{
 		gap: 16px;
 		img{
@@ -435,6 +442,7 @@
 	@media (max-width: $media_tablet) {
 		display: none;
 	}
+
 }
 
 .auth{

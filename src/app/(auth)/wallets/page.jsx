@@ -6,5 +6,8 @@ import cn from 'classnames'
 
 export default function Wallets() {
 	return <div>
+
+
+
 	</div>
 }

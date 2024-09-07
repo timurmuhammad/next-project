@@ -139,6 +139,9 @@ body{
 
 .inner_auth{
   display: flex;
+  @media(max-width:$media_tablet) {
+		display: block;
+	}
 }
 
 ._container {
