@@ -26,9 +26,10 @@ export const HeaderAuth = () => {
 	const [ value, setValue ] = useState('')
 	const [ burgerActive, setBurgerActive ] = useState(false)
 	const pathname = usePathname()
-  const params = pathname.split('/').pop();
-  const activeTab = tabs.find((item) => item.link === params);
-	const [ current, setCurrent ] = useState(activeTab)
+  const params = pathname.split('/')
+  const activeLinks = params.filter((item, index) => index !== 0);
+	const [ current, setCurrent ] = useState(activeLinks)
+	
 
 	function handleClick(item) {
 		setCurrent(item)
@@ -89,13 +90,27 @@ export const HeaderAuth = () => {
 					<BreadcrumbList>
 						<BreadcrumbItem>
 							<BreadcrumbLink>
-								<Link href="/">Personal account</Link>
+								<Link href="">Personal account</Link>
 							</BreadcrumbLink>
 						</BreadcrumbItem>
-						<BreadcrumbSeparator />
-						<BreadcrumbItem>
-							<div className='font-[400] text-[#000]'><BreadcrumbPage className='flex gap-[4px] items-center'>{activeTab.text}</BreadcrumbPage></div>
-						</BreadcrumbItem>
+						{activeLinks.map((item, index) => {
+							const currentItem = tabs.find((el) => pathname.includes(el.path) && el.path === item);
+							console.log(currentItem)
+						return <span className='flex gap-1.5 items-center'>
+							<BreadcrumbSeparator />
+							{
+								activeLinks.length - 1 === index 
+								? <BreadcrumbItem>
+									<div className='font-[400] text-[#000]'><BreadcrumbPage className='flex gap-[4px] items-center capitalize'>{currentItem ? currentItem.text : item}</BreadcrumbPage></div>
+								</BreadcrumbItem>
+								: <BreadcrumbItem>
+									<BreadcrumbLink>
+										<Link className='capitalize' href={currentItem ? `/${currentItem.path}` : `/${item}`}>{currentItem ? currentItem.text : item}</Link>
+									</BreadcrumbLink>
+								</BreadcrumbItem>
+							}
+						</span>
+						})}
 					</BreadcrumbList>
 				</Breadcrumb>
 			</div>

@@ -13,18 +13,18 @@ import cross_chain from "@/ui/icons/cross_chain.png";
 
 
 export const tabs = [
-	{key: 'item-0', link: 'dashboard', icon: dashboard.src, text: 'Dashboard'},
-	{key: 'item-1', link: 'wallets', icon: wallets.src, text: 'Wallets', childs: [
-		{key: 'item-10', link: '', icon: replenishment.src, text:  'Replenishment'},
-		{key: 'item-9', link: '', icon: withdrawal.src, text:  'Withdrawal'},
-		{key: 'item-8', link: '', icon: arbitrage.src, text:  'Exchange'},
+	{key: 'item-0', path: 'dashboard', icon: dashboard.src, text: 'Dashboard'},
+	{key: 'item-1', path: 'wallets', icon: wallets.src, text: 'Wallets', childs: [
+		{key: 'item-10', path: '', icon: replenishment.src, text:  'Replenishment'},
+		{key: 'item-9', path: '', icon: withdrawal.src, text:  'Withdrawal'},
+		{key: 'item-8', path: '', icon: arbitrage.src, text:  'Exchange'},
 	]},
-	{key: 'item-2', link: 'investments', icon: investments.src, text:  'Investments', childs: [
-		{key: 'item-11', link: '', icon: trading.src, text:  'Automatic Trading'},
-		{key: 'item-12', link: '', icon: copy_trading.src, text:  'Copy Trading'},
-		{key: 'item-13', link: '', icon: cross_chain.src, text:  'Cross-chain DEX Trading'},
+	{key: 'item-2', path: 'investments', icon: investments.src, text:  'Investments', childs: [
+		{key: 'item-11', path: '', icon: trading.src, text:  'Automatic Trading'},
+		{key: 'item-12', path: '', icon: copy_trading.src, text:  'Copy Trading'},
+		{key: 'item-13', path: '', icon: cross_chain.src, text:  'Cross-chain DEX Trading'},
 	]},
-	{key: 'item-3', link: 'statistics_aush', icon: statistics_aush.src, text:  'Statistics'},
-	{key: 'item-4', link: 'affiliate', icon: affiliate.src, text:  'Affiliate Program'},
-	{key: 'item-5', link: 'help', icon: help_center.src, text:  'Help Center'},
+	{key: 'item-3', path: 'statistics_aush', icon: statistics_aush.src, text:  'Statistics'},
+	{key: 'item-4', path: 'affiliate', icon: affiliate.src, text:  'Affiliate Program'},
+	{key: 'item-5', path: 'help', icon: help_center.src, text:  'Help Center'},
 ]

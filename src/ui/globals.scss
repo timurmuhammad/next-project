@@ -162,3 +162,13 @@ main{
   padding-top: adaptive($width_container, 70, 32);
   padding-bottom: 96px;
 }
+
+.main_auth{
+  flex: 1 1 auto;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: adaptive($width_container, 40, 24);
+  padding-top: 47px;
+	padding-bottom: adaptive($width_container, 128, 96);
+}
