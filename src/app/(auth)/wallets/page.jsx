@@ -1,13 +1,10 @@
 
-"use client"
+'use client'
 
-import styles from './wallets.module.scss'
-import cn from 'classnames'
+import { permanentRedirect } from 'next/navigation'
 
 export default function Wallets() {
-	return <div>
+	permanentRedirect('/wallets/replenishment')
 
-
-
-	</div>
+	return <div className=""></div>
 }

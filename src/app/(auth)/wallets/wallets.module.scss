@@ -1,0 +1,144 @@
+@import '@/ui/vars-and-utils.scss';
+
+.breadcrumb{
+	display: none;
+	@media (max-width:$media_laptop) {
+		display: block;
+	}
+	ol{
+		justify-content: start;
+	}
+	li{
+		font-size: 12px;
+	}
+}
+
+
+@import '@/ui/vars-and-utils.scss';
+
+.body{
+	@apply flex self-stretch gap-[24px];
+
+	@media(max-width:$media_laptop) {
+		flex-direction: column;
+
+		>div:first-child{
+			max-width: 100%
+		}
+	}
+
+}
+
+
+.counter{
+	@apply flex p-[16px] items-center justify-between w-full border-solid h-[88px] overflow-hidden rounded-[6px] border-[#d9d9d9] border-[1px];
+	position: relative;
+	cursor: pointer;
+
+	&:before{
+		content: '';
+		background-color: #fff;
+		border-radius: 4px;
+		z-index: -1;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin-left: 5px;
+	}
+
+	&:after{
+		content: '';
+		border-radius: 4px;
+		background-color: #00B2C8;
+		z-index: -2;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		opacity: 0;
+		transition: all 0.2s;
+	}
+
+	&:hover{
+		&:after{
+			opacity: 1;
+		}
+	}
+
+
+
+	.icon{
+		filter: brightness(0);
+		opacity: 0.3;
+	}
+	>div:last-child{
+		>div{
+			p{
+				line-height: 200%;
+			}
+			&:hover{
+				background-color: #e4fafc;
+				font-weight: 500;
+			}
+		}
+	}
+	&:hover{
+		border-color: #00b2c8;
+		div{
+			border-color: #00b2c8;
+		}
+		.icon{
+			filter: brightness(1);
+			opacity: 1;
+		}
+	}
+}
+
+
+.new_plan{
+	@apply flex flex-col justify-center items-center w-full gap-[16px] p-[16px] rounded-[6px]  border border-[#cecece] border-dashed;
+	cursor: pointer;
+		>div{
+			filter: brightness(0);
+			opacity: 0.4;
+		}
+		p{
+			color: #cecece;
+			transition: 0.2s;
+		}
+
+		&:hover{
+			border-color: #00b2c8;
+			p{
+				color: #00b2c8;
+			}
+			>div{
+				filter: brightness(1);
+				opacity: 1;
+			}
+		}
+}
+
+
+
+
+
+
+.wallet{
+	@apply flex justify-center items-center text-[14px] font-medium  uppercase text-[#828282] px-[16px] cursor-pointer;
+	user-select: none;
+	flex: 0 0 50%;
+
+	&.active{
+		@apply text-[16px] font-bold text-white flex bg-[#00b2c8];
+	}
+}
+
+.wallet:first-child{
+	border-right: 1px solid #e6e6e6;
+}
+
+

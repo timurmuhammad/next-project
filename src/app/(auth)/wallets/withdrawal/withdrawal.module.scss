@@ -1,0 +1,89 @@
+@import '@/ui/vars-and-utils.scss';
+
+.body{
+	@apply flex flex-col flex-shrink justify-between items-center self-stretch flex-grow rounded-[6px] gap-[24px] border border-solid border-[#e6e6e6]  h-full;
+	padding: adaptive($width_container, 32, 16);
+}
+
+.list{
+	@apply flex justify-between items-center gap-[8px];
+
+	flex: 1 1 0%;
+
+	@media (max-width:$media_tablet) {
+		flex-direction: column;
+	}
+}
+
+
+.title{
+	@apply text-[14px] font-medium text-center uppercase;
+}
+
+
+.circle{
+	@apply w-[32px] h-[32px] text-[13px] font-medium text-center flex items-center justify-center relative rounded-full;
+
+	flex: 0 0 32px;
+
+	&:after{
+		content: '';
+		position: absolute;
+		top: 2px;
+		bottom: 2px;
+		left: 2px;
+		right: 2px;
+		background-color: white;
+		border-radius: 50%;
+		z-index: -1;
+	}
+
+	&:before{
+		content: '';
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		bottom: 0px;
+		right: 0px;
+		background-color: #a1aebe;
+		z-index: -2;
+		border-radius: 50%;
+	}
+
+	&.blue{
+		&:before{
+			background-color: #00b2c8;
+		}
+	}
+}
+
+
+.line{
+	@apply w-[100%] min-w-[25px] h-[2px];
+
+	@media (max-width:$media_tablet) {
+		min-width: 2px;
+		width:2px;
+		height: 30px;
+	}
+}
+
+.buttons{
+	>button{
+		height: 36px !important;
+		font-size: 16px;
+	}
+}
+
+
+.ammount{
+	@apply flex justify-between  gap-[22px];
+
+	@media (max-width:$media_screen) {
+		flex-direction: column;
+
+		>div{
+			max-width: 100%;
+		}
+	}
+}
