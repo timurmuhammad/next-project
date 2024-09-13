@@ -172,3 +172,10 @@ main{
   padding-top: 47px;
 	padding-bottom: adaptive($width_container, 128, 96);
 }
+
+
+[data-radix-popper-content-wrapper] {
+  transition: all 0s !important;
+}
+
+

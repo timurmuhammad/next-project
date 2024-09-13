@@ -17,8 +17,9 @@ export default function WalletsLayout({ children }) {
 	const pathname = usePathname()
 	const params = pathname.split('/')
 	const activeLinks = params.filter((item, index) => index !== 0);
-	const [ current, setCurrent ] = useState(activeLinks)
 	const [ wallet, setWallet ] = useState('replenishment')
+
+	console.log(pathname)
 
 	return <div className={cn('_container', 'main_auth')}>
 		<div className={styles.breadcrumb}>
@@ -51,83 +52,83 @@ export default function WalletsLayout({ children }) {
 				</Breadcrumb>
 			</div>
 
-			<div className={styles.body}>
-		<div className="flex flex-col gap-[16px] w-full min-w-[300px] max-w-[384px]">
-			<div className="flex overflow-hidden border border-solid rounded-[6px] border-[#e6e6e6]  h-[56px]">
-				<Link href='/wallets/replenishment' onClick={() =>setWallet('replenishment')} className={cn(styles.wallet, {[styles.active]: wallet === 'replenishment'})}>
-					Replenishment
-				</Link>
-				<Link href='/wallets/withdrawal' onClick={() =>setWallet('withdrawal')} className={cn(styles.wallet, {[styles.active]: wallet === 'withdrawal'})}>
-					withdrawal
-				</Link>
-			</div>
+			{pathname === '/wallets/exchange' ? children : <div className={styles.body}>
+			<div className="flex flex-col gap-[16px] w-full min-w-[300px] max-w-[384px]">
+				<div className="flex overflow-hidden border border-solid rounded-[6px] border-[#e6e6e6]  h-[56px]">
+					<Link href='/wallets/replenishment' onClick={() => setWallet('replenishment')} className={cn(styles.wallet, { [styles.active]: wallet === 'replenishment' })}>
+						Replenishment
+					</Link>
+					<Link href='/wallets/withdrawal' onClick={() => setWallet('withdrawal')} className={cn(styles.wallet, { [styles.active]: wallet === 'withdrawal' })}>
+						withdrawal
+					</Link>
+				</div>
 
-			<div className={styles.counter}>
-				<div className="flex  items-center gap-[16px]">
-					<div className={styles.icon}><Image src={btc} width={50} height={50} alt='icon'></Image></div>
-					<div className="flex flex-col justify-center">
-						<p className="text-[18px] font-[400]">Bitcoin </p>
-						<p className='text-[16px]'>
-							BTC
+				<div className={styles.counter}>
+					<div className="flex  items-center gap-[16px]">
+						<div className={styles.icon}><Image src={btc} width={50} height={50} alt='icon'></Image></div>
+						<div className="flex flex-col justify-center">
+							<p className="text-[18px] font-[400]">Bitcoin </p>
+							<p className='text-[16px]'>
+								BTC
+							</p>
+						</div>
+					</div>
+
+					<div className="flex flex-col justify-center items-end   ">
+						<p className="  text-[20px]  ">$ 0.00</p>
+						<p className="  text-[14px]   ">
+							BTC 0.000000
 						</p>
 					</div>
 				</div>
 
-				<div className="flex flex-col justify-center items-end   ">
-					<p className="  text-[20px]  ">$ 0.00</p>
-					<p className="  text-[14px]   ">
-						BTC 0.000000
-					</p>
-				</div>
-			</div>
+				<div className={styles.counter}>
+					<div className="flex  items-center gap-[16px]">
+						<div className={styles.icon}><Image src={usdt} width={50} height={50} alt='icon'></Image></div>
+						<div className="flex flex-col justify-center">
+							<p className="text-[18px] font-[400]">Bitcoin </p>
+							<p className='text-[16px]'>
+								BTC
+							</p>
+						</div>
+					</div>
 
-			<div className={styles.counter}>
-				<div className="flex  items-center gap-[16px]">
-					<div className={styles.icon}><Image src={usdt} width={50} height={50} alt='icon'></Image></div>
-					<div className="flex flex-col justify-center">
-						<p className="text-[18px] font-[400]">Bitcoin </p>
-						<p className='text-[16px]'>
-							BTC
+					<div className="flex flex-col justify-center items-end   ">
+						<p className="  text-[20px]  ">$ 0.00</p>
+						<p className="  text-[14px]   ">
+							BTC 0.000000
 						</p>
 					</div>
 				</div>
 
-				<div className="flex flex-col justify-center items-end   ">
-					<p className="  text-[20px]  ">$ 0.00</p>
-					<p className="  text-[14px]   ">
-						BTC 0.000000
-					</p>
-				</div>
-			</div>
+				<div className={styles.counter}>
+					<div className="flex  items-center gap-[16px]">
+						<div className={styles.icon}><Image src={ethereum_auth} width={50} height={50} alt='icon'></Image></div>
+						<div className="flex flex-col justify-center">
+							<p className="text-[18px] font-[400]">Bitcoin </p>
+							<p className='text-[16px]'>
+								BTC
+							</p>
+						</div>
+					</div>
 
-			<div className={styles.counter}>
-				<div className="flex  items-center gap-[16px]">
-					<div className={styles.icon}><Image src={ethereum_auth} width={50} height={50} alt='icon'></Image></div>
-					<div className="flex flex-col justify-center">
-						<p className="text-[18px] font-[400]">Bitcoin </p>
-						<p className='text-[16px]'>
-							BTC
+					<div className="flex flex-col justify-center items-end   ">
+						<p className="  text-[20px]  ">$ 0.00</p>
+						<p className="  text-[14px]   ">
+							BTC 0.000000
 						</p>
 					</div>
 				</div>
 
-				<div className="flex flex-col justify-center items-end   ">
-					<p className="  text-[20px]  ">$ 0.00</p>
-					<p className="  text-[14px]   ">
-						BTC 0.000000
-					</p>
-				</div>
-			</div>
-
-			<div className={styles.new_plan}>
+				<div className={styles.new_plan}>
 					<div className={styles.add}>
 						<Image src={eth} width={50} height={50} alt='icon'></Image>
 					</div>
 					<p className="text-[12px]">ADD WALLET</p>
 				</div>
-		</div>
-		<div className='flex-grow self-stretch'>{ children }</div>
+			</div>
+			<div className='flex-grow self-stretch'>{children}</div>
 
-</div>
+		</div>}
 	</div>
 }

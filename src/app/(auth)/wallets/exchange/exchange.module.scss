@@ -1,0 +1,150 @@
+@import '@/ui/vars-and-utils.scss';
+
+
+.wrapper{
+	@apply flex flex-col items-center gap-[24px] rounded-[6px] border border-solid border-[#e6e6e6];
+	padding: adaptive($width_container, 32, 16);
+	@media (max-width:1325px) {
+		border: none;
+		padding: 0;
+	}
+}
+
+
+.body{
+	@apply flex self-stretch;
+	gap: adaptive($width_container, 48, 24);
+
+	@media (max-width:$media_screen) {
+		flex-direction: column;
+
+		>div:last-child{
+			max-width: 100%;
+		}
+	}
+}
+
+
+.ul{
+	@apply text-[12px] pl-[16px];
+
+	list-style-type: disc !important;
+
+	li{
+		list-style: disc;
+	}
+}
+
+.exchange{
+	@apply flex justify-between items-center self-stretch flex-wrap gap-[16px];
+
+	.swap{
+		@apply flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 gap-[10px];
+	}
+	
+	@media (max-width:1325px) {
+		flex-direction: column;
+		.swap{
+			svg{
+			transform: rotate(90deg)
+			}
+		}
+	}
+}
+
+
+.ammount{
+	@apply flex justify-between gap-[22px];
+	flex-wrap: wrap;
+	>div{
+		min-width: 250px;
+	}
+
+	@media (max-width:1007px) {
+		flex-direction: column;
+
+		>div{
+			max-width: 100%;
+		}
+	}
+}
+
+
+.counter{
+	@apply flex p-[16px] flex-grow gap-[24px] items-center flex-shrink justify-between w-full border-solid h-[105px] overflow-hidden rounded-[6px] border-[#d9d9d9] border-[1px];
+		position: relative;
+		cursor: pointer;
+		max-width: 321px;
+
+		@media (max-width:1325px) {
+			max-width: 100%;
+		}
+	
+		&:before{
+			content: '';
+			background-color: #fff;
+			border-radius: 4px;
+			z-index: -1;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin-left: 5px;
+		}
+
+		&:last-child{
+			&:before{
+				margin-right: 5px;
+				margin-left: 0px;
+			}
+		}
+	
+		&:after{
+			content: '';
+			border-radius: 4px;
+			background-color: #00B2C8;
+			z-index: -2;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			opacity: 1;
+			transition: all 0.2s;
+		}
+
+		.arrow{
+			filter: brightness(0);
+			opacity: 0.2;
+			user-select: none;
+			transform: rotate(-180deg);
+		}
+		&:hover{
+			.arrow{
+				filter: brightness(1);
+				opacity: 1;
+			}
+		}
+		&.active{
+			.arrow{
+				transform: rotate(0deg);
+			}
+		}
+
+}
+
+
+
+.button{
+	>div{
+		height: 36px !important;
+		font-size: 16px;
+	}
+}
+
+
+.popover{
+	
+}
+
