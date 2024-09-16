@@ -219,7 +219,7 @@
 
 .plan__calculation{
 	.calc{
-		@apply flex items-center justify-between text-[14px] font-[300] border-solid border-b-[1px] border-b-[#cecece];
+		@apply flex items-center relative justify-between text-[14px] font-[300] border-solid border-b-[1px] border-b-[#cecece];
 		height: adaptive($width_container, 62, 56);
 
 		&:last-child{
@@ -228,7 +228,7 @@
 
 		transform: scaleX();
 
-		p{
+		>span{
 			position: relative;
 		}
 		span{

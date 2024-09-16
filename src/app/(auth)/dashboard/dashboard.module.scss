@@ -245,7 +245,7 @@
 }
 
 .list{
-	@apply flex flex-wrap justify-center bg-[#f3fbfc];
+	@apply flex flex-wrap justify-center;
 
 	@media(max-width:1355px) {
 		text-align: center;
