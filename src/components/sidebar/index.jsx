@@ -14,7 +14,6 @@ import { tabs } from '@/types/auth';
 export const Sidebar = () => {
 	const pathname = usePathname()
 
-  // const params = pathname.split('/').pop();
 	const activeTab = tabs.find((item) => pathname.includes(item.path));
 	console.log(activeTab)
 

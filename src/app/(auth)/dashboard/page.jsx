@@ -702,7 +702,7 @@ export default function Dashboard() {
 					<p className="text-[14px] font-medium  uppercase text-[#828282]">
 						Featured news
 					</p>
-					<div className="flex relative gap-[8px].5">
+					<div className="flex relative gap-[8px]">
 						<div className="flex justify-center h-[10px] gap-[10px]">
 							{Array.from({ length: 5 }, (_, index) => (
 								<button
