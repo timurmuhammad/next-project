@@ -301,8 +301,8 @@ export const Strategy = () => {
 						</div>
 					</div>
 				</div>
-		
-	
+
+
 				<div className={styles.list}>
 					<div className={styles.box}>
 						<Image src={bag} width={42} height={42} alt='icon'></Image>		

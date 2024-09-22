@@ -694,74 +694,74 @@ export default function Automatictrading() {
 
 
 		<div className={styles.strategies_used}>
-				<div onClick={() => setStrategiesUsed('Market Making')} className={cn(styles.card, {[styles.active]: strategiesUsed === 'Market Making'})}>
-					<Image src={lookingglassCheck} width={84} height={84} alt="icon"></Image>
-		
-					<Typography
+			<div onClick={() => setStrategiesUsed('Market Making')} className={cn(styles.card, { [styles.active]: strategiesUsed === 'Market Making' })}>
+				<Image src={lookingglassCheck} width={84} height={84} alt="icon"></Image>
+
+				<Typography
 					size="h4"
 					title="Market Making"
 					text="Profit from the spread between the buy and sell prices."
 				></Typography>
-				</div>
-		
-				<div onClick={() => setStrategiesUsed('Arbitrage')} className={cn(styles.card, {[styles.active]: strategiesUsed === 'Arbitrage'})}>
-					<Image src={marketMaking} width={84} height={84} alt="icon"></Image>
-					
-					<Typography
+			</div>
+
+			<div onClick={() => setStrategiesUsed('Arbitrage')} className={cn(styles.card, { [styles.active]: strategiesUsed === 'Arbitrage' })}>
+				<Image src={marketMaking} width={84} height={84} alt="icon"></Image>
+
+				<Typography
 					size="h4"
 					title="Arbitrage"
 					text="Earnings from price differences on exchanges"
 				></Typography>
-				</div>
-	
-				<div className={styles.trend}>
-					<h6 className="text-[16px] text-[#00b2c8]">
-						Trend Following
-					</h6>
-					<p className="text-[12px] text-[#303030]">
-						This strategy capitalize on price discrepancies of the same cryptocurrency across different
-						exchanges. The software buys the cryptocurrency on one exchange where the price is lower and
-						sells it on another where the price is higher, pocketing the difference as profit.
-					</p>
-					<div className="flex gap-6">
-	          <div className={styles.check_list}>
-	            <ChecklistItem
-	    					text="Market Scanning"
-	    				></ChecklistItem>
-	            <ChecklistItem
-	              text="Latency Management"
-	    				></ChecklistItem>
-	          </div>
-	          <div className={styles.check_list}>
-	            <ChecklistItem
-	    					text="Automated Trading"
-	    				></ChecklistItem>
-	            <ChecklistItem
-	    					text="Profit Calculation"
-	    				></ChecklistItem>
-	          </div>
-	        </div>
 			</div>
-		
-				<div onClick={() => setStrategiesUsed('Scalping')} className={cn(styles.card, {[styles.active]: strategiesUsed === 'Scalping'})}>
-					<Image src={arbitrage} width={84} height={84} alt="icon"></Image>
-					
-					<Typography
+
+			<div className={styles.trend}>
+				<h6 className="text-[16px] text-[#00b2c8]">
+					Trend Following
+				</h6>
+				<p className="text-[12px] text-[#303030]">
+					This strategy capitalize on price discrepancies of the same cryptocurrency across different
+					exchanges. The software buys the cryptocurrency on one exchange where the price is lower and
+					sells it on another where the price is higher, pocketing the difference as profit.
+				</p>
+				<div className="flex gap-6">
+					<div className={styles.check_list}>
+						<ChecklistItem
+							text="Market Scanning"
+						></ChecklistItem>
+						<ChecklistItem
+							text="Latency Management"
+						></ChecklistItem>
+					</div>
+					<div className={styles.check_list}>
+						<ChecklistItem
+							text="Automated Trading"
+						></ChecklistItem>
+						<ChecklistItem
+							text="Profit Calculation"
+						></ChecklistItem>
+					</div>
+				</div>
+			</div>
+
+			<div onClick={() => setStrategiesUsed('Scalping')} className={cn(styles.card, { [styles.active]: strategiesUsed === 'Scalping' })}>
+				<Image src={arbitrage} width={84} height={84} alt="icon"></Image>
+
+				<Typography
 					size="h4"
 					title="Scalping"
 					text="High-frequency trading to profit from small price movements."
 				></Typography>
-				</div>
-		
-				<div onClick={() => setStrategiesUsed('Trend Following')} className={cn(styles.card, {[styles.active]: strategiesUsed === 'Trend Following'})}>
-					<Image src={scalping} width={84} height={84} alt="icon"></Image>
-					
-					<Typography
+			</div>
+
+			<div onClick={() => setStrategiesUsed('Trend Following')} className={cn(styles.card, { [styles.active]: strategiesUsed === 'Trend Following' })}>
+				<Image src={scalping} width={84} height={84} alt="icon"></Image>
+
+				<Typography
 					size="h4"
 					title="Trend Following"
 					text="Using technical indicators to identify and track market trends"
 				></Typography>
-				</div>
 			</div>
+		</div>
 	</div>
 }
