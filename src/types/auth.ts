@@ -24,7 +24,7 @@ export const tabs = [
 		{key: 'item-12', path: '', icon: copy_trading.src, text:  'Copy Trading'},
 		{key: 'item-13', path: '', icon: cross_chain.src, text:  'Cross-chain DEX Trading'},
 	]},
-	{key: 'item-3', path: 'statistics_aush', icon: statistics_aush.src, text:  'Statistics'},
+	{key: 'item-3', path: 'statistics', icon: statistics_aush.src, text:  'Statistics'},
 	{key: 'item-4', path: 'affiliate', icon: affiliate.src, text:  'Affiliate Program'},
 	{key: 'item-5', path: 'help', icon: help_center.src, text:  'Help Center'},
 ]

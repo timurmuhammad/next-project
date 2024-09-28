@@ -1,0 +1,105 @@
+@import '@/ui/vars-and-utils.scss';
+
+.breadcrumb{
+	display: none;
+	@media (max-width:$media_laptop) {
+		display: block;
+	}
+	ol{
+		justify-content: start;
+	}
+	li{
+		font-size: 12px;
+	}
+}
+
+.content{
+	padding: 0px;
+	border-radius: 6px;
+	border: 1px solid #cecece;
+	overflow: hidden;
+}
+
+.plan{
+	@apply flex justify-center items-center text-[14px] font-medium  uppercase text-[#828282] px-[16px] cursor-pointer;
+	user-select: none;
+	flex: 0 0 25%;
+	border-right: 1px solid #e6e6e6;
+
+	&:last-child{
+		border-right: none;
+	}
+
+	&.active{
+		@apply text-[16px] font-bold text-white flex bg-[#00b2c8];
+	}
+
+	@media (max-width:$media_screen) {
+		@apply px-[12px];
+		font-size: 11px;
+		&.active{
+			font-size: 11px;
+			font-weight: 400;
+		}
+	}
+}
+
+.button_border{
+	@apply flex items-center justify-center gap-[32px] px-[8px] py-[32px];
+	>button{
+		@apply text-[14px] text-center text-[#303030];
+		height: 28px;
+	}
+	>button:first-child{
+		opacity: 0.6;
+		&:not([disabled]):hover {
+				&:after{
+					opacity: 0;
+				}
+		}
+	}
+	
+}
+
+.tablerow:last-child{
+	>td{
+		border-bottom: none !important;
+	}
+}
+
+
+.statistics{
+	@apply flex self-stretch gap-[24px];
+
+	@media (max-width:$media_laptop) {
+		flex-wrap: wrap;
+	}
+	@media (max-width:501px) {
+		column-gap: 16px;
+		>div{
+			@apply px-[8px];
+			flex-grow: 0;
+			flex-shrink: 0;
+			flex-basis: calc(50% - 8px);
+			&:last-child{
+				flex: 1 1 auto;
+			}
+			>div{
+				>p{
+					font-size: 12px;
+				}
+			}
+		}
+		
+	}
+}
+
+
+.stats{
+	@apply flex flex-col justify-center gap-[16px] px-[16px] py-[8px] rounded-[6px];
+	overflow: hidden;
+	flex: 1 1 auto;
+
+	@apply border border-solid border-[#e6e6e6];
+
+}
