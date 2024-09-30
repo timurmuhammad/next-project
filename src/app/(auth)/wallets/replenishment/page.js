@@ -24,7 +24,7 @@ import Image from 'next/image';
 							3CLu918uGeB1BoMuZBHLYoTJTMQP3dfusF
 						</p>
 					</div>
-					<button className={styles.button}>
+					<button className={styles.button_blue}>
 						<p>
 							COPY
 						</p>
