@@ -28,3 +28,21 @@ export const tabs = [
 	{key: 'item-4', path: 'affiliate', icon: affiliate.src, text:  'Affiliate Program'},
 	{key: 'item-5', path: 'help', icon: help_center.src, text:  'Help Center'},
 ]
+
+export const tabsRoot = [
+	{key: 'item-0', path: 'dashboard', icon: dashboard.src, text: 'Dashboard'},
+	{key: 'item-1', path: 'wallets', icon: wallets.src, text: 'Wallets', childs: [
+		{key: 'item-10', path: '', icon: replenishment.src, text:  'Replenishment'},
+		{key: 'item-9', path: '', icon: withdrawal.src, text:  'Withdrawal'},
+		{key: 'item-8', path: '', icon: arbitrage.src, text:  'Exchange'},
+	]},
+	{key: 'item-2', path: 'investments', icon: investments.src, text:  'Investments', childs: [
+		{key: 'item-11', path: '', icon: trading.src, text:  'Automatic Trading'},
+		{key: 'item-12', path: '', icon: copy_trading.src, text:  'Copy Trading'},
+		{key: 'item-13', path: '', icon: cross_chain.src, text:  'Cross-chain DEX Trading'},
+	]},
+	{key: 'item-3', path: 'statistics', icon: statistics_aush.src, text:  'Statistics'},
+	{key: 'item-4', path: 'affiliate', icon: affiliate.src, text:  'Affiliate Program'},
+	{key: 'item-4', path: 'profile', icon: affiliate.src, text:  'Profile'},
+	{key: 'item-5', path: 'help', icon: help_center.src, text:  'Help Center'},
+]
