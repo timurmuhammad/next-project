@@ -139,9 +139,7 @@
 	padding: 0px 20px;
 	cursor: pointer;
 	transition: 0.2s;
-	&:hover{
-		color: #00B2C8;
-	}
+
 }
 
 @media (min-width: $media_tablet) {
@@ -296,10 +294,15 @@
 	flex: 0 0 auto;
 }
 
+
 .popup_list:hover{
-	img{
-		transform: rotate(180deg);
+
+	>p{
+		> img{
+			transform: rotate(180deg);
+		}
 	}
+
 
 	.popup_list__body{
 		opacity: 1;
@@ -335,19 +338,23 @@
 
 
 .popup_list__body{
-	padding: 12px 0px;
+	box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.1);
+	border-radius: 6px;
 	position: absolute;
-	color: #00B2C8;
-	background-color: #E4FAFC;
 	top: 100%;
-	right: 0;
-	width: 200px;
+	left: 0;
+	width: 300px;
 	transition: 0.4s;
 	border-radius: 2px;
 	z-index: 5;
 	opacity: 0;
 	visibility: hidden;
 	font-size: 14px;
+	background-color: #ffffff;
+
+	>div:hover{
+		background-color: #f2feff;
+	}
 
 	li{
 		padding: 4px 10px;
@@ -356,6 +363,9 @@
 		&:hover{
 			text-decoration: underline;
 		}
+	}
+	>div:last-child{
+		opacity: 0.5;
 	}
 }
 

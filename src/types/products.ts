@@ -1,12 +1,16 @@
 import logoCardbot from "@/ui/images/logo_cardbot.png";
 import currencyLogo from "@/ui/icons/currency_logo.svg";
 import exchangeLogo from "@/ui/icons/exchange_logo.svg";
+import trading from "@/ui/icons/trading.svg";
+import copy_trading from "@/ui/icons/copy_trading.svg";
+import cross_chain from "@/ui/icons/cross_chain.png";
 
 export const productsType = [
-	{name: 'Automatic Trading', link: ''},
-	{name: 'Copy Trading', link: ''},
-	{name: 'Cross-chain DEX Trading', link: ''},
+	{name: 'Automatic Trading', link: '', icon: trading.src, description: 'Automated trading system'},
+	{name: 'Copy Trading', link: '', icon: copy_trading.src, description: 'Long-term strategies from Company'},
+	{name: 'Cross-chain DEX Trading', link: '', icon: cross_chain.src, description: 'Coming soon'},
 ]
+
 
 export interface goodsType {
 	logo: string,

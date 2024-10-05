@@ -26,12 +26,32 @@ import invite from '@/ui/icons/invite.svg';
 import cn from 'classnames'
 import { Section } from "@/components/section";
 
+
+const list = ['quickly', 'easily', 'steadily', 'safely']
+
+
+import Autoplay from "embla-carousel-autoplay"
+
+import { Card, CardContent } from "@/shadcn/ui/card"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/shadcn/ui/carousel"
+import { useRef } from "react";
+
 // export const metadata = {
 //   title: 'Home',
 //   description: ''
 // }
 
 export default function Home() {
+  const plugin = useRef(
+    Autoplay({ delay: 2000, stopOnInteraction: false })
+  )
+
   return <div className={styles.main}>
     <div className='_container'>
       <Section imageSRC={diagram} width={358} height={262} previewTop={true}>
@@ -39,16 +59,35 @@ export default function Home() {
           text="Welcome to Company"
         ></Button>
   
-        <Typography
-          size="h1"
-          title="Our Products"
-          text="We offer automated and profitable investment proposals to achieve your financial goals"
-        ></Typography>
+        <div className={styles.info}>
+          <h1>Increase your crypto</h1>
+          <Carousel
+            opts={{
+              align: "start",
+            }}
+            plugins={[plugin.current]}
+            className={styles.carousel}
+            orientation="vertical"
+            watchDrag={false}
+          >
+            <CarouselContent className={styles.carousel_content}>
+              {list.map((item, index) => (
+                <CarouselItem key={index}>
+                    <Card>
+                      <CardContent className="flex items-center justify-center">
+                        <span className="text-[#00b2c8]">{item}</span>
+                      </CardContent>
+                    </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+        </div>
   
         <UnderlineButton text='Let’s get started'></UnderlineButton>
       </Section>
-  
     </div>
+
     
 
     <div className={styles.functions}>
@@ -254,3 +293,5 @@ export default function Home() {
 
   </div>
 }
+
+

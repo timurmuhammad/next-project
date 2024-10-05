@@ -1,7 +1,16 @@
 @import '@/ui/vars-and-utils.scss';
 
+
+
 .main{
 	padding-top: adaptive($width_container, 40, 32);
+	h1{
+		font-size: adaptive($width_container, 40, 24);
+		display: flex;
+		align-items: start;
+		justify-content: end !important;
+		text-align: end;
+	}
 }
 
 .our_products{
@@ -58,11 +67,11 @@
 
 	@media (max-width: $media_screen) {
 		justify-content: center;
-    * {
-			justify-content: center !important;
-      text-align: center !important;
-			align-items: center !important;
-    }
+    // * {
+		// 	justify-content: center;
+    //   text-align: center;
+		// 	align-items: center;
+    // }
   }
 
 	h1{
@@ -330,5 +339,57 @@
 		max-width: 100%;
 		min-width: 100px;
 		object-fit: cover;
+	}
+}
+
+
+.carousel{
+	@apply w-full flex-1 self-stretch max-w-xs;
+	div{
+		justify-content: start !important;
+		align-items: start !important;
+		text-align: center !important;
+	}
+	>div{
+		height: adaptive($width_container, 50, 30);
+		>div{
+			margin-top: 0;
+			height: adaptive($width_container, 50, 30);
+		}
+		div{
+			padding-left: adaptive($width_container, 4, 0);
+			padding-right: adaptive($width_container, 4, 0);
+		}
+	}
+}
+
+
+.carousel_content{
+	height: adaptive($width_container, 50, 30);
+	>div{
+		height: adaptive($width_container, 50, 30);
+		>div{
+			div{
+				height: adaptive($width_container, 50, 30) !important;
+				align-items: center !important;
+				span{
+					font-size: adaptive($width_container, 40, 24);
+					user-select: none;
+				}
+			}
+		}
+	}
+}
+
+
+.info{
+	@apply flex;
+	align-items: end !important;
+	>div{
+		align-self: auto !important;
+	}
+	> h1{
+		line-height: adaptive($width_container, 50, 30);
+		text-align: end !important;
 	}
 }

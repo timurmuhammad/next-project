@@ -13,14 +13,13 @@
 		justify-content: center;
 		flex-direction: column;
     div,p,h1,h2,h3,h4,h5 {
-			justify-content: center !important;
-      text-align: center !important;
-			align-items: center !important;
+			justify-content: center;
+      text-align: center;
+			align-items: center;
     }
   }
 
 	.image{
-		// flex: 0 0 adaptive($width_container, 528, 300);
 		flex: 0 0 adaptive($width_container, 514, 300);
 		display: flex;
 		justify-content: end;
