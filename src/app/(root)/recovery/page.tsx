@@ -59,9 +59,9 @@ export default function Recovery() {
 						<p className=" text-[28px] text-center text-black">Recovery</p>
 						<p className=" text-[16px] text-center">
 							<span className=" text-[16px]  text-center text-black">
-								Back to Login
+								Back to
 							</span>
-							<Link href='/registration' className="text-nowrap ml-[4px] underline cursor-pointer text-[16px] text-center text-[#00b2c8]">Login</Link>
+							<Link href='/login' className="text-nowrap ml-[4px] underline cursor-pointer text-[16px] text-center text-[#00b2c8]">Login</Link>
 						</p>
 						<div className={styles.input}>
 							<FormField

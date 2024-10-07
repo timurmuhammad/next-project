@@ -1,5 +1,5 @@
 import styles from './footer.module.scss';
-import backgroudFooter from '@/ui/images/backgroud_footer.png';
+import backgroudFooter from '@/ui/images/backgroud_footer.svg';
 import Image from 'next/image';
 import { SocialMedia } from '@/ui/socialMedia';
 import cn from 'classnames'
@@ -9,13 +9,18 @@ import t_me from '@/ui/icons/t_me.svg';
 import chat from '@/ui/icons/chat.svg'; 
 import Link from 'next/link';
 import { Languages } from '../languages';
+import rectangle from "@/ui/images/rectangle.svg";
 
 export const Footer = () => {
 	return <div className={styles.body}>
-		{/* <Image src={backgroudFooter} alt='img' width={1440} height={587}></Image> */}
+		<div className={styles.bg}><Image src={backgroudFooter} alt='img' width={0} height={0} sizes='100vw'></Image></div>
+		{/* <div className={styles.rectangle}><Image src={rectangle} alt='img' width={0} height={0} sizes='100vw'></Image></div> */}
 		<div className={cn(styles.body__container, '_container')}>
 			
-			<SocialMedia></SocialMedia>
+			<div>
+				<SocialMedia></SocialMedia>
+				<div className={styles.rectangle}><Image src={rectangle} alt='img' width={0} height={0} sizes='100vw'></Image></div>
+			</div>
 
 			<Languages></Languages>
 

@@ -32,6 +32,7 @@ import yahoo from "@/ui/icons/yahoo.svg";
 import shield from "@/ui/images/shield.svg";
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/shadcn/ui/accordion.tsx"
 import { ButtonBlue } from "@/components/buttonBlue"
+import group_bg from "@/ui/images/group_bg.svg";
 
 // export const metadata = {
 // 	title: "About Us",
@@ -86,81 +87,165 @@ export default function About() {
 
 
 
-      <Accordion type="single" collapsible>
-      <div className={cn(styles.advantages, "_container")}>
-          <AccordionItem value="item-1">
-            <AccordionTrigger> 
-              <div className={styles.box}>
-                <Image src={clockHistory} width={42} height={42} alt="icon"></Image>
-                <p className={styles.text}>Support 24/7</p>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent>
-              Our team of experts ready to help you with any questions through email, web chat or phone
-            </AccordionContent>
-          </AccordionItem>
 
-          <AccordionItem value="item-2">
-            <AccordionTrigger>
-              <div className={styles.box}>
-                <Image src={dollarCrosshair} width={42} height={42} alt="icon"></Image>
-                <p className={styles.text}>Low entry theshold</p>
+    <div className={styles.accordion}>
+    <Image src={group_bg} width={0} height={923} sizes="100vw" alt="icon"></Image>
+      <div className="accordion_body _container">
+        <div className="accordion_wrapper">
+          <div className="accordion">
+            <p className="accordion-toggle"><Image src={clockHistory} width={42} height={42} alt="icon"></Image>
+            <a>Support 24/7</a></p>
+            <div className="accordion-content">
+              <div className="accordion-inner">
+                <p>Our team of experts ready to help you with any questions through email, web chat or phone</p>
               </div>
-            </AccordionTrigger>
-            <AccordionContent>
-              Our team of experts ready to help you with any questions through email, web chat or phone
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem value="item-3">
-            <AccordionTrigger>
-              <div className={styles.box}>
-                <Image src={dollarSwirl} width={42} height={42} alt="icon"></Image>
-                <p className={styles.text}>More than 14 coins to invest</p>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent>
-              Our team of experts ready to help you with any questions through email, web chat or phone
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem value="item-4">
-            <AccordionTrigger>
-              <div className={styles.box}>
-                <Image src={list} width={42} height={42} alt="icon"></Image>
-                <p className={styles.text}>No KYC required</p>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent>
-              Our team of experts ready to help you with any questions through email, web chat or phone
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem value="item-5">
-            <AccordionTrigger>
-              <div className={styles.box}>
-                <Image src={dollar} width={42} height={42} alt="icon"></Image>
-                <p className={styles.text}>No hiden commissions or fees</p>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent>
-              Our team of experts ready to help you with any questions through email, web chat or phone
-            </AccordionContent>
-          </AccordionItem>
-
-          <AccordionItem value="item-6">
-            <AccordionTrigger>
-              <div className={styles.box}>
-                <Image src={click} width={42} height={42} alt="icon"></Image>
-                <p className={styles.text}>Fully automated products</p>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent>
-              Our team of experts ready to help you with any questions through email, web chat or phone
-            </AccordionContent>
-          </AccordionItem>
+            </div>
+          </div>
         </div>
-      </Accordion>
+  
+        <div className="accordion_wrapper">
+          <div className="accordion">
+            <p className="accordion-toggle"><Image src={dollarCrosshair} width={42} height={42} alt="icon"></Image>
+            <a>More than 14 coins to invest</a></p>
+            <div className="accordion-content">
+              <div className="accordion-inner">
+                <p>Our team of experts ready to help you with any questions through email, web chat or phone</p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div className="accordion_wrapper">
+          <div className="accordion">
+            <p className="accordion-toggle"><Image src={dollarSwirl} width={42} height={42} alt="icon"></Image>
+            <a>Low entry theshold</a></p>
+            <div className="accordion-content">
+              <div className="accordion-inner">
+                <p>Our team of experts ready to help you with any questions through email, web chat or phone</p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div className="accordion_wrapper">
+          <div className="accordion">
+            <p className="accordion-toggle"><Image src={list} width={42} height={42} alt="icon"></Image>
+            <a>No KYC required </a></p>
+            <div className="accordion-content">
+              <div className="accordion-inner">
+                <p>Our team of experts ready to help you with any questions through email, web chat or phone</p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div className="accordion_wrapper">
+          <div className="accordion">
+            <p className="accordion-toggle"><Image src={dollar} width={42} height={42} alt="icon"></Image>
+            <a>No hiden commissions or fees</a></p>
+            <div className="accordion-content">
+              <div className="accordion-inner">
+                <p>Our team of experts ready to help you with any questions through email, web chat or phone</p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div className="accordion_wrapper">
+          <div className="accordion">
+              <p className="accordion-toggle">
+                <Image src={click} width={42} height={42} alt="icon"></Image>
+                <a>Fully automated products</a>
+              </p>
+              <div className="accordion-content">
+                <div className="accordion-inner">
+                  <p>Our team of experts ready to help you with any questions through email, web chat or phone</p>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+      <div className={styles.accordion_lg}>
+        <Accordion type="single" collapsible>
+        <div className={cn(styles.advantages, "_container")}>
+            <AccordionItem value="item-1">
+              <AccordionTrigger> 
+                <div className={styles.box}>
+                  <Image src={clockHistory} width={42} height={42} alt="icon"></Image>
+                  <p className={styles.text}>Support 24/7</p>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                Our team of experts ready to help you with any questions through email, web chat or phone
+              </AccordionContent>
+            </AccordionItem>
+  
+            <AccordionItem value="item-2">
+              <AccordionTrigger>
+                <div className={styles.box}>
+                  <Image src={dollarCrosshair} width={42} height={42} alt="icon"></Image>
+                  <p className={styles.text}>Low entry theshold</p>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                Our team of experts ready to help you with any questions through email, web chat or phone
+              </AccordionContent>
+            </AccordionItem>
+  
+            <AccordionItem value="item-3">
+              <AccordionTrigger>
+                <div className={styles.box}>
+                  <Image src={dollarSwirl} width={42} height={42} alt="icon"></Image>
+                  <p className={styles.text}>More than 14 coins to invest</p>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                Our team of experts ready to help you with any questions through email, web chat or phone
+              </AccordionContent>
+            </AccordionItem>
+  
+            <AccordionItem value="item-4">
+              <AccordionTrigger>
+                <div className={styles.box}>
+                  <Image src={list} width={42} height={42} alt="icon"></Image>
+                  <p className={styles.text}>No KYC required</p>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                Our team of experts ready to help you with any questions through email, web chat or phone
+              </AccordionContent>
+            </AccordionItem>
+  
+            <AccordionItem value="item-5">
+              <AccordionTrigger>
+                <div className={styles.box}>
+                  <Image src={dollar} width={42} height={42} alt="icon"></Image>
+                  <p className={styles.text}>No hiden commissions or fees</p>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                Our team of experts ready to help you with any questions through email, web chat or phone
+              </AccordionContent>
+            </AccordionItem>
+  
+            <AccordionItem value="item-6">
+              <AccordionTrigger>
+                <div className={styles.box}>
+                  <Image src={click} width={42} height={42} alt="icon"></Image>
+                  <p className={styles.text}>Fully automated products</p>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                Our team of experts ready to help you with any questions through email, web chat or phone
+              </AccordionContent>
+            </AccordionItem>
+          </div>
+        </Accordion>
+      </div>
 
 
 

@@ -15,6 +15,7 @@
 
 	.title{
 		font-size: adaptive($width_container, 40, 24);
+		font-weight: 500;
 	}
 }
 
@@ -29,6 +30,7 @@
 	.title{
 		font-size: adaptive($width_container, 32, 20);
 		color: #000000;
+		font-weight: 500;
 	}
 	.text{
 		font-size: 16px;
@@ -42,6 +44,7 @@
 	.title{
 		font-size: adaptive($width_container, 32, 20);
 		color: #000000;
+		font-weight: 500;
 	}
 	.text{
 		font-size: 16px;

@@ -22,6 +22,7 @@ import mediaScreenMobile from '@/ui/images/media_screen_mobile.png';
 import automaticTrading from '@/ui/images/automaticTrading.png';
 import commission from '@/ui/icons/commission.svg';
 import getStarted from '@/ui/icons/get_started.svg';
+import about_lines from "@/ui/images/about_lines.svg";
 import invite from '@/ui/icons/invite.svg';
 import cn from 'classnames'
 import { Section } from "@/components/section";
@@ -60,7 +61,7 @@ export default function Home() {
         ></Button>
   
         <div className={styles.info}>
-          <h1>Increase your crypto</h1>
+          <h1 className="leading-[500]">Increase your crypto</h1>
           <Carousel
             opts={{
               align: "start",
@@ -91,6 +92,10 @@ export default function Home() {
     
 
     <div className={styles.functions}>
+      {/* <div className={cn(styles.bg, '_container')}>
+        <Image src={about_lines} alt="img" width={0} height={0} sizes="100vw"></Image>
+      </div> */}
+
       <Image src={backgroundGeometric} alt="img" width={1440} height={155}></Image>
       <div className={cn(styles.functions__container, '_container')}>
 
@@ -120,6 +125,10 @@ export default function Home() {
             text="Statistics"
           ></Typography>
         </div>
+
+        <div className={styles.bg}>
+        <Image src={about_lines} alt="img" width={0} height={0} sizes="100vw"></Image>
+      </div>
       </div>
     </div>
 
@@ -136,20 +145,6 @@ export default function Home() {
         <UnderlineButton text='Learn more'></UnderlineButton>
       </Section>
     </div>
-
-    {/* <div className={cn(styles.section_wrapper, '_container')}>
-        <div className={'section_inner'}>
-          <Typography
-            size="h3"
-            title="About Us"
-            text="At Company, we are dedicated to providing secure, innovative, and user-friendly investment solutions to help you achieve your financial goals. Our high-yield strategies, flexible solutions, and experienced team ensure that your investments are well-protected and optimized for growth."
-          ></Typography>
-
-          <UnderlineButton text='Learn more'></UnderlineButton>
-        </div>
-        <div className={styles.image}><Image src={video} className={styles.video} alt="img" width={439} height={208}></Image></div>
-      </div> */}
-
 
 
       <div className={styles.our_products}>
@@ -193,7 +188,7 @@ export default function Home() {
 
       <div className={cn(styles.section_wrapper, styles._dApp, '_container')}>
         <Image src={gradient} alt="image" width={1200} height={327}></Image>
-        <Image src={lines} alt="image" width={1200} height={449}></Image>
+        <Image className={styles.lines} src={lines} alt="image" width={1200} height={449}></Image>
 
         <picture className={styles.image}>
             <source srcSet={mediaScreenMobile.src} media="(max-width: 670px)" />

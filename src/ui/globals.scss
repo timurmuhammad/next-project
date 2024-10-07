@@ -196,10 +196,130 @@ main{
 
 .slide {
   width: 100%;
-  height: 200px; /* высота слайдера */
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 24px;
   background-color: lightgray;
 }
+
+
+.accordion{ 
+  display: inline-block;
+  position: relative;
+  z-index: 7;
+  border-radius: 6px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+
+  &:before{
+    content: '';
+    border-radius: 4px;
+    background-color: #fff;
+    border: 1px solid #cecece;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    transition: margin 0.2s !important;
+  }
+  
+  &:after{
+    content: '';
+    background-image: linear-gradient(282.54deg, #01B091 2%, #00B2C8 100%);
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &:hover{
+    position: relative;
+    z-index: 8;
+    .accordion-content{
+      -webkit-transition: max-height 1s; 
+      -moz-transition: max-height 1s; 
+      -ms-transition: max-height 1s; 
+      -o-transition: max-height 1s; 
+      transition: max-height 1s;  
+      max-height: 300px;
+      @apply pb-[32px] pt-0 px-[14px];
+    }
+
+
+      &:before{
+        margin: 2px;
+        border: none;
+    }
+  }
+}
+
+.accordion-content{
+  overflow: hidden;
+  font-size: 16px;
+  max-height: 0;
+  position: relative;
+  z-index: 6;
+  transition: padding 0s;
+}
+
+.accordion-inner{
+  position: relative;
+  z-index: 6;
+}
+
+.accordion-toggle{
+  height: 74px;
+  -webkit-transition: background 3s linear;   
+  -moz-transition: background 3s linear;   
+  -ms-transition: background 3s linear;   
+  -o-transition: background 3s linear;   
+  transition: background 3s linear;   
+  color: #000;
+  @apply flex text-lg gap-[12px] px-[14px] py-[16px] items-center justify-between flex-1;
+  >a{
+    position: relative;
+    z-index: 3;
+    text-wrap: wrap;
+    flex: 1 1 auto;
+    text-align: start;
+    
+  }
+  >img{
+    position: relative;
+    z-index: 3;
+  }
+}
+
+.accordion_body{
+  display: flex;
+	gap: 24px;
+  flex-wrap: wrap;
+  max-width: 790px;
+  margin: 0 auto;
+  position: relative;
+
+  z-index: 1000;
+
+	@media(max-width: $media_screen){
+		flex-direction: column;
+		max-width: 100%;
+		width: 100%;
+	}
+}
+
+.accordion_wrapper{
+  height: 74px;
+  width: 100%;
+  flex: 0 0 calc(50% - 12px);
+  display: inline-block;
+  box-shadow: 0px 0px 4.3px 0 rgba(0,0,0,0.1);
+}
+
+

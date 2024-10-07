@@ -61,7 +61,7 @@ export const Header = () => {
 
 					<ul className={cn(styles.popup_list__body, {[styles.active]: open}) }>
 						{ productsType.map( (listItem, index) => (
-							<div key={index} className="flex relative gap-[24px] px-[16px] py-[16px] rounded-[6px]">
+							<div key={index} className="flex relative gap-[24px] px-[30px] py-[16px] rounded-[6px]">
 								<Image src={listItem.icon} alt='icon' width={36} height={36}></Image>
 								<div className="flex flex-col justify-center">
 									<p className=" text-[16px]  text-black">
@@ -77,7 +77,7 @@ export const Header = () => {
 
 				</li>
 				<li className={styles.nav_desktop__item}>Security</li>
-				<li className={styles.nav_desktop__item}>Security</li>
+				<li className={styles.nav_desktop__item}>Blog</li>
 				<li className={styles.nav_desktop__item}>Help Hub</li>
 			</ul>
 

@@ -1,7 +1,6 @@
 @import '@/ui/vars-and-utils.scss';
 
 
-
 .main{
 	padding-top: adaptive($width_container, 40, 32);
 	h1{
@@ -106,6 +105,14 @@
 		position: relative;
 		z-index: 1;
 		height: 100%;
+
+		@media (min-width:2200px) {
+			justify-content: center;
+			gap: 150px;
+			>div{
+				top: 81px;
+			}
+		}
 	}
 
 	> img{
@@ -163,7 +170,7 @@
 	top: 81px;
 }
 
-.functions__item:last-child{
+.functions__item:nth-child(3){
 	top: 37px;
 }
 
@@ -181,6 +188,9 @@
 		display: flex;
 		align-items: center;
 		height: 327px;
+	}
+	.lines{
+		height: auto;
 	}
 
 	.image{
@@ -393,3 +403,23 @@
 		text-align: end !important;
 	}
 }
+
+.bg{
+	position: absolute;
+	top: 100% !important;
+	right: -180px;
+	height: 733px;
+	width: 100%;
+	display: flex;
+	justify-content: end;
+	>img{
+		width: 816px;
+		height: 100%;
+		object-position: right;
+	}
+
+	@media(max-width: $media_laptop) {
+		display: none;
+	}
+}
+

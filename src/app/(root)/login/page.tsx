@@ -123,7 +123,7 @@ export default function Login() {
 							<span className=" text-[14px]  text-center text-black">
 								Forgot your password?
 							</span>
-							<Link href='#' className="ml-[4px] underline cursor-pointer text-nowrap text-[14px] text-center  text-[#00b2c8]">Recovery</Link>
+							<Link href='/recovery' className="ml-[4px] underline cursor-pointer text-nowrap text-[14px] text-center  text-[#00b2c8]">Recovery</Link>
 						</p>
 					</div>
 				</div>

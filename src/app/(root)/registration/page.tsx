@@ -55,6 +55,8 @@ export default function Login() {
 
 	return <div className='relative'>
 		<div className={styles.background}>
+		<div className={styles.bg}><Image src={group_lines}  width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto' }} alt='icon'></Image>
+		</div>
 		</div>
 
 		<div className="main _container">
@@ -196,6 +198,7 @@ export default function Login() {
 	
 	
 				<div className={styles.right}>
+
 					<Image src={logo_icon} width={75} height={64} alt='icon'></Image>
 	
 					<div className={styles.trustpilot}><Image src={trustpilot} width={80} height={40} alt='icon'></Image></div>
@@ -210,7 +213,7 @@ export default function Login() {
 								Always make sure:
 							</p>
 							<div className={styles.list}>
-								<div className="flex text-[14px] font-light items-center gap-[8px]">
+								<div className="flex text-[12px] font-light items-center gap-[8px]">
 									<Image src={domain} width={35} height={35} alt='icon'></Image>
 									<div>
 										<p>
@@ -219,14 +222,14 @@ export default function Login() {
 										<p>website.com</p>
 									</div>
 								</div>
-								<div className="flex text-[14px] font-light items-center gap-[8px]">
+								<div className="flex text-[12px] font-light items-center gap-[8px]">
 									<Image src={lock} width={35} height={35} alt='icon'></Image>
 									<div>
 										<p>The page is</p>
 										<p>encrypted with https</p>
 									</div>
 								</div>
-								<div className="flex text-[14px] font-light items-center gap-[8px]">
+								<div className="flex text-[12px] font-light items-center gap-[8px]">
 									<Image src={auth} width={35} height={35} alt='icon'></Image>
 									<div>
 										<p>

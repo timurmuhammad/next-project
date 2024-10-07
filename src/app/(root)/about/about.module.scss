@@ -2,11 +2,15 @@
 
 .button{
 	>button{
-		&:before{
+		&:after{
 			content: url(../../../ui/icons/pdf.svg);
+			flex: 0 0 40px;
+			order: -1;
+			margin-right: 10px;
 		}
 	}
 }
+
 
 
 .check_list{
@@ -33,11 +37,10 @@
 		box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
 		overflow: hidden;
 
-		@media(max-width: $media_screen){
-			svg{
-				display: none;
-			}
+		svg{
+			display: none;
 		}
+
 
 
 		.box{
@@ -48,12 +51,13 @@
 				text-wrap: wrap;
 				flex: 1 1 auto;
 				text-align: start;
+				font-weight: 300;
 			}
 
 			&::after{
 				display: none;
 
-				@media(max-width: $media_screen){
+				@media(max-width: 1000px){
 					filter: contrast(0);
 					transition: 0.2s;
 					display: flex;
@@ -63,11 +67,7 @@
 				}
 			}
 		}
-
-		&:hover{
-			box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
-		}
-
+		box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
 		@media(max-width: $media_screen){
 			flex: 1 1 auto;
 		}
@@ -116,6 +116,95 @@
 		}
 	}
 }
+
+
+
+.advantages_hover{
+	// display: flex;
+	// flex-wrap: wrap;
+	// gap: 24px;
+	// max-width: 790px;
+
+	// @media(max-width: $media_screen){
+	// 	flex-direction: column;
+	// 	max-width: 100%;
+	// 	width: 100%;
+	// }
+
+	>div{
+	// height: 100px;
+	// flex: 0 0 calc(50% - 12px);
+	// width: 100%;
+	// position: relative;
+	// border-radius: 6px;
+	// box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+
+	svg{
+		display: none;
+	}
+	}
+
+
+	// .accordion_box{
+	// 	display: inline-block;
+	// 	.popup{
+	// 		position: absolute;
+	// 		top: 100%;
+	// 		width: 100%;
+	// 		z-index: 100;
+	// 		opacity: 0;
+	// 		visibility: hidden;
+	// 		-webkit-transition: max-height 1s; 
+  // -moz-transition: max-height 1s; 
+  // -ms-transition: max-height 1s; 
+  // -o-transition: max-height 1s; 
+  // transition: max-height 1s;  
+  // background: #e5feff;
+  // overflow: hidden;
+  // max-height: 0;
+	// 	}
+	// 	>div{
+	// 		padding: 16px 14px;
+	// 		cursor: pointer;
+	// 		border: 1px solid #000000;
+	// 		position: absolute;
+	// 		top: 0;
+	// 		left: 0;
+	// 		width: 100%;
+	// 		height: 100px;
+	// 		overflow: hidden;
+	// 		transition: 0.3s;
+
+			
+	// 	}
+
+
+	// 	.popup{
+	// 		-webkit-transition: background .1s linear;   
+	// 		-moz-transition: background .1s linear;   
+	// 		-ms-transition: background .1s linear;   
+	// 		-o-transition: background .1s linear;   
+	// 		transition: background .1s linear;   
+	// 		background: #00b8c9;
+	// 		border-radius: 3px;
+	// 		color: #fff;
+	// 		display: block;
+	// 		font-size: 30px;
+	// 		margin: 0 0 10px;
+	// 		padding: 10px;
+	// 		text-align: center;
+	// 		text-decoration: none;
+			
+	// 		&:hover{
+	// 			background: darken(#00b8c9, 15%);
+	// 		}
+			
+	// 	}
+	// }
+}
+
+
+
 
 .roadmap{
 	@media(max-width: $media_laptop){
@@ -246,5 +335,29 @@
 	@media(max-width: $media_screen){
 		flex-direction: column;
 		gap: 43px;
+	}
+}
+
+.accordion{
+	width: 100%;
+	position: relative;
+	>img{
+    position: absolute;
+    top: 0;
+    left: 0;
+		transform: translate(0px, -50%);
+    width: 100%;
+		z-index: -50;
+  }
+	
+	@media(max-width: 1000px){
+		display: none;
+	}
+}
+
+.accordion_lg{
+	display: none;
+	@media(max-width: 1000px){
+		display: block;
 	}
 }
