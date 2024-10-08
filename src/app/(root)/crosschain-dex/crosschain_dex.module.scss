@@ -12,6 +12,7 @@
 	border-radius: 8px;
 	padding: 40px adaptive($width_container, 40, 16);
 	position: relative;
+	width: 100%;
 
 	>div{
 		margin: 0;
@@ -73,7 +74,6 @@
 	flex-wrap: wrap;
 	gap: 24px;
 	max-width: 790px;
-	margin: 0 auto;
 
 	@media(max-width: $media_screen){
 		flex-direction: column;
@@ -89,11 +89,10 @@
 		box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
 		overflow: hidden;
 
-		@media(max-width: $media_screen){
-			svg{
-				display: none;
-			}
+		svg{
+			display: none;
 		}
+
 
 
 		.box{
@@ -104,12 +103,13 @@
 				text-wrap: wrap;
 				flex: 1 1 auto;
 				text-align: start;
+				font-weight: 300;
 			}
 
 			&::after{
 				display: none;
 
-				@media(max-width: $media_screen){
+				@media(max-width: 1000px){
 					filter: contrast(0);
 					transition: 0.2s;
 					display: flex;
@@ -119,11 +119,7 @@
 				}
 			}
 		}
-
-		&:hover{
-			box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
-		}
-
+		box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
 		@media(max-width: $media_screen){
 			flex: 1 1 auto;
 		}
@@ -174,6 +170,7 @@
 }
 
 
+
 .section{
 	@apply flex justify-between items-center text-[16px];
 
@@ -210,5 +207,31 @@
 	@media(max-width: $media_screen){
 		flex-direction: column;
 		align-items: center;
+	}
+}
+
+
+
+.accordion{
+	width: 100%;
+	position: relative;
+	>img{
+    position: absolute;
+    top: 50%;
+    left: 0;
+		transform: translate(0px, -50%);
+    width: 100%;
+		z-index: -50;
+  }
+	
+	@media(max-width: 1000px){
+		display: none;
+	}
+}
+
+.accordion_lg{
+	display: none;
+	@media(max-width: 1000px){
+		display: block;
 	}
 }

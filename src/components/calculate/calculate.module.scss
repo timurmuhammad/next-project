@@ -230,7 +230,6 @@
 			border-bottom: none;
 		}
 
-		// transform: scaleX();
 
 		p{
 			position: relative;
@@ -268,20 +267,23 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	// grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 	font-size: 14px;
 	border-radius: 6px;
 	gap: 20px;
+	
 
 	.box{
-		flex: 1 0 150px;
-		// max-width: fit-content;
+		flex: 1 1 150px;
+		min-width: fit-content;
 		display: flex;
 		align-items: center;
 		gap: 12px;
+	}
 
-		@media(max-width:$media-screen) {
-			max-width:none;
+	@media(max-width:460px) {
+		flex-direction: column;
+		.box{
+			flex: 0 0 auto;
 		}
 	}
 }

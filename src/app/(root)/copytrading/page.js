@@ -137,7 +137,7 @@ export default function CopyTrading() {
 
 		<div className={cn(styles.section_wrapper, styles._dApp, '_container')}>
 			<Image src={gradient} alt="image" width={1200} height={327}></Image>
-			<Image src={lines} alt="image" width={1200} height={449}></Image>
+			<Image className={styles.lines} src={lines} alt="image" width={1200} height={449}></Image>
 
 			<picture className={styles.image}>
 					<source srcSet={mediaScreenMobile.src} media="(max-width: 670px)" />

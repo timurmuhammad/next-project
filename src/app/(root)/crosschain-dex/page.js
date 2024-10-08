@@ -22,11 +22,10 @@ import wallet_money from "@/ui/icons/wallet_money.svg";
 import routing from "@/ui/icons/routing.svg";
 import trade from "@/ui/icons/trade.svg";
 import chart_square from "@/ui/icons/chart_square.svg";
-import { Slider } from '@radix-ui/react-slider'
-import { Switch } from '@radix-ui/react-switch'
 import { Calculate } from '@/components/calculate'
 import { ChecklistItem } from '@/components/checklistItem'
 import { ButtonBlue } from '@/components/buttonBlue'
+import group_bg_dex from "@/ui/images/group_bg_dex.svg";
 
 
 const planCalculate = [
@@ -36,27 +35,29 @@ const planCalculate = [
 
 
 export default function CrossChainDex() {
-	return <div className={cn("main _container", styles.body)}>
-		<Section imageSRC={cross_chain} width={355} height={295} previewTop={true}>
-			<Button
-				text='Our Products'
-			></Button>
+	return <div className={cn("main", styles.body)}>
+		<div className='_container w-full'>
+			<Section imageSRC={cross_chain} width={355} height={295} previewTop={true}>
+				<Button
+					text='Our Products'
+				></Button>
+	
+				<Typography
+					size="h1"
+					title="Cross-chain DEX trading"
+					text="Leverage the power of DEX cross-chain trading technology to ensure maximum returns and a secure investment experience."
+				></Typography>
+	
+				<ArrowButton
+					text='Sign up'
+				></ArrowButton>
+			</Section>
+		</div>
 
-			<Typography
-				size="h1"
-				title="Cross-chain DEX trading"
-				text="Leverage the power of DEX cross-chain trading technology to ensure maximum returns and a secure investment experience."
-			></Typography>
-
-			<ArrowButton
-				text='Sign up'
-			></ArrowButton>
-		</Section>
 
 
 
-
-		<div className={styles.blue}>
+		<div className={cn(styles.blue, '_container')}>
 		<Typography
 				size="h2"
 				title="What is Cross Chain DEX-Trading"
@@ -68,15 +69,17 @@ export default function CrossChainDex() {
 
 
 
-		<Typography
-			size="h2"
-			title="Key Components and Features"
-			text="By connecting different blockchains, cross-chain DEXs can access a wider range of assets and liquidity pools, improving the overall liquidity available to us."
-		></Typography>
+		<div className='_container w-full'>
+			<Typography
+				size="h2"
+				title="Key Components and Features"
+				text="By connecting different blockchains, cross-chain DEXs can access a wider range of assets and liquidity pools, improving the overall liquidity available to us."
+			></Typography>
+		</div>
 
 
 
-		<div className={styles.program}>
+		<div className={cn(styles.program, '_container')}>
 			<div className={styles.card}>
 				<Image src={reshot_atom} alt="img" width={60} height={60}></Image>
 				<Typography
@@ -135,115 +138,223 @@ export default function CrossChainDex() {
 
 
 
-		<Typography
-			size="h2"
-			title="Earn with Cross-chain DEX trading"
-			text="Our comprehensive money management services are designed to leverage the power of cross-chain DEX trading technology, providing you with maximum returns and a secure investment experience."
-		></Typography>
-
-
-
-		<Accordion type="single" collapsible>
-      <div className={styles.advantages}>
-				<AccordionItem value="item-1">
-					<AccordionTrigger> 
-						<div className={styles.box}>
-							<Image src={discount_shape} width={42} height={42} alt="icon"></Image>
-							<p className={styles.text}>           Transaction Fees Management</p>
-						</div>
-					</AccordionTrigger>
-					<AccordionContent>
-						Our team of experts ready to help you with any questions through email, web chat or phone
-					</AccordionContent>
-				</AccordionItem>
-
-				<AccordionItem value="item-2">
-					<AccordionTrigger>
-						<div className={styles.box}>
-							<Image src={chart_success} width={42} height={42} alt="icon"></Image>
-							<p className={styles.text}>Strategic Advertising and Partnerships</p>
-						</div>
-					</AccordionTrigger>
-					<AccordionContent>
-						Our team of experts ready to help you with any questions through email, web chat or phone
-					</AccordionContent>
-				</AccordionItem>
-
-				<AccordionItem value="item-3">
-					<AccordionTrigger>
-						<div className={styles.box}>
-							<Image src={wallet_money} width={42} height={42} alt="icon"></Image>
-							<p className={styles.text}>Liquidity Provision</p>
-						</div>
-					</AccordionTrigger>
-					<AccordionContent>
-						Our team of experts ready to help you with any questions through email, web chat or phone
-					</AccordionContent>
-				</AccordionItem>
-
-				<AccordionItem value="item-4">
-					<AccordionTrigger>
-						<div className={styles.box}>
-							<Image src={routing} width={42} height={42} alt="icon"></Image>
-							<p className={styles.text}>Cross-Chain Investment Solutions</p>
-						</div>
-					</AccordionTrigger>
-					<AccordionContent>
-						Our team of experts ready to help you with any questions through email, web chat or phone
-					</AccordionContent>
-				</AccordionItem>
-
-				<AccordionItem value="item-5">
-					<AccordionTrigger>
-						<div className={styles.box}>
-							<Image src={trade} width={42} height={42} alt="icon"></Image>
-							<p className={styles.text}>Token Management</p>
-						</div>
-					</AccordionTrigger>
-					<AccordionContent>
-						Our team of experts ready to help you with any questions through email, web chat or phone
-					</AccordionContent>
-				</AccordionItem>
-
-				<AccordionItem value="item-6">
-					<AccordionTrigger>
-						<div className={styles.box}>
-							<Image src={chart_square} width={42} height={42} alt="icon"></Image>
-							<p className={styles.text}>Data-Driven Investment Decisions</p>
-						</div>
-					</AccordionTrigger>
-					<AccordionContent>
-						Our team of experts ready to help you with any questions through email, web chat or phone
-					</AccordionContent>
-				</AccordionItem>
-			</div>
-		</Accordion>
-
-
-
-		<Typography
-			size="h2"
-			title="Calculate your profit"
-		></Typography>
-
-
-
-		<Calculate
-			planCalculate={planCalculate}
-		></Calculate>
-
-
-
-		<Typography
-			size="h2"
-			title="Why us?"
-			text="Our comprehensive money management services are designed to leverage the power of cross-chain DEX trading technology, providing you with maximum returns and a secure investment experience."
-		></Typography>
+		<div className='_container w-full'>
+			<Typography
+				size="h2"
+				title="Earn with Cross-chain DEX trading"
+				text="Our comprehensive money management services are designed to leverage the power of cross-chain DEX trading technology, providing you with maximum returns and a secure investment experience."
+			></Typography>
+		</div>
 
 
 
 
-<div className={styles.section}>
+
+<div className={styles.accordion}>
+    <Image src={group_bg_dex} width={0} height={923} sizes="100vw" alt="icon"></Image>
+      <div className="accordion_body _container">
+        <div className="accordion_wrapper">
+          <div className="accordion">
+            <p className="accordion-toggle"><Image src={discount_shape} width={42} height={42} alt="icon"></Image>
+            <a>Transaction Fees Management
+						</a></p>
+            <div className="accordion-content">
+              <div className="accordion-inner">
+                <p>Our team of experts ready to help you with any questions through email, web chat or phone</p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div className="accordion_wrapper">
+          <div className="accordion">
+            <p className="accordion-toggle"><Image src={chart_success} width={42} height={42} alt="icon"></Image>
+            <a>Strategic Advertising and Partnerships
+						</a></p>
+            <div className="accordion-content">
+              <div className="accordion-inner">
+                <p>Our team of experts ready to help you with any questions through email, web chat or phone</p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div className="accordion_wrapper">
+          <div className="accordion">
+            <p className="accordion-toggle"><Image src={wallet_money} width={42} height={42} alt="icon"></Image>
+            <a>Liquidity Provision
+						</a></p>
+            <div className="accordion-content">
+              <div className="accordion-inner">
+                <p>Our team of experts ready to help you with any questions through email, web chat or phone</p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div className="accordion_wrapper">
+          <div className="accordion">
+            <p className="accordion-toggle"><Image src={routing} width={42} height={42} alt="icon"></Image>
+            <a>Cross-Chain Investment Solutions
+						</a></p>
+            <div className="accordion-content">
+              <div className="accordion-inner">
+                <p>Our team of experts ready to help you with any questions through email, web chat or phone
+								</p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div className="accordion_wrapper">
+          <div className="accordion">
+            <p className="accordion-toggle"><Image src={trade} width={42} height={42} alt="icon"></Image>
+            <a>Token Management
+						</a></p>
+            <div className="accordion-content">
+              <div className="accordion-inner">
+                <p>Our team of experts ready to help you with any questions through email, web chat or phone
+								</p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div className="accordion_wrapper">
+          <div className="accordion">
+              <p className="accordion-toggle">
+                <Image src={chart_square} width={42} height={42} alt="icon"></Image>
+                <a>Data-Driven Investment Decisions
+								</a>
+              </p>
+              <div className="accordion-content">
+                <div className="accordion-inner">
+                  <p>Our team of experts ready to help you with any questions through email, web chat or phone
+									</p>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+      <div className={styles.accordion_lg}>
+        <Accordion type="single" collapsible>
+        <div className={cn(styles.advantages, "_container")}>
+            <AccordionItem value="item-1">
+              <AccordionTrigger> 
+                <div className={styles.box}>
+                  <Image src={discount_shape} width={42} height={42} alt="icon"></Image>
+                  <p className={styles.text}>Transaction Fees Management
+									</p>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                Our team of experts ready to help you with any questions through email, web chat or phone
+              </AccordionContent>
+            </AccordionItem>
+  
+            <AccordionItem value="item-2">
+              <AccordionTrigger>
+                <div className={styles.box}>
+                  <Image src={chart_success} width={42} height={42} alt="icon"></Image>
+                  <p className={styles.text}>Strategic Advertising and Partnerships
+									</p>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                Our team of experts ready to help you with any questions through email, web chat or phone
+              </AccordionContent>
+            </AccordionItem>
+  
+            <AccordionItem value="item-3">
+              <AccordionTrigger>
+                <div className={styles.box}>
+                  <Image src={wallet_money} width={42} height={42} alt="icon"></Image>
+                  <p className={styles.text}>Liquidity Provision
+									</p>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                Our team of experts ready to help you with any questions through email, web chat or phone
+              </AccordionContent>
+            </AccordionItem>
+  
+            <AccordionItem value="item-4">
+              <AccordionTrigger>
+                <div className={styles.box}>
+                  <Image src={routing} width={42} height={42} alt="icon"></Image>
+                  <p className={styles.text}>Cross-Chain Investment Solutions
+									</p>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                Our team of experts ready to help you with any questions through email, web chat or phone
+              </AccordionContent>
+            </AccordionItem>
+  
+            <AccordionItem value="item-5">
+              <AccordionTrigger>
+                <div className={styles.box}>
+                  <Image src={trade} width={42} height={42} alt="icon"></Image>
+                  <p className={styles.text}>Token Management
+									</p>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                Our team of experts ready to help you with any questions through email, web chat or phone
+              </AccordionContent>
+            </AccordionItem>
+  
+            <AccordionItem value="item-6">
+              <AccordionTrigger>
+                <div className={styles.box}>
+                  <Image src={chart_square} width={42} height={42} alt="icon"></Image>
+                  <p className={styles.text}>Data-Driven Investment Decisions
+									</p>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent>
+                Our team of experts ready to help you with any questions through email, web chat or phone
+              </AccordionContent>
+            </AccordionItem>
+          </div>
+        </Accordion>
+      </div>
+
+
+
+		<div className='_container w-full'>
+			<Typography
+				size="h2"
+				title="Calculate your profit"
+			></Typography>
+		</div>
+
+
+
+		<div className='_container w-full'>
+			<Calculate
+				planCalculate={planCalculate}
+			></Calculate>
+		</div>
+
+
+
+		<div className='_container w-full'>
+			<Typography
+				size="h2"
+				title="Why us?"
+				text="Our comprehensive money management services are designed to leverage the power of cross-chain DEX trading technology, providing you with maximum returns and a secure investment experience."
+			></Typography>
+		</div>
+
+
+
+
+<div className={cn(styles.section, '_container')}>
 	<p className="max-w-[417.55px] text-[16px]">
 		By choosing our company, you benefit from a comprehensive suite of services designed to
 		optimize your investments in the dynamic world of cross-chain DEX trading. Our expertise,
@@ -292,8 +403,10 @@ export default function CrossChainDex() {
 	</div>
 
 
-	<ButtonBlue
-		text='Start now'
-	></ButtonBlue>
+	<div className='_container w-full'>
+		<ButtonBlue
+			text='Start now'
+		></ButtonBlue>
+	</div>
 	</div>
 }

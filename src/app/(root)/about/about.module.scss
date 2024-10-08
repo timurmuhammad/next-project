@@ -120,24 +120,11 @@
 
 
 .advantages_hover{
-	// display: flex;
-	// flex-wrap: wrap;
-	// gap: 24px;
-	// max-width: 790px;
 
-	// @media(max-width: $media_screen){
-	// 	flex-direction: column;
-	// 	max-width: 100%;
-	// 	width: 100%;
-	// }
+
 
 	>div{
-	// height: 100px;
-	// flex: 0 0 calc(50% - 12px);
-	// width: 100%;
-	// position: relative;
-	// border-radius: 6px;
-	// box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+	
 
 	svg{
 		display: none;
@@ -145,62 +132,7 @@
 	}
 
 
-	// .accordion_box{
-	// 	display: inline-block;
-	// 	.popup{
-	// 		position: absolute;
-	// 		top: 100%;
-	// 		width: 100%;
-	// 		z-index: 100;
-	// 		opacity: 0;
-	// 		visibility: hidden;
-	// 		-webkit-transition: max-height 1s; 
-  // -moz-transition: max-height 1s; 
-  // -ms-transition: max-height 1s; 
-  // -o-transition: max-height 1s; 
-  // transition: max-height 1s;  
-  // background: #e5feff;
-  // overflow: hidden;
-  // max-height: 0;
-	// 	}
-	// 	>div{
-	// 		padding: 16px 14px;
-	// 		cursor: pointer;
-	// 		border: 1px solid #000000;
-	// 		position: absolute;
-	// 		top: 0;
-	// 		left: 0;
-	// 		width: 100%;
-	// 		height: 100px;
-	// 		overflow: hidden;
-	// 		transition: 0.3s;
-
-			
-	// 	}
-
-
-	// 	.popup{
-	// 		-webkit-transition: background .1s linear;   
-	// 		-moz-transition: background .1s linear;   
-	// 		-ms-transition: background .1s linear;   
-	// 		-o-transition: background .1s linear;   
-	// 		transition: background .1s linear;   
-	// 		background: #00b8c9;
-	// 		border-radius: 3px;
-	// 		color: #fff;
-	// 		display: block;
-	// 		font-size: 30px;
-	// 		margin: 0 0 10px;
-	// 		padding: 10px;
-	// 		text-align: center;
-	// 		text-decoration: none;
-			
-	// 		&:hover{
-	// 			background: darken(#00b8c9, 15%);
-	// 		}
-			
-	// 	}
-	// }
+	
 }
 
 

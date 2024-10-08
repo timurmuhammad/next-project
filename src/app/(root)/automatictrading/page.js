@@ -30,14 +30,48 @@ import diagram from "@/ui/icons/diagram.svg";
 import compoundInterest from "@/ui/icons/compound_interest.svg";
 import trading from "@/ui/icons/trading.svg";
 import { ButtonBlue } from "@/components/buttonBlue"
+import { useState } from "react"
+import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/shadcn/ui/accordion.tsx"
 
 
-// export const metadata = {
-// 	title: 'Automatic Trading',
-// 	description: ''
-// }
+const strategies = [
+	{
+		img: lookingglassCheck.src,
+		key: 'item-1',
+		title: 'Trend Following',
+		text: 'Using technical indicators to identify and track market trends',
+		list: ['Market Scanning', 'Automated Trading', 'Latency Management', 'Profit Calculation'],
+		details: 'This strategy capitalize on price discrepancies of the same cryptocurrency across different exchanges. The software buys the cryptocurrency on one exchange where the price is lower and sells it on another where the price is higher, pocketing the difference as profit.'
+	},
+	{
+		img: marketMaking.src,
+		key: 'item-2',
+		title: 'Market Making',
+		text: 'Profit from the spread between the buy and sell prices.',
+		list: ['Automated Trading', 'Latency Management', 'Profit Calculation', 'Market Scanning'],
+		details: 'Profit from the spread between the buy and sell prices. The software buys the cryptocurrency on one exchange where the price is lower and sells it on another where the price is higher, pocketing the difference as profit.'
+	},
+	{
+		img: arbitrage.src,
+		key: 'item-3',
+		title: 'Arbitrage',
+		text: 'Earnings from price differences on exchanges',
+		list: [ 'Profit Calculation', 'Market Scanning', 'Automated Trading', 'Latency Management'],
+		details: 'Earnings from price differences on exchanges The software buys the cryptocurrency on one exchange where the price is lower and sells it on another where the price is higher, pocketing the difference as profit.'
+	},
+	{
+		img: scalping.src,
+		key: 'item-4',
+		title: 'Scalping',
+		text: 'High-frequency trading to profit from small price movements.',
+		list: ['Latency Management', 'Profit Calculation', 'Market Scanning', 'Automated Trading'],
+		details: 'High-frequency trading to profit from small price movements. The software buys the cryptocurrency on one exchange where the price is lower and sells it on another where the price is higher, pocketing the difference as profit.'	}
+]
+
 
 export default function AutomaticTrading() {
+	const [strategiesUsed, setStrategiesUsed] = useState(strategies[0])
+
 	return <div className="main _container">
 		<div className={styles.section}>
 			<Section imageSRC={lottie} width={356} height={340} previewTop={true}>
@@ -83,76 +117,78 @@ export default function AutomaticTrading() {
 	
 	
 			<div className={styles.strategies_used}>
-				<div className={styles.card}>
-					<Image src={lookingglassCheck} width={84} height={84} alt="icon"></Image>
-		
-					<Typography
-					size="h4"
-					title="Market Making"
-					text="Profit from the spread between the buy and sell prices."
-				></Typography>
-				</div>
-		
-				<div className={styles.card}>
-					<Image src={marketMaking} width={84} height={84} alt="icon"></Image>
-					
-					<Typography
-					size="h4"
-					title="Arbitrage"
-					text="Earnings from price differences on exchanges"
-				></Typography>
-				</div>
-	
+				{strategies.map((item, index) => (
+					<div key={index} onClick={() => setStrategiesUsed(item)} className={cn(styles.card, { [styles.active]: item.title === strategiesUsed.title })}>
+						<Image src={item.img} width={84} height={84} alt="icon"></Image>
+
+						<Typography
+							size="h4"
+							title={item.title}
+							text={item.text}
+						></Typography>
+					</div>
+				))}
+
 				<div className={styles.trend}>
 					<h6 className="text-[16px] text-[#00b2c8]">
-						Trend Following
+						{strategiesUsed.title}
 					</h6>
 					<p className="text-[12px] text-[#303030]">
-						This strategy capitalize on price discrepancies of the same cryptocurrency across different
-						exchanges. The software buys the cryptocurrency on one exchange where the price is lower and
-						sells it on another where the price is higher, pocketing the difference as profit.
+						{strategiesUsed.details}
 					</p>
-					<div className="flex gap-6">
-	          <div className={styles.check_list}>
-	            <ChecklistItem
-	    					text="Market Scanning"
-	    				></ChecklistItem>
-	            <ChecklistItem
-	              text="Latency Management"
-	    				></ChecklistItem>
-	          </div>
-	          <div className={styles.check_list}>
-	            <ChecklistItem
-	    					text="Automated Trading"
-	    				></ChecklistItem>
-	            <ChecklistItem
-	    					text="Profit Calculation"
-	    				></ChecklistItem>
-	          </div>
-	        </div>
-			</div>
-		
-				<div className={styles.card}>
-					<Image src={arbitrage} width={84} height={84} alt="icon"></Image>
-					
-					<Typography
-					size="h4"
-					title="Scalping"
-					text="High-frequency trading to profit from small price movements."
-				></Typography>
+
+					<div className={styles.check_list}>
+						{strategiesUsed.list.map((item, index) => (
+							<div key={index}>
+								<ChecklistItem
+									text={item}
+								></ChecklistItem>
+							</div>
+						))}
+					</div>
 				</div>
-		
-				<div className={styles.card}>
-					<Image src={scalping} width={84} height={84} alt="icon"></Image>
-					
-					<Typography
-					size="h4"
-					title="Trend Following"
-					text="Using technical indicators to identify and track market trends"
-				></Typography>
-				</div>
-	
 			</div>
+
+
+			<div className={styles.accordion_lg}>
+			<Accordion defaultValue={strategiesUsed.key} type="single" collapsible>
+        {strategies.map((item, index) => (
+            <AccordionItem  key={item.key} value={item.key}>
+              <AccordionTrigger> 
+								<div className={styles.card}>
+									<Image src={item.img} width={84} height={84} alt="icon"></Image>
+
+									<Typography
+										size="h4"
+										title={item.title}
+										text={item.text}
+									></Typography>
+								</div>
+              </AccordionTrigger>
+              <AccordionContent>
+							<div className={styles.trend}>
+								<h6 className="text-[16px] text-[#00b2c8]">
+									{item.title}
+								</h6>
+								<p className="text-[12px] text-[#303030]">
+									{item.details}
+								</p>
+
+								<div className={styles.check_list}>
+									{item.list.map((item, index) => (
+										<div key={index}>
+											<ChecklistItem
+												text={item}
+											></ChecklistItem>
+										</div>
+									))}
+								</div>
+							</div>
+              </AccordionContent>
+            </AccordionItem>
+        ))}
+				</Accordion>
+      </div>
 		</div>
 
 

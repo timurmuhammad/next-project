@@ -3,12 +3,8 @@
 import { useState } from 'react'
 import styles from './calculate.module.scss'
 import cn from 'classnames'
-import { Typography } from '../typography'
 import Image from 'next/image'
-import dynamicImg from "@/ui/icons/dynamic.svg";
-import staticImg from "@/ui/icons/static.svg";
 import { Slider } from '@/shadcn/ui/slider'
-import { Switch } from '@/shadcn/ui/switch'
 import candle from "@/ui/icons/candle.svg";
 import sell from "@/ui/icons/sell.svg";
 import clockHistoryBlack from "@/ui/icons/clock-history-black.svg";
@@ -106,11 +102,6 @@ export const Calculate: React.FC<Props> = ({ planCalculate }) => {
 								
 							</div>
 						</div>
-		
-						{/* <div className={styles.switch}>
-							<Switch></Switch>
-							<Switch></Switch>
-						</div> */}
 					</div>
 				</div>
 		

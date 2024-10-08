@@ -34,10 +34,6 @@ import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/sh
 import { ButtonBlue } from "@/components/buttonBlue"
 import group_bg from "@/ui/images/group_bg.svg";
 
-// export const metadata = {
-// 	title: "About Us",
-// 	description: ""
-// }
 
 export default function About() {
 	return <div className="main">

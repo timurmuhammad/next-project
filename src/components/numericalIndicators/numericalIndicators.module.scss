@@ -10,9 +10,12 @@
 
 	h6{
 		font-size: adaptive($width_container, 36, 24);
+		font-weight: 300;
 	}
 
 	p{
 		font-size: adaptive($width_container, 16, 14);
+		letter-spacing: 4px;
+		text-transform: uppercase;
 	}
 }

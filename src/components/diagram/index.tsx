@@ -317,10 +317,43 @@ export const Diagram = () => {
 			<Slider defaultValue={[2500]} max={10000} step={1}></Slider>
 							
 		
-			<div className='flex items-center justify-between'>
+			<div className='flex items-center gap-[6px] justify-between'>
 				<p className='flex items-center gap-[6px] text-[14px] text-black'>Compounding<Switch></Switch></p>
 				<p className='flex items-center gap-[6px] text-[14px] text-black'>Reactivation<Switch></Switch></p>
 			</div>
+
+			<p className="  text-[16px] text-center font-[400] ">Profit calculation</p>
+
+			<div className="flex justify-center  self-stretch   gap-[80px] px-[20px]">
+				<div className="flex flex-col  items-center   ">
+					<p className="  text-[16px]  text-center uppercase ">
+						daily
+					</p>
+					<p className="  text-[12px]  uppercase text-[#605e5e]">~$0.8</p>
+				</div>
+				<div className="flex flex-col  items-center    ">
+					<p className="  text-[16px]  text-center uppercase ">
+						weekly
+					</p>
+					<p className="  text-[12px]  uppercase text-[#605e5e]">~$5.6</p>
+				</div>
+			</div>
+
+			<div className="flex justify-center  self-stretch   gap-[80px] px-[20px]">
+				<div className="flex flex-col  items-center   ">
+					<p className="  text-[16px]  text-center uppercase ">
+						ROI
+					</p>
+					<p className="  text-[12px]  uppercase text-[#605e5e]">~$12</p>
+				</div>
+				<div className="flex flex-col  items-center    ">
+					<p className="  text-[16px]  text-center uppercase ">
+						Total
+					</p>
+					<p className="  text-[12px]  uppercase text-[#605e5e]">~$22</p>
+				</div>
+			</div>
+
 		</div>
 	</div>
 }

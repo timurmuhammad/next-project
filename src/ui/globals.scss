@@ -59,16 +59,6 @@
   }
 }
 
-// @layer base {
-//   * {
-//     @apply border-border;
-//   }
-//   body {
-//     @apply bg-background text-foreground;
-//   }
-// }
-
-
 
 
 @import '@/ui/vars-and-utils.scss';
@@ -225,7 +215,7 @@ main{
     right: 0;
     bottom: 0;
     margin: 0;
-    transition: margin 0.2s !important;
+    transition: margin 0.25s !important;
   }
   
   &:after{
@@ -243,11 +233,11 @@ main{
     position: relative;
     z-index: 8;
     .accordion-content{
-      -webkit-transition: max-height 1s; 
-      -moz-transition: max-height 1s; 
-      -ms-transition: max-height 1s; 
-      -o-transition: max-height 1s; 
-      transition: max-height 1s;  
+      -webkit-transition: max-height 2s; 
+      -moz-transition: max-height 2s; 
+      -ms-transition: max-height 2s; 
+      -o-transition: max-height 2s; 
+      transition: max-height 2s;  
       max-height: 300px;
       @apply pb-[32px] pt-0 px-[14px];
     }
@@ -276,11 +266,6 @@ main{
 
 .accordion-toggle{
   height: 74px;
-  -webkit-transition: background 3s linear;   
-  -moz-transition: background 3s linear;   
-  -ms-transition: background 3s linear;   
-  -o-transition: background 3s linear;   
-  transition: background 3s linear;   
   color: #000;
   @apply flex text-lg gap-[12px] px-[14px] py-[16px] items-center justify-between flex-1;
   >a{
@@ -320,6 +305,7 @@ main{
   flex: 0 0 calc(50% - 12px);
   display: inline-block;
   box-shadow: 0px 0px 4.3px 0 rgba(0,0,0,0.1);
+  border-radius: 6px;
 }
 
 
