@@ -3,7 +3,7 @@
 import styles from './activeplans.module.scss'
 import cn from 'classnames'
 import Image from 'next/image';
-import { useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { usePathname } from "next/navigation";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/shadcn/ui/breadcrumb';
 import Link from "next/link";
@@ -71,6 +71,41 @@ export default function ActivePlans() {
 	const [ plan, setPlan ] = useState('List of active Plans')
 	const [ value, setValue ] = useState('')
 
+	const tableRef = useRef(null);
+  const scrollRef = useRef(null);
+  const [scrollWidth, setScrollWidth] = useState(0);
+
+  useEffect(() => {
+    if (tableRef.current) {
+      setScrollWidth(tableRef.current.scrollWidth);
+    }
+  }, [tableRef]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (tableRef.current) {
+        setScrollWidth(tableRef.current.scrollWidth);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const handleScroll = (e) => {
+    if (tableRef.current) {
+      tableRef.current.scrollLeft = e.target.scrollLeft;
+    }
+  };
+
+  const handleTableScroll = (e) => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollLeft = e.target.scrollLeft;
+    }
+  };
+
 	return <div className="main_auth _container">
 		<div className={styles.breadcrumb}>
 			<Breadcrumb>
@@ -124,7 +159,7 @@ export default function ActivePlans() {
 							<div>
 								<div className="flex">
 									<div className="flex  items-center    gap-[16px]">
-										<Image src={market_making} width={60} height={60} alt=''></Image>
+										<Image src={market_making} width={60} height={60} alt='icon'></Image>
 										<div className="flex flex-col justify-center    ">
 											<p className="  text-[16px] font-medium">
 												Copy Trading
@@ -222,13 +257,16 @@ export default function ActivePlans() {
 
 							<div className={styles.trigger}>
 								<AccordionTrigger className="pb-0 pt-0 pl-0 pr-0">
-									<p className="  text-[14px] ">Accrual statistics</p>
-									<div className={styles.arrow}><Image src={triangle_blue} width={20} height={20} alt='icon'></Image></div>
+									<div className={styles.button_blue}><p>Detailed</p></div>
 								</AccordionTrigger>
 							</div>
 						</div>
 					</div>
 					<AccordionContent className={styles.content}>
+						<div className='scroll' ref={scrollRef} onScroll={handleScroll}>
+							<div className="h-[1px]" style={{ width: `${scrollWidth - 1}px` }}></div>
+						</div>
+						<div className="overflow-x-auto" ref={tableRef} onScroll={handleTableScroll}>
 						<Table>
 							<TableCaption>
 								<div className={styles.button_border}>
@@ -261,19 +299,20 @@ export default function ActivePlans() {
 								))}
 							</TableBody>
 						</Table>
+						</div>
 					</AccordionContent>
 				</AccordionItem>
 
 
 
 
-				<AccordionItem className={styles.item} value='copytrading'>
+				<AccordionItem className={styles.item} value='automaticTrading'>
 					<div className={styles.card}>
 						<div className={styles.list_top}>
 							<div>
 								<div className="flex">
 									<div className="flex  items-center    gap-[16px]">
-										<Image src={market_making} width={60} height={60} alt=''></Image>
+										<Image src={market_making} width={60} height={60} alt='icon'></Image>
 										<div className="flex flex-col justify-center    ">
 											<p className="  text-[16px] font-medium">
 											Automatic Trading
@@ -371,12 +410,13 @@ export default function ActivePlans() {
 
 							<div className={styles.trigger}>
 								<AccordionTrigger className="pb-0 pt-0 pl-0 pr-0">
-									<p className="  text-[14px] ">Accrual statistics</p>
-									<div className={styles.arrow}><Image src={triangle_blue} width={20} height={20} alt='icon'></Image></div>
+									<div className={styles.button_blue}><p>Detailed</p></div>
 								</AccordionTrigger>
 							</div>
+
 						</div>
 					</div>
+					
 					<AccordionContent className={styles.content}>
 						<Table>
 							<TableCaption>

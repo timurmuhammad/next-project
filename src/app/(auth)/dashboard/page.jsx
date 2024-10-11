@@ -1,11 +1,21 @@
 'use client'
 
+
+import btc from '@/ui/icons/btc1.svg'
+import clip from "@/ui/icons/clip.svg";
+import invested from "@/ui/icons/invested.svg";
+import withdrawn from "@/ui/icons/withdrawn.svg";
+import earned from "@/ui/icons/earned.svg";
+import briefcase from '@/ui/icons/briefcase.svg'
+import gift from '@/ui/icons/gift.svg'
+import refresh_square from '@/ui/icons/refresh_square.svg'
+
+
 import dynamic from 'next/dynamic';
 import { Progress } from '@/shadcn/ui/progress'
 import styles from './dashboard.module.scss'
 import cn from 'classnames'
 import Image from 'next/image'
-import btc from "@/ui/icons/btc.svg";
 import usdt from "@/ui/icons/usdt.svg";
 import eth from "@/ui/icons/eth.svg";
 import { DiagramAuth } from '@/components/diagramAuth';
@@ -13,12 +23,133 @@ import rocket from "@/ui/icons/rocket.png";
 import { Carousel, CarouselContent, CarouselItem } from '@/shadcn/ui/carousel';
 import Link from 'next/link';
 import { media } from '@/types/blogType';
-import { useState } from 'react';
 import automatic_trading from "@/ui/icons/automatic_trading.svg";
 import copy_trading_auth from "@/ui/icons/copy_trading_auth.svg";
 import { UnderlineButton } from '@/components/underlineButton'
 import { TrendingUp } from "lucide-react"
 const Chart = dynamic(() => import('@/components/chart'));
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/shadcn/ui/accordion';
+import market_making from '@/ui/icons/market-making.svg'
+import { Switch } from '@/shadcn/ui/switch'
+
+import { useRef, useState, useEffect } from 'react';
+
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/shadcn/ui/table"
+import { ButtonBorder } from '@/components/buttonBorder';
+
+const accruals = [
+  {
+    date: "04.04.24",
+    currency: btc.src,
+    percent: "2.86%",
+		amount: '50.00',
+		clip: clip.src,
+		status: 'Pending',
+		typeImage: withdrawn.src,
+		typeText: 'Withdrawal',
+	},
+	{
+    date: "04.04.24",
+    currency: btc.src,
+    percent: "2.86%",
+		amount: '50.00',
+		clip: clip.src,
+		status: 'Completed',
+		typeImage: earned.src,
+		typeText: 'Profits',
+		opacity: true,
+	},
+  {
+    date: "03.04.24",
+    currency: btc.src,
+    percent: "2.71%",
+		amount: '50.00',
+		clip: clip.src,
+		status: 'Completed',
+		typeImage: invested.src,
+		typeText: 'Replenishment',
+	},
+  {
+    date: "04.05.24",
+		currency: btc.src,
+    percent: "2.52%",
+		amount: '2550.00',
+		clip: clip.src,
+		status: 'Canceled',
+		typeImage: refresh_square.src,
+		typeText: 'Exchange',
+	},
+  {
+    date: "02.04.24",
+		currency: btc.src,
+    percent: "2.90%",
+		amount: '300.00',
+		clip: clip.src,
+		status: 'Completed',
+		typeImage: gift.src,
+		typeText: 'Bonuses',
+	},
+  {
+    date: "02.04.24",
+		currency: btc.src,
+    percent: "2.60%",
+		amount: '300.00',
+		clip: clip.src,
+		status: 'Pending',
+		typeImage: earned.src,
+		typeText: 'Withdrawal',
+	},
+	{
+    date: "04.05.24",
+		currency: btc.src,
+    percent: "2.60%",
+		amount: '300.00',
+		clip: clip.src,
+		status: 'Completed',
+		typeImage: invested.src,
+		typeText: 'Profits',
+		opacity: true,
+	},
+	{
+    date: "02.04.24",
+		currency: btc.src,
+    percent: "2.60%",
+		amount: '300.00',
+		clip: clip.src,
+		status: 'Completed',
+		typeImage: withdrawn.src,
+		typeText: 'Replenishment',
+	},
+	{
+    date: "02.04.24",
+		currency: btc.src,
+    percent: "2.60%",
+		amount: '300.00',
+		clip: clip.src,
+		status: 'Canceled',
+		typeImage: refresh_square.src,
+		typeText: 'Exchange',
+	},
+	{
+    date: "02.04.24",
+		currency: btc.src,
+    percent: "2.60%",
+		amount: '300.00',
+		clip: clip.src,
+		status: 'Completed',
+		typeImage: gift.src,
+		typeText: 'Exchange',
+	},
+]
+
 
 const tabs = [
 	{name: 'Automatic Trading'},
@@ -30,11 +161,48 @@ export default function Dashboard() {
 	const [currentSlide, setCurrentSlide] = useState(0)
 	const [currentSlidesshow, setCurrentSlidesshow] = useState(0)
 	const [ tab, setTab ] = useState(tabs[0])
+	const [ changeText, setChangeText ] = useState(false)
+	const [openAccordion, setOpenAccordion] = useState(false)
+
+	const tableRef = useRef(null);
+  const scrollRef = useRef(null);
+  const [scrollWidth, setScrollWidth] = useState(0);
+
+  useEffect(() => {
+    if (tableRef.current) {
+      setScrollWidth(tableRef.current.scrollWidth);
+    }
+  }, [tableRef]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (tableRef.current) {
+        setScrollWidth(tableRef.current.scrollWidth);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const handleScroll = (e) => {
+    if (tableRef.current) {
+      tableRef.current.scrollLeft = e.target.scrollLeft;
+    }
+  };
+
+  const handleTableScroll = (e) => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollLeft = e.target.scrollLeft;
+    }
+  };
 
 	return <div className={cn(styles.inner, '_container')}>
 		<div className={styles.main}>
 			<div className="flex justify-between items-center gap-[32px]">
-				<p className="  text-[14px] font-[500]  uppercase text-[#828282]">
+				<p className="  text-[14px] font-[400]  uppercase text-[#828282]">
 					Wallets
 				</p>
 				<div className={styles.progress}>
@@ -47,12 +215,12 @@ export default function Dashboard() {
 
 			<div className={styles.counters}>
 				<div className={styles.counter}>
-					<div className="flex  items-center   gap-[16px] px-[16px]">
+					<div className="flex  items-center   gap-[16px] px-[16px] w-full">
 						<div className={styles.icon}><Image src={btc} width={50} height={50} alt='icon'></Image></div>
-						<div className="flex flex-col justify-center gap-[8px]">
+						<div className="flex flex-col justify-center gap-[8px] w-full flex-1">
 							<p className="text-[14px] font-[400]">Bitcoin </p>
-							<p className='text-[16px]'>
-								BTC 0.000000
+							<p onClick={() => setChangeText(!changeText)} className={cn(styles.p, {[styles.active]: changeText})}>
+								<a>BTC 0.000000</a>
 							</p>
 						</div>
 					</div>
@@ -67,7 +235,7 @@ export default function Dashboard() {
 				</div>
 	
 				<div className={styles.counter}>
-					<div className="flex  items-center   gap-[16px] px-[16px]">
+					<div className="flex  items-center   gap-[16px] px-[16px] w-full">
 						<div className={styles.icon}><Image src={usdt} width={50} height={50} alt='icon'></Image></div>
 						<div className="flex flex-col justify-center gap-[8px]">
 							<p className="text-[14px] font-[400]">Tether TRC20 </p>
@@ -99,7 +267,7 @@ export default function Dashboard() {
 
 
 
-				<p className=" flex-shrink-0 text-[14px] font-medium  uppercase text-[#828282]"> Investment Activation </p>
+				<p className="text-[14px] font-[400]  uppercase text-[#828282]"> Investment Activation </p>
 
 
 
@@ -110,7 +278,7 @@ export default function Dashboard() {
       <p className="  text-[20px]  ">
         Automatic Trading
       </p>
-      <p className="   max-w-[265px] text-[16px]  ">
+      <p className="   max-w-[265px] text-[16px] font-[300] ">
         Short term strategies with fixed or flexible returns
       </p>
       <div className='text-[16px]'>
@@ -124,7 +292,7 @@ export default function Dashboard() {
   <div className={styles.trading}>
     <div className="flex flex-col justify-center    gap-[20px] flex-1">
       <p className="  text-[20px]  ">Copy Trading</p>
-      <p className="   max-w-[265px] text-[16px]  ">
+      <p className="   max-w-[265px] text-[16px] font-[300] ">
         Long-term strategies with flexible and highest returns
       </p>
       <div className="  w-[156px] h-[27px] ">
@@ -154,7 +322,7 @@ export default function Dashboard() {
 				</div>
 
 
-				<div className={styles.card}>
+				<div className={styles.card_item}>
 					<div className="flex flex-col justify-between items-center  flex-shrink-0 w-[188px] relative gap-[24px]">
 						<p className=" flex-shrink-0 text-[14px]   ">
 							Assets Allocation
@@ -266,13 +434,76 @@ export default function Dashboard() {
 
 
 
-			<p className="  font-medium text-[14px]  uppercase text-[#828282]">
+			<p className="  font-[400] text-[14px]  uppercase text-[#828282]">
 					Last Activities
 				</p>
 
 
+				<div className={styles.content}>
+		<div className='scroll' ref={scrollRef} onScroll={handleScroll}>
+			<div  className="h-[1px]" style={{ width: `${scrollWidth - 1}px` }}></div>
+		</div>
+		<div className="overflow-x-auto" ref={tableRef} onScroll={handleTableScroll}>
+			<Table>
+				<TableHeader>
+					<TableRow>
+						<TableHead>Date</TableHead>
+						<TableHead>Type</TableHead>
+						<TableHead>Currency</TableHead>
+						<TableHead>$ Amount</TableHead>
+						<TableHead>TXid</TableHead>
+						<TableHead>Status</TableHead>
+					</TableRow>
+				</TableHeader>
+				
+	
+				<TableBody>
+					{accruals.map((accrual, index) => (
+						<TableRow className={styles.tablerow} key={index}>
+							<TableCell>{accrual.date}</TableCell>
+							<TableCell>
+								<div className="flex justify-center w-fit mx-auto flex-shrink-0 items-center gap-[8px] px-[8px] rounded-[4px] border-solid border border-[#e6e6e6]">
+									<Image src={accrual.typeImage} width={14} height={14} alt='icon'></Image>
+									<p className="text-[10px]">
+										{accrual.typeText}
+									</p>
+								</div>
+							</TableCell>
+							<TableCell>
+								<div className='flex items-center justify-center'><Image src={accrual.currency} width={20} height={20} alt='icon'></Image></div>
+							</TableCell>
+							<TableCell>{accrual.amount}</TableCell>
+							<TableCell>
+								<div style={{ opacity: accrual.opacity ? 0.4 : 1 }} className='flex items-center justify-center'><Image src={accrual.clip} width={16} height={16} alt='icon'></Image></div>
+							</TableCell>
+							<TableCell>
+								<div className="flex w-fit mx-auto justify-center items-center gap-[8px] px-[8px] rounded-[4px] border border-solid border-[#e6e6e6]">
+									<div style={{ 
+										backgroundColor: accrual.status === 'Pending' ? '#FDE400' : accrual.status === 'Completed' ? '#00B2C8' : 'red',
+										opacity: accrual.opacity ? 0.3 : 1
+									}} 
+									className="h-[6px] w-[6px] rounded-full bg-black"></div>
+									<p className="text-[10px]">
+										{accrual.status}
+									</p>
+								</div>
+							</TableCell>
+						</TableRow>
+					))}
+				</TableBody>
+			</Table>
+		</div>
 
-				<div className="flex flex-col w-full rounded-[6px] border border-solid border-[#e6e6e6]">
+		<div className={styles.button_border}>
+			<ButtonBorder
+				text='Full list'
+			></ButtonBorder>
+		</div>
+	</div>
+
+
+
+				{/* <div className="flex flex-col w-full rounded-[6px] border border-solid border-[#e6e6e6]">
 					<div className="flex gap-[16px] items-center justify-between flex-wrap w-full rounded-[6px] bg-[#f3fbfc] px-[32px] py-[24px] border-solid border-b border-[#e6e6e6] text-[12px]">
 
 						<p>Date</p>
@@ -289,12 +520,12 @@ export default function Dashboard() {
 					<p className={styles.available}>
 						No Available Data
 					</p>
-				</div>
+				</div> */}
 
 
 
 
-				<p className="  font-medium  text-[14px] uppercase text-[#828282]">
+				<p className="  font-[400]  text-[14px] uppercase text-[#828282]">
 					Active plans
 				</p>
 
@@ -305,6 +536,308 @@ export default function Dashboard() {
 					</div>
 					<p className="text-[12px]">ACTIVATE NEW PLAN</p>
 				</div>
+
+
+
+
+				<Accordion type="single" collapsible>
+			<div className={cn(styles.cards)}>
+				<AccordionItem className={styles.item} value='copytrading'>
+					<div className={styles.card}>
+						<div className={styles.list_top}>
+							<div>
+								<div className="flex">
+									<div className="flex  items-center    gap-[16px]">
+										<Image src={market_making} width={60} height={60} alt=''></Image>
+										<div className="flex flex-col justify-center    ">
+											<p className="  text-[16px] font-medium">
+												Copy Trading
+											</p>
+											<p className="  text-[14px] ">
+												CryptoYeild 12
+											</p>
+											<p className="  text-[14px] uppercase ">
+												<span className="  text-[14px] font-medium uppercase ">
+													2.5 - 2.9%
+												</span>
+												<span className=" ml-[4px] text-[14px] uppercase ">
+													daily
+												</span>
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+								<div className="flex flex-col justify-between  self-stretch   ">
+									<p className="  text-[16px]">Invested</p>
+									<p className="  text-[14px] uppercase ">
+										ETH 12.1470
+									</p>
+								</div>
+
+
+
+								<div className="flex flex-col justify-between  self-stretch   ">
+									<p className="  text-[16px]">Total Earned</p>
+									<p className="  text-[14px] uppercase ">
+										98.2%
+									</p>
+								</div>
+
+
+
+								<div className="flex flex-col justify-between  self-stretch   ">
+									<p className="  text-[16px]">Last day Profit</p>
+									<p className="  text-[14px] uppercase ">
+										2.8%
+									</p>
+								</div>
+
+
+
+								<div className="flex flex-col justify-between  self-stretch   ">
+									<p className="  text-[16px]">Compounding</p>
+									<p className="  text-[14px] uppercase ">
+										<Switch></Switch>
+									</p>
+								</div>
+
+
+
+								<div className="flex flex-col justify-between  self-stretch   ">
+									<p className="  text-[16px]">Reactivation</p>
+									<p className="  text-[14px] uppercase ">
+										<Switch></Switch>
+									</p>
+								</div>
+
+						</div>
+
+						<div className={styles.line}></div>
+
+						<div className={styles.list_bottom}>
+							<div className="flex flex-col gap-[8px]">
+								<p className="  text-[14px] ">Activation date</p>
+								<p className="  text-[12px]">
+									04.04.24
+								</p>
+							</div>
+
+							<div className="flex flex-col gap-[8px]">
+								<p className="  text-[14px] ">Expiration date</p>
+								<p className="  text-[12px] ">
+									21.05.24
+								</p>
+							</div>
+
+							<div className="flex flex-col gap-[8px]">
+								<p className="  text-[14px] ">Next Accrual</p>
+								<p className="  text-[12px]">
+									14:24:59
+								</p>
+							</div>
+
+							<div className="flex flex-col gap-[8px]">
+								<p className="  text-[14px] ">Progress: 93%</p>
+								<div className={cn(styles.progress, 'max-w-[100%] w-full')}><Progress value={93}></Progress></div>
+							</div>
+
+							<div className={styles.trigger}>
+								<AccordionTrigger className="pb-0 pt-0 pl-0 pr-0">
+									<div className={styles.button_blue}><p>Detailed</p></div>
+								</AccordionTrigger>
+							</div>
+						</div>
+					</div>
+					<AccordionContent className={styles.content}>
+						<Table>
+							<TableCaption>
+								<div className={styles.button_borders}>
+									<ButtonBorder
+										text='Prev'
+									></ButtonBorder>
+										<ButtonBorder
+										text='Next'
+									></ButtonBorder>
+								</div>
+							</TableCaption>
+							<TableHeader>
+								<TableRow>
+									<TableHead>Date</TableHead>
+									<TableHead>Currency</TableHead>
+									<TableHead>Percent</TableHead>
+									<TableHead className='text-nowrap'>$ Amount</TableHead>
+								</TableRow>
+							</TableHeader>
+							<TableBody>
+								{accruals.map((accrual, index) => (
+									<TableRow className={styles.tablerow} key={index}>
+										<TableCell>{accrual.date}</TableCell>
+										<TableCell>
+											<div className='flex items-center justify-center'><Image src={accrual.currency} width={20} height={20} alt='icon'></Image></div>
+										</TableCell>
+										<TableCell>{accrual.percent}</TableCell>
+										<TableCell>{accrual.amount}</TableCell>
+									</TableRow>
+								))}
+							</TableBody>
+						</Table>
+					</AccordionContent>
+				</AccordionItem>
+
+
+
+
+				<AccordionItem className={styles.item} value='automaticTrading'>
+					<div className={styles.card}>
+						<div className={styles.list_bottom}>
+							<div>
+								<div className="flex">
+									<div className="flex  items-center    gap-[16px]">
+										<Image src={market_making} width={60} height={60} alt=''></Image>
+										<div className="flex flex-col justify-center    ">
+											<p className="  text-[16px] font-medium">
+											Automatic Trading
+											</p>
+											<p className="  text-[14px] ">
+											Dynamic
+											</p>
+											<p className="  text-[14px] uppercase ">
+												<span className="  text-[14px] font-medium uppercase ">
+												0.7 - 0.9%
+												</span>
+												<span className=" ml-[4px] text-[14px] uppercase ">
+													daily
+												</span>
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+								<div className="flex flex-col justify-between  self-stretch   ">
+									<p className="  text-[16px]">Invested</p>
+									<p className="  text-[14px] uppercase ">
+									ETH 1.100
+									</p>
+								</div>
+
+
+
+								<div className="flex flex-col justify-between  self-stretch   ">
+									<p className="  text-[16px]">Total Earned</p>
+									<p className="  text-[14px] uppercase ">
+									8.2%
+									</p>
+								</div>
+
+
+
+								<div className="flex flex-col justify-between  self-stretch   ">
+									<p className="  text-[16px]">Last day Profit</p>
+									<p className="  text-[14px] uppercase ">
+									0.8%
+									</p>
+								</div>
+
+
+
+								<div className="flex flex-col justify-between  self-stretch   ">
+									<p className="  text-[16px]">Compounding</p>
+									<p className="  text-[14px] uppercase ">
+										<Switch></Switch>
+									</p>
+								</div>
+
+
+
+								<div className="flex flex-col justify-between  self-stretch   ">
+									<p className="  text-[16px]">Reactivation</p>
+									<p className="  text-[14px] uppercase ">
+										<Switch></Switch>
+									</p>
+								</div>
+
+						</div>
+
+						<div className={styles.line}></div>
+
+						<div className={styles.list_bottom}>
+							<div className="flex flex-col gap-[8px]">
+								<p className="  text-[14px] ">Activation date</p>
+								<p className="  text-[12px]">
+								0.8%
+								</p>
+							</div>
+
+							<div className="flex flex-col gap-[8px]">
+								<p className="  text-[14px] ">Expiration date</p>
+								<p className="  text-[12px] ">
+								21.06.24
+								</p>
+							</div>
+
+							<div className="flex flex-col gap-[8px]">
+								<p className="  text-[14px] ">Next Accrual</p>
+								<p className="  text-[12px]">
+								04:24:59
+								</p>
+							</div>
+
+							<div className="flex flex-col gap-[8px]">
+								<p className="  text-[14px] ">Progress: 20%</p>
+								<div className={cn(styles.progress, 'max-w-[100%] w-full')}><Progress value={20}></Progress></div>
+							</div>
+
+							<div className={styles.trigger}>
+								<AccordionTrigger className="pb-0 pt-0 pl-0 pr-0">
+									<div className={styles.button_blue}><p>Detailed</p></div>
+								</AccordionTrigger>
+							</div>
+
+						</div>
+					</div>
+					
+					<AccordionContent className={styles.content}>
+						<Table>
+							<TableCaption>
+								<div className={styles.button_borders}>
+									<ButtonBorder
+										text='Prev'
+									></ButtonBorder>
+										<ButtonBorder
+										text='Next'
+									></ButtonBorder>
+								</div>
+							</TableCaption>
+							<TableHeader>
+								<TableRow>
+									<TableHead>Date</TableHead>
+									<TableHead>Currency</TableHead>
+									<TableHead>Percent</TableHead>
+									<TableHead>$ Amount</TableHead>
+								</TableRow>
+							</TableHeader>
+							<TableBody>
+								{accruals.map((accrual, index) => (
+									<TableRow className={styles.tablerow} key={index}>
+										<TableCell>{accrual.date}</TableCell>
+										<TableCell>
+											<div className='flex items-center justify-center'><Image src={accrual.currency} width={20} height={20} alt='icon'></Image></div>
+										</TableCell>
+										<TableCell>{accrual.percent}</TableCell>
+										<TableCell>{accrual.amount}</TableCell>
+									</TableRow>
+								))}
+							</TableBody>
+						</Table>
+					</AccordionContent>
+				</AccordionItem>
+			</div>
+		</Accordion>
 		</div>
 
 
@@ -324,13 +857,13 @@ export default function Dashboard() {
 	  <path opacity="0.631111" d="M446.557 9.41626L389.738 -27.2851L379.924 27.2991L268.119 -31.9842" stroke="#00B2C8" />
 	</svg>
 </div>
-				<p className=" flex-shrink-0 text-[14px] font-medium  uppercase text-[#828282]">
+				<p className="text-[14px] font-[400]  uppercase text-[#828282]">
 					Need help?
 				</p>
 				<p className=" text-[12px]   ">
 					Visit our Help Center or start our Site Guide to get started with Company.
 				</p>
-				<div className="flex">
+				<div className="flex gap-[8px]">
 					<div className={styles.help}>
 						<svg
 							width={18}
@@ -366,8 +899,8 @@ export default function Dashboard() {
 								stroke-miterlimit={10}
 							/>
 						</svg>
-						<div className="flex justify-center items-center  flex-shrink-0 relative gap-1">
-							<p className=" flex-shrink-0 text-[12px]  text-center ">
+						<div className="flex justify-center items-center gap-[4px]">
+							<p className=" text-[12px] ">
 								Helpdesk
 							</p>
 						</div>
@@ -442,20 +975,40 @@ export default function Dashboard() {
 								stroke-miterlimit={10}
 							/>
 						</svg>
-						<p className=" flex-shrink-0 text-[12px]  text-center ">
+						<p className=" text-[12px]">
 							Start Guide
 						</p>
 					</div>
 				</div>
 			</div>
-			<div className="flex flex-col gap-[16px] p-[24px] rounded-[6px] bg-white border border-[#e6e6e6] border-solid">
-				<div className="flex  gap-[16px]">
-					<p className="text-[14px] font-medium  uppercase text-[#828282]">
+
+			<div className='p-[24px] flex flex-col gap-[16px] rounded-[6px] bg-white border border-[#e6e6e6] border-solid'>
+				<div className={cn(styles.accordion, { [styles.active]: openAccordion })}>
+					<p className="text-[14px] font-[400]  uppercase text-[#828282]">
 						Getting started
 					</p>
-				</div>
-				<div className="flex flex-col justify-center relative gap-[8px]">
-					<div className="flex  items-center gap-[8px] px-[16px] py-[8px] rounded-[6px]">
+					<div className='h-0 relative'>
+						<div className={styles.accordion_header}>
+							<p className="self-stretch text-[14px]">
+								Complete simple tasks that will help you get started with Company
+							</p>
+							<div className="flex justify-between gap-[16px] self-stretch">
+								<p className=" text-[14px]">
+									Progress: 20%
+								</p>
+								<p className=" text-[14px]">
+									Tasks: 1 from 5
+								</p>
+							</div>
+							<div className={styles.progress}>
+								<Progress value={33}></Progress>
+							</div>
+
+						</div>
+					</div>
+					<div className={styles.accordion_content}>
+					<div className="flex flex-col justify-center relative gap-[8px]">
+					<Link href='' className={styles.accordion_item}>
 						<svg
 							width={32}
 							height={32}
@@ -479,17 +1032,17 @@ export default function Dashboard() {
 							</defs>
 						</svg>
 						<div className="flex flex-col justify-center relative">
-							<p className="text-[14px]  font-[400]">
+							<p className={styles.item_title}>
 								Activate Account
 							</p>
-							<p className=" text-[12px]">
+							<p className={styles.item_text}>
 								Follow the link sent to the email specified during registration to activate your
 								account.
 							</p>
 						</div>
-					</div>
+					</Link>
 					<div className=" flex-shrink-0 w-[2px] h-[63px] relative bg-[#00b2c8] left-[33px]"></div>
-					<div className="flex  items-center gap-[8px] px-[16px] py-[8px] rounded-[6px]">
+					<Link href='' className={styles.accordion_item}>
 						<svg
 							width={32}
 							height={32}
@@ -513,73 +1066,80 @@ export default function Dashboard() {
 							</defs>
 						</svg>
 						<div className="flex flex-col justify-center relative">
-							<p className="text-[14px]  font-[400]">
+							<p className={styles.item_title}>
 								Top up Your Balance
 							</p>
-							<p className=" text-[12px]">
+							<p className={styles.item_text}>
 								Open the “Wallets” page and top up any available cryptocurrency.
 							</p>
 						</div>
-					</div>
+					</Link>
 					<div className=" flex-shrink-0 w-[2px] h-[63px] relative bg-[#00b2c8] left-[33px]"></div>
-					<div className="flex  items-center relative gap-[8px] px-[16px] py-[8px] rounded-[6px]">
+					<Link href='' className={styles.accordion_item}>
 						<div className={styles.number}>
 							<p className="text-[14px] text-center text-[#242e39]">3</p>
 						</div>
 						<div className="flex flex-col justify-center relative">
-							<p className="text-[14px]  font-[400]">
+							<p className={styles.item_title}>
 								Activate Investment
 							</p>
-							<p className=" text-[12px]">
+							<p className={styles.item_text}>
 								Select a suitable investment offer and activate your investment
 							</p>
 						</div>
-					</div>
+					</Link>
 					<div className=" flex-shrink-0 w-[2px] h-[63px] relative bg-[#a1aebe] left-[33px]"></div>
-					<div className="flex  items-center gap-[8px] px-[16px] py-[8px] rounded-[6px]">
+					<Link href='' className={styles.accordion_item}>
 						<div className={styles.number}>
 							<p className="text-[14px] text-center text-[#242e39]">4</p>
 						</div>
 						<div className="flex flex-col justify-center ">
-							<p className="text-[14px]  font-[400]">
+							<p className={styles.item_title}>
 								Secure your Account
 							</p>
-							<p className=" text-[12px]">
+							<p className={styles.item_text}>
 								Open your profile settings to set 2FA and PIN Code
 							</p>
 						</div>
-					</div>
+					</Link>
 					<div className=" flex-shrink-0 w-[2px] h-[63px] relative bg-[#a1aebe] left-[33px]"></div>
-					<div className="flex  items-center gap-[8px] px-[16px] py-[8px] rounded-[6px]">
+					<Link href='' className={styles.accordion_item}>
 						<div className={styles.number}>
 							<p className="text-[14px] text-center text-[#242e39]">5</p>
 						</div>
 						<div className="flex flex-col justify-center items-start  relative">
-							<p className="text-[14px] font-[400]">
+							<p className={styles.item_title}>
 								Withdraw Profit
 							</p>
-							<p className=" text-[12px]">
+							<p className={styles.item_text}>
 								After accrual, go to “Wallets” to withdraw profit
 							</p>
 						</div>
+					</Link>
+				</div>
 					</div>
 				</div>
-				<div className="flex flex-col justify-center items-center py-[8px]">
+
+				<div onClick={() => (setOpenAccordion(!openAccordion))} className={cn(styles.accordion_toggle, { [styles.active]: openAccordion })}>
 					<p className="text-[16px]   uppercase text-[#828282]">
-						Collapse
+						
 					</p>
-					<svg
-						width={18}
-						height={15}
-						viewBox="0 0 18 15"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-						preserveAspectRatio="xMidYMid meet"
-					>
-						<path d="M9 -1.74846e-06L17.6603 15L0.339748 15L9 -1.74846e-06Z" fill="#919191" />
-					</svg>
+					<div>
+						<svg
+							width={18}
+							height={15}
+							viewBox="0 0 18 15"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+							preserveAspectRatio="xMidYMid meet"
+						>
+							<path d="M9 -1.74846e-06L17.6603 15L0.339748 15L9 -1.74846e-06Z" fill="#919191" />
+						</svg>
+					</div>
 				</div>
 			</div>
+
+			
 			<div
 				className="flex flex-col relative gap-[16px] p-[24px] rounded-[6px] border border-[#e6e6e6]"
 				style={{ background: "linear-gradient(-48.33deg, #01b091 5.18%, #00b2c8 100%)" }}
@@ -618,7 +1178,7 @@ export default function Dashboard() {
 							</defs>
 						</svg>
 						<div className={styles.get_bonus}>
-							<div className="flex justify-center items-center  flex-shrink-0 relative gap-1">
+							<div className="flex justify-center items-center  flex-shrink-0 relative gap-[4px]">
 								<p className=" flex-shrink-0 text-[14px] text-center text-white">Get Bonus</p>
 							</div>
 						</div>
@@ -636,7 +1196,7 @@ export default function Dashboard() {
 				</svg>
 			</div>
 			<div className="flex flex-col border-solid gap-[24px] p-[24px] rounded-[6px] border border-[#e6e6e6]">
-				<p className="text-[14px] font-medium  uppercase text-[#828282]">
+				<p className="text-[14px] font-[400]  uppercase text-[#828282]">
 					Affiliate rewards
 				</p>
 				<div className="flex justify-between items-center gap-[16px]">
@@ -652,54 +1212,10 @@ export default function Dashboard() {
 						text='Invite friends'
 					></UnderlineButton>
 				</div>
-				{/* <div className=" flex-shrink-0 w-[156px] h-[27px] relative">
-					<svg
-						width={27}
-						height={27}
-						viewBox="0 0 27 27"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-						className="w-[27px] h-[27px]"
-						preserveAspectRatio="xMidYMid meet"
-					>
-						<circle cx="13.5" cy="13.5" r="13.5" fill="#00B2C8" />
-						<path
-							d="M18.4049 13.5662C18.6002 13.3709 18.6002 13.0544 18.4049 12.8591L15.2229 9.67711C15.0277 9.48185 14.7111 9.48185 14.5158 9.67711C14.3206 9.87237 14.3206 10.189 14.5158 10.3842L17.3443 13.2126L14.5158 16.0411C14.3206 16.2363 14.3206 16.5529 14.5158 16.7482C14.7111 16.9434 15.0277 16.9434 15.2229 16.7482L18.4049 13.5662ZM7.71094 13.7126H18.0514V12.7126H7.71094V13.7126Z"
-							fill="white"
-						/>
-					</svg>
-					<p className="absolute left-[39px] top-[1.5px] text-[14px]   ">
-						Invite friends
-					</p>
-					<svg
-						width={30}
-						height={1}
-						viewBox="0 0 30 1"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-						className="absolute left-[39px] top-[23px]"
-						preserveAspectRatio="xMidYMid meet"
-					>
-						<line y1="0.5" x2={30} y2="0.5" stroke="url(#paint0_linear_297_1955)" />
-						<defs>
-							<lineargradient
-								id="paint0_linear_297_1955"
-								x1={30}
-								y1="1.89"
-								x2="29.2111"
-								y2="-3.37619"
-								gradientUnits="userSpaceOnUse"
-							>
-								<stop stop-color="#01B091" />
-								<stop offset={1} stop-color="#00B2C8" />
-							</lineargradient>
-						</defs>
-					</svg>
-				</div> */}
 			</div>
 			<div className="flex flex-col w-full overflow-hidden gap-[16px] p-[24px] rounded-[6px] bg-white border border-solid border-[#e6e6e6]">
 				<div className="flex  items-center gap-[16px]">
-					<p className="text-[14px] font-medium  uppercase text-[#828282]">
+					<p className="text-[14px] font-[400]  uppercase text-[#828282]">
 						Featured news
 					</p>
 					<div className="flex relative gap-[8px]">

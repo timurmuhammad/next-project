@@ -38,14 +38,14 @@ export const DiagramAuth = () => {
 
 	return <div className="flex gap-[24px]">
 		<div className="flex flex-col gap-[24px] flex-1">
-			<p className="text-[14px] font-medium uppercase text-[#828282]">
+			<p className="text-[14px] font-[400] uppercase text-[#828282]">
 				Balance Graph
 			</p>
 
 			<div className={styles.main}>
 				<div className="flex justify-between">
 					<div className="flex flex-col gap-[16px]">
-						<p className="text-[32px] font-medium">
+						<p className="text-[32px] font-[400]">
 							$ 5.987,37
 						</p>
 					</div>
@@ -110,47 +110,47 @@ export const DiagramAuth = () => {
 
 
 		<div className={styles.statistics}>
-			<p className="   w-[181px] text-[14px] font-medium  uppercase text-[#828282]">
+			<p className="text-[14px] font-[400]  uppercase text-[#828282]">
 				Statistics
 			</p>
 			<div className={styles.stats}>
 				<div className="flex  items-center     gap-[16px]">
 					<Image src={invested} width={24} height={24} alt="icon"></Image>
-					<p className="  text-[14px] font-medium  uppercase text-[#828282]">
+					<p className="  text-[14px] font-[400]  uppercase text-[#828282]">
 						Invested
 					</p>
 				</div>
-				<p className="   font-medium  ">$ 0.00</p>
+				<p className="   font-[400]  ">$ 0.00</p>
 			</div>
 			<div className={styles.stats}>
 				<div className="flex  items-center     gap-[8px]">
 					<Image src={withdrawn} width={24} height={24} alt="icon"></Image>
 
-					<p className="w-[117px] text-[12px] font-medium  uppercase text-[#828282]">
+					<p className="text-[14px] font-[400]  uppercase text-[#828282]">
 						Withdrawn
 					</p>
 				</div>
-				<p className="   font-medium  ">$ 0.00</p>
+				<p className="   font-[400]  ">$ 0.00</p>
 			</div>
 			<div className={styles.stats}>
 				<div className="flex  items-center     gap-[8px]">
 					<Image src={balance} width={24} height={24} alt="icon"></Image>
 
-					<p className="w-[117px] text-[12px] font-medium  uppercase text-[#828282]">
+					<p className="text-[14px] font-[400]  uppercase text-[#828282]">
 						Available Balance
 					</p>
 				</div>
-				<p className="   font-medium  ">$ 0.00</p>
+				<p className="   font-[400]  ">$ 0.00</p>
 			</div>
 			<div className={styles.stats}>
 				<div className="flex  items-center     gap-[8px]">
 					<Image src={earned} width={24} height={24} alt="icon"></Image>
 
-					<p className="w-[117px] text-[12px] font-medium  uppercase text-[#828282]">
+					<p className="text-[14px] font-[400]  uppercase text-[#828282]">
 						Earned
 					</p>
 				</div>
-				<p className="   font-medium  ">$ 0.00</p>
+				<p className="   font-[400]  ">$ 0.00</p>
 			</div>
 		</div>
 	</div>

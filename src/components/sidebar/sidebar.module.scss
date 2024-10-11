@@ -2,12 +2,16 @@
 
 .body{
 	overflow-y: auto;
-	@apply flex flex-col items-center gap-12 px-4 py-12 bg-[#e4fafc];
+	@apply flex flex-col items-center gap-[16px] px-[16px] py-[48px] bg-[#e4fafc];
 	@media(max-width: $media_tablet) {
 		display: none;
 	}
 
-	align-self: flex-start;
+	>img{
+		margin-bottom: 32px;
+		
+	}
+
 	z-index: 2;
 	top: 0;
 	left: 0;

@@ -579,7 +579,7 @@ export default function Copytrading() {
 
 		<div className={styles.stat}>
 			<div>
-				<p className="text-[14px] font-medium uppercase mb-[20px] text-[#828282]">
+				<p className="text-[14px] font-[400] uppercase mb-[20px] text-[#828282]">
 					Features of Dynamic Strategy
 				</p>
 	
@@ -637,7 +637,7 @@ export default function Copytrading() {
 	
 	
 			<div className='max-w-[792px]'>
-				<p className="text-[14px] font-medium uppercase mb-[20px] text-[#828282]">
+				<p className="text-[14px] font-[400] uppercase mb-[20px] text-[#828282]">
 					Trading Statistics
 				</p>
 				<div className={styles.card_statistics}>
@@ -747,7 +747,7 @@ export default function Copytrading() {
 
 		<div className='flex items-center justify-center flex-col gap-[24px]'>
 			<div className={styles.pagination_wrapper}>
-				<p className="flex-grow-0 flex-shrink-0 text-sm font-medium text-left uppercase text-[#828282]">
+				<p className="flex-grow-0 flex-shrink-0 text-[14px] font-[400]  uppercase text-[#828282]">
 					List of bots used for copying
 				</p>
 

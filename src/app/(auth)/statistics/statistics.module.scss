@@ -17,7 +17,8 @@
 	padding: 0px;
 	border-radius: 6px;
 	border: 1px solid #cecece;
-	overflow: hidden;
+	overflow-x: auto;
+	
 }
 
 .plan{
@@ -25,6 +26,7 @@
 	user-select: none;
 	flex: 0 0 25%;
 	border-right: 1px solid #e6e6e6;
+	text-align: center;
 
 	&:last-child{
 		border-right: none;
@@ -49,6 +51,9 @@
 	>button{
 		@apply text-[14px] text-center text-[#303030];
 		height: 28px;
+		&:after{
+			opacity: 0;
+		}
 	}
 	>button:first-child{
 		opacity: 0.6;
@@ -66,7 +71,6 @@
 		border-bottom: none !important;
 	}
 }
-
 
 .statistics{
 	@apply flex self-stretch gap-[24px];
@@ -101,5 +105,5 @@
 	flex: 1 1 auto;
 
 	@apply border border-solid border-[#e6e6e6];
-
 }
+

@@ -1,10 +1,6 @@
 @import '@/ui/vars-and-utils.scss';
 
 
-
-
-
-
 .button {
   background-size: 100%;
   background-image: linear-gradient(#fff, #ccc);
@@ -20,35 +16,6 @@
   z-index: 100;
 }
 
-// .body{
-// 	width: 100%;
-// 	border-bottom: 0.5px solid #B9B9B9;
-// 	box-shadow: 0px 1px 6.8px 0px #0000001A;
-// 	max-height: 80px;
-// 	height: $height_header;
-// 	border-radius: 0px 0px 4px 4px;
-// }
-// .body.active{
-// 	box-shadow: none;
-// 	border-color: transparent;
-// }
-
-// .container{
-// 	display: flex;
-// 	align-items: center;
-// 	justify-content: space-between;
-// 	height: 100%;
-// 	font-size: 16px;
-// 	gap: 32px;
-// }
-
-// .auth{
-// 	display: flex;
-// 	gap: adaptive($width_container, 16, 12);
-// 	align-items: center;
-// 	justify-content: space-between;
-// 	min-width: 110px;
-// }
 
 .login{
 	height: adaptive($width_container, 36, 32);
@@ -404,7 +371,6 @@
 
 
 .body{
-	width: 100%;
 	border-bottom: 0.5px solid #B9B9B9;
 	box-shadow: 0px 1px 6.8px 0px #0000001A;
 	max-height: 80px;
@@ -505,7 +471,7 @@
 	.box{
 		border-left: 2px solid transparent;
 		padding: 0px 16px;
-		height: 46px;
+		height: 56px;
 		padding: 0px 16px;
 		display: flex;
 		align-items: center;

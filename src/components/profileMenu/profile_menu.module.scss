@@ -1,0 +1,17 @@
+@import '@/ui//vars-and-utils.scss';
+
+
+.auth{
+	display: flex;
+	gap: adaptive($width_container, 16, 12);
+	align-items: center;
+
+	@media (max-width: $media_tablet) {
+		flex-direction: row-reverse;
+
+		.lang{
+			display: none;
+		}
+	}
+	
+}

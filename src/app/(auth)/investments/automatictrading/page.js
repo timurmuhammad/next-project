@@ -491,7 +491,7 @@ export default function Automatictrading() {
 
 		<div className={styles.stat}>
 			<div>
-				<p className="text-[14px] font-medium uppercase mb-[20px] text-[#828282]">
+				<p className="text-[14px] font-[400] uppercase mb-[20px] text-[#828282]">
 					Features of Dynamic Strategy
 				</p>
 	
@@ -549,7 +549,7 @@ export default function Automatictrading() {
 	
 	
 			<div className='max-w-[792px]'>
-				<p className="text-[14px] font-medium uppercase mb-[20px] text-[#828282]">
+				<p className="text-[14px] font-[400] uppercase mb-[20px] text-[#828282]">
 					Trading Statistics
 				</p>
 				<div className={styles.card_statistics}>

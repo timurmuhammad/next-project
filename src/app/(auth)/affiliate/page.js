@@ -82,7 +82,7 @@ export default function Affiliate() {
 		<div className={styles.statistics}>
 			<div className={styles.stats}>
 				<div className="flex  items-center     gap-[16px]">
-					<Image src={cup} width={24} height={24} alt="icon"></Image>
+					<Image src={invested} width={24} height={24} alt="icon"></Image>
 					<p className="  text-[14px] font-medium  uppercase text-[#828282]">
 					Network Turnover
 					</p>

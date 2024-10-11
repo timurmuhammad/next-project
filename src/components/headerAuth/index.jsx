@@ -19,7 +19,7 @@ import { usePathname } from 'next/navigation';
 import { tabs } from '@/types/auth';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/shadcn/ui/accordion';
 import arrow_up from '@/ui/icons/arrow_up.svg'
-
+import { ProfileMenu } from "@/components/profileMenu";
 
 
 export const HeaderAuth = () => {
@@ -158,7 +158,7 @@ export const HeaderAuth = () => {
 			</ul>
 
 			<div className={styles.auth}>
-				<div className='w-[36px] h-[36px] cursor-pointer overflow-hidden rounded-[10px] border-solid border border-[#e6e6e6]'><Image className='w-full h-full' src={person} alt='icon' width={36} height={36}></Image></div>
+				<ProfileMenu></ProfileMenu>
 				<div className='w-[36px] h-[36px] cursor-pointer flex items-center justify-center overflow-hidden rounded-[10px] border-solid border border-[#e6e6e6]'><Image src={notify} alt='icon' width={16} height={20}></Image></div>
 				<div className={styles.lang}><Languages></Languages></div>
 			</div>
