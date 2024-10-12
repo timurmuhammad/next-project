@@ -3,7 +3,6 @@
 import styles from './profile_menu.module.scss'
 import cn from 'classnames'
 import Image from 'next/image';
-import notify from "@/ui/icons/notify.svg";
 
 import {
   DropdownMenu,
@@ -26,7 +25,7 @@ export const ProfileMenu = () => {
 				if (open) {
 					bg.style.zIndex = 100;
 					bg.style.opacity = '1';
-					bg.style.background = 'rgba(0, 0, 0, 0.5)';
+					bg.style.background = 'rgba(0, 0, 0, 0.3)';
 
 					const preventScroll = (e) => e.preventDefault(); // Блокируем скролл
 
@@ -50,7 +49,7 @@ export const ProfileMenu = () => {
 
 	return <DropdownMenu modal={false} open={open} onOpenChange={setOpen}>
 		<DropdownMenuTrigger asChild>
-				<div className='w-[36px] h-[36px] cursor-pointer overflow-hidden rounded-[10px] border-solid border border-[#e6e6e6]'><Image className='w-full h-full' src={person} alt='icon' width={36} height={36}></Image></div>
+				<div className={cn(styles.trigger, {[styles.active]: open})}><Image className='w-full h-full' src={person} alt='icon' width={36} height={36}></Image></div>
 		</DropdownMenuTrigger>
 		<DropdownMenuContent className='w-[268px] my-[8px] mr-[16px]'>
 			<div className="flex flex-col  items-center relative overflow-hidden gap-[24px] px-[16px] pt-[16px] pb-[32px] rounded-[6px] bg-white border-solid border border-[#d9d9d9]">

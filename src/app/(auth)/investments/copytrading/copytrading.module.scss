@@ -109,15 +109,6 @@
 .main{
 	display: flex;
 	gap: 24px;
-	// border: 1px solid #cecece;
-	// border-radius: 6px;
-	// padding: adaptive($width_container, 32, 16);
-	
-
-	// @media(max-width:$media_laptop) {
-	// 	border: 1px solid #cecece;
-	// 	border-radius: 6px;
-	// }
 
 	
 	.card_list{
@@ -135,7 +126,11 @@
 		}
 	}
 
-	@media(max-width:$media_screen) {
+	>div:first-child{
+		flex: 0 1 690px;
+	}
+
+	@media(max-width:1306px) {
 		gap: 0;
 		>div:last-child{
 			>h4{
@@ -144,16 +139,13 @@
 		}
 
 		>div:first-child{
+			flex: 0 0 auto;
 			>div:last-child{
 				>h5{
 					display: none;
 				}
 			}
 		}
-	}
-
-	>div:first-child{
-		flex: 0 1 690px;
 	}
 
 	>div{

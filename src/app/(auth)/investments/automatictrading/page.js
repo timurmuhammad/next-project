@@ -286,11 +286,11 @@ export default function Automatictrading() {
 				<div className={styles.main}>
 					<div className={styles.plans}>
 						<h5 className='text-[16px] uppercase text-[#828282] font-[400]'>Choose investment options</h5>
-		
+
 						<div className={styles.plan__list}>
 							{
 								dynamicStrategy.plan.map((item, index) => (
-									<div key={index} onClick={() => setPlanDynamic(item)} className={cn(styles.plan__box, {[styles.active]: item.days === planDynamic.days})}>
+									<div key={index} onClick={() => setPlanDynamic(item)} className={cn(styles.plan__box, { [styles.active]: item.days === planDynamic.days })}>
 										<div className='flex justify-center flex-col '>
 											<p className=' text-[#000] text-[20px] font-[400]'> {item.percent}%</p>
 											<p className='text-[#303030] pl-[2px] font-[300] text-[16px]'> DAILY</p >
@@ -298,191 +298,206 @@ export default function Automatictrading() {
 										<div className='flex flex-col justify-center items-end'>
 											<p className='text-[14px]'>{item.days} days</p>
 											<p className='text-[12px]'>{item.sum}</p>
-											</div>
+										</div>
 									</div>
 								))
 							}
 						</div>
-		
-						<h5 className='flex justify-between text-[16px] font-[400] translate-y-[10px]'>Currency and investment amount</h5>
-		
-						<div className={styles.block}>
-						<div className='flex flex-col'>
-								<p className="text-[10px] uppercase text-[#605e5e]">
-									Currency
-								</p>
-							<Popover className={styles.popover} open={openFrom} onOpenChange={setOpenFrom}>
-							<PopoverTrigger asChild>
-							<div onClick={() => onClick('from')} className={cn(styles.counter, {[styles.active]: openFrom})}>
-							<div className="flex flex-col justify-between gap-[16px] self-stretch">
-								<div className="flex flex-col justify-center">
-									<div className="flex  items-center    gap-[16px]">
-										<Image src={valueFrom
-										? from.find((coin) => coin.value === valueFrom)?.logo
-										: null} width={25} height={25} alt='icon'></Image>
-										<div className="flex flex-col justify-center items-center">
-											<p className="  text-[14px] text-nowrap ">{valueFrom
-										? from.find((coin) => coin.value === valueFrom)?.label
-										: 'Select coin...'}</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div className="flex flex-col justify-between items-end self-stretch">
-								<div className={styles.arrow}><Image src={triangle_blue} width={25} height={25} alt='icon'></Image></div>
-							</div>
-						</div>
-							
-								</PopoverTrigger>
-								<PopoverContent className="w-[308px] rounded-md bg-white border-solid border-[0.5px] border-[#cecece]">
-									<Command>
-										<CommandInput placeholder="Search coins..." />
-										<CommandList>
-											<CommandEmpty>No coins found.</CommandEmpty>
-											<CommandGroup>
-												{to.map((coin) => (
-													<CommandItem
-														key={coin.value}
-														value={coin.value}
-														onSelect={(currentValue) => {
-															setValueFrom(currentValue)
-															setOpenFrom(false)
-														}}
-													>
-														<div className='flex items-center gap-[16px]'>
-															<Image src={coin.logo} width={25} height={25} alt='icon'></Image>
-															{coin.label}
-														</div>
-													</CommandItem>
-												))}
-											</CommandGroup>
-										</CommandList>
-									</Command>
-								</PopoverContent>
-							</Popover>
-						</div>
-							<div className='flex flex-col flex-grow'>
-								<div className="flex justify-between">
+
+						<div className={styles.currency}>
+							<h5 className='flex justify-between text-[16px] font-[400] translate-y-[10px]'>Currency and investment amount</h5>
+
+							<div className={styles.block}>
+								<div className='flex flex-col'>
 									<p className="text-[10px] uppercase text-[#605e5e]">
-										amount: $100-1000
+										Currency
 									</p>
-									<p className="text-[10px] uppercase text-[#00b2c8]">
-										use max
-									</p>
-								</div>
+									<Popover className={styles.popover} open={openFrom} onOpenChange={setOpenFrom}>
+										<PopoverTrigger asChild>
+											<div onClick={() => onClick('from')} className={cn(styles.counter, { [styles.active]: openFrom })}>
+												<div className="flex flex-col justify-between gap-[16px] self-stretch">
+													<div className="flex flex-col justify-center">
+														<div className="flex  items-center    gap-[16px]">
+															<Image src={valueFrom
+																? from.find((coin) => coin.value === valueFrom)?.logo
+																: null} width={25} height={25} alt='icon'></Image>
+															<div className="flex flex-col justify-center items-center">
+																<p className="  text-[14px] text-nowrap ">{valueFrom
+																	? from.find((coin) => coin.value === valueFrom)?.label
+																	: 'Select coin...'}</p>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div className="flex flex-col justify-between items-end self-stretch">
+													<div className={styles.arrow}><Image src={triangle_blue} width={25} height={25} alt='icon'></Image></div>
+												</div>
+											</div>
 
-								<div className="flex flex-grow border-[1px] border-solid bg-neutral-50 rounded-[6px] border-[#cecece] overflow-hidden">
-									<div className="flex justify-center items-center flex-grow gap-[8px] px-[16px]">
-										<p className="flex-grow text-[14px] text-center">0.42</p>
-										<div className="flex justify-end items-center gap-[10px]">
-											<p className="text-[14px]">ETH</p>
+										</PopoverTrigger>
+										<PopoverContent className="w-[308px] rounded-md bg-white border-solid border-[0.5px] border-[#cecece]">
+											<Command>
+												<CommandInput placeholder="Search coins..." />
+												<CommandList>
+													<CommandEmpty>No coins found.</CommandEmpty>
+													<CommandGroup>
+														{to.map((coin) => (
+															<CommandItem
+																key={coin.value}
+																value={coin.value}
+																onSelect={(currentValue) => {
+																	setValueFrom(currentValue)
+																	setOpenFrom(false)
+																}}
+															>
+																<div className='flex items-center gap-[16px]'>
+																	<Image src={coin.logo} width={25} height={25} alt='icon'></Image>
+																	{coin.label}
+																</div>
+															</CommandItem>
+														))}
+													</CommandGroup>
+												</CommandList>
+											</Command>
+										</PopoverContent>
+									</Popover>
+								</div>
+								<div className='flex flex-col flex-grow'>
+									<div className="flex justify-between">
+										<p className="text-[10px] uppercase text-[#605e5e]">
+											amount: $100-1000
+										</p>
+										<p className="text-[10px] uppercase text-[#00b2c8]">
+											use max
+										</p>
+									</div>
+
+									<div className="flex flex-grow border-[1px] border-solid bg-neutral-50 rounded-[6px] border-[#cecece] overflow-hidden">
+										<div className="flex justify-center items-center flex-grow gap-[8px] px-[16px]">
+											<p className="flex-grow text-[14px] text-center">0.42</p>
+											<div className="flex justify-end items-center gap-[10px]">
+												<p className="text-[14px]">ETH</p>
+											</div>
+										</div>
+										<div className="flex flex-col justify-center items-center self-stretch flex-grow-0 flex-shrink-0 w-[79px] relative px-[16px] border-l-[1px] border-[#cecece] border-solid ">
+											<p className="text-[14px] text-[#8a8181]">$ 1000</p>
 										</div>
 									</div>
-									<div className="flex flex-col justify-center items-center self-stretch flex-grow-0 flex-shrink-0 w-[79px] relative px-[16px] border-l-[1px] border-[#cecece] border-solid ">
-										<p className="text-[14px] text-[#8a8181]">$ 1000</p>
-									</div>
+
+								</div>
+							</div>
+
+							<Slider defaultValue={[planDynamic.amount]} max={100} step={1}></Slider>
+
+							<div className={styles.switch}>
+								<div className='flex items-center gap-[10px] relative'>
+									<p className="text-[16px] text-center">
+										Compounding
+									</p>
+									<Switch></Switch>
+									<span className={styles.span}>?</span>
 								</div>
 
+								<div className='flex items-center gap-[10px] relative mr-[20px]'>
+									<p className="text-[16px] text-center">
+										Reactivation
+									</p>
+									<Switch></Switch>
+									<span className={styles.span}>?</span>
+								</div>
 							</div>
-						</div>
-		
-						<Slider defaultValue={[planDynamic.amount]} max={100} step={1}></Slider>
 
-						<div className={styles.switch}>
-							<div className='flex items-center gap-[10px] relative'>
-								<p className="text-[16px] text-center">
-									Compounding
-								</p>
-								<Switch></Switch>
-								<span className={styles.span}>?</span>
-							</div>
-							
-							<div className='flex items-center gap-[10px] relative mr-[20px]'>
-								<p className="text-[16px] text-center">
-								Reactivation
-								</p>
-								<Switch></Switch>
-								<span className={styles.span}>?</span>
-							</div>
 						</div>
+
+
+
 						
 					</div>
-		
-					<div className='flex flex-col gap-[30px]'>
-						<h5 className={styles.h}>summary information
-							<div className="overflow-hidden border-[1px] border-solid border-[#e6e6e6] rounded-[6px] flex items-center h-[40px] flex-shrink-0 flex-grow-0">
-								<p className='px-[16px] flex gap-[4px] items-center font-[300] h-full text-[#4a4a4a] text-[14px]' ><span className='' >% </span> ETH</p>
-		
-								<p className='bg-[#00B2C8] px-[16px] flex items-center font-[500] h-full text-[#fff] text-[14px] text-nowrap' >$ USD</p>		
 
-								<p className='px-[16px] flex gap-[4px] items-center font-[300] h-full text-[#4a4a4a] text-[14px]' ><span className='' >% </span> INTEREST</p>				
-							</div>
-						</h5>
-		
-						<div className={styles.plan__calculation}>
-							<div>
-								<p className={styles.calc}>
-									<span>Daily
-									</span>
-									<span> {planDynamic.amount}<span className='ml-[4px]'>ETH</span></span>
-								</p>
-		
-								<p className={styles.calc}>
-									<span>Weekly
-									</span>
-									<span> {planDynamic.amount}<span className='ml-[4px]'>ETH</span></span>
-								</p>
 
-								<p className={styles.calc}>
-									<span>Monthly
-									</span>
-									<span> {planDynamic.amount}<span className='ml-[4px]'>ETH</span></span>
-								</p>
-		
-								<p className={styles.calc}>
-									<span>Total Profit
-										<span className={styles.span}>?</span>
-									</span>
-									<span> {planDynamic.amount}<span className='ml-[4px]'>ETH</span></span>
-								</p>
-		
-								<p className={styles.calc}>
-									<span>Total with deposited amount
-										<span className={styles.span}>?</span>
-									</span>
-									<span> {planDynamic.amount}<span className='ml-[4px]'>ETH</span></span>
-								</p>
+					
+					<div className='flex flex-col gap-[24px] flex-grow'>
 
-								<p className={styles.calc}>
-									<span className='relative flex flex-wrap'>
-										<span className="text-[16px] font-[400] text-center text-black">Duration:</span>
-										<span className="text-[16px] text-nowrap ml-[4px] relative font-light text-center text-black">
-											{planDynamic.days} days
-											<span className={styles.span}>?</span>
-										</span>
-									</span>
+<h4 className='text-[16px] text-[#828282] font-[400] flex justify-between uppercase items-center gap-[12px]'>summary information</h4>
 
-									<span className='relative flex flex-wrap justify-end'>
-										<span className="text-[16px] font-[400] text-center text-black">Strategy:</span>
-										<span className="text-[16px] text-nowrap ml-[4px] relative font-light text-center text-black">
-											Dynamic
-											<span className={styles.span}>?</span>
-										</span>
-									</span>
-								</p>
-								
-							</div>
-						</div>
+<div className={styles.profit}>
+	<h5 className={styles.h}>Profit calculation
+		<div className="overflow-hidden border-[1px] border-solid border-[#e6e6e6] rounded-[6px] flex items-center h-[40px] flex-shrink-0 flex-grow-0">
+			<p className='px-[16px] flex gap-[4px] items-center font-[300] h-full text-[#4a4a4a] text-[14px]' ><span className='' >% </span> ETH</p>
 
-						<div className={styles.button}>
-							<ButtonBlue
-								text='Exchange'
-							></ButtonBlue>
-						</div>
-		
-					</div>
+			<p className='bg-[#00B2C8] px-[16px] flex items-center font-[500] h-full text-[#fff] text-[14px] text-nowrap' >$ USD</p>
+
+			<p className='px-[16px] flex gap-[4px] items-center font-[300] h-full text-[#4a4a4a] text-[14px]' ><span className='' >% </span> INTEREST</p>
+		</div>
+	</h5>
+
+
+	<div className={styles.plan__calculation}>
+		<div>
+			<p className={styles.calc}>
+				<span>Daily
+				</span>
+				<span> {planDynamic.amount}<span className='ml-[4px]'>ETH</span></span>
+			</p>
+
+			<p className={styles.calc}>
+				<span>Weekly
+				</span>
+				<span> {planDynamic.amount}<span className='ml-[4px]'>ETH</span></span>
+			</p>
+
+			<p className={styles.calc}>
+				<span>Monthly
+				</span>
+				<span> {planDynamic.amount}<span className='ml-[4px]'>ETH</span></span>
+			</p>
+
+			<p className={styles.calc}>
+				<span>Total Profit
+					<span className={styles.span}>?</span>
+				</span>
+				<span> {planDynamic.amount}<span className='ml-[4px]'>ETH</span></span>
+			</p>
+
+			<p className={styles.calc}>
+				<span>Total with deposited amount
+					<span className={styles.span}>?</span>
+				</span>
+				<span> {planDynamic.amount}<span className='ml-[4px]'>ETH</span></span>
+			</p>
+
+			<p className={styles.calc}>
+				<span className='relative flex flex-wrap'>
+					<span className="text-[16px] font-[400] text-center text-black">Duration:</span>
+					<span className="text-[16px] text-nowrap ml-[4px] relative font-light text-center text-black">
+						{planDynamic.days} days
+						<span className={styles.span}>?</span>
+					</span>
+				</span>
+
+				<span className='relative flex flex-wrap justify-end'>
+					<span className="text-[16px] font-[400] text-center text-black">Strategy:</span>
+					<span className="text-[16px] text-nowrap ml-[4px] relative font-light text-center text-black">
+						Dynamic
+						<span className={styles.span}>?</span>
+					</span>
+				</span>
+			</p>
+
+		</div>
+	</div>
+</div>
+
+<div className={styles.button}>
+	<ButtonBlue
+		text='Activate'
+	></ButtonBlue>
+</div>
+
+</div>
 				</div>
-		
+
+				
 			</div>
 		</div>
 

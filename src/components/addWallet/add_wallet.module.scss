@@ -1,0 +1,124 @@
+@import '@/ui/vars-and-utils.scss';
+
+
+.new_plan{
+	@apply flex flex-col justify-center items-center w-full gap-[16px] p-[16px] rounded-[6px]  border border-[#cecece] border-dashed;
+	cursor: pointer;
+		>div{
+			filter: brightness(0);
+			opacity: 0.4;
+		}
+		p{
+			color: #cecece;
+			transition: 0.2s;
+		}
+
+		&:hover{
+			border-color: #00b2c8;
+			p{
+				color: #00b2c8;
+			}
+			>div{
+				filter: brightness(1);
+				opacity: 1;
+			}
+		}
+}
+
+
+.body{
+	@apply flex flex-col flex-shrink max-h-[90vh] items-center overflow-hidden overflow-y-auto  gap-[24px] rounded-[6px] bg-white border border-solid border-[#e6e6e6];
+
+	padding: adaptive($width_container, 32, 20);
+	padding-bottom: 32px;
+	position: relative;
+	z-index: 100;
+}
+
+.item{
+	@apply flex justify-center cursor-pointer items-center overflow-y-auto  w-[108px] p-[24px] rounded-[6px] border-solid border border-[#e6e6e6];
+	position: relative;
+	overflow: hidden;
+	flex: 0 0 auto;
+
+	&:before{
+		content: '';
+		background-color: #fff;
+		border-radius: 4px;
+		z-index: -1;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin-right: 5px;
+	}
+
+	&:after{
+		content: '';
+		border-radius: 4px;
+		background-color: #00B2C8;
+		z-index: -2;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		opacity: 0;
+		transition: all 0s;
+	}
+
+	&:hover{
+		&:after{
+			opacity: 1;
+			
+		}
+	}
+}
+
+
+
+
+
+.button_blue{
+	flex: 0 0 36px;
+	height: 36px;
+	padding-right: 12px;
+	padding-left: 12px;
+	border: 1px solid #00B2C8;
+	border-radius: 4px;
+	display: flex;
+	align-items: center;
+	transition: all 0.2s;
+	color: #FFFFFF;
+	background: #00B2C8;
+	position: relative;
+	z-index: 100;
+	font-size: 16px;
+  margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+
+	&:before {
+    border-radius: inherit;
+		background: linear-gradient(282.54deg, #01B091 2%, #00B2C8 100%);
+    content: '';    
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+    opacity: 0;
+    width: 100%;
+    z-index: -99;
+    transition: all 0.2s;
+
+  }
+  
+  &:hover {
+    &:before {
+      opacity: 1;
+    }
+  }
+}

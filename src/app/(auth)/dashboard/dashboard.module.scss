@@ -718,9 +718,8 @@
 .content{
 	padding: 0px;
 	border-radius: 6px;
-	border: 1px solid #cecece;
-	border-top: none;
 	overflow-x: auto;
+	@apply border border-solid border-[#e6e6e6];
 }
 
 .button_border{

@@ -81,16 +81,33 @@
 			@apply rounded-tr-md rounded-br-md;
 			flex: 1 1 auto;
 		}
-		>div:nth-child(2){
-			display: none;
-		}
+
 		flex-direction: column;
-		>div:last-child{
-			@apply rounded-bl-md rounded-tl-md;
-			max-width: fit-content;
-		}
-		button{
+	
+	}
+}
+
+
+.button_blue{
+	>button{
+		height: 45px !important;
+		font-size: 16px;
+		@apply rounded-[6px] rounded-bl-[0px]  rounded-tl-[0px];
+		max-width: fit-content;
+	}
+
+	@media (max-width:$media_screen) {
+		width: 100%;
+		align-self: stretch;
+		>button{
+			@apply rounded-bl-[6px] rounded-tl-[6px];
 			width: 100%;
+			max-width: 100%;
+			text-align: center;
+			>p{
+				width: 100%;
+			}
 		}
+	
 	}
 }

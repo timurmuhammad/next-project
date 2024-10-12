@@ -1,0 +1,58 @@
+@import '@/ui/vars-and-utils.scss';
+
+
+
+.content{
+	@apply max-w-[372px] my-[8px] mr-[16px] h-[80vh]  overflow-y-auto rounded-[6px] bg-white border border-[#d9d9d9];
+	flex-shrink: 1;
+
+	&::-webkit-scrollbar {
+		width: 12px;
+		@apply bg-[#d9d9d9];
+		border-radius: 5px;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: linear-gradient(-48.33deg, #01b091 5.18%, #00b2c8 100%);
+		border-radius: 5px;
+	}
+	
+}
+
+
+
+.trigger{
+	@apply w-[36px] h-[36px] cursor-pointer flex items-center justify-center overflow-hidden rounded-[10px] border border-solid border-[#e6e6e6];
+	position: relative;
+	transition: 0.3s;
+
+	img{
+		filter: brightness(0);
+		transition: 0.2s;
+	}
+
+	&:hover{
+		img{
+			filter: brightness(1);
+	
+		}
+		z-index: 501;
+		@apply border-[#b6b6b6];
+		background: linear-gradient(-48.33deg, #01b091 5.18%, #00b2c8 100%);
+	}
+	svg path {
+		fill: white !important; 
+	}
+	
+	&.active{
+		img{
+			filter: brightness(1);
+	
+		}
+		z-index: 501;
+		@apply border-[#b6b6b6];
+		background: linear-gradient(-48.33deg, #01b091 5.18%, #00b2c8 100%);
+	}
+	svg path {
+		fill: white !important; 
+	}
+}

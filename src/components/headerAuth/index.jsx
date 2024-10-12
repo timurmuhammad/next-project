@@ -1,18 +1,13 @@
 'use client'
 
 import styles from './header_auth.module.scss';
-import {productsType} from '../../types/products.ts';
 import { useEffect, useState } from "react";
 import burgerClose from '@/ui/icons/burger_close.svg';
 import burgerOpen from '@/ui/icons/burger_open.svg';
 import Image from 'next/image';
 import cn from 'classnames';
-import {menuMobileType} from '../../types/menuMobile';
-import arrow from '@/ui/icons/arrow_up.svg';
 import { Languages } from '../languages';
 import { SocialMedia } from '@/ui/socialMedia';
-import person from "@/ui/icons//person.png";
-import notify from "@/ui/icons/notify.svg";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/shadcn/ui/breadcrumb';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -20,6 +15,7 @@ import { tabs } from '@/types/auth';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/shadcn/ui/accordion';
 import arrow_up from '@/ui/icons/arrow_up.svg'
 import { ProfileMenu } from "@/components/profileMenu";
+import { Notifications } from "@/components/notifications";
 
 
 export const HeaderAuth = () => {
@@ -159,7 +155,7 @@ export const HeaderAuth = () => {
 
 			<div className={styles.auth}>
 				<ProfileMenu></ProfileMenu>
-				<div className='w-[36px] h-[36px] cursor-pointer flex items-center justify-center overflow-hidden rounded-[10px] border-solid border border-[#e6e6e6]'><Image src={notify} alt='icon' width={16} height={20}></Image></div>
+				<Notifications></Notifications>
 				<div className={styles.lang}><Languages></Languages></div>
 			</div>
 		</div>

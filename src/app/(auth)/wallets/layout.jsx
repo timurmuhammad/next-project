@@ -12,6 +12,10 @@ import usdt from "@/ui/icons/usdt.svg";
 import Image from 'next/image';
 import eth from "@/ui/icons/eth.svg";
 import ethereum_auth from "@/ui/icons/ethereum_auth.svg";
+import { AddWallet } from "@/components/addWallet";
+
+
+
 
 export default function WalletsLayout({ children }) {
 	const pathname = usePathname()
@@ -19,7 +23,7 @@ export default function WalletsLayout({ children }) {
 	const activeLinks = params.filter((item, index) => index !== 0);
 	const [ wallet, setWallet ] = useState('replenishment')
 
-	console.log(pathname)
+	const isWithdrawalPage = pathname === "/wallets/withdrawal";
 
 	return <div className={cn('_container', 'main_auth')}>
 		<div className={styles.breadcrumb}>
@@ -120,12 +124,10 @@ export default function WalletsLayout({ children }) {
 					</div>
 				</div>
 
-				<div className={styles.new_plan}>
-					<div className={styles.add}>
-						<Image src={eth} width={50} height={50} alt='icon'></Image>
-					</div>
-					<p className="text-[12px]">ADD WALLET</p>
-				</div>
+
+				{!isWithdrawalPage && 
+					<AddWallet></AddWallet>
+				}
 			</div>
 			<div className='flex-grow self-stretch'>{children}</div>
 

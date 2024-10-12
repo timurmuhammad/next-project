@@ -1,0 +1,24 @@
+@import '@/ui/vars-and-utils.scss';
+
+
+
+.body{
+
+	@apply flex flex-col relative gap-[24px] rounded-[6px] bg-white border border-[#d9d9d9] flex-shrink max-h-[90vh] overflow-hidden overflow-y-auto;
+
+	padding: adaptive($width_container, 32, 20);
+	padding-bottom: 32px;
+	position: relative;
+	z-index: 100;
+
+}
+
+
+.tablerow{
+	td{
+		@apply py-[8px];
+	}
+	th{
+		@apply py-[8px] h-[50px];
+	}
+}

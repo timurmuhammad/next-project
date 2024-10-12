@@ -15,3 +15,17 @@
 	}
 	
 }
+
+
+.trigger{
+	@apply w-[36px] h-[36px] cursor-pointer overflow-hidden rounded-[10px] border-solid border border-[#e6e6e6] relative;
+
+	&:hover{
+		@apply  border-[#b6b6b6];
+	}
+
+	&.active{
+		z-index: 501;
+		@apply  border-[#b6b6b6];
+	}
+}

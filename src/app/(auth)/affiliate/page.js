@@ -21,6 +21,8 @@ import copy from "@/ui/icons/copy.svg";
 import scanner from "@/ui/icons/scanner.svg";
 import document_download from "@/ui/icons/document_download.svg";
 import filter_square from "@/ui/icons/filter_square.svg";
+import { PopupPresentation } from "@/components/popupPresentation";
+import { PopupTurnover } from "@/components/popupTurnover";
 
 import {
   Table,
@@ -233,11 +235,11 @@ export default function Affiliate() {
 					</div>
 				</div>
 
-
-				<div className={styles.button_border}>
+				<PopupPresentation></PopupPresentation>
+				{/* <div className={styles.button_border}>
 					<span className={styles.circle}>i</span>
 					<p>Detailed info</p>
-				</div>
+				</div> */}
 			</div>
 
 
@@ -252,12 +254,14 @@ export default function Affiliate() {
 					</p>
 				</div>
 
-				<div className="flex justify-center items-center cursor-pointer gap-[8px] px-[8px] rounded border-solid border border-[#e6e6e6]">
+				{/* <div className="flex justify-center items-center cursor-pointer gap-[8px] px-[8px] rounded border-solid border border-[#e6e6e6]">
 					<Image src={document_download} width={16} height={16} alt='icon'></Image>
 					<p className="text-[10px]">
 						Promo materials
 					</p>
-				</div>
+				</div> */}
+
+				<PopupTurnover></PopupTurnover>
 
 
 				<div className={styles.copy}>
