@@ -8,8 +8,6 @@
 .list{
 	@apply flex justify-between items-center gap-[8px];
 
-	flex: 1 1 0%;
-
 	@media (max-width:$media_tablet) {
 		flex-direction: column;
 	}
@@ -70,15 +68,31 @@
 }
 
 .buttons{
-	>button{
-		height: 36px !important;
-		font-size: 16px;
+
+	>a{
+		>button{
+			height: 36px !important;
+			font-size: 16px;
+		}
 	}
 }
 
 
+
+.ul{
+	@apply flex-grow  text-[14px];
+	padding-left: 15px;
+
+	list-style-type: disc !important;
+
+	li{
+		list-style: disc;
+
+	}
+}
+
 .ammount{
-	@apply flex justify-between  gap-[22px];
+	@apply flex justify-between self-stretch gap-[22px];
 
 	@media (max-width:$media_screen) {
 		flex-direction: column;
@@ -86,5 +100,24 @@
 		>div{
 			max-width: 100%;
 		}
+	}
+}
+
+
+.setup{
+	@apply text-[#00b2c8] underline text-[14px];
+
+	position: absolute;
+	top: 50%;
+	right: 14px;
+	transform: translateY(-50%);
+	cursor: pointer;
+}
+
+
+.input{
+	@apply w-full relative rounded-[6px] border-[1px] border-solid border-[#cecece];
+	input{
+		padding-right: 60px;
 	}
 }

@@ -33,6 +33,7 @@ import shield from "@/ui/images/shield.svg";
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@/shadcn/ui/accordion.tsx"
 import { ButtonBlue } from "@/components/buttonBlue"
 import group_bg from "@/ui/images/group_bg.svg";
+import document_pdf from "@/ui/icons/document_pdf.svg";
 
 
 export default function About() {
@@ -52,7 +53,7 @@ export default function About() {
             empower them to achieve their financial goals."
           ></Typography>
   
-          <div className="flex gap-6 flex-wrap">
+          <div className="flex gap-[24px] flex-wrap">
             <div className={styles.check_list}>
               <ChecklistItem
       					text="High yield strategies"
@@ -411,6 +412,134 @@ export default function About() {
     </div>
 
 
+    <div className='_container'>
+      <div className="mx-auto">
+        <Typography
+          size="h2"
+          title="Meet our Leadership"
+          text="Our selection of experienced professionals, each with high standards and skills, demonstrates the team to achieve success in our field. We believe in the power of the team, where each employee plays a key role in achieving our goals. Our close-knit team is the main engine of our growth and prosperity."
+        ></Typography>
+      </div>
+    </div>
+
+
+
+        <div className={cn(styles.posts__body, '_container')}>
+          <div className={styles.card_image}>
+            <div className={styles.post__image}></div>
+            <p className={styles.posts_title}>Rick Mortievich</p>
+            <p className={styles.posts__text}>Chief Executive Officer & Co-Founder</p>
+          </div>
+
+          <div className={styles.card_image}>
+            <div className={styles.post__image}></div>
+            <p className={styles.posts_title}>Rick Mortievich</p>
+            <p className={styles.posts__text}>Chief Executive Officer & Co-Founder</p>
+          </div>
+
+          <div className={styles.card_image}>
+            <div className={styles.post__image}></div>
+            <p className={styles.posts_title}>Rick Mortievich</p>
+            <p className={styles.posts__text}>Chief Executive Officer & Co-Founder</p>
+          </div>
+
+          <div className={styles.card_image}>
+            <div className={styles.post__image}></div>
+            <p className={styles.posts_title}>Rick Mortievich</p>
+            <p className={styles.posts__text}>Chief Executive Officer & Co-Founder</p>
+          </div>
+        </div>
+
+
+
+    <div className={cn('_container', styles.collage)}>
+      <div className={styles.collage_top}>
+        <div className="flex flex-col gap-[24px] pb-[20px]">
+          <div className={styles.typography}>
+            <Typography
+              size="h2"
+              title="Our Headquarters"
+              text="Every day, our programmers traders and financial specialists
+are working to improve our trading algorithm in the main office
+in London."
+            ></Typography>
+          </div>
+          <ChecklistItem
+            text="We work 5 days a week"
+          ></ChecklistItem>
+          <ChecklistItem
+            text="More than 40 employees"
+          ></ChecklistItem>
+          <ChecklistItem
+            text="More than 500 square meters"
+          ></ChecklistItem>
+        </div>
+
+        <div className={styles.collage_img}></div>
+        <div className={styles.collage_img}></div>
+      </div>
+
+      <div className={styles.collage_bottom}>
+        <div className={styles.collage_img}></div>
+        <div className={styles.collage_img}></div>
+        <div className={styles.collage_img}></div>
+      </div>
+    </div>
+
+
+    <div className="_container">
+      <div className={styles.legal}>
+        <div className="flex flex-col flex-1 justify-center gap-[16px]">
+          <p className="  text-[32px]  font-[400]">
+            Legal information
+          </p>
+          <p className="text-[18px]   ">
+            Explore certificates, documents and audits from our partners proving the company's commitment
+            to legality, transparency and efficiency
+          </p>
+        </div>
+        <div className={styles.pdf}>
+          <div
+            className="flex  items-center flex-shrink-0   relative gap-[12px] px-[14px] py-[16px] rounded-[6px]  border border-solid border-[#cecece]"
+            style={{ boxShadow: "0px 0px 4.300000190734863px 0 rgba(0,0,0,0.1)" }}
+          >
+            <Image src={document_pdf} width={27} height={32} alt="icon"></Image>
+            <p className="  text-[18px]   text-black">
+              SOC2 Type II Audit
+            </p>
+          </div>
+          <div
+            className="flex  items-center flex-shrink-0   relative gap-[12px] px-[14px] py-[16px] rounded-[6px]  border border-solid border-[#cecece]"
+            style={{ boxShadow: "0px 0px 4.300000190734863px 0 rgba(0,0,0,0.1)" }}
+          >
+            <Image src={document_pdf} width={27} height={32} alt="icon"></Image>
+            <p className="  text-[18px]   text-black">
+              ISO27001 Certification
+            </p>
+          </div>
+          <div
+            className="flex  items-center flex-shrink-0   relative gap-[12px] px-[14px] py-[16px] rounded-[6px]  border border-solid border-[#cecece]"
+            style={{ boxShadow: "0px 0px 4.300000190734863px 0 rgba(0,0,0,0.1)" }}
+          >
+            <Image src={document_pdf} width={27} height={32} alt="icon"></Image>
+            <p className="  text-[18px]   text-black">
+              Certificate of incorporation
+            </p>
+          </div>
+          <div
+            className="flex  items-center flex-shrink-0   relative gap-[12px] px-[14px] py-[16px] rounded-[6px]  border border-solid border-[#cecece]"
+            style={{ boxShadow: "0px 0px 4.300000190734863px 0 rgba(0,0,0,0.1)" }}
+          >
+            <Image src={document_pdf} width={27} height={32} alt="icon"></Image>
+            <p className="  text-[18px]   text-black">
+              CSA STAR Certificate
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
 
     <div className="_container">
       <div className="max-w-[770px] mx-auto">
@@ -462,7 +591,7 @@ export default function About() {
         <div className="absolute z-10 top-0 left-0 w-full h-full flex justify-center items-center flex-col text-center gap-[48px]">
           <h3 className="font-normal text-[32px]">Join Company today</h3>
           <p className="font-normal text-[24px]">Earn crypto around the clock with high-tech solutions</p>
-          <button className="font-normal text-xl flex items-center last:justify-center rounded py-0 px-[48px] h-[62px] bg-[#E4FAFC] text-black w-fit mx-auto hover:bg-white">Sign Up</button>
+          <button className="font-normal text-xl flex items-center last:justify-center rounded py-0 px-[48px] h-[62px] bg-[#E4FAFC] text-black w-fit mx-auto hover:">Sign Up</button>
         </div>
       </div>
     </div>

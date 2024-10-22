@@ -23,7 +23,7 @@ export const ProfileMenu = () => {
 
 			if (bg) {
 				if (open) {
-					bg.style.zIndex = 100;
+					bg.style.zIndex = 500;
 					bg.style.opacity = '1';
 					bg.style.background = 'rgba(0, 0, 0, 0.3)';
 

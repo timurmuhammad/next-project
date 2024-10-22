@@ -3,7 +3,7 @@ import currencyLogo from "@/ui/icons/currency_logo.svg";
 import exchangeLogo from "@/ui/icons/exchange_logo.svg";
 import trading from "@/ui/icons/trading.svg";
 import copy_trading from "@/ui/icons/copy_trading.svg";
-import cross_chain from "@/ui/icons/cross_chain.png";
+import cross_chain from "@/ui/icons/cross_chain.svg";
 
 export const productsType = [
 	{name: 'Automatic Trading', link: '', icon: trading.src, description: 'Automated trading system'},

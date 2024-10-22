@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './strategy.module.scss'
 import cn from 'classnames'
 import { Typography } from '../typography'
@@ -20,7 +20,8 @@ import bag from "@/ui/icons/bag.svg";
 type PlanItem = {
   days: number;
   percent: string;
-	amount: number;
+	interest: number;
+	usd: number;
 	daily: number;
 	weekly: number;
 	totalProfit: number;
@@ -31,10 +32,10 @@ const dynamicStrategy = {
 	name: 'Dynamic Strategy',
 	description: 'A strategy with a wide range of investment amounts and short investment periods',
 	plan: [
-		{days: 15, percent: '0.7-0.9', amount: 10, daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
-		{days: 25, percent: '0.9-1.2', amount: 20, daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
-		{days: 35, percent: '1.2-1.5', amount: 30, daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
-		{days: 45, percent: '1.5-1.8', amount: 40, daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
+		{days: 15, percent: '0.7-0.9', interest: 0, usd: 10, daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
+		{days: 25, percent: '0.9-1.2', interest: 0, usd: 20, daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
+		{days: 35, percent: '1.2-1.5', interest: 0, usd: 30, daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
+		{days: 45, percent: '1.5-1.8', interest: 0, usd: 40, daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
 	] as PlanItem[]
 }
 
@@ -42,10 +43,10 @@ const staticStrategy = {
 	name: 'Static Strategy',
 	description: 'Profitable medium-term strategy with fixed income and investment amount',
 	plan: [
-		{days: 50, percent: '1.4', amount: 100, daily: 9.6, weekly: 67.2, totalProfit: 384, totalAmount: 984},
-		{days: 60, percent: '1.7', amount: 200, daily: 9.6, weekly: 67.2, totalProfit: 384, totalAmount: 984},
-		{days: 70, percent: '1.9', amount: 300, daily: 9.6, weekly: 67.2, totalProfit: 384, totalAmount: 984},
-		{days: 80, percent: '2.1', amount: 400, daily: 9.6, weekly: 67.2, totalProfit: 384, totalAmount: 984},
+		{days: 50, percent: '1.4', interest: 0, usd: 100, daily: 9.6, weekly: 67.2, totalProfit: 384, totalAmount: 984},
+		{days: 60, percent: '1.7', interest: 0, usd: 200, daily: 9.6, weekly: 67.2, totalProfit: 384, totalAmount: 984},
+		{days: 70, percent: '1.9', interest: 0, usd: 300, daily: 9.6, weekly: 67.2, totalProfit: 384, totalAmount: 984},
+		{days: 80, percent: '2.1', interest: 0, usd: 400, daily: 9.6, weekly: 67.2, totalProfit: 384, totalAmount: 984},
 	] as PlanItem[]
 }
 
@@ -56,6 +57,13 @@ export const Strategy = () => {
 	const [ reactivation, setReactivation ] = useState(false)
 	const [ planDynamic, setPlanDynamic ] = useState(dynamicStrategy.plan[0])
 	const [ planStatic, setPlanStatic ] = useState(staticStrategy.plan[0])
+	const [ profitDinamic, setProfitDinamic ] = useState(planDynamic.usd)
+	const [ profitStatic, setProfitStatic ] = useState(planStatic.usd)
+
+	useEffect(() => {
+		setProfitDinamic(planDynamic.usd);
+		setProfitStatic(planStatic.usd);
+	}, [planDynamic, planStatic]);
 
 	return <div className={styles.body}>
 			<div className={cn(styles.inner, {[styles.active]: staticStrategy === strategy})}>
@@ -98,20 +106,20 @@ export const Strategy = () => {
 							}
 						</div>
 		
-						<h5 className='flex justify-between text-[16px] font-[400] translate-y-[10px]'>Amount <span className='text-[14px] font-[400]'> ${planDynamic.amount}</span> </h5>
+						<h5 className='flex justify-between text-[16px] font-[400] translate-y-[10px]'>Amount <span className='text-[14px] font-[400]'> ${profitDinamic}</span> </h5>
 		
-						<p className='flex text-[20px] font-[400] w-full flex-auto items-center justify-center rounded-[6px] py-0  px-[16px]  h-[56px] bg-[#fafafa] border-[1px] border-solid border-[#cecece]'>${planDynamic.amount}</p>
+						<p className='flex text-[20px] font-[400] w-full flex-auto items-center justify-center rounded-[6px] py-0  px-[16px]  h-[56px] bg-[#fafafa] border-[1px] border-solid border-[#cecece]'>${profitDinamic}</p>
 		
-						<Slider defaultValue={[planDynamic.amount]} max={100} step={1}></Slider>
+						<Slider defaultValue={[profitDinamic]} max={100} step={1}></Slider>
 						
 					</div>
 		
 					<div className='flex flex-col gap-[30px]'>
 						<h5 className='text-[16px] font-[400] flex justify-between items-center gap-[12px]'>Profit calculation
 							<div className="overflow-hidden border-[1px] border-solid border-[#e6e6e6] rounded-[6px] flex items-center h-[40px] flex-shrink-0 flex-grow-0">
-								<p className='px-[16px] flex gap-[4px] items-center font-[300] h-full text-[#4a4a4a] text-[14px]' ><span className='' >% </span> INTEREST</p>
+								<p onClick={() => setProfitDinamic(planDynamic.interest)} className={cn(styles.tab, { [styles.active]: profitDinamic === planDynamic.interest })} ><span className='' >% </span> INTEREST</p>
 		
-								<p className='bg-[#00B2C8] px-[16px] flex items-center font-[500] h-full text-[#fff] text-[14px] text-nowrap' >$ USD</p>						
+								<p onClick={() => setProfitDinamic(planDynamic.usd)} className={cn(styles.tab, { [styles.active]: profitDinamic === planDynamic.usd })} >$ USD</p>						
 							</div>
 						</h5>
 		
@@ -120,27 +128,27 @@ export const Strategy = () => {
 								<p className={styles.calc}>
 									<span>Daily
 									</span>
-									<span> ${planDynamic.amount}</span>
+									<span> ${profitDinamic}</span>
 								</p>
 		
 								<p className={styles.calc}>
 									<span>Weekly
 									</span>
-									<span> ${planDynamic.amount}</span>
+									<span> ${profitDinamic}</span>
 								</p>
 		
 								<p className={styles.calc}>
 									<span>Total Profit
 										<span className={styles.span}>?</span>
 									</span>
-									<span> ${planDynamic.amount}</span>
+									<span> ${profitDinamic}</span>
 								</p>
 		
 								<p className={styles.calc}>
 									<span>Total with investment amount
 										<span className={styles.span}>?</span>
 									</span>
-									<span> ${planDynamic.amount}</span>
+									<span> ${profitDinamic}</span>
 								</p>
 								
 							</div>
@@ -248,20 +256,20 @@ export const Strategy = () => {
 							}
 						</div>
 		
-						<h5 className='flex justify-between text-[16px] font-[400] translate-y-[10px]'>Amount <span className='text-[14px] font-[400]'> ${planStatic.amount}</span> </h5>
+						<h5 className='flex justify-between text-[16px] font-[400] translate-y-[10px]'>Amount <span className='text-[14px] font-[400]'> ${profitStatic}</span> </h5>
 		
-						<p className='flex text-[20px] font-[400] w-full flex-auto items-center justify-center rounded-[6px] py-0  px-[16px]  h-[56px] bg-[#fafafa] border-[1px] border-solid border-[#cecece]'>${planStatic.amount}</p>
+						<p className='flex text-[20px] font-[400] w-full flex-auto items-center justify-center rounded-[6px] py-0  px-[16px]  h-[56px] bg-[#fafafa] border-[1px] border-solid border-[#cecece]'>${profitStatic}</p>
 		
-						<Slider defaultValue={[planStatic.amount]} max={100} step={1}></Slider>
+						<Slider defaultValue={[profitStatic]} max={100} step={1}></Slider>
 						
 					</div>
 		
 					<div className='flex flex-col gap-[30px]'>
 						<h5 className='text-[16px] font-[400] flex justify-between items-center gap-[12px]'>Profit calculation
 							<div className="overflow-hidden border-[1px] border-solid border-[#e6e6e6] rounded-[6px] flex items-center h-[40px] flex-shrink-0 flex-grow-0">
-								<p className='px-[16px] flex gap-[4px] items-center font-[300] h-full text-[#4a4a4a] text-[14px]' ><span className='' >% </span> INTEREST</p>
+								<p onClick={() => setProfitStatic(planStatic.interest)} className={cn(styles.tab, { [styles.active]: profitStatic === planStatic.interest })}><span className='flex-shrink-0'>% </span> INTEREST</p>
 		
-								<p className='bg-[#00B2C8] px-[16px] flex items-center font-[500] h-full text-[#fff] text-[14px] text-nowrap' >$ USD</p>						
+								<p onClick={() => setProfitStatic(planStatic.usd)} className={cn(styles.tab, { [styles.active]: profitStatic === planStatic.usd })}>$ USD</p>						
 							</div>
 						</h5>
 		
@@ -270,27 +278,27 @@ export const Strategy = () => {
 								<p className={styles.calc}>
 									<span>Daily
 									</span>
-									<span> ${planStatic.amount}</span>
+									<span> ${profitStatic}</span>
 								</p>
 		
 								<p className={styles.calc}>
 									<span>Weekly
 									</span>
-									<span> ${planStatic.amount}</span>
+									<span> ${profitStatic}</span>
 								</p>
 		
 								<p className={styles.calc}>
 									<span>Total Profit
 										<span className={styles.span}>?</span>
 									</span>
-									<span> ${planStatic.amount}</span>
+									<span> ${profitStatic}</span>
 								</p>
 		
 								<p className={styles.calc}>
 									<span>Total with investment amount
 										<span className={styles.span}>?</span>
 									</span>
-									<span> ${planStatic.amount}</span>
+									<span> ${profitStatic}</span>
 								</p>
 							</div>
 						</div>

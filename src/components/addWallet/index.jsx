@@ -28,11 +28,11 @@ import {
 	DialogClose,
 } from "@/shadcn/ui/dialog"
 
-
-
+const listWallets = [ binance_coin.src, digibyte.src, dogecoin.src, ethereum.src, monero.src, litecoin.src, notcoin.src, polygon.src, solana.src, shiba_inu.src, tether.src, ton.src, tron.src, usdc.src, ]
 
 export const AddWallet = () => {
 	const [open, setOpen] = useState(false);
+	const [ list, setList ] = useState([])
 
 	useEffect(() => {
 		if (typeof document !== 'undefined') {
@@ -71,6 +71,15 @@ export const AddWallet = () => {
 			}
 		}
 	}, [open]);
+
+
+	function add(item) {
+		if (list.includes(item)) {
+			setList(list.filter(i => i !== item));
+	} else {
+			setList([...list, item]);
+	}
+	}
 
 
 	return <Dialog modal={false} open={open} onOpenChange={setOpen}>
@@ -115,62 +124,9 @@ export const AddWallet = () => {
 				</p>
 				<div className="flex flex-wrap justify-center items-center gap-[22px]">
 
-					<div className={styles.item}>
-						<Image src={binance_coin} width={60} height={60} alt='icon' ></Image>
-					</div>
-
-					<div className={styles.item}>
-						<Image src={digibyte} width={60} height={60} alt='icon' ></Image>
-					</div>
-
-					<div className={styles.item}>
-						<Image src={dogecoin} width={60} height={60} alt='icon' ></Image>
-					</div>
-
-					<div className={styles.item}>
-						<Image src={ethereum} width={60} height={60} alt='icon' ></Image>
-					</div>
-
-					<div className={styles.item}>
-						<Image src={monero} width={60} height={60} alt='icon' ></Image>
-					</div>
-
-					<div className={styles.item}>
-						<Image src={litecoin} width={60} height={60} alt='icon' ></Image>
-					</div>
-
-					<div className={styles.item}>
-						<Image src={notcoin} width={60} height={60} alt='icon' ></Image>
-					</div>
-
-					<div className={styles.item}>
-						<Image src={polygon} width={60} height={60} alt='icon' ></Image>
-					</div>
-
-
-					<div className={styles.item}>
-						<Image src={solana} width={60} height={60} alt='icon' ></Image>
-					</div>
-
-					<div className={styles.item}>
-						<Image src={shiba_inu} width={60} height={60} alt='icon' ></Image>
-					</div>
-
-					<div className={styles.item}>
-						<Image src={tether} width={60} height={60} alt='icon' ></Image>
-					</div>
-
-					<div className={styles.item}>
-						<Image src={ton} width={60} height={60} alt='icon' ></Image>
-					</div>
-
-					<div className={styles.item}>
-						<Image src={tron} width={60} height={60} alt='icon' ></Image>
-					</div>
-
-					<div className={styles.item}>
-						<Image src={usdc} width={60} height={60} alt='icon' ></Image>
-					</div>
+				{listWallets.map((item, index) => <div onClick={() => add(item)} className={cn(styles.item, { [styles.active]: list.includes(item) })}>
+						<Image key={index} src={item} width={60} height={60} alt='icon' ></Image>
+					</div>)}
 				</div>
 
 				<div className={styles.button_blue}><p>Add Wallet</p></div>

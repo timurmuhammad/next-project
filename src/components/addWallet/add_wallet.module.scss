@@ -51,6 +51,7 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
+		margin: 0;
 		margin-right: 5px;
 	}
 
@@ -69,9 +70,12 @@
 	}
 
 	&:hover{
+		box-shadow: 0 0 8px #cacaca;
+	}
+
+	&.active{
 		&:after{
 			opacity: 1;
-			
 		}
 	}
 }

@@ -4,7 +4,16 @@
 	display: flex;
 	align-items: center;
 	gap: 10px;
-	/*adpative*/
+	width: fit-content;
+
+	&:hover{
+		.text{
+
+			&::after{
+				width: 100%;
+			}
+		}
+	}
 }
 
 .circle{
@@ -20,6 +29,7 @@
 .text{
 
 	&::after{
+		transition: 0.3s;
 		content: '';
 		display: block;
 		background: linear-gradient(282.54deg, #01B091 2%, #00B2C8 100%);

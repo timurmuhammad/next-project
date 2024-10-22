@@ -235,11 +235,7 @@ export default function Affiliate() {
 					</div>
 				</div>
 
-				<PopupPresentation></PopupPresentation>
-				{/* <div className={styles.button_border}>
-					<span className={styles.circle}>i</span>
-					<p>Detailed info</p>
-				</div> */}
+				<PopupTurnover></PopupTurnover>
 			</div>
 
 
@@ -253,15 +249,7 @@ export default function Affiliate() {
 						Earn lifetime commissions on every Company product activated by your referrals.
 					</p>
 				</div>
-
-				{/* <div className="flex justify-center items-center cursor-pointer gap-[8px] px-[8px] rounded border-solid border border-[#e6e6e6]">
-					<Image src={document_download} width={16} height={16} alt='icon'></Image>
-					<p className="text-[10px]">
-						Promo materials
-					</p>
-				</div> */}
-
-				<PopupTurnover></PopupTurnover>
+				<PopupPresentation></PopupPresentation>
 
 
 				<div className={styles.copy}>

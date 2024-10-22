@@ -549,3 +549,14 @@
 
 	padding-bottom: adaptive($width_container, 32, 0);
 }
+
+.tab{
+	@apply px-[16px] flex gap-[4px] flex-grow-0 flex-shrink-0 items-center font-[300] h-full text-[#4a4a4a] text-[14px];
+	transition: all 0.2s;
+	user-select: none;
+	cursor: pointer;
+
+	&.active{
+		@apply bg-[#00B2C8] px-[16px] flex items-center font-[500] h-full text-[#fff] text-[14px] text-nowrap;
+	}
+}

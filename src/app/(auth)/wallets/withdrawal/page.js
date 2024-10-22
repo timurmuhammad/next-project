@@ -3,6 +3,7 @@
 import { ButtonBlue } from '@/components/buttonBlue'
 import styles from './withdrawal.module.scss'
 import cn from 'classnames'
+import Link from 'next/link'
 
 export default function Withdrawal() {
 	return 	<div className={styles.body}>
@@ -94,7 +95,7 @@ export default function Withdrawal() {
 						<p className="  text-[14px]   ">
 							Wallet Address
 						</p>
-						<p className="  text-[14px]  text-[#00b2c8]">
+						<p className="  text-[14px] cursor-pointer underline text-[#00b2c8]">
 							Specify your wallet
 						</p>
 					</div>
@@ -108,11 +109,11 @@ export default function Withdrawal() {
 		</div>
 
 
-		<div className={styles.buttons}>
+		<Link href='/wallets/confirmation' className={styles.buttons}>
 				<ButtonBlue
 					text='Next'
 				></ButtonBlue>
-			</div>
+			</Link>
 
 	</div>
 }

@@ -1,11 +1,21 @@
 @import '@/ui/vars-and-utils.scss';
 
-.body{
-	overflow-y: auto;
-	@apply flex flex-col items-center gap-[16px] px-[16px] py-[48px] bg-[#e4fafc];
+
+.wrapper{
+	height: 100vh;
+	width: 156px;
+	flex: 0 0 156px;
+
 	@media(max-width: $media_tablet) {
 		display: none;
 	}
+}
+
+.body{
+	overflow-y: auto;
+	box-sizing: border-box;
+	@apply flex flex-col items-center gap-[16px] px-[16px] py-[48px] bg-[#e4fafc];
+
 
 	>img{
 		margin-bottom: 32px;
@@ -21,6 +31,20 @@
 	flex: 0 0 156px;
 	overflow-x: hidden;
 	padding-bottom: 320px;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+
+	&::after{
+		content: '';
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		width: 171px;
+		z-index: -1;
+	}
 }
 
 
@@ -28,6 +52,11 @@
 	@apply flex flex-col justify-center items-center gap-[10px] p-[16px] rounded-[6px] w-[120px];
 	cursor: pointer;
 	transition: 0.1s;
+	position: relative;
+	
+	&:hover{
+		background-color: rgba(255, 255, 255, 0.719);
+	}
 
 	img{
 		transition: 0.1s;
@@ -41,6 +70,7 @@
 
 	&.active{
 		background-color: white;
+
 		img{
 			filter: brightness(1);
 		}
@@ -48,5 +78,36 @@
 		p{
 			@apply text-[#00b2c8] font-medium;
 		}
+	}
+}
+
+
+
+.popup_list__body{
+	box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.1);
+	border-radius: 6px;
+	width: 320px;
+	transition: all 0.4s;
+	border-radius: 2px;
+	font-size: 14px;
+	color: #303030 !important;
+	animation-duration: 0s !important;
+	transform: translateX(10px) !important;
+	outline: none !important;
+
+	>a:hover{
+		background-color: #f2feff;
+	}
+
+	li{
+		padding: 4px 10px;
+		display: block;
+	
+		&:hover{
+			text-decoration: underline;
+		}
+	}
+	>div:last-child{
+		opacity: 0.5;
 	}
 }

@@ -16,6 +16,8 @@ import { ButtonBlue } from '../buttonBlue'
 import { cryptoYeild12, cryptoMax24, cryptoPro36 } from '@/types/diagramType'
 import { Switch } from "@/shadcn/ui/switch"
 import { Slider } from "@/shadcn/ui/slider"
+import exchange_arbitrage from '@/ui/icons/exchange_arbitrage.svg'
+import cryptomax from '@/ui/icons/cryptomax.svg'
 
 const groupPool = [cryptoYeild12, cryptoMax24, cryptoPro36]
 const chartType = ['Week', 'Month', 'Total']
@@ -33,6 +35,7 @@ const chartData = [
 export const Diagram = () => {
 	const [ pool, setPool ] = useState(cryptoYeild12)
 	const [ chart, setChart ] = useState(chartType[2])
+	const [ crypto, setCrypto ] = useState('12')
 
 	const chartConfig = {
 		desktop: {
@@ -55,7 +58,7 @@ export const Diagram = () => {
 
 			<div className={styles.top_bar}>
 				<div className={styles.list_wrapper}>
-					<div className={cn(styles.list, {[styles.active]: pool === cryptoYeild12})}>
+					<div onClick={() => setCrypto('12')} className={cn(styles.crypto, {[styles.active]: crypto === '12'})}>
 						<div className={styles.company}>
 							<Image src={marketMaking} width={92} height={92} alt='icon'></Image>
 							<p>
@@ -103,10 +106,10 @@ export const Diagram = () => {
 			
 			
 			
-					<div className={cn(styles.list, {[styles.active]: pool === cryptoMax24})}>
+					<div onClick={() => setCrypto('24')} className={cn(styles.crypto, {[styles.active]: crypto === '24'})}>
 						
 						<div className={styles.company}>
-							<Image src={marketMaking} width={92} height={92} alt='icon'></Image>
+							<Image src={exchange_arbitrage} width={92} height={92} alt='icon'></Image>
 							<p>
 								<span>Company</span> CryptoMax 24
 							</p>
@@ -152,10 +155,10 @@ export const Diagram = () => {
 			
 			
 			
-					<div className={cn(styles.list, {[styles.active]: pool === cryptoPro36})}>
+					<div onClick={() => setCrypto('36')} className={cn(styles.crypto, {[styles.active]: crypto === '36'})}>
 						
 						<div className={styles.company}>
-							<Image src={marketMaking} width={92} height={92} alt='icon'></Image>
+							<Image src={cryptomax} width={92} height={92} alt='icon'></Image>
 							<p>
 								<span>Company</span> CryptoPro 36
 							</p>
@@ -310,8 +313,8 @@ export const Diagram = () => {
 		<div className={styles.calculate}>
 			<h6 className="self-center font-[500] text-[16px] text-black">Calculate your profit</h6>
 			<div>
-				<p className='text-[14px] font-[400] text-[#605e5e] mb-[4px]'>$10000-250000</p>
-				<p className='flex text-[20px] font-[400] w-full flex-auto items-center justify-center rounded-[6px] py-0  px-[16px]  h-[56px] bg-[#fafafa] border-[1px] border-solid border-[#cecece]'>$25000</p>
+				<p className='text-[14px] font-[400] text-[#605e5e] mb-[4px]'>{crypto === '12' ? '$10000-250000' : crypto === '24' ? '$25000-50000' : '$0'}</p>
+				<p className='flex text-[20px] font-[400] w-full flex-auto items-center justify-center rounded-[6px] py-0  px-[16px]  h-[56px] bg-[#fafafa] border-[1px] border-solid border-[#cecece]'>{crypto === '12' ? '$250000' : crypto === '24' ? '$50000' : '$0'}</p>
 			</div>
 
 			<Slider defaultValue={[2500]} max={10000} step={1}></Slider>

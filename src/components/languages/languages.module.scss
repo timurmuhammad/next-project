@@ -22,10 +22,12 @@
 
 .lang{
 	@apply flex justify-center items-center gap-[8px] p-[8px] rounded-[6px];
+	outline: none !important;
+	cursor: pointer;
 
 	flex: 1 1 calc(50% - 16px);
 	max-width: fit-content;
-	cursor: pointer;
+	// cursor: pointer;
 	transition: 0.1s;
 
 	&:hover{

@@ -20,6 +20,9 @@ import mediaScreenMobile from "@/ui/images/mobile_copytrading.png";
 import { Product } from "@/components/product"
 import { goods } from "@/types/products";
 import { NumericalIndicators } from "@/components/numericalIndicators"
+import exchange_arbitrage from '@/ui/icons/exchange_arbitrage.svg'
+import market_making from '@/ui/icons/market-making.svg'
+import cryptomax from '@/ui/icons/cryptomax.svg'
 
 
 export default function CopyTrading() {

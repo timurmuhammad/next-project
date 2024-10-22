@@ -23,7 +23,7 @@ export default function WalletsLayout({ children }) {
 	const activeLinks = params.filter((item, index) => index !== 0);
 	const [ wallet, setWallet ] = useState('replenishment')
 
-	const isWithdrawalPage = pathname === "/wallets/withdrawal";
+	const isReplenishmentlPage = pathname === "/wallets/replenishment";
 
 	return <div className={cn('_container', 'main_auth')}>
 		<div className={styles.breadcrumb}>
@@ -125,7 +125,7 @@ export default function WalletsLayout({ children }) {
 				</div>
 
 
-				{!isWithdrawalPage && 
+				{isReplenishmentlPage &&
 					<AddWallet></AddWallet>
 				}
 			</div>

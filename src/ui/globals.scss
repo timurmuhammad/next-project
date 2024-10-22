@@ -243,7 +243,6 @@ main{
       -o-transition: max-height 2s; 
       transition: max-height 2s;  
       max-height: 300px;
-      @apply pb-[32px] pt-0 px-[14px];
     }
 
 
@@ -266,6 +265,7 @@ main{
 .accordion-inner{
   position: relative;
   z-index: 6;
+        @apply pb-[32px] pt-0 px-[14px];
 }
 
 .accordion-toggle{

@@ -38,8 +38,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/shadcn/ui/carousel"
 import { useRef } from "react";
 

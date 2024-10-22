@@ -664,7 +664,7 @@
 
 
 .profit{
-	@apply flex flex-col self-stretch justify-center flex-grow gap-[32px] rounded-[6px] border border-solid border-[#cecece];
+	@apply flex flex-col self-stretch justify-center flex-grow gap-[32px] rounded-[6px] bg-white border border-solid border-[#cecece];
 
 	padding: adaptive($width_container, 32, 16);
 	@media (max-width:1306px) {
@@ -737,11 +737,23 @@
 
 
 .currency{
-	@apply flex flex-col justify-between flex-grow self-stretch gap-[32px] rounded-[6px] border border-solid border-[#cecece];
+	@apply flex flex-col relative z-[1] justify-between flex-grow self-stretch gap-[32px] rounded-[6px] bg-white border border-solid border-[#cecece];
 
 	padding: adaptive($width_container, 32, 16);
 	@media (max-width:1306px) {
 		border-bottom: none;
 		border-radius: 6px 6px 0 0;
+	}
+}
+
+
+.tab{
+	@apply px-[16px] flex gap-[4px] items-center font-[300] h-full text-[#4a4a4a] text-[14px];
+	transition: all 0.2s;
+	user-select: none;
+	cursor: pointer;
+
+	&.active{
+		@apply bg-[#00B2C8] px-[16px] flex items-center font-[500] h-full text-[#fff] text-[14px] text-nowrap;
 	}
 }

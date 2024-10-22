@@ -58,10 +58,10 @@ const dynamicStrategy = {
 	name: 'Dynamic Strategy',
 	description: 'A strategy with a wide range of investment amounts and short investment periods',
 	plan: [
-		{days: 30, percent: '4.4', amount: '100', sum: '$100-10000', daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
-		{days: 40, percent: '4.6', amount: '100', sum: '$10000-50000', daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
-		{days: 35, percent: '1.2-1.5', amount: '100', sum: '$100-1000', daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
-		{days: 45, percent: '1.5-1.8', amount: '100', sum: '$100-1000', daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
+		{days: 30, percent: '4.4', interest: 0, usd: 10, eth: 100, amount: '100', sum: '$100-10000', daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
+		{days: 40, percent: '4.6', interest: 1, usd: 20, eth: 200, amount: '100', sum: '$10000-50000', daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
+		{days: 35, percent: '1.2-1.5', interest: 2, usd: 30, eth: 300, amount: '100', sum: '$100-1000', daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
+		{days: 45, percent: '1.5-1.8', interest: 3, usd: 40, eth: 400, amount: '100', sum: '$100-1000', daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
 	]
 }
 
@@ -144,6 +144,18 @@ export default function Crossсhain() {
 	const [openFrom, setOpenFrom] = useState(false)
 	const [ openTo, setOpenTo ] = useState(false)
 	const [valueFrom, setValueFrom] = useState("etherc-20")
+
+	const [ profitDinamic, setProfitDinamic ] = useState(planDynamic.interest)
+	const [ profit, setProfit ] = useState('interest')
+
+	useEffect(() => {
+		setProfitDinamic(planDynamic[profit]);
+	}, [planDynamic, profit]);
+
+	function onChangeProfit(item, value) {
+		setProfitDinamic(item[value]);
+		setProfit(value)
+	}
 
 	function onClick(item) {
 		item === 'from' ? setOpenFrom(!openFrom)
@@ -367,11 +379,11 @@ export default function Crossсhain() {
 						<div className='flex flex-col gap-[30px]'>
 							<h5 className={styles.h}>Profit calculation
 								<div className="overflow-hidden border-[1px] border-solid border-[#e6e6e6] rounded-[6px] flex items-center h-[40px] flex-shrink-0 flex-grow-0">
-									<p className='px-[16px] flex gap-[4px] items-center font-[300] h-full text-[#4a4a4a] text-[14px]' ><span className='' >% </span> ETH</p>
+								<p onClick={() => onChangeProfit(planDynamic.eth, 'eth')} className={cn(styles.tab, { [styles.active]: profit === 'eth' })} ><span className='' >% </span> ETH</p>
 
-									<p className='bg-[#00B2C8] px-[16px] flex items-center font-[500] h-full text-[#fff] text-[14px] text-nowrap' >$ USD</p>
+<p onClick={() => onChangeProfit(planDynamic.usd, 'usd')} className={cn(styles.tab, { [styles.active]: profit === 'usd' })} >$ USD</p>	
 
-									<p className='px-[16px] flex gap-[4px] items-center font-[300] h-full text-[#4a4a4a] text-[14px]' ><span className='' >% </span> INTEREST</p>
+<p onClick={() => onChangeProfit(planDynamic.interest, 'interest')} className={cn(styles.tab, { [styles.active]: profit === 'interest' })} ><span className='' >% </span> INTEREST</p>
 								</div>
 							</h5>
 			
@@ -380,27 +392,27 @@ export default function Crossсhain() {
 									<p className={styles.calc}>
 										<span>Daily
 										</span>
-										<span> {planDynamic.amount}<span className='ml-[4px]'>$</span></span>
+										<span> {profitDinamic}<span className='ml-[4px]'>$</span></span>
 									</p>
 			
 									<p className={styles.calc}>
 										<span>Weekly
 										</span>
-										<span> {planDynamic.amount}<span className='ml-[4px]'>$</span></span>
+										<span> {profitDinamic}<span className='ml-[4px]'>$</span></span>
 									</p>
 			
 									<p className={styles.calc}>
 										<span>Total Profit
 											<span className={styles.span}>?</span>
 										</span>
-										<span> {planDynamic.amount}<span className='ml-[4px]'>$</span></span>
+										<span> {profitDinamic}<span className='ml-[4px]'>$</span></span>
 									</p>
 			
 									<p className={styles.calc}>
 										<span>Total with investment amount
 											<span className={styles.span}>?</span>
 										</span>
-										<span> {planDynamic.amount}<span className='ml-[4px]'>$</span></span>
+										<span> {profitDinamic}<span className='ml-[4px]'>$</span></span>
 									</p>
 	
 								</div>
