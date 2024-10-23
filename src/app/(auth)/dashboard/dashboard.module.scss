@@ -82,6 +82,7 @@
 	display: flex;
 	gap: 17px;
 	flex-wrap: wrap;
+	overflow-x: auto;
 
 	.add{
 		@apply flex  items-center h-[88px] px-[16px] justify-center border-dashed rounded-[6px] border-[#d9d9d9] border-[1px];

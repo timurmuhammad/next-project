@@ -25,7 +25,35 @@ import market_making from '@/ui/icons/market-making.svg'
 import cryptomax from '@/ui/icons/cryptomax.svg'
 
 
+import { Carousel, CarouselContent, CarouselItem } from '@/shadcn/ui/carousel'
+import { useEffect, useState } from "react"
+
+
+
 export default function CopyTrading() {
+	const bots = goods.filter((item, index) => index < 6)
+	const pagination = Math.ceil(bots.length / 3)
+  const paginationLg = Math.ceil(bots.length / 2)
+  const paginationMd = Math.ceil(bots.length / 1)
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [currentSlidesshow, setCurrentSlidesshow] = useState(0)
+
+  const [md, setMd] = useState(false)
+  const [lg, setLg] = useState(false)
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const mdMatch = window.matchMedia("(max-width: 830px)")
+      const lgMatch = window.matchMedia("(max-width: 1360px)")
+
+      setMd(mdMatch.matches)
+      setLg(lgMatch.matches)
+
+      mdMatch.addEventListener('change', e => setMd(e.matches))
+      lgMatch.addEventListener('change', e => setLg(e.matches))
+    }
+  }, [])
+
 	return <div className="main">
 		<div className={cn(styles.inner, '_container')}>
 			<Section imageSRC={personsTrading} width={355} height={295} previewTop={true}>
@@ -61,7 +89,7 @@ export default function CopyTrading() {
 
 
 
-		<div className={cn(styles.botCard, '_container')}>
+		{/* <div className={cn(styles.botCard, '_container')}>
 			{goods.map((item, index) => (
 				index < 3 && <Product item = {item} key={index} ></Product>
 			))}
@@ -81,8 +109,72 @@ export default function CopyTrading() {
 			></Typography>
 		
 			<Diagram></Diagram>	
+		</div> */}
+		
+
+		<div className="_container flex-1 w-full flex flex-col basis-[auto]">
+			<div className='flex items-center justify-center flex-col gap-[24px]'>
+				<div className={styles.pagination_wrapper}>
+					<p className="flex-grow-0 flex-shrink-0 text-[14px] font-[400]  uppercase text-[#828282]">
+						List of bots used for copying
+					</p>
+	
+					{goods.length > 3 && (
+						<div className="flex justify-center h-[10px] gap-[8px]">
+							{Array.from({ length: md ? paginationMd : lg ? paginationLg : pagination }, (_, index) => (
+								<button
+									onClick={() => {
+										setCurrentSlide(index)
+										setCurrentSlidesshow(index)
+									}}
+									key={index}
+									className={cn(styles.pagination, { [styles.active]: index === currentSlidesshow })}
+								/>
+							))}
+						</div>
+					)}
+				</div>
+	
+				<Carousel
+					opts={{
+						align: "center",
+						slidesToScroll: md ? 1 : lg ? 2 : 3,
+						watchDrag: false,
+					}}
+					pagination={currentSlide}
+					className={styles.carousel_container}
+				>
+					<CarouselContent>
+						{goods.map((item, index) => (
+							<CarouselItem key={index} className={styles.carousel}>
+	
+								<Product item={item} key={index}>
+	
+								</Product>
+	
+							</CarouselItem>
+						))}
+					</CarouselContent>
+				</Carousel>
+			</div>
 		</div>
 
+
+		<div className={cn(styles.inner, '_container')}>
+			<ButtonBlue text='Watch Full Listy'></ButtonBlue>
+		</div>
+
+
+
+		<div className={cn(styles.inner, '_container', styles.diagram)}>
+			<Typography
+				size="h2"
+				title="No need to search for bots manually, use Company pools"
+				text="Envios developers have created ready-made solutions, copying the best bots on the market, and connected them together to pools to obtain maximum profits"
+			></Typography>
+		
+			<Diagram></Diagram>	
+		</div> 
 
 
 

@@ -54,8 +54,6 @@ export const Diagram = () => {
 			}
 			</div>
 
-
-
 			<div className={styles.top_bar}>
 				<div className={styles.list_wrapper}>
 					<div onClick={() => setCrypto('12')} className={cn(styles.crypto, {[styles.active]: crypto === '12'})}>
@@ -199,11 +197,160 @@ export const Diagram = () => {
 								</p>
 							</div>
 						</div>
+					</div>  
+				</div>
+
+
+
+
+				<div className={styles.list_wrapper}>
+					<div className={cn(styles.list, {[styles.active]: pool === cryptoYeild12})}>
+						<div className={styles.company}>
+							<Image src={marketMaking} width={92} height={92} alt='icon'></Image>
+							<p>
+								<span>Company</span> CryptoYield 12
+							</p>
+						</div>
+			
+						<div className="flex text-nowrap justify-start items-center flex-grow-0 flex-shrink-0 relative gap-3 p-1.5 rounded-md">
+							<Image src={dollar} width={42} height={42} alt='icon'></Image>
+							<div className="flex flex-col justify-center">
+								<p className="text-[16px] text-nowrap">
+									Lock-in Period
+								</p>
+								<p className="text-[14px]">
+									{cryptoYeild12.period} days
+								</p>
+							</div>
+						</div>
+			
+						<div className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[207px] relative gap-3 p-1.5 rounded-md">
+							<Image src={clockHistory} width={42} height={42} alt='icon'></Image>
+							<div className="flex flex-col justify-center">
+								<p className="text-[16px] text-nowrap">
+									Investment amount
+								</p>
+								<p className="text-sm text-[14px]">
+									{cryptoYeild12.investment}
+								</p>
+							</div>
+						</div>
+			
+						<div className="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-3 p-1.5 rounded-md">
+							<Image src={candle} width={42} height={42} alt='icon'></Image>
+							<div className="flex flex-col justify-center">
+								<p className="text-[16px] text-nowrap">
+									Daily Returns
+								</p>
+								<p className="text-sm text-[14px]">
+									{cryptoYeild12.returns}
+								</p>
+							</div>
+						</div>
+			
+					</div>  
+			
+			
+			
+					<div className={cn(styles.list, {[styles.active]: pool === cryptoMax24})}>
+						
+						<div className={styles.company}>
+							<Image src={marketMaking} width={92} height={92} alt='icon'></Image>
+							<p>
+								<span>Company</span> CryptoMax 24
+							</p>
+						</div>
+			
+						<div className="flex text-nowrap justify-start items-center flex-grow-0 flex-shrink-0 relative gap-3 p-1.5 rounded-md">
+							<Image src={dollar} width={42} height={42} alt='icon'></Image>
+							<div className="flex flex-col justify-center">
+								<p className="text-[16px] text-nowrap">
+									Lock-in Period
+								</p>
+								<p className="text-[14px]">
+									{cryptoMax24.period} days
+								</p>
+							</div>
+						</div>
+			
+						<div className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[207px] relative gap-3 p-1.5 rounded-md">
+							<Image src={clockHistory} width={42} height={42} alt='icon'></Image>
+							<div className="flex flex-col justify-center">
+								<p className="text-[16px] text-nowrap">
+									Investment amount
+								</p>
+								<p className="text-sm text-[14px]">
+									{cryptoMax24.investment}
+								</p>
+							</div>
+						</div>
+			
+						<div className="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-3 p-1.5 rounded-md">
+							<Image src={candle} width={42} height={42} alt='icon'></Image>
+							<div className="flex flex-col justify-center">
+								<p className="text-[16px] text-nowrap">
+									Daily Returns
+								</p>
+								<p className="text-sm text-[14px]">
+									{cryptoMax24.returns}
+								</p>
+							</div>
+						</div>
+			
+					</div>  
+			
+			
+			
+					<div className={cn(styles.list, {[styles.active]: pool === cryptoPro36})}>
+						
+						<div className={styles.company}>
+							<Image src={marketMaking} width={92} height={92} alt='icon'></Image>
+							<p>
+								<span>Company</span> CryptoPro 36
+							</p>
+						</div>
+			
+						<div className="flex text-nowrap justify-start items-center flex-grow-0 flex-shrink-0 relative gap-3 p-1.5 rounded-md">
+							<Image src={dollar} width={42} height={42} alt='icon'></Image>
+							<div className="flex flex-col justify-center">
+								<p className="text-[16px] text-nowrap">
+									Lock-in Period
+								</p>
+								<p className="text-[14px]">
+									{cryptoPro36.period} days
+								</p>
+							</div>
+						</div>
+			
+						<div className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[207px] relative gap-3 p-1.5 rounded-md">
+							<Image src={clockHistory} width={42} height={42} alt='icon'></Image>
+							<div className="flex flex-col justify-center">
+								<p className="text-[16px] text-nowrap">
+									Investment amount
+								</p>
+								<p className="text-sm text-[14px]">
+									{cryptoPro36.investment}
+								</p>
+							</div>
+						</div>
+			
+						<div className="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-3 p-1.5 rounded-md">
+							<Image src={candle} width={42} height={42} alt='icon'></Image>
+							<div className="flex flex-col justify-center">
+								<p className="text-[16px] text-nowrap">
+									Daily Returns
+								</p>
+								<p className="text-sm text-[14px]">
+									{cryptoPro36.returns}
+								</p>
+							</div>
+						</div>
 			
 					</div>  
 				</div>
 			</div>
-	
+
+
 
 	
 	
@@ -363,3 +510,154 @@ export const Diagram = () => {
 
 
 
+
+
+/*
+<div className={styles.top_bar}>
+				<div className={styles.list_wrapper}>
+					<div className={cn(styles.list, {[styles.active]: pool === cryptoYeild12})}>
+						<div className={styles.company}>
+							<Image src={marketMaking} width={92} height={92} alt='icon'></Image>
+							<p>
+								<span>Company</span> CryptoYield 12
+							</p>
+						</div>
+			
+						<div className="flex text-nowrap justify-start items-center flex-grow-0 flex-shrink-0 relative gap-3 p-1.5 rounded-md">
+							<Image src={dollar} width={42} height={42} alt='icon'></Image>
+							<div className="flex flex-col justify-center">
+								<p className="text-[16px] text-nowrap">
+									Lock-in Period
+								</p>
+								<p className="text-[14px]">
+									{cryptoYeild12.period} days
+								</p>
+							</div>
+						</div>
+			
+						<div className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[207px] relative gap-3 p-1.5 rounded-md">
+							<Image src={clockHistory} width={42} height={42} alt='icon'></Image>
+							<div className="flex flex-col justify-center">
+								<p className="text-[16px] text-nowrap">
+									Investment amount
+								</p>
+								<p className="text-sm text-[14px]">
+									{cryptoYeild12.investment}
+								</p>
+							</div>
+						</div>
+			
+						<div className="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-3 p-1.5 rounded-md">
+							<Image src={candle} width={42} height={42} alt='icon'></Image>
+							<div className="flex flex-col justify-center">
+								<p className="text-[16px] text-nowrap">
+									Daily Returns
+								</p>
+								<p className="text-sm text-[14px]">
+									{cryptoYeild12.returns}
+								</p>
+							</div>
+						</div>
+			
+					</div>  
+			
+			
+			
+					<div className={cn(styles.list, {[styles.active]: pool === cryptoMax24})}>
+						
+						<div className={styles.company}>
+							<Image src={marketMaking} width={92} height={92} alt='icon'></Image>
+							<p>
+								<span>Company</span> CryptoMax 24
+							</p>
+						</div>
+			
+						<div className="flex text-nowrap justify-start items-center flex-grow-0 flex-shrink-0 relative gap-3 p-1.5 rounded-md">
+							<Image src={dollar} width={42} height={42} alt='icon'></Image>
+							<div className="flex flex-col justify-center">
+								<p className="text-[16px] text-nowrap">
+									Lock-in Period
+								</p>
+								<p className="text-[14px]">
+									{cryptoMax24.period} days
+								</p>
+							</div>
+						</div>
+			
+						<div className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[207px] relative gap-3 p-1.5 rounded-md">
+							<Image src={clockHistory} width={42} height={42} alt='icon'></Image>
+							<div className="flex flex-col justify-center">
+								<p className="text-[16px] text-nowrap">
+									Investment amount
+								</p>
+								<p className="text-sm text-[14px]">
+									{cryptoMax24.investment}
+								</p>
+							</div>
+						</div>
+			
+						<div className="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-3 p-1.5 rounded-md">
+							<Image src={candle} width={42} height={42} alt='icon'></Image>
+							<div className="flex flex-col justify-center">
+								<p className="text-[16px] text-nowrap">
+									Daily Returns
+								</p>
+								<p className="text-sm text-[14px]">
+									{cryptoMax24.returns}
+								</p>
+							</div>
+						</div>
+			
+					</div>  
+			
+			
+			
+					<div className={cn(styles.list, {[styles.active]: pool === cryptoPro36})}>
+						
+						<div className={styles.company}>
+							<Image src={marketMaking} width={92} height={92} alt='icon'></Image>
+							<p>
+								<span>Company</span> CryptoPro 36
+							</p>
+						</div>
+			
+						<div className="flex text-nowrap justify-start items-center flex-grow-0 flex-shrink-0 relative gap-3 p-1.5 rounded-md">
+							<Image src={dollar} width={42} height={42} alt='icon'></Image>
+							<div className="flex flex-col justify-center">
+								<p className="text-[16px] text-nowrap">
+									Lock-in Period
+								</p>
+								<p className="text-[14px]">
+									{cryptoPro36.period} days
+								</p>
+							</div>
+						</div>
+			
+						<div className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[207px] relative gap-3 p-1.5 rounded-md">
+							<Image src={clockHistory} width={42} height={42} alt='icon'></Image>
+							<div className="flex flex-col justify-center">
+								<p className="text-[16px] text-nowrap">
+									Investment amount
+								</p>
+								<p className="text-sm text-[14px]">
+									{cryptoPro36.investment}
+								</p>
+							</div>
+						</div>
+			
+						<div className="flex justify-start items-center flex-grow-0 flex-shrink-0 relative gap-3 p-1.5 rounded-md">
+							<Image src={candle} width={42} height={42} alt='icon'></Image>
+							<div className="flex flex-col justify-center">
+								<p className="text-[16px] text-nowrap">
+									Daily Returns
+								</p>
+								<p className="text-sm text-[14px]">
+									{cryptoPro36.returns}
+								</p>
+							</div>
+						</div>
+			
+					</div>  
+				</div>
+			</div>
+			*/

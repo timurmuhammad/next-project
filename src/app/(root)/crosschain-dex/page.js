@@ -28,11 +28,6 @@ import { ButtonBlue } from '@/components/buttonBlue'
 import group_bg_dex from "@/ui/images/group_bg_dex.svg";
 
 
-const planCalculate = [
-	{days: 15, percent: '0.7-0.9', amount: 10, daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
-	{days: 25, percent: '0.9-1.2', amount: 20, daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
-]
-
 
 export default function CrossChainDex() {
 	return <div className={cn("main", styles.body)}>
@@ -337,7 +332,7 @@ export default function CrossChainDex() {
 
 		<div className='_container w-full'>
 			<Calculate
-				planCalculate={planCalculate}
+				// planCalculate={planCalculate}
 			></Calculate>
 		</div>
 

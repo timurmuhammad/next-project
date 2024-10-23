@@ -4,7 +4,6 @@
 import styles from './affiliate.module.scss'
 import cn from 'classnames'
 import Image from 'next/image';
-import { useState } from 'react'
 import { usePathname } from "next/navigation";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/shadcn/ui/breadcrumb';
 import Link from "next/link";
@@ -23,6 +22,86 @@ import document_download from "@/ui/icons/document_download.svg";
 import filter_square from "@/ui/icons/filter_square.svg";
 import { PopupPresentation } from "@/components/popupPresentation";
 import { PopupTurnover } from "@/components/popupTurnover";
+
+
+import { useRef, useState, useEffect } from 'react';
+
+const left = [
+  {
+    date: '04.04.24',
+    login: 'useruseruser@gmail.com',
+    amount: '50.00',
+		bonus: '50.00',
+		lvl: '1',
+	},
+	{
+    date: '04.04.24',
+    login: 'useruseruser@gmail.com',
+    amount: '50.00',
+		bonus: '50.00',
+		lvl: '1',
+	},
+	{
+    date: '04.04.24',
+    login: 'useruseruser@gmail.com',
+    amount: '50.00',
+		bonus: '50.00',
+		lvl: '1',
+	},
+	{
+    date: '04.04.24',
+    login: 'useruseruser@gmail.com',
+    amount: '50.00',
+		bonus: '50.00',
+		lvl: '1',
+	},
+	{
+    date: '04.04.24',
+    login: 'useruseruser@gmail.com',
+    amount: '50.00',
+		bonus: '50.00',
+		lvl: '1',
+	},
+]
+
+const right = [
+	{
+		lvl: '1',
+		percent: '0%',
+		turnover: '3621',
+		earned: '250.00',
+		investors: '10',
+	},
+	{
+		lvl: '2',
+		percent: '0%',
+		turnover: '3621',
+		earned: '250.00',
+		investors: '10',
+	},
+	{
+		lvl: '3',
+		percent: '0%',
+		turnover: '3621',
+		earned: '250.00',
+		investors: '10',
+	},
+	{
+		lvl: '4',
+		percent: '0%',
+		turnover: '3621',
+		earned: '250.00',
+		investors: '10',
+	},
+	{
+		lvl: '5',
+		percent: '0%',
+		turnover: '3621',
+		earned: '250.00',
+		investors: '10',
+	},
+]
+
 
 import {
   Table,
@@ -284,48 +363,78 @@ export default function Affiliate() {
 
 		<div className={styles.table}>
 			<div className='flex-grow'>
-				<Table>
-				<TableCaption><p className={styles.available}>No Available Data</p></TableCaption>
+				
+				<div className="overflow-x-auto">
+					<Table>
+					{/* <TableCaption><p className={styles.available}>No Available Data</p></TableCaption> */}
+		
+						<TableHeader>
+							<TableRow>
+								<TableHead>Date</TableHead>
+								<TableHead>Login</TableHead>
+								<TableHead>Amount invested $</TableHead>
+								<TableHead>Bonus $</TableHead>
+								<TableHead>
+								<div className="flex justify-center items-center self-stretch gap-[16px]">
+		  						<p>LVL</p>
+									<Image src={filter_square} width={25} height={25} alt='icon'></Image>
+								</div>
+								</TableHead>
+							</TableRow>
+						</TableHeader>
 	
-					<TableHeader>
-						<TableRow>
-							<TableHead>Date</TableHead>
-							<TableHead>Login</TableHead>
-							<TableHead>Amount invested $</TableHead>
-							<TableHead>Bonus $</TableHead>
-							<TableHead>
-							<div className="flex justify-center items-center self-stretch gap-[16px]">
-	  						<p>LVL</p>
-								<Image src={filter_square} width={25} height={25} alt='icon'></Image>
-							</div>
-							</TableHead>
-						</TableRow>
-					</TableHeader>
-					<TableFooter>
-						<TableRow>
-						</TableRow>
-	      	</TableFooter>
-				</Table>
+						<TableBody>
+						{left.map((item, index) => (
+							<TableRow className={styles.tablerow} key={index}>
+								<TableCell>{item.date}</TableCell>
+								<TableCell>{item.login}</TableCell>
+								<TableCell>{item.amount}</TableCell>
+								<TableCell>{item.bonus}</TableCell>
+								<TableCell>{item.lvl}</TableCell>
+								</TableRow>
+						))}
+						</TableBody>
+					</Table>
+				</div>
+
+
+				<div className={styles.buttons_border}>
+					<ButtonBorder
+						text='Prev'
+					></ButtonBorder>
+					<ButtonBorder
+						text='Next'
+					></ButtonBorder>
+				</div>
 			</div>
 
 			<div className='flex-grow max-w-[486px]'>
-			<Table>
-				<TableCaption><p className={styles.available}>No Available Data</p></TableCaption>
-	
-					<TableHeader>
-						<TableRow>
-							<TableHead>LVL</TableHead>
-							<TableHead>%</TableHead>
-							<TableHead>$ Turnover</TableHead>
-							<TableHead>$ Earned</TableHead>
-							<TableHead>Investors</TableHead>
-						</TableRow>
-					</TableHeader>
-					<TableFooter>
-						<TableRow>
-						</TableRow>
-	      	</TableFooter>
-				</Table>
+			<div className={styles.right}>
+				<Table>
+					{/* <TableCaption><p className={styles.available}>No Available Data</p></TableCaption> */}
+		
+						<TableHeader>
+							<TableRow>
+								<TableHead>LVL</TableHead>
+								<TableHead>%</TableHead>
+								<TableHead>$ Turnover</TableHead>
+								<TableHead>$ Earned</TableHead>
+								<TableHead>Investors</TableHead>
+							</TableRow>
+						</TableHeader>
+						<TableBody>
+						{right.map((item, index) => (
+							<TableRow className={styles.tablerow} key={index}>
+								<TableCell>{item.lvl}</TableCell>
+								<TableCell>{item.percent}</TableCell>
+								<TableCell>{item.turnover}</TableCell>
+								<TableCell>{item.earned}</TableCell>
+								<TableCell>{item.investors}</TableCell>
+							</TableRow>
+						))}
+						</TableBody>
+					</Table>
+			</div>
 			</div>
 		</div>
 			

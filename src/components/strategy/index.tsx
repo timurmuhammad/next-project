@@ -33,9 +33,9 @@ const dynamicStrategy = {
 	description: 'A strategy with a wide range of investment amounts and short investment periods',
 	plan: [
 		{days: 15, percent: '0.7-0.9', interest: 0, usd: 10, daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
-		{days: 25, percent: '0.9-1.2', interest: 0, usd: 20, daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
-		{days: 35, percent: '1.2-1.5', interest: 0, usd: 30, daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
-		{days: 45, percent: '1.5-1.8', interest: 0, usd: 40, daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
+		{days: 25, percent: '0.9-1.2', interest: 1, usd: 20, daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
+		{days: 35, percent: '1.2-1.5', interest: 2, usd: 30, daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
+		{days: 45, percent: '1.5-1.8', interest: 3, usd: 40, daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
 	] as PlanItem[]
 }
 
@@ -44,9 +44,9 @@ const staticStrategy = {
 	description: 'Profitable medium-term strategy with fixed income and investment amount',
 	plan: [
 		{days: 50, percent: '1.4', interest: 0, usd: 100, daily: 9.6, weekly: 67.2, totalProfit: 384, totalAmount: 984},
-		{days: 60, percent: '1.7', interest: 0, usd: 200, daily: 9.6, weekly: 67.2, totalProfit: 384, totalAmount: 984},
-		{days: 70, percent: '1.9', interest: 0, usd: 300, daily: 9.6, weekly: 67.2, totalProfit: 384, totalAmount: 984},
-		{days: 80, percent: '2.1', interest: 0, usd: 400, daily: 9.6, weekly: 67.2, totalProfit: 384, totalAmount: 984},
+		{days: 60, percent: '1.7', interest: 1, usd: 200, daily: 9.6, weekly: 67.2, totalProfit: 384, totalAmount: 984},
+		{days: 70, percent: '1.9', interest: 2, usd: 300, daily: 9.6, weekly: 67.2, totalProfit: 384, totalAmount: 984},
+		{days: 80, percent: '2.1', interest: 3, usd: 400, daily: 9.6, weekly: 67.2, totalProfit: 384, totalAmount: 984},
 	] as PlanItem[]
 }
 
@@ -55,15 +55,21 @@ export const Strategy = () => {
 	const [ strategy, setStrategy ] = useState(dynamicStrategy || '')
 	const [ compounding, setCompounding ] = useState(false)
 	const [ reactivation, setReactivation ] = useState(false)
-	const [ planDynamic, setPlanDynamic ] = useState(dynamicStrategy.plan[0])
-	const [ planStatic, setPlanStatic ] = useState(staticStrategy.plan[0])
-	const [ profitDinamic, setProfitDinamic ] = useState(planDynamic.usd)
-	const [ profitStatic, setProfitStatic ] = useState(planStatic.usd)
+	const [ planDynamic, setPlanDynamic ] = useState<any>(dynamicStrategy.plan[0])
+	const [ planStatic, setPlanStatic ] = useState<any>(staticStrategy.plan[0])
+	const [ profitDinamic, setProfitDinamic ] = useState(planDynamic.interest)
+	const [ profitStatic, setProfitStatic ] = useState(planStatic.interest)
+	const [ profit, setProfit ] = useState('interest')
 
 	useEffect(() => {
-		setProfitDinamic(planDynamic.usd);
-		setProfitStatic(planStatic.usd);
-	}, [planDynamic, planStatic]);
+		setProfitDinamic(planDynamic[profit]);
+		setProfitStatic(planStatic[profit]);
+	}, [planDynamic, planStatic, profit]);
+
+	function onChangeProfit(item: any, value: any) {
+		setProfitDinamic(item[value]);
+		setProfit(value)
+	}
 
 	return <div className={styles.body}>
 			<div className={cn(styles.inner, {[styles.active]: staticStrategy === strategy})}>
@@ -117,9 +123,10 @@ export const Strategy = () => {
 					<div className='flex flex-col gap-[30px]'>
 						<h5 className='text-[16px] font-[400] flex justify-between items-center gap-[12px]'>Profit calculation
 							<div className="overflow-hidden border-[1px] border-solid border-[#e6e6e6] rounded-[6px] flex items-center h-[40px] flex-shrink-0 flex-grow-0">
-								<p onClick={() => setProfitDinamic(planDynamic.interest)} className={cn(styles.tab, { [styles.active]: profitDinamic === planDynamic.interest })} ><span className='' >% </span> INTEREST</p>
-		
-								<p onClick={() => setProfitDinamic(planDynamic.usd)} className={cn(styles.tab, { [styles.active]: profitDinamic === planDynamic.usd })} >$ USD</p>						
+
+								<p onClick={() => onChangeProfit(planDynamic.interest, 'interest')} className={cn(styles.tab, { [styles.active]: profit === 'interest' })} ><span className='' >% </span> INTEREST</p>		
+
+								<p onClick={() => onChangeProfit(planDynamic.usd, 'usd')} className={cn(styles.tab, { [styles.active]: profit === 'usd' })} >$ USD</p>						
 							</div>
 						</h5>
 		
@@ -312,19 +319,19 @@ export const Strategy = () => {
 
 
 				<div className={styles.list}>
+				<div className={styles.box}>
+						<Image src={dollarSwirlBlack} width={42} height={42} alt='icon'></Image>		
+						<div>
+							<h6>Investment amount</h6>
+							<p>Flexible</p>
+						</div>
+					</div>
+
 					<div className={styles.box}>
 						<Image src={bag} width={42} height={42} alt='icon'></Image>		
 						<div>
 							<h6>Deposit returning</h6>
 							<p>After Lock-in Period</p>
-						</div>
-					</div>
-	
-					<div className={styles.box}>
-						<Image src={dollarSwirlBlack} width={42} height={42} alt='icon'></Image>		
-						<div>
-							<h6>Investment amount</h6>
-							<p>Flexible</p>
 						</div>
 					</div>
 	

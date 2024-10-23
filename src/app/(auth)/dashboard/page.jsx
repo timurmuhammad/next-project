@@ -32,6 +32,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import market_making from '@/ui/icons/market-making.svg'
 import { Switch } from '@/shadcn/ui/switch'
 
+import Autoplay from "embla-carousel-autoplay"
+
 import { useRef, useState, useEffect } from 'react';
 
 import {
@@ -163,6 +165,8 @@ export default function Dashboard() {
 	const [ tab, setTab ] = useState(tabs[0])
 	const [ changeText, setChangeText ] = useState(false)
 	const [openAccordion, setOpenAccordion] = useState(false)
+	const [isAnimating, setIsAnimating] = useState(false); // Состояние анимации
+  const [isPaused, setIsPaused] = useState(false); // Состояние паузы таймера
 
 	const tableRef = useRef(null);
   const scrollRef = useRef(null);
@@ -199,6 +203,53 @@ export default function Dashboard() {
     }
   };
 
+
+	useEffect(() => {
+		if (!isPaused) {
+			const switchSlide = () => {
+				setIsAnimating(true);
+	
+				const animationTimeoutId = setTimeout(() => {
+					setCurrentSlidesshow((prevIndex) => (prevIndex + 1) % 5);
+					setIsAnimating(false);
+				}, 200);
+	
+				return () => clearTimeout(animationTimeoutId);
+			};
+	
+			const slideTimeoutId = setTimeout(switchSlide, 7000);
+	
+			return () => clearTimeout(slideTimeoutId);
+		}
+	}, [currentSlidesshow, isPaused]);
+
+	
+	console.log(isPaused)
+
+	useEffect(() => {
+		setCurrentSlide(currentSlidesshow)
+  }, [currentSlidesshow]);
+
+	const handleMouseEnter = () => {
+    setIsPaused(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsPaused(false);
+  };
+
+
+  // const handleTouchStart = () => {
+  //   setIsPaused(true);
+  // };
+
+  // const handleTouchEnd = () => {
+  //   setIsPaused(false);
+  // };
+
+	// onTouchStart={handleTouchStart}
+	// onTouchEnd={handleTouchEnd}
+
 	return <div className={cn(styles.inner, '_container')}>
 		<div className={styles.main}>
 			<div className="flex justify-between items-center gap-[32px]">
@@ -211,9 +262,17 @@ export default function Dashboard() {
 			</div>
 
 
-
-
-			<div className={styles.counters}>
+			<Carousel
+					opts={{
+						align: "center",
+						slidesToScroll: 1,
+						watchDrag: true,
+					}}
+					className="w-full"
+				>
+					<CarouselContent>
+							<CarouselItem key={0}>
+							<div className={styles.counters}>
 				<div className={styles.counter}>
 					<div className="flex  items-center   gap-[16px] px-[16px] w-full">
 						<div className={styles.icon}><Image src={btc} width={50} height={50} alt='icon'></Image></div>
@@ -258,7 +317,57 @@ export default function Dashboard() {
 					<div><Image src={eth} width={50} height={50} alt='icon'></Image></div>
 				</div>
 			</div>
+							</CarouselItem>
 
+							<CarouselItem key={1}>
+							<div className={styles.counters}>
+				<div className={styles.counter}>
+					<div className="flex  items-center   gap-[16px] px-[16px] w-full">
+						<div className={styles.icon}><Image src={btc} width={50} height={50} alt='icon'></Image></div>
+						<div className="flex flex-col justify-center gap-[8px] w-full flex-1">
+							<p className="text-[14px] font-[400]">Bitcoin </p>
+							<p onClick={() => setChangeText(!changeText)} className={cn(styles.p, {[styles.active]: changeText})}>
+								<a>BTC 0.000000</a>
+							</p>
+						</div>
+					</div>
+					<div className="flex flex-col h-full">
+						<div className="border-l-[1px] border-b-[1px] border-solid border-[#d9d9d9] h-[50%] aspect-[1/1] flex items-center justify-center cursor-pointer ">
+							<p className="text-[20px] transition">+</p>
+						</div>
+						<div className="border-l-[1px] border-solid border-[#d9d9d9] h-[50%] aspect-[1/1] flex items-center justify-center cursor-pointer">
+							<p className="text-[20px] transition">-</p>
+						</div>
+					</div>
+				</div>
+	
+				<div className={styles.counter}>
+					<div className="flex  items-center   gap-[16px] px-[16px] w-full">
+						<div className={styles.icon}><Image src={usdt} width={50} height={50} alt='icon'></Image></div>
+						<div className="flex flex-col justify-center gap-[8px]">
+							<p className="text-[14px] font-[400]">Tether TRC20 </p>
+							<p className='text-[16px]'>
+							$ 0.00
+							</p>
+						</div>
+					</div>
+					<div className="flex flex-col h-full">
+						<div className="border-l-[1px] border-b-[1px] border-solid border-[#d9d9d9] h-[50%] aspect-[1/1] flex items-center justify-center cursor-pointer ">
+							<p className="text-[20px] transition">+</p>
+						</div>
+						<div className="border-l-[1px] border-solid border-[#d9d9d9] h-[50%] aspect-[1/1] flex items-center justify-center cursor-pointer">
+							<p className="text-[20px] transition">-</p>
+						</div>
+					</div>
+				</div>
+	
+				<div className={styles.add}>
+					<div><Image src={eth} width={50} height={50} alt='icon'></Image></div>
+				</div>
+			</div>
+							</CarouselItem>
+					</CarouselContent>
+				</Carousel>
 
 
 
@@ -1213,7 +1322,7 @@ export default function Dashboard() {
 					></UnderlineButton>
 				</div>
 			</div>
-			<div className="flex flex-col w-full overflow-hidden gap-[16px] p-[24px] rounded-[6px] bg-white border border-solid border-[#e6e6e6]">
+			<div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className="flex flex-col w-full overflow-hidden gap-[16px] p-[24px] rounded-[6px] bg-white border border-solid border-[#e6e6e6]">
 				<div className="flex  items-center gap-[16px]">
 					<p className="text-[14px] font-[400]  uppercase text-[#828282]">
 						Featured news

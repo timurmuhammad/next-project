@@ -269,7 +269,7 @@
 
 
 .list{
-	@apply p-[16px] bg-[#f3fbfc] border border-[#cecece];
+	@apply p-[16px] bg-[#f3fbfc] border border-solid border-[#cecece];
 	
 	display: flex;
 	flex-wrap: wrap;

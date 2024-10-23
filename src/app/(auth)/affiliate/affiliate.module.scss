@@ -240,3 +240,40 @@
 		text-align: center;
 	}
 }
+
+
+.buttons_border{
+	@apply flex items-center justify-center gap-[32px] px-[8px] py-[32px];
+	>button{
+		@apply text-[14px] text-center text-[#303030];
+		height: 28px;
+		&:after{
+			opacity: 0;
+		}
+	}
+	>button:first-child{
+		opacity: 0.6;
+		&:not([disabled]):hover {
+				&:after{
+					opacity: 0;
+				}
+		}
+	}
+	
+}
+
+
+.right{
+	@apply overflow-x-auto;
+
+	tr{
+		height: 68px;
+	}
+
+	tr:last-child{
+		
+		td{
+			border-bottom: none !important;
+		}
+	}
+}
