@@ -13,6 +13,7 @@ import invested from "@/ui/icons/invested.svg";
 import withdrawn from "@/ui/icons/withdrawn.svg";
 import balance from "@/ui/icons/balance.svg";
 import earned from "@/ui/icons/earned.svg";
+import { AllTooltip } from "../allTooltip"
 
 const chartType = ['Week', 'Month', 'All time']
 
@@ -49,7 +50,10 @@ export const DiagramAuth = () => {
 							$ 5.987,37
 						</p>
 					</div>
-					<Image src={mark} width={24} height={24} alt='icon'></Image>
+					<AllTooltip
+										text='The balance chart shows the entire balance within the platform including all assets on wallets and active plans'
+										exclamatory={true}
+									></AllTooltip>
 				</div>
 	
 				<div className={styles.buttons}>

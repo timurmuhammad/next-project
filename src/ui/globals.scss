@@ -362,3 +362,8 @@ main{
   transition: all 0s background 0.3s;
   @apply fixed inset-0;
 }
+
+
+.recharts-wrapper{
+  transform: scale(0.8);
+}

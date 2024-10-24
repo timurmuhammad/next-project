@@ -15,7 +15,7 @@ import clockHistoryBlack from "@/ui/icons/clock-history-black.svg";
 import dollarCrosshairBlack from "@/ui/icons/dollar-crosshair-black.svg";
 import dollarSwirlBlack from "@/ui/icons/dollar-swirl-black.svg";
 import bag from "@/ui/icons/bag.svg";
-
+import { AllTooltip } from '@/components/allTooltip'
 
 type PlanItem = {
   days: number;
@@ -146,14 +146,18 @@ export const Strategy = () => {
 		
 								<p className={styles.calc}>
 									<span>Total Profit
-										<span className={styles.span}>?</span>
+										<AllTooltip
+							text='Adds profit to the invested amount, increasing profits for subsequent days. Can be changed at any time'
+						></AllTooltip>
 									</span>
 									<span> ${profitDinamic}</span>
 								</p>
 		
 								<p className={styles.calc}>
 									<span>Total with investment amount
-										<span className={styles.span}>?</span>
+										<AllTooltip
+							text='Adds profit to the invested amount, increasing profits for subsequent days. Can be changed at any time'
+						></AllTooltip>
 									</span>
 									<span> ${profitDinamic}</span>
 								</p>
@@ -296,14 +300,18 @@ export const Strategy = () => {
 		
 								<p className={styles.calc}>
 									<span>Total Profit
-										<span className={styles.span}>?</span>
+										<AllTooltip
+							text='Adds profit to the invested amount, increasing profits for subsequent days. Can be changed at any time'
+						></AllTooltip>
 									</span>
 									<span> ${profitStatic}</span>
 								</p>
 		
 								<p className={styles.calc}>
 									<span>Total with investment amount
-										<span className={styles.span}>?</span>
+										<AllTooltip
+							text='Adds profit to the invested amount, increasing profits for subsequent days. Can be changed at any time'
+						></AllTooltip>
 									</span>
 									<span> ${profitStatic}</span>
 								</p>

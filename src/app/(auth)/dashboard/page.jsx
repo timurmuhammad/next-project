@@ -432,7 +432,7 @@ export default function Dashboard() {
 
 
 				<div className={styles.card_item}>
-					<div className="flex flex-col justify-between items-center  flex-shrink-0 w-[188px] relative gap-[24px]">
+					<div className="flex flex-col justify-between items-center min-h-[250px] flex-shrink-0 w-[188px] relative gap-[24px]">
 						<p className=" flex-shrink-0 text-[14px]   ">
 							Assets Allocation
 						</p>

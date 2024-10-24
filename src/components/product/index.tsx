@@ -2,6 +2,7 @@ import styles from './product.module.scss'
 import cn from 'classnames'
 import { goodsType } from "@/types/products";
 import Image from 'next/image';
+import { AllTooltip } from '../allTooltip';
 
 type Props = {
 	item: goodsType
@@ -32,8 +33,9 @@ export const Product: React.FC<Props> = ({ item }) => {
 			<div className="flex justify-start items-center gap-[10px]">
 				<div className="flex relative justify-center gap-[10px] px-[8px] py-[4px] rounded-[3px] bg-[#e4fafc]">
 					<p className="text-[14px] text-[#0d0c43]">242.24%</p>
-					<span className={styles.span}>?</span>
-					
+						<AllTooltip
+							text='Adds profit to the invested amount, increasing profits for subsequent days. Can be changed at any time'
+						></AllTooltip>
 				</div>
 				
 			</div>
@@ -44,8 +46,9 @@ export const Product: React.FC<Props> = ({ item }) => {
 				<div className="flex relative justify-center gap-[10px] px-[8px] py-[4px] rounded-[3px] bg-[#e4fafc]">
 					<p className="text-[14px] text-[#0d0c43]">7.21%</p>
 
-					<span className={styles.span}>?</span>
-						
+					<AllTooltip
+							text='Adds profit to the invested amount, increasing profits for subsequent days. Can be changed at any time'
+						></AllTooltip>
 				</div>
 			</div>
 		</div>

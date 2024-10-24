@@ -1,0 +1,75 @@
+@import '@/ui/vars-and-utils.scss';
+
+.span{
+	@apply leading-[100%] text-[8px] flex justify-center items-center absolute w-[14px] h-[14px] bg-[#ebebeb] rounded-[50%] cursor-pointer;
+
+	top: -3px;
+	left: calc(100% + 7px);
+}
+
+
+.frame{
+	@apply flex p-[16px] rounded bg-white max-w-[200px] leading-[16px] text-[12px] text-[#373D3F] border border-solid border-[#A7AFB2];
+}
+
+
+.arrow{
+	margin-top: -2px;
+	margin-left: 16px;
+
+	@media (max-width: 1360px) {
+		display: none;
+	}
+}
+
+.box{
+	@apply flex  items-center relative  gap-[16px] p-[16px] rounded-[6px] bg-white border border-solid border-[#FF5F04];
+
+	&:before{
+		content: '';
+		background-color: #fff;
+		border-radius: 4px;
+		z-index: -1;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin-left: 5px;
+	}
+
+	&:after{
+		content: '';
+		border-radius: 4px;
+		background-color: #FF5F04;
+		z-index: -2;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		opacity: 1;
+		transition: all 0.2s;
+	}
+
+	&.orange{
+		border-color: #FF5F04;
+		&:after{
+			background-color: #FF5F04;
+		}
+	}
+
+	&.green{
+		border-color: #46C688;
+		&:after{
+			background-color: #46C688;
+		}
+	}
+
+	&.yellow{
+		border-color: #FFB800;
+		&:after{
+			background-color: #FFB800;
+		}
+	}
+}

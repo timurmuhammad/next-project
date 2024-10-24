@@ -49,6 +49,7 @@ import {
 import { ButtonBlue } from '@/components/buttonBlue'
 import Chart from '@/components/chart'
 import { Progress } from '@/shadcn/ui/progress'
+import { AllTooltip } from '@/components/allTooltip'
 
 
 
@@ -162,6 +163,38 @@ const dynamicStrategy = {
 		{days: 25, percent: '0.9-1.2', interest: 1, usd: 20, eth: 200, amount: '~0.1250', sum: '$100-1000', daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
 		{days: 35, percent: '1.2-1.5', interest: 2, usd: 30, eth: 300, amount: '~0.1250', sum: '$100-1000', daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
 		{days: 45, percent: '1.5-1.8', interest: 3, usd: 40, eth: 400, amount: '~0.1250', sum: '$100-1000', daily: -0.8, weekly: -5.6, totalProfit: -12, totalAmount: -22},
+	],
+	listFeatures: [
+		{
+			img: bag.src,
+			title: 'Deposit returning',
+			text: 'After Lock-in Period',
+		},
+		{
+			img: clockHistoryBlack.src,
+			title: 'Lock-in Period',
+			text: '15=45 days',
+		},
+		{
+			img: dollarSwirlBlack.src,
+			title: 'Investment amount',
+			text: 'Flexible',
+		},
+		{
+			img: candle.src,
+			title: 'Daily Returns',
+			text: 'In deposited currency',
+		},
+		{
+			img: sell.src,
+			title: 'Accruals',
+			text: 'Flexible',
+		},
+		{
+			img: dollarCrosshairBlack.src,
+			title: 'Profitability',
+			text: 'Minimal',
+		},
 	]
 }
 
@@ -169,10 +202,42 @@ const staticStrategy = {
 	name: 'Static Strategy',
 	description: 'Profitable medium-term strategy with fixed income and investment amount',
 	plan: [
-		{days: 50, percent: '1.4', interest: 0, usd: 10, eth: 100, amount: '~0.1250', sum: '$100-1000', daily: 9.6, weekly: 67.2, totalProfit: 384, totalAmount: 984},
-		{days: 60, percent: '1.7', interest: 1, usd: 20, eth: 200, amount: '~0.1250', sum: '$100-1000', daily: 9.6, weekly: 67.2, totalProfit: 384, totalAmount: 984},
-		{days: 70, percent: '1.9', interest: 2, usd: 30, eth: 300, amount: '~0.1250', sum: '$100-1000', daily: 9.6, weekly: 67.2, totalProfit: 384, totalAmount: 984},
-		{days: 80, percent: '2.1', interest: 3, usd: 40, eth: 400, amount: '~0.1250', sum: '$100-1000', daily: 9.6, weekly: 67.2, totalProfit: 384, totalAmount: 984},
+		{days: 50, percent: '1.4', interest: 7, usd: 50, eth: 500, amount: '~0.1250', sum: '$100-1000', daily: 9.6, weekly: 67.2, totalProfit: 384, totalAmount: 984},
+		{days: 60, percent: '1.7', interest: 8, usd: 60, eth: 600, amount: '~0.1250', sum: '$100-1000', daily: 9.6, weekly: 67.2, totalProfit: 384, totalAmount: 984},
+		{days: 70, percent: '1.9', interest: 9, usd: 70, eth: 700, amount: '~0.1250', sum: '$100-1000', daily: 9.6, weekly: 67.2, totalProfit: 384, totalAmount: 984},
+		{days: 80, percent: '2.1', interest: 6, usd: 80, eth: 800, amount: '~0.1250', sum: '$100-1000', daily: 9.6, weekly: 67.2, totalProfit: 384, totalAmount: 984},
+	],
+	listFeatures: [
+		{
+			img: dollarSwirlBlack.src,
+			title: 'Investment amount',
+			text: 'Flexible',
+		},
+		{
+			img: dollarCrosshairBlack.src,
+			title: 'Profitability',
+			text: 'Minimal',
+		},
+		{
+			img: bag.src,
+			title: 'Deposit returning',
+			text: 'After Lock-in Period',
+		},
+		{
+			img: candle.src,
+			title: 'Daily Returns',
+			text: 'In deposited currency',
+		},
+		{
+			img: sell.src,
+			title: 'Accruals',
+			text: 'Flexible',
+		},
+		{
+			img: clockHistoryBlack.src,
+			title: 'Lock-in Period',
+			text: '15=45 days',
+		},
 	]
 }
 
@@ -187,7 +252,7 @@ export default function Automatictrading() {
 	const [ strategy, setStrategy ] = useState(dynamicStrategy || '')
 	const [ compounding, setCompounding ] = useState(false)
 	const [ reactivation, setReactivation ] = useState(false)
-	const [ planDynamic, setPlanDynamic ] = useState(dynamicStrategy.plan[0])
+	const [ planDynamic, setPlanDynamic ] = useState(strategy.plan[0])
 	const [ planStatic, setPlanStatic ] = useState(staticStrategy.plan[0])
 
 	const [openFrom, setOpenFrom] = useState(false)
@@ -407,7 +472,10 @@ export default function Automatictrading() {
 										Compounding
 									</p>
 									<Switch></Switch>
-									<span className={styles.span}>?</span>
+									{/* <span className={styles.span}>?</span> */}
+									<AllTooltip
+										text='Adds profit to the invested amount, increasing profits for subsequent days. Can be changed at any time'
+									></AllTooltip>
 								</div>
 
 								<div className='flex items-center gap-[10px] relative mr-[20px]'>
@@ -415,15 +483,14 @@ export default function Automatictrading() {
 										Reactivation
 									</p>
 									<Switch></Switch>
-									<span className={styles.span}>?</span>
+									{/* <span className={styles.span}>?</span> */}
+									<AllTooltip
+										text='Automatically reactivates the plan for the next term. As a bonus you get +0.1% to your daily profit. Cannot be disabled once activated'
+									></AllTooltip>
 								</div>
 							</div>
 
 						</div>
-
-
-
-						
 					</div>
 
 
@@ -466,14 +533,24 @@ export default function Automatictrading() {
 
 			<p className={styles.calc}>
 				<span>Total Profit
-					<span className={styles.span}>?</span>
+					{/* <span className={styles.span}>?</span> */}
+					<AllTooltip
+							title='Success'
+							text='An example success alert with an icon'
+							type='green'
+					></AllTooltip>
 				</span>
 				<span> {profitDinamic}<span className='ml-[4px]'>ETH</span></span>
 			</p>
 
 			<p className={styles.calc}>
 				<span>Total with deposited amount
-					<span className={styles.span}>?</span>
+					{/* <span className={styles.span}>?</span> */}
+					<AllTooltip
+						title='Error'
+						text='Something went wrong'
+						type='orange'
+					></AllTooltip>
 				</span>
 				<span> {profitDinamic}<span className='ml-[4px]'>ETH</span></span>
 			</p>
@@ -483,7 +560,12 @@ export default function Automatictrading() {
 					<span className="text-[16px] font-[400] text-center text-black">Duration:</span>
 					<span className="text-[16px] text-nowrap ml-[4px] relative font-light text-center text-black">
 						{planDynamic.days} days
-						<span className={styles.span}>?</span>
+						{/* <span className={styles.span}>?</span> */}
+						<AllTooltip
+							title='Info'
+							text='An example success alert with an icon'
+							type='yellow'
+					></AllTooltip>
 					</span>
 				</span>
 
@@ -517,70 +599,32 @@ export default function Automatictrading() {
 
 
 		<div className={styles.stat}>
-			<div>
+			<div className='flex flex-col'>
 				<p className="text-[14px] font-[400] uppercase mb-[20px] text-[#828282]">
-					Features of Dynamic Strategy
+					{	strategy === dynamicStrategy ? 'Features of Dynamic Strategy' : 'Features of Static Strategy'}
 				</p>
 	
 				<div className={styles.list_strategy}>
-						<div className={styles.box}>
-							<Image src={bag} width={42} height={42} alt='icon'></Image>		
+					{strategy.listFeatures.map((item, index) => (
+							<div key={index} className={styles.box}>
+							<Image src={item.img} width={35} height={35} alt='icon'></Image>		
 							<div>
-								<h6>Deposit returning</h6>
-								<p>After Lock-in Period</p>
+								<h6>{item.title}</h6>
+								<p>{item.text}</p>
 							</div>
 						</div>
-
-						<div className={styles.box}>
-							<Image src={clockHistoryBlack} width={42} height={42} alt='icon'></Image>		
-							<div>
-								<h6>Lock-in Period</h6>
-								<p>15-45 days</p>
-							</div>
-						</div>
-		
-						<div className={styles.box}>
-							<Image src={dollarSwirlBlack} width={42} height={42} alt='icon'></Image>		
-							<div>
-								<h6>Investment amount</h6>
-								<p>Flexible</p>
-							</div>
-						</div>
-		
-						<div className={styles.box}>
-							<Image src={candle} width={42} height={42} alt='icon'></Image>		
-							<div>
-								<h6>Daily Returns</h6>
-								<p>Flexible</p>
-							</div>
-						</div>
-		
-						<div className={styles.box}>
-							<Image src={sell} width={42} height={42} alt='icon'></Image>		
-							<div>
-								<h6>Accruals</h6>
-								<p>Invested currency</p>
-							</div>
-						</div>
-		
-						<div className={styles.box}>
-							<Image src={dollarCrosshairBlack} width={42} height={42} alt='icon'></Image>		
-							<div>
-								<h6>Profitability</h6>
-								<p>Minimal</p>
-							</div>
-						</div>
+					))}
 					</div>
 			</div>
 	
 	
 	
-			<div className='max-w-[792px]'>
+			<div className='max-w-[750px]'>
 				<p className="text-[14px] font-[400] uppercase mb-[20px] text-[#828282]">
 					Trading Statistics
 				</p>
 				<div className={styles.card_statistics}>
-							<div className="flex flex-col justify-between items-center  flex-shrink-0 w-[188px] relative gap-[24px]">
+							<div className="flex flex-col justify-between items-center min-h-[250px] flex-shrink-0 w-[188px] relative gap-[24px]">
 								<p className=" flex-shrink-0 text-[14px]   ">
 									Assets Allocation
 								</p>
@@ -623,7 +667,6 @@ export default function Automatictrading() {
 									</div>
 							</div>
 							<div className="flex flex-col justify-between bg-[#f3fbfc] self-stretch  gap-[24px]">
-		
 		
 		
 		

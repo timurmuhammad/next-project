@@ -442,8 +442,8 @@
 
 
 .list_strategy{
-	@apply p-[16px] bg-neutral-50 border border-solid border-[#ebebeb];
-	
+	@apply p-[16px] bg-neutral-50 border border-solid flex-grow border-[#ebebeb];
+	align-self: stretch;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -452,15 +452,45 @@
 	column-gap: 20px;
 	row-gap: 40px;
 
-	.box{
-		flex: 1 0 150px;
+	@media(min-width:1306px) {
+		.box:nth-child(even){
+			flex-basis: calc(42% - 10px);
+		}
+	
+		.box:nth-child(odd){
+			flex-basis: calc(58% - 10px);
+		}
+	}
+
+
+	.box {
+		flex: 0 0 auto;
 		max-width: fit-content;
 		display: flex;
 		align-items: center;
 		gap: 12px;
 
-		@media(max-width:1160px) {
-			max-width:none;
+		@media(max-width:1306px) {
+			flex: 1 0 150px;
+				.box:nth-child(even) {
+					flex: 1 0 150px;
+					flex-basis: 150px;
+				}
+		
+				.box:nth-child(odd) {
+					flex: 1 0 150px;
+					flex-basis: 150px;
+				}
+			}
+
+			@media(max-width:1160px) {
+				max-width: none;
+			}
+		}
+	@media(max-width:500px) {
+		flex-direction: column;
+		.box {
+			flex: 0 0 auto;
 		}
 	}
 }
@@ -564,7 +594,7 @@
 
 
 .card_statistics{
-	@apply flex gap-[40px] justify-center px-[24px] py-[40px] rounded-[6px] bg-white border border-solid border-[#e6e6e6];
+	@apply flex gap-y-[40px] gap-[24px] justify-center px-[24px] py-[40px] rounded-[6px] bg-white border border-solid border-[#e6e6e6];
 
 	@media(max-width:1320px) {
 		flex-wrap: wrap;
@@ -603,7 +633,6 @@
 .list{
 	@apply flex flex-wrap justify-center rounded-md bg-[#f3fbfc];
 
-	@media(max-width:1500px) {
 		text-align: center;
 		>div{
 			width: 162px;
@@ -623,7 +652,6 @@
 				}
 			}
 		}
-	}
 
 	@media (max-width: $media-screen) {
 		div{
@@ -644,7 +672,7 @@
 	@apply flex gap-[24px];
 
 	>div:first-child{
-		@apply max-w-[384px] flex-shrink min-w-[250px];
+		@apply max-w-[390px] flex-shrink min-w-[250px];
 		flex: 1 1 250px;
 	}
 

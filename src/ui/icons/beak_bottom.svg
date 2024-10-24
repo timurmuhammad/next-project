@@ -1,0 +1,14 @@
+<svg width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M16 0.499515L0 0.499512L8 8.49951L16 0.499515Z" fill="none"/>
+<path
+    d="M0 0.5 L16 0.5 L8 8.5 Z"
+    fill="white"
+    stroke="#A7AFB2"
+    stroke-width="1"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-dasharray="0,16,16" 
+  />
+  <!-- Верхняя часть без обводки -->
+  <path d="M16 0.5 L0 0.5" fill="none" />
+</svg>

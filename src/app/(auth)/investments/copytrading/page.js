@@ -47,6 +47,7 @@ import { ButtonBlue } from '@/components/buttonBlue'
 import Chart from '@/components/chart'
 import { Progress } from '@/shadcn/ui/progress'
 import Image from 'next/image';
+import { AllTooltip } from '@/components/allTooltip';
 
 
 const from = [
@@ -506,7 +507,10 @@ export default function Copytrading() {
 										Compounding
 									</p>
 									<Switch></Switch>
-									<span className={styles.span}>?</span>
+									{/* <span className={styles.span}>?</span> */}
+									<AllTooltip
+										text='Adds profit to the invested amount, increasing profits for subsequent days. Can be changed at any time'
+									></AllTooltip>
 								</div>
 	
 								<div className='flex items-center gap-[10px] relative mr-[20px]'>
@@ -514,7 +518,10 @@ export default function Copytrading() {
 										Reactivation
 									</p>
 									<Switch></Switch>
-									<span className={styles.span}>?</span>
+									{/* <span className={styles.span}>?</span> */}
+									<AllTooltip
+										text='Automatically reactivates the plan for the next term. As a bonus you get +0.1% to your daily profit. Cannot be disabled once activated'
+									></AllTooltip>
 								</div>
 							</div>
 	
@@ -590,7 +597,7 @@ export default function Copytrading() {
 
 
 		<div className={styles.stat}>
-			<div>
+			<div className='flex flex-col'>
 				<p className="text-[14px] font-[400] uppercase mb-[20px] text-[#828282]">
 					Features of Dynamic Strategy
 				</p>
@@ -648,12 +655,12 @@ export default function Copytrading() {
 	
 	
 	
-			<div className='max-w-[792px]'>
+			<div className='max-w-[750px]'>
 				<p className="text-[14px] font-[400] uppercase mb-[20px] text-[#828282]">
 					Trading Statistics
 				</p>
 				<div className={styles.card_statistics}>
-							<div className="flex flex-col justify-between items-center  flex-shrink-0 w-[188px] relative gap-[24px]">
+							<div className="flex flex-col justify-between items-center min-h-[250px] flex-shrink-0 w-[188px] relative gap-[24px]">
 								<p className=" flex-shrink-0 text-[14px]   ">
 									Assets Allocation
 								</p>
@@ -696,7 +703,6 @@ export default function Copytrading() {
 									</div>
 							</div>
 							<div className="flex flex-col justify-between bg-[#f3fbfc] self-stretch  gap-[24px]">
-		
 		
 		
 		

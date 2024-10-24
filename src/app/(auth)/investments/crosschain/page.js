@@ -1,5 +1,6 @@
 'use client'
 
+import { AllTooltip } from '@/components/allTooltip'
 import styles from './crosschain.module.scss'
 import cn from 'classnames'
 
@@ -403,14 +404,19 @@ export default function Crossсhain() {
 			
 									<p className={styles.calc}>
 										<span>Total Profit
-											<span className={styles.span}>?</span>
+											{/* <span className={styles.span}>?</span> */}
+											<AllTooltip
+										text='Adds profit to the invested amount, increasing profits for subsequent days. Can be changed at any time'
+									></AllTooltip>
 										</span>
 										<span> {profitDinamic}<span className='ml-[4px]'>$</span></span>
 									</p>
 			
 									<p className={styles.calc}>
 										<span>Total with investment amount
-											<span className={styles.span}>?</span>
+											<AllTooltip
+										text='Adds profit to the invested amount, increasing profits for subsequent days. Can be changed at any time'
+									></AllTooltip>
 										</span>
 										<span> {profitDinamic}<span className='ml-[4px]'>$</span></span>
 									</p>
@@ -498,7 +504,7 @@ export default function Crossсhain() {
 			Cross-chain dex Trading Statistics
 			</p>
 			<div className={styles.card_statistics}>
-				<div className="flex flex-col justify-between items-center  flex-shrink-0 w-[188px] relative gap-[24px]">
+				<div className="flex flex-col justify-between items-center min-h-[250px] flex-shrink-0 w-[188px] relative gap-[24px]">
 					<p className=" flex-shrink-0 text-[14px]   ">
 						Assets Allocation
 					</p>
