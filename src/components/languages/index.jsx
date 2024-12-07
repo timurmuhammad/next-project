@@ -95,35 +95,29 @@ export function Languages() {
 // };
 
 
-useEffect(() => {
-	const handleUrlChange = () => {
-		let currentUrl = window.location.href;
+// useEffect(() => {
+// 	const handleUrlChange = () => {
+// 		let currentUrl = window.location.href;
 
-		// Проверяем, содержит ли URL фрагмент '.translate.goog'
-		if (currentUrl.includes('.translate.goog/')) {
-			// Убираем фрагмент '.translate.goog' и восстанавливаем оригинальный URL
-			currentUrl = currentUrl.replace('.translate.goog', '');
+// 		if (currentUrl.includes('.translate.goog/')) {
+// 			currentUrl = currentUrl.replace('.translate.goog', '');
 
-			const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(currentUrl)}`;
+// 			const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(currentUrl)}`;
 
-			// Переходим на страницу с переводом
-			setTimeout(() => {
-				window.location.assign(translateUrl);
-			}, 0);
-		}
-	};
+// 			setTimeout(() => {
+// 				window.location.assign(translateUrl);
+// 			}, 0);
+// 		}
+// 	};
 
-	// Слушаем изменения в истории браузера
-	window.addEventListener('popstate', handleUrlChange);
+// 	window.addEventListener('popstate', handleUrlChange);
 
-	// Выполняем сразу после монтирования, чтобы сразу обработать текущий URL
-	handleUrlChange();
+// 	handleUrlChange();
 
-	// Убираем слушатель при размонтировании компонента
-	return () => {
-		window.removeEventListener('popstate', handleUrlChange);
-	};
-}, []);
+// 	return () => {
+// 		window.removeEventListener('popstate', handleUrlChange);
+// 	};
+// }, []);
 
 
   return (
