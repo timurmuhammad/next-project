@@ -100,7 +100,7 @@ useEffect(() => {
 		let currentUrl = window.location.href;
 
 		// Проверяем, содержит ли URL фрагмент '.translate.goog'
-		if (currentUrl.includes('.translate.goog')) {
+		if (currentUrl.includes('.translate.goog/')) {
 			// Убираем фрагмент '.translate.goog' и восстанавливаем оригинальный URL
 			currentUrl = currentUrl.replace('.translate.goog', '');
 
