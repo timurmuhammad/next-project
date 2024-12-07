@@ -101,6 +101,7 @@ useEffect(() => {
 
 		if (!currentUrl.includes('=true') && currentUrl.includes('.translate.goog/')) {
 			currentUrl = currentUrl.replace('.translate.goog', '');
+			currentUrl = currentUrl.replace('https://react--project--zdxg-vercel-app', 'https://react-project-zdxg.vercel.app');
 
 			const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(currentUrl)}`;
 
