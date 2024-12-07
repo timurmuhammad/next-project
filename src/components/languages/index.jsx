@@ -27,6 +27,14 @@ import { useEffect, useState } from 'react';
 
 export function Languages() {
 
+	const translatePageToUkrainian = () => {
+    const currentUrl = window.location.href;
+    const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
+      currentUrl
+    )}`;
+    window.location.href = translateUrl;
+  };
+
   return (
 				<DropdownMenu modal={false}>
 					<DropdownMenuTrigger asChild>
@@ -47,16 +55,18 @@ export function Languages() {
 								></Image>
 								<p className=" text-[16px]  text-black">EN</p>
 							</DropdownMenuItem>
-							<DropdownMenuItem className={styles.lang}>
-								<Image
-									src={nl}
-									width={25}
-									height={17}
-									alt='icon'
-									className="flex-grow-0 flex-shrink-0"
-								></Image>
-								<p className=" text-[16px]  text-black">NL</p>
-							</DropdownMenuItem>
+							<div onClick={translatePageToUkrainian}>
+								<DropdownMenuItem className={styles.lang}>
+									<Image
+										src={nl}
+										width={25}
+										height={17}
+										alt='icon'
+										className="flex-grow-0 flex-shrink-0"
+									></Image>
+									<p className=" text-[16px]  text-black">NL</p>
+								</DropdownMenuItem>
+							</div>
 							<DropdownMenuItem className={styles.lang}>
 								<Image
 									src={es}

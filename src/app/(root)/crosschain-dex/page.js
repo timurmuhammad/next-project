@@ -1,4 +1,4 @@
-// 'use client'
+
 
 import cn from 'classnames'
 import { Button } from '@/components/button'
@@ -48,14 +48,6 @@ export default function CrossChainDex() {
   //     );
   //   };
   // };
-
-	const translatePageToUkrainian = () => {
-    const currentUrl = window.location.href;
-    const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
-      currentUrl
-    )}`;
-    window.location.href = translateUrl;
-  };
 
 
 
@@ -428,7 +420,7 @@ export default function CrossChainDex() {
 	</div>
 
 
-	<div onClick={translatePageToUkrainian} className='_container w-full'>
+	<div className='_container w-full'>
 		<ButtonBlue
 			text='Start now'
 		></ButtonBlue>
