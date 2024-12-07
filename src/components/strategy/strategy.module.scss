@@ -196,6 +196,7 @@
 	}
 
 	&:before{
+		transition: 0.1s;
 		content: '';
 		border-radius: 4px;
 		background-color: #fff;

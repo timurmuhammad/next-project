@@ -90,9 +90,6 @@ export default function Home() {
     
 
     <div className={styles.functions}>
-      {/* <div className={cn(styles.bg, '_container')}>
-        <Image src={about_lines} alt="img" width={0} height={0} sizes="100vw"></Image>
-      </div> */}
 
       <Image src={backgroundGeometric} alt="img" width={1440} height={155}></Image>
       <div className={cn(styles.functions__container, '_container')}>

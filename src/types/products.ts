@@ -6,9 +6,9 @@ import copy_trading from "@/ui/icons/copy_trading.svg";
 import cross_chain from "@/ui/icons/cross_chain.svg";
 
 export const productsType = [
-	{name: 'Automatic Trading', link: '', icon: trading.src, description: 'Automated trading system'},
-	{name: 'Copy Trading', link: '', icon: copy_trading.src, description: 'Long-term strategies from Company'},
-	{name: 'Cross-chain DEX Trading', link: '', icon: cross_chain.src, description: 'Coming soon'},
+	{name: 'Automatic Trading', link: '/automatictrading', icon: trading.src, description: 'Automated trading system'},
+	{name: 'Copy Trading', link: '/copytrading', icon: copy_trading.src, description: 'Long-term strategies from Company'},
+	{name: 'Cross-chain DEX Trading', link: '/crosschain-dex', icon: cross_chain.src, description: 'Coming soon'},
 ]
 
 

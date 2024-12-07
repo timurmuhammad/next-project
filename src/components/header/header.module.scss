@@ -129,7 +129,7 @@
 	flex-wrap: wrap;
 	color: #000000;
 	min-height: 40px;
-	>li:hover{
+	>a:hover{
 		color: #00B2C8;
 	}
 }
@@ -299,7 +299,7 @@
 
 
 .popup_list:hover{
-
+	
 	>p{
 		> img{
 			transform: rotate(180deg);
@@ -310,6 +310,8 @@
 	.popup_list__body{
 		opacity: 1;
 		visibility: visible;
+		transition: 0.3s;
+
 	}
 	
 }
@@ -347,7 +349,7 @@
 	top: 100%;
 	left: 0;
 	width: 320px;
-	transition: 0.4s;
+	transition: 0s;
 	border-radius: 2px;
 	z-index: 5;
 	opacity: 0;
@@ -356,7 +358,7 @@
 	background-color: #ffffff;
 	color: #303030 !important;
 
-	>div:hover{
+	>a:hover{
 		background-color: #f2feff;
 	}
 

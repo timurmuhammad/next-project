@@ -30,6 +30,36 @@ import group_bg_dex from "@/ui/images/group_bg_dex.svg";
 
 
 export default function CrossChainDex() {
+
+	// const translatePageToUkrainian = () => {
+  //   const meta = document.createElement('meta');
+  //   meta.name = 'google-translate-customization';
+  //   meta.content = 'language:uk';
+  //   document.head.appendChild(meta);
+  //   // Программно вызываем функцию перевода в Chrome
+  //   const script = document.createElement('script');
+  //   script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+  //   document.head.appendChild(script);
+
+  //   window.googleTranslateElementInit = () => {
+  //     new window.google.translate.TranslateElement(
+  //       { pageLanguage: 'en', includedLanguages: 'uk' },
+  //       'google_translate_element'
+  //     );
+  //   };
+  // };
+
+	const translatePageToUkrainian = () => {
+    const currentUrl = window.location.href;
+    const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
+      currentUrl
+    )}`;
+    window.location.href = translateUrl;
+  };
+
+
+
+
 	return <div className={cn("main", styles.body)}>
 		<div className='_container w-full'>
 			<Section imageSRC={cross_chain} width={355} height={295} previewTop={true}>
@@ -398,7 +428,7 @@ export default function CrossChainDex() {
 	</div>
 
 
-	<div className='_container w-full'>
+	<div onClick={translatePageToUkrainian} className='_container w-full'>
 		<ButtonBlue
 			text='Start now'
 		></ButtonBlue>

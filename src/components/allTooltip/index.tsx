@@ -23,7 +23,7 @@ type Props = {
 
 
 export const AllTooltip: React.FC<Props> = ({ type = '', title = '', text = '', exclamatory = false }) => {
-  return <div className="">
+  return <div className="flex items-center justify-center">
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>

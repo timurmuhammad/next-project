@@ -14,7 +14,6 @@ import rectangle from "@/ui/images/rectangle.svg";
 export const Footer = () => {
 	return <div className={styles.body}>
 		<div className={styles.bg}><Image src={backgroudFooter} alt='img' width={0} height={0} sizes='100vw'></Image></div>
-		{/* <div className={styles.rectangle}><Image src={rectangle} alt='img' width={0} height={0} sizes='100vw'></Image></div> */}
 		<div className={cn(styles.body__container, '_container')}>
 			
 			<div>
@@ -27,23 +26,23 @@ export const Footer = () => {
 			<div className={styles.list__wrapper}>
 				<ul className={styles.list}>
 					<h5 className={styles.title}>Company</h5>
-					<Link href={''}>About</Link>
-					<Link href={''}>Copy Trading</Link>
-					<Link href={''}>Automatic Trading</Link>
-					<Link href={''}>Help hub</Link>
-					<Link href={''}>Blog</Link>
-					<Link href={''}>Contacts</Link>
-					<Link href={''}>Security</Link>
+					<Link href={'/about'}>About</Link>
+					<Link href={'/copytrading'}>Copy Trading</Link>
+					<Link href={'/automatictrading'}>Automatic Trading</Link>
+					<Link href={'/helpcenter'}>Help hub</Link>
+					<Link href={'/blog'}>Blog</Link>
+					<Link href={'/'}>Contacts</Link>
+					<Link href={'/security'}>Security</Link>
 				</ul>
 	
 				<ul className={styles.list}>
 					<h5 className={styles.title}>Other links</h5>
-					<Link href={''}>Login</Link>
-					<Link href={''}>Sign Up</Link>
+					<Link href={'/login'}>Login</Link>
+					<Link href={'/registration'}>Sign Up</Link>
 					<Link href={''}>Privacy Policy</Link>
 					<Link href={''}>User Agreement</Link>
 					<Link href={''}>PDF Presentation</Link>
-					<Link href={''}>Dashboard</Link>
+					<Link href={'/dashboard'}>Dashboard</Link>
 				</ul>
 	
 				<ul className={styles.contacts}>

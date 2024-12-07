@@ -8,7 +8,8 @@
 
 	&:hover{
 		.text{
-
+			color: black;
+			text-shadow: 0.5px 0px 0px black;
 			&::after{
 				width: 100%;
 			}
@@ -27,9 +28,11 @@
 }
 
 .text{
-
+	line-height: 100%;
+	transition: 0.1s;
 	&::after{
 		transition: 0.3s;
+		margin-top: 6px;
 		content: '';
 		display: block;
 		background: linear-gradient(282.54deg, #01B091 2%, #00B2C8 100%);

@@ -14,6 +14,7 @@ import arrow from '@/ui/icons/arrow_up.svg';
 import polygon from '@/ui/icons/polygon.svg';
 import { Languages } from '../languages';
 import { SocialMedia } from '@/ui/socialMedia';
+import Link from 'next/link';
 
 const accordion = 'Products'
 
@@ -50,7 +51,7 @@ export const Header = () => {
 			<Logo></Logo>
 
 			<ul className={styles.nav_desktop}>
-				<li className={styles.nav_desktop__item}>About</li>
+				<Link href='/about' className={styles.nav_desktop__item}>About</Link>
 				<li className={cn(styles.nav_desktop__item, styles.popup_list)}>
 
 					<p 
@@ -61,7 +62,7 @@ export const Header = () => {
 
 					<ul className={cn(styles.popup_list__body, {[styles.active]: open}) }>
 						{ productsType.map( (listItem, index) => (
-							<div key={index} className="flex relative gap-[24px] px-[30px] py-[16px] rounded-[6px]">
+							<Link href={listItem.link} key={index} className="flex relative gap-[24px] px-[30px] py-[16px] rounded-[6px]">
 								<Image src={listItem.icon} alt='icon' width={36} height={36}></Image>
 								<div className="flex flex-col justify-center">
 									<p className=" text-[16px]  text-black">
@@ -71,14 +72,14 @@ export const Header = () => {
 										{listItem.description}
 									</p>
 								</div>
-							</div>
+							</Link>
 						))}
 					</ul>
 
 				</li>
-				<li className={styles.nav_desktop__item}>Security</li>
-				<li className={styles.nav_desktop__item}>Blog</li>
-				<li className={styles.nav_desktop__item}>Help Hub</li>
+				<Link href='/security' className={styles.nav_desktop__item}>Security</Link>
+				<Link href='/blog' className={styles.nav_desktop__item}>Blog</Link>
+				<Link href='/helpcenter' className={styles.nav_desktop__item}>Help Hub</Link>
 			</ul>
 
 			<ul className={cn(styles.nav_mobile, {[styles.active]: burgerActive})}>
@@ -117,8 +118,8 @@ export const Header = () => {
 
 			<div className={styles.auth}>
 				<button className={styles.dashboard}><Image src={dashboard} alt='icon' width={21} height={20}></Image></button>
-				<button className={styles.login}><p>Login</p></button>
-				<button className={styles.sign_up}>Sign Up</button>
+				<Link href='/login' className={styles.login}><p>Login</p></Link>
+				<Link href='/registration' className={styles.sign_up}>Sign Up</Link>
 			</div>
 		</div>
 	</div>
