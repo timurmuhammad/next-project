@@ -44,13 +44,34 @@ export function Languages() {
 //     window.location.assign(translateUrl);
 // };
 
+// const translatePageToUkrainian = () => {
+// 	const currentUrl = window.location.href;
+// 	const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
+// 			currentUrl
+// 	)}`;
+
+// 	// Добавляем небольшой таймер для более надёжного поведения
+// 	setTimeout(() => {
+// 			window.location.assign(translateUrl);
+// 	}, 0);
+// };
+
 const translatePageToUkrainian = () => {
-	const currentUrl = window.location.href;
+	// Получаем текущий URL
+	let currentUrl = window.location.href;
+
+	// Проверяем, находится ли пользователь уже на переведённой странице
+	if (currentUrl.includes('.translate.goog')) {
+			// Убираем часть, связанную с переводом
+			currentUrl = currentUrl.replace(/\.translate\.goog\/(.*?)\?hl=uk&sl=en/, '$1');
+	}
+
+	// Формируем URL для перевода
 	const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
 			currentUrl
 	)}`;
 
-	// Добавляем небольшой таймер для более надёжного поведения
+	// Перенаправляем пользователя на URL для перевода
 	setTimeout(() => {
 			window.location.assign(translateUrl);
 	}, 0);
