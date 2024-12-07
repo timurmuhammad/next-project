@@ -95,29 +95,29 @@ export function Languages() {
 // };
 
 
-// useEffect(() => {
-// 	const handleUrlChange = () => {
-// 		let currentUrl = window.location.href;
+useEffect(() => {
+	const handleUrlChange = () => {
+		let currentUrl = window.location.href;
 
-// 		if (currentUrl.includes('.translate.goog/')) {
-// 			currentUrl = currentUrl.replace('.translate.goog', '');
+		if (!currentUrl.includes('=true') && currentUrl.includes('.translate.goog/')) {
+			currentUrl = currentUrl.replace('.translate.goog', '');
 
-// 			const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(currentUrl)}`;
+			const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(currentUrl)}`;
 
-// 			setTimeout(() => {
-// 				window.location.assign(translateUrl);
-// 			}, 0);
-// 		}
-// 	};
+			setTimeout(() => {
+				window.location.assign(translateUrl);
+			}, 0);
+		}
+	};
 
-// 	window.addEventListener('popstate', handleUrlChange);
+	window.addEventListener('popstate', handleUrlChange);
 
-// 	handleUrlChange();
+	handleUrlChange();
 
-// 	return () => {
-// 		window.removeEventListener('popstate', handleUrlChange);
-// 	};
-// }, []);
+	return () => {
+		window.removeEventListener('popstate', handleUrlChange);
+	};
+}, []);
 
 
   return (
