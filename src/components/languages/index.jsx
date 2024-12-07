@@ -15,7 +15,6 @@ import hu from "@/ui/icons/hu.png";
 
 import Image from 'next/image';
 
-import { useRouter } from 'next/navigation';
 
 
 import {
@@ -24,6 +23,7 @@ import {
   DropdownMenuTrigger,
 	DropdownMenuItem,
 } from "@/shadcn/ui/dropdown-menu"
+import { useEffect } from 'react';
 
 
 export function Languages() {
@@ -36,14 +36,14 @@ export function Languages() {
   //   window.location.href = translateUrl;
   // };
 
-// 	const translatePageToUkrainian = () => {
-//     const currentUrl = window.location.href;
-//     const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
-//         currentUrl
-//     )}`;
+	const translatePageToUkrainian = () => {
+    const currentUrl = window.location.href;
+    const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
+        currentUrl
+    )}`;
 
-//     window.location.assign(translateUrl);
-// };
+    window.location.assign(translateUrl);
+};
 
 // const translatePageToUkrainian = () => {
 // 	const currentUrl = window.location.href;
@@ -95,25 +95,35 @@ export function Languages() {
 // };
 
 
+useEffect(() => {
+	const handleUrlChange = () => {
+		let currentUrl = window.location.href;
 
-const translatePageToUkrainian = () => {
-  let currentUrl = window.location.href;
+		// Проверяем, содержит ли URL фрагмент '.translate.goog'
+		if (currentUrl.includes('.translate.goog')) {
+			// Убираем фрагмент '.translate.goog' и восстанавливаем оригинальный URL
+			currentUrl = currentUrl.replace('.translate.goog', '');
 
-  // Проверяем, содержит ли URL фрагмент '.translate.goog'
-  if (currentUrl.includes('.translate.goog')) {
-    // Убираем фрагмент '.translate.goog' и восстанавливаем оригинальный URL
-    currentUrl = currentUrl.replace('.translate.goog', '');
-  }
+			const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(currentUrl)}`;
 
-  // Формируем URL для перевода
-  const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(currentUrl)}`;
+			// Переходим на страницу с переводом
+			setTimeout(() => {
+				window.location.assign(translateUrl);
+			}, 0);
+		}
+	};
 
-  // Используем `window.location` для внешнего перехода
-  setTimeout(() => {
-    window.location.assign(translateUrl);
-  }, 0);
-};
+	// Слушаем изменения в истории браузера
+	window.addEventListener('popstate', handleUrlChange);
 
+	// Выполняем сразу после монтирования, чтобы сразу обработать текущий URL
+	handleUrlChange();
+
+	// Убираем слушатель при размонтировании компонента
+	return () => {
+		window.removeEventListener('popstate', handleUrlChange);
+	};
+}, []);
 
 
   return (
