@@ -15,6 +15,8 @@ import hu from "@/ui/icons/hu.png";
 
 import Image from 'next/image';
 
+import { useRouter } from 'next/navigation';
+
 
 import {
   DropdownMenu,
@@ -74,24 +76,72 @@ export function Languages() {
 // 	}, 0);
 // };
 
+// const translatePageToUkrainian = () => {
+// 	const cleanUrl = (url) => {
+// 			if (url.includes('.translate.goog')) {
+// 					return url.replace(/https:\/\/(.*?)\.translate\.goog\/(.*?)\?hl=uk&sl=en/, 'https://$2');
+// 			}
+// 			return url;
+// 	};
+
+// 	const currentUrl = cleanUrl(window.location.href);
+
+// 	const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
+// 			currentUrl
+// 	)}`;
+
+// 	setTimeout(() => {
+// 			window.location.assign(translateUrl);
+// 	}, 0);
+// };
+
+// const router = useRouter();
+
+// useEffect(() => {
+// 		const handleRouteChange = (url) => {
+// 				// Если пользователь уже на переведённой странице
+// 				if (url.includes('.translate.goog')) {
+// 						const originalUrl = url.replace(/https:\/\/(.*?)\.translate\.goog\/(.*?)\?hl=uk&sl=en/, 'https://$2');
+// 						const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
+// 								originalUrl
+// 						)}`;
+// 						setTimeout(() => {
+// 								window.location.assign(translateUrl);
+// 						}, 0);
+// 				}
+// 		};
+
+// 		router.events.on('routeChangeComplete', handleRouteChange);
+
+// 		// Очищаем обработчик при размонтировании
+// 		return () => {
+// 				router.events.off('routeChangeComplete', handleRouteChange);
+// 		};
+// }, [router.events]);
+
+
+const router = useRouter();
+
 const translatePageToUkrainian = () => {
-	const cleanUrl = (url) => {
-			if (url.includes('.translate.goog')) {
-					return url.replace(/https:\/\/(.*?)\.translate\.goog\/(.*?)\?hl=uk&sl=en/, 'https://$2');
-			}
-			return url;
-	};
+	// Получаем текущий URL
+	const currentUrl = window.location.href;
 
-	const currentUrl = cleanUrl(window.location.href);
+	// Проверяем, находится ли пользователь уже на переведённой странице
+	if (currentUrl.includes('.translate.goog')) {
+		const originalUrl = currentUrl.replace(/\.translate\.goog\/(.*?)\?hl=uk&sl=en/, '$1');
+		router.push(originalUrl); // Используем `router.push` для возврата к оригинальной странице
+		return;
+	}
 
-	const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
-			currentUrl
-	)}`;
+	// Формируем URL для перевода
+	const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(currentUrl)}`;
 
+	// Используем `window.location` для внешнего перехода
 	setTimeout(() => {
-			window.location.assign(translateUrl);
+		window.location.assign(translateUrl);
 	}, 0);
 };
+
 
   return (
 				<DropdownMenu modal={false}>
