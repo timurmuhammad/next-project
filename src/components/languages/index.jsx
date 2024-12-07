@@ -27,13 +27,23 @@ import { useEffect, useState } from 'react';
 
 export function Languages() {
 
+	// const translatePageToUkrainian = () => {
+  //   const currentUrl = window.location.href;
+  //   const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
+  //     currentUrl
+  //   )}`;
+  //   window.location.href = translateUrl;
+  // };
+
 	const translatePageToUkrainian = () => {
     const currentUrl = window.location.href;
     const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
-      currentUrl
+        currentUrl
     )}`;
-    window.location.href = translateUrl;
-  };
+
+    // Устанавливаем новый URL и сразу принудительно обновляем страницу
+    window.location.assign(translateUrl);
+};
 
   return (
 				<DropdownMenu modal={false}>
