@@ -94,31 +94,48 @@ export function Languages() {
 // 	}, 0);
 // };
 
+	let currentUrl = window.location.href;
 
-useEffect(() => {
-	const handleUrlChange = () => {
-		let currentUrl = window.location.href;
+	if (!currentUrl.includes('=true') && currentUrl.includes('.translate.goog/')) {
+		currentUrl = currentUrl.replace('.translate.goog', '');
+		currentUrl = currentUrl.replace('https://react--project--zdxg-vercel-app', 'https://react-project-zdxg.vercel.app');
 
-		if (!currentUrl.includes('=true') && currentUrl.includes('.translate.goog/')) {
-			currentUrl = currentUrl.replace('.translate.goog', '');
-			currentUrl = currentUrl.replace('https://react--project--zdxg-vercel-app', 'https://react-project-zdxg.vercel.app');
+		console.log(currentUrl)
 
-			const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(currentUrl)}`;
+		const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(currentUrl)}`;
 
-			setTimeout(() => {
-				window.location.assign(translateUrl);
-			}, 0);
-		}
-	};
+		setTimeout(() => {
+			window.location.assign(translateUrl);
+		}, 0);
+	}
 
-	window.addEventListener('popstate', handleUrlChange);
 
-	handleUrlChange();
+// useEffect(() => {
+// 	const handleUrlChange = () => {
+// 		let currentUrl = window.location.href;
 
-	return () => {
-		window.removeEventListener('popstate', handleUrlChange);
-	};
-}, []);
+// 		if (!currentUrl.includes('=true') && currentUrl.includes('.translate.goog/')) {
+// 			currentUrl = currentUrl.replace('.translate.goog', '');
+// 			currentUrl = currentUrl.replace('https://react--project--zdxg-vercel-app', 'https://react-project-zdxg.vercel.app');
+
+// 			console.log(currentUrl)
+
+// 			const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(currentUrl)}`;
+
+// 			setTimeout(() => {
+// 				window.location.assign(translateUrl);
+// 			}, 0);
+// 		}
+// 	};
+
+// 	window.addEventListener('popstate', handleUrlChange);
+
+// 	handleUrlChange();
+
+// 	return () => {
+// 		window.removeEventListener('popstate', handleUrlChange);
+// 	};
+// }, []);
 
 
   return (
