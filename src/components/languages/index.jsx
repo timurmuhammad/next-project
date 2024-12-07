@@ -35,14 +35,25 @@ export function Languages() {
   //   window.location.href = translateUrl;
   // };
 
-	const translatePageToUkrainian = () => {
-    const currentUrl = window.location.href;
-    const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
-        currentUrl
-    )}`;
+// 	const translatePageToUkrainian = () => {
+//     const currentUrl = window.location.href;
+//     const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
+//         currentUrl
+//     )}`;
 
-    // Устанавливаем новый URL и сразу принудительно обновляем страницу
-    window.location.assign(translateUrl);
+//     window.location.assign(translateUrl);
+// };
+
+const translatePageToUkrainian = () => {
+	const currentUrl = window.location.href;
+	const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
+			currentUrl
+	)}`;
+
+	// Добавляем небольшой таймер для более надёжного поведения
+	setTimeout(() => {
+			window.location.assign(translateUrl);
+	}, 0);
 };
 
   return (
