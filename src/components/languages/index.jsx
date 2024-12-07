@@ -24,7 +24,6 @@ import {
   DropdownMenuTrigger,
 	DropdownMenuItem,
 } from "@/shadcn/ui/dropdown-menu"
-import { useEffect, useState } from 'react';
 
 
 export function Languages() {
@@ -95,52 +94,26 @@ export function Languages() {
 // 	}, 0);
 // };
 
-// const router = useRouter();
 
-// useEffect(() => {
-// 		const handleRouteChange = (url) => {
-// 				// Если пользователь уже на переведённой странице
-// 				if (url.includes('.translate.goog')) {
-// 						const originalUrl = url.replace(/https:\/\/(.*?)\.translate\.goog\/(.*?)\?hl=uk&sl=en/, 'https://$2');
-// 						const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
-// 								originalUrl
-// 						)}`;
-// 						setTimeout(() => {
-// 								window.location.assign(translateUrl);
-// 						}, 0);
-// 				}
-// 		};
-
-// 		router.events.on('routeChangeComplete', handleRouteChange);
-
-// 		// Очищаем обработчик при размонтировании
-// 		return () => {
-// 				router.events.off('routeChangeComplete', handleRouteChange);
-// 		};
-// }, [router.events]);
-
-
-const router = useRouter();
 
 const translatePageToUkrainian = () => {
-	// Получаем текущий URL
-	const currentUrl = window.location.href;
+  let currentUrl = window.location.href;
 
-	// Проверяем, находится ли пользователь уже на переведённой странице
-	if (currentUrl.includes('.translate.goog')) {
-		const originalUrl = currentUrl.replace(/\.translate\.goog\/(.*?)\?hl=uk&sl=en/, '$1');
-		router.push(originalUrl); // Используем `router.push` для возврата к оригинальной странице
-		return;
-	}
+  // Проверяем, содержит ли URL фрагмент '.translate.goog'
+  if (currentUrl.includes('.translate.goog')) {
+    // Убираем фрагмент '.translate.goog' и восстанавливаем оригинальный URL
+    currentUrl = currentUrl.replace('.translate.goog', '');
+  }
 
-	// Формируем URL для перевода
-	const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(currentUrl)}`;
+  // Формируем URL для перевода
+  const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(currentUrl)}`;
 
-	// Используем `window.location` для внешнего перехода
-	setTimeout(() => {
-		window.location.assign(translateUrl);
-	}, 0);
+  // Используем `window.location` для внешнего перехода
+  setTimeout(() => {
+    window.location.assign(translateUrl);
+  }, 0);
 };
+
 
 
   return (
