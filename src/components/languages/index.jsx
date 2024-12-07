@@ -56,22 +56,38 @@ export function Languages() {
 // 	}, 0);
 // };
 
+
+
+// const translatePageToUkrainian = () => {
+// 	let currentUrl = window.location.href;
+
+// 	if (currentUrl.includes('.translate.goog')) {
+// 			currentUrl = currentUrl.replace(/\.translate\.goog\/(.*?)\?hl=uk&sl=en/, '$1');
+// 	}
+
+// 	const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
+// 			currentUrl
+// 	)}`;
+
+// 	setTimeout(() => {
+// 			window.location.assign(translateUrl);
+// 	}, 0);
+// };
+
 const translatePageToUkrainian = () => {
-	// Получаем текущий URL
-	let currentUrl = window.location.href;
+	const cleanUrl = (url) => {
+			if (url.includes('.translate.goog')) {
+					return url.replace(/https:\/\/(.*?)\.translate\.goog\/(.*?)\?hl=uk&sl=en/, 'https://$2');
+			}
+			return url;
+	};
 
-	// Проверяем, находится ли пользователь уже на переведённой странице
-	if (currentUrl.includes('.translate.goog')) {
-			// Убираем часть, связанную с переводом
-			currentUrl = currentUrl.replace(/\.translate\.goog\/(.*?)\?hl=uk&sl=en/, '$1');
-	}
+	const currentUrl = cleanUrl(window.location.href);
 
-	// Формируем URL для перевода
 	const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
 			currentUrl
 	)}`;
 
-	// Перенаправляем пользователя на URL для перевода
 	setTimeout(() => {
 			window.location.assign(translateUrl);
 	}, 0);
