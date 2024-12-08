@@ -29,7 +29,6 @@ import { usePathname, useSearchParams } from 'next/navigation'
 
 
 export function Languages() {
-
 	// const translatePageToUkrainian = () => {
   //   const currentUrl = window.location.href;
   //   const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
@@ -54,7 +53,7 @@ export function Languages() {
     const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
         currentUrl
     )}`;
-
+		window.location.assign(translateUrl);
 		console.log(window.location.href, 'window.location.href')
 		// const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 		// const currentUrl = `${pathname}${
