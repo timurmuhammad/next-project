@@ -65,12 +65,13 @@ export function Languages() {
 			return
 		}
 
+		console.log(searchParams.get("_x_tr_hist"));
+
 		const baseURL = new URL('/', `${process.env.NEXT_PUBLIC_APP_URL || 'http://react-project-zdxg.vercel.app'}`).origin;
 		const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
 			`${baseURL}${pathname}`
 		)}`;
 		window.location.assign(translateUrl);
-		console.log(translateUrl, 'translateUrl');
 };
 
 // const translatePageToUkrainian = () => {
