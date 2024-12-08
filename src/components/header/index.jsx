@@ -16,6 +16,9 @@ import { Languages } from '../languages';
 import { SocialMedia } from '@/ui/socialMedia';
 import Link from 'next/link';
 
+
+
+
 const accordion = 'Products'
 
 export const Header = () => {

@@ -1,3 +1,5 @@
+'use client'
+
 import styles from './languages.module.scss';
 import en from '@/ui/icons/en.svg';
 import nl from "@/ui/icons/nl.png";
@@ -16,14 +18,16 @@ import hu from "@/ui/icons/hu.png";
 import Image from 'next/image';
 
 
-
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
 	DropdownMenuItem,
 } from "@/shadcn/ui/dropdown-menu"
+
+
 import { useEffect } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation'
 
 
 export function Languages() {
@@ -36,8 +40,19 @@ export function Languages() {
   //   window.location.href = translateUrl;
   // };
 
+	const pathname = usePathname()
+	const searchParams = useSearchParams()
+
+	// useEffect(() => {
+	// 	translatePageToUkrainian();
+	// }, [pathname, searchParams]);
+
+	console.log(pathname, 'pathname')
+	console.log(searchParams, 'searchParams')
+
 	const translatePageToUkrainian = () => {
-    const currentUrl = window.location.href;
+    let currentUrl = window.location.href;
+		console.log(currentUrl, 'currentUrl')
     const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
         currentUrl
     )}`;
@@ -94,20 +109,20 @@ export function Languages() {
 // 	}, 0);
 // };
 
-	let currentUrl = window.location.href;
+	// let currentUrl = window.location.href;
 
-	if (!currentUrl.includes('=true') && currentUrl.includes('.translate.goog/')) {
-		currentUrl = currentUrl.replace('.translate.goog', '');
-		currentUrl = currentUrl.replace('https://react--project--zdxg-vercel-app', 'https://react-project-zdxg.vercel.app');
+	// if (!currentUrl.includes('=true') && currentUrl.includes('.translate.goog/')) {
+	// 	currentUrl = currentUrl.replace('.translate.goog', '');
+	// 	currentUrl = currentUrl.replace('https://react--project--zdxg-vercel-app', 'https://react-project-zdxg.vercel.app');
 
-		console.log(currentUrl)
+	// 	console.log(currentUrl)
 
-		const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(currentUrl)}`;
+	// 	const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(currentUrl)}`;
 
-		setTimeout(() => {
-			window.location.assign(translateUrl);
-		}, 0);
-	}
+	// 	setTimeout(() => {
+	// 		window.location.assign(translateUrl);
+	// 	}, 0);
+	// }
 
 
 // useEffect(() => {
