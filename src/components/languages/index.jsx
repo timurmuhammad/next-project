@@ -51,13 +51,27 @@ export function Languages() {
 	console.log(searchParams, 'searchParams')
 
 	const translatePageToUkrainian = () => {
-    let currentUrl = window.location.href;
-		console.log(currentUrl, 'currentUrl')
-    const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
-        currentUrl
-    )}`;
+    // let currentUrl = window.location.href;
+		// console.log(currentUrl, 'currentUrl')
+    // const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
+    //     currentUrl
+    // )}`;
 
-    window.location.assign(translateUrl);
+		const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+		const currentUrl = `${pathname}${
+			searchParams.toString() ? `?${searchParams.toString()}` : ''
+		}`;
+	
+		// Формируем URL для перевода
+		const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
+			`${baseUrl}${currentUrl}`
+		)}`;
+	
+		console.log(translateUrl, 'translateUrl'); // Лог URL для перевода
+
+    // window.location.assign(translateUrl);
+
+	
 };
 
 // const translatePageToUkrainian = () => {
