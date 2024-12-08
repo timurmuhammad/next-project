@@ -2,6 +2,7 @@ import styles from './helpheader.module.scss'
 import logo_icon from "@/ui/icons/logo_icon.svg";
 import Image from 'next/image';
 import { Languages } from '../languages';
+import { Suspense } from 'react';
 
 export const HelpHeader = () => {
 	return <div className={styles.body}>
@@ -29,7 +30,9 @@ export const HelpHeader = () => {
 					</p>
 				</div>
 
+				<Suspense fallback={<div>Загрузка...</div>}>
 				<Languages></Languages>
+			</Suspense>
 			</div>
 		</div>
 	</div>

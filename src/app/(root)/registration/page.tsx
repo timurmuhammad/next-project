@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import Image from 'next/image'
 import styles from './registration.module.scss'
 import cn from 'classnames'
@@ -92,7 +92,9 @@ export default function Login() {
 		
 									<div className={styles.lang}>
 										<p className='text-[16px] text-black'>Language</p>
-										<Languages></Languages>
+										<Suspense fallback={<div>Загрузка...</div>}>
+				<Languages></Languages>
+			</Suspense>
 									</div>
 								</div>
 		
@@ -203,7 +205,9 @@ export default function Login() {
 	
 					<div className={styles.trustpilot}><Image src={trustpilot} width={80} height={40} alt='icon'></Image></div>
 	
-					<Languages></Languages>
+					<Suspense fallback={<div>Загрузка...</div>}>
+				<Languages></Languages>
+			</Suspense>
 	
 					<div className={styles.mobile}>
 						<Image className='mx-auto' src={media_screen_mobile} width={188} height={264} alt='icon'></Image>

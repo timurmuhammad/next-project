@@ -1,7 +1,7 @@
 'use client'
 
 import styles from './header_auth.module.scss';
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import burgerClose from '@/ui/icons/burger_close.svg';
 import burgerOpen from '@/ui/icons/burger_open.svg';
 import Image from 'next/image';
@@ -147,7 +147,9 @@ export const HeaderAuth = () => {
 
 
 				<div className={styles.nav_mobile__icons}>
-					<Languages></Languages>
+				<Suspense fallback={<div>Загрузка...</div>}>
+				<Languages></Languages>
+			</Suspense>
 					
 					<SocialMedia></SocialMedia>
 				</div>
@@ -156,7 +158,9 @@ export const HeaderAuth = () => {
 			<div className={styles.auth}>
 				<ProfileMenu></ProfileMenu>
 				<Notifications></Notifications>
-				<div className={styles.lang}><Languages></Languages></div>
+				<div className={styles.lang}><Suspense fallback={<div>Загрузка...</div>}>
+				<Languages></Languages>
+			</Suspense></div>
 			</div>
 		</div>
 	</div>

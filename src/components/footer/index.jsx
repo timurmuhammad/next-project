@@ -10,6 +10,7 @@ import chat from '@/ui/icons/chat.svg';
 import Link from 'next/link';
 import { Languages } from '../languages';
 import rectangle from "@/ui/images/rectangle.svg";
+import { Suspense } from 'react';
 
 export const Footer = () => {
 	return <div className={styles.body}>
@@ -21,7 +22,9 @@ export const Footer = () => {
 				<div className={styles.rectangle}><Image src={rectangle} alt='img' width={0} height={0} sizes='100vw'></Image></div>
 			</div>
 
-			<Languages></Languages>
+			<Suspense fallback={<div>Загрузка...</div>}>
+				<Languages></Languages>
+			</Suspense>
 
 			<div className={styles.list__wrapper}>
 				<ul className={styles.list}>

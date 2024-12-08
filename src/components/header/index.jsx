@@ -3,7 +3,7 @@
 import styles from './header.module.scss';
 import { Logo } from '@/ui/logo';
 import {productsType} from '../../types/products.ts';
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import burgerClose from '@/ui/icons/burger_close.svg';
 import burgerOpen from '@/ui/icons/burger_open.svg';
 import Image from 'next/image';
@@ -113,7 +113,9 @@ export const Header = () => {
 				</div>
 
 				<div className={styles.nav_mobile__icons}>
-					<Languages></Languages>
+				<Suspense fallback={<div>Загрузка...</div>}>
+				<Languages></Languages>
+			</Suspense>
 					
 					<SocialMedia></SocialMedia>
 				</div>

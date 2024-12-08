@@ -18,6 +18,7 @@ import lock from "@/ui/icons/lock.svg";
 import card_edit from "@/ui/icons/card_edit.svg";
 import notification_bing from "@/ui/icons/notification_bing.svg";
 import { Input } from '@/shadcn/ui/input';
+import { Suspense } from 'react';
 
 
 export default function Profile() {
@@ -126,7 +127,9 @@ export default function Profile() {
 
 						<div className={cn(styles.input, styles.languages)}>
 							<p className="text-[14px] font-[400]">Language</p>
-							<Languages></Languages>
+							<Suspense fallback={<div>Загрузка...</div>}>
+								<Languages></Languages>
+							</Suspense>
 						</div>
 					</div>
 				</div>
