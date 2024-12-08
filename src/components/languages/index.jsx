@@ -25,7 +25,7 @@ import {
 
 
 import { useEffect } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 
 
 export function Languages() {
@@ -38,18 +38,15 @@ export function Languages() {
   // };
 
 	const pathname = usePathname()
-	const searchParams = useSearchParams()
 
-	// useEffect(() => {
-	// 	translatePageToUkrainian();
-	// }, [pathname, searchParams]);
+	useEffect(() => {
+		translatePageToUkrainian();
+	}, [pathname]);
 
 	console.log(pathname, 'pathname')
-	console.log(searchParams, 'searchParams')
 
 	const translatePageToUkrainian = () => {
     let currentUrl = window.location.href;
-		console.log(currentUrl, 'currentUrl')
     const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
         currentUrl
     )}`;
