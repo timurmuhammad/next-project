@@ -43,15 +43,14 @@ export function Languages() {
 		translatePageToUkrainian();
 	}, [pathname]);
 
-	console.log(pathname, 'pathname')
 
 	const translatePageToUkrainian = () => {
-    let currentUrl = window.location.href;
-    const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
-        currentUrl
-    )}`;
-		window.location.assign(translateUrl);
-		console.log(window.location.href, 'window.location.href')
+    // let currentUrl = window.location.href;
+    // const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
+    //     currentUrl
+    // )}`;
+		// window.location.assign(translateUrl);
+		// console.log(window.location.href, 'window.location.href')
 		// const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 		// const currentUrl = `${pathname}${
 		// 	searchParams.toString() ? `?${searchParams.toString()}` : ''
@@ -60,8 +59,13 @@ export function Languages() {
 		// const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
 		// 	`${baseUrl}${currentUrl}`
 		// )}`;
-	
-		// console.log(translateUrl, 'translateUrl');
+
+		const baseURL = new URL('/', `${process.env.NEXT_PUBLIC_APP_URL || 'http://react-project-zdxg.vercel.app'}`).origin;
+		const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
+			`${baseURL}${pathname}`
+		)}`;
+		window.location.assign(translateUrl);
+		console.log(translateUrl, 'translateUrl');
 };
 
 // const translatePageToUkrainian = () => {
