@@ -25,7 +25,7 @@ import {
 
 
 import { useEffect } from 'react';
-import { usePathname } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
 
 
 export function Languages() {
@@ -38,6 +38,7 @@ export function Languages() {
   // };
 
 	const pathname = usePathname()
+	const searchParams = useSearchParams()
 
 	useEffect(() => {
 		translatePageToUkrainian();
@@ -59,6 +60,10 @@ export function Languages() {
 		// const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
 		// 	`${baseUrl}${currentUrl}`
 		// )}`;
+
+		if (searchParams.get("_x_tr_hist") === 'true') {
+			return
+		}
 
 		const baseURL = new URL('/', `${process.env.NEXT_PUBLIC_APP_URL || 'http://react-project-zdxg.vercel.app'}`).origin;
 		const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
