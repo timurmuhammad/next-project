@@ -29,7 +29,7 @@ export const Footer = () => {
 			<div className={styles.list__wrapper}>
 				<ul className={styles.list}>
 					<h5 className={styles.title}>Company</h5>
-					<a href={'https://translate.google.com/translate?hl=uk&sl=en&u=react-project-zdxg.vercel.app/about'}>About</a>
+					<a href={'https://translate.google.com/translate?hl=uk&sl=en&u=http%3A%2F%2Freact-project-zdxg.vercel.app%2F'}>About</a>
 					<Link href={'/copytrading'}>Copy Trading</Link>
 					<Link href={'/automatictrading'}>Automatic Trading</Link>
 					<Link href={'/helpcenter'}>Help hub</Link>
