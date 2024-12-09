@@ -109,11 +109,7 @@ const translatePageToUkrainian = () => {
 
 	console.log(translateUrl)
 
-	window.location.assign(translateUrl);
-
-	setTimeout(() => {
-		translatePageToUkrainian();
-	}, 3000);
+		window.location.assign(translateUrl);
 }
 
 // const translatePageToUkrainian = () => {
