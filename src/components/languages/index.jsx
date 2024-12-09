@@ -95,6 +95,10 @@ export function Languages() {
 };
 
 const translatePageToUkrainian = () => {
+	if (window.location.href.includes('_x_tr_hist=true')) {
+		return
+	}
+
 	const baseURL = new URL('/', `${process.env.NEXT_PUBLIC_APP_URL || 'http://react-project-zdxg.vercel.app'}`).origin;
 	const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
 		`${baseURL}${pathname}`
