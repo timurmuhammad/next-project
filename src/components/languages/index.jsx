@@ -81,9 +81,9 @@ export function Languages() {
 			const href = target.getAttribute("href");
 
 			// Пропускаем пустые ссылки
-			if (!href || href === "#" || href.trim() === "") {
-				return;
-			}
+			// if (!href || href === "#" || href.trim() === "") {
+			// 	return;
+			// }
 
 			event.preventDefault();
 
