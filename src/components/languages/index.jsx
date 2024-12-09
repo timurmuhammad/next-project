@@ -54,13 +54,13 @@ export function Languages() {
     return () => {
       document.removeEventListener("click", transition);
     };
-	}, [pathname]);
+	}, []);
 
 	useEffect(() => {
 		setTimeout(() => {
       translatePageToUkrainian();
     }, 3000);
-	}, []);
+	}, [pathname]);
 
 
 	const transition = (event) => {
