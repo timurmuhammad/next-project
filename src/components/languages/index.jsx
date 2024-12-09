@@ -42,13 +42,13 @@ export function Languages() {
 
 	useEffect(() => {
 
-		// document.addEventListener("click", transition);
+		document.addEventListener("click", transition);
 
 		translatePageToUkrainian()
 
-    // return () => {
-    //   document.removeEventListener("click", transition);
-    // };
+    return () => {
+      document.removeEventListener("click", transition);
+    };
 	}, []);
 
 
@@ -87,9 +87,8 @@ export function Languages() {
 			console.log(translateUrl)
 
 			setTimeout(() => {
-				window.location.assign(`${baseURL}${pathname}`);
-				window.location.assign(translateUrl);
-				// window.location.href = href;
+				window.location.assign(`${baseURL}${href}`);
+				// window.location.assign(translateUrl);
 			}, 0);
 		}
 };
