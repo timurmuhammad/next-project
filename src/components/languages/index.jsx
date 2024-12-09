@@ -43,13 +43,13 @@ export function Languages() {
 	useEffect(() => {
 		// translatePageToUkrainian();
 
-		document.addEventListener("click", translatePageToUkrainian);
+		//document.addEventListener("click", translatePageToUkrainian);
 		translatePageToUkrainian()
 
-    return () => {
-      document.removeEventListener("click", translatePageToUkrainian);
-    };
-	}, [pathname]);
+    // return () => {
+    //   document.removeEventListener("click", translatePageToUkrainian);
+    // };
+	}, []);
 
 
 	const transition = (event) => {
