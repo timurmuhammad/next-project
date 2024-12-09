@@ -61,11 +61,10 @@ export function Languages() {
 		// 	`${baseUrl}${currentUrl}`
 		// )}`;
 
-		if (searchParams.has("_x_tr_hist") === 'true') {
+		if (window.location.href.includes('_x_tr_hist=true')) {
 			return
 		}
-
-		console.log(searchParams);
+		// searchParams.has("_x_tr_hist")
 
 		const baseURL = new URL('/', `${process.env.NEXT_PUBLIC_APP_URL || 'http://react-project-zdxg.vercel.app'}`).origin;
 		const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
