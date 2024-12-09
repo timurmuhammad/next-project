@@ -65,7 +65,6 @@ export function Languages() {
 			console.log('return')
 			return
 		}
-		console.log(translateUrl)
 		// searchParams.has("_x_tr_hist")
 
 		const baseURL = new URL('/', `${process.env.NEXT_PUBLIC_APP_URL || 'http://react-project-zdxg.vercel.app'}`).origin;
