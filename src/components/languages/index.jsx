@@ -44,7 +44,9 @@ export function Languages() {
 
 		document.addEventListener("click", transition);
 
-		translatePageToUkrainian()
+		setTimeout(() => {
+      translatePageToUkrainian(); // Затем выполняется translatePageToUkrainian
+    }, 3000);
 
     return () => {
       document.removeEventListener("click", transition);
@@ -86,10 +88,9 @@ export function Languages() {
 
 			console.log(translateUrl)
 
-			setTimeout(() => {
+			
 				window.location.assign(`${baseURL}${href}`);
 				// window.location.assign(translateUrl);
-			}, 0);
 		}
 };
 
@@ -105,9 +106,8 @@ const translatePageToUkrainian = () => {
 
 	console.log(translateUrl)
 
-	setTimeout(() => {
+
 		window.location.assign(translateUrl);
-	}, 0);
 }
 
 // const translatePageToUkrainian = () => {
