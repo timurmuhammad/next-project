@@ -53,6 +53,12 @@ export function Languages() {
     };
 	}, [pathname]);
 
+	useEffect(() => {
+		setTimeout(() => {
+      translatePageToUkrainian();
+    }, 3000);
+	}, []);
+
 
 	const transition = (event) => {
     // let currentUrl = window.location.href;
