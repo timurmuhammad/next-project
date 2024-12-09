@@ -41,13 +41,13 @@ export function Languages() {
 	const searchParams = useSearchParams()
 
 	useEffect(() => {
-		// translatePageToUkrainian();
 
-		//document.addEventListener("click", translatePageToUkrainian);
+		// document.addEventListener("click", transition);
+
 		translatePageToUkrainian()
 
     // return () => {
-    //   document.removeEventListener("click", translatePageToUkrainian);
+    //   document.removeEventListener("click", transition);
     // };
 	}, []);
 
