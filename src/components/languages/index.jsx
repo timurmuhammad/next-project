@@ -41,11 +41,17 @@ export function Languages() {
 	const searchParams = useSearchParams()
 
 	useEffect(() => {
-		translatePageToUkrainian();
+		// translatePageToUkrainian();
+
+		document.addEventListener("click", translatePageToUkrainian);
+
+    return () => {
+      document.removeEventListener("click", translatePageToUkrainian);
+    };
 	}, [pathname]);
 
 
-	const translatePageToUkrainian = () => {
+	const translatePageToUkrainian = (event) => {
     // let currentUrl = window.location.href;
     // const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
     //     currentUrl
@@ -61,18 +67,36 @@ export function Languages() {
 		// 	`${baseUrl}${currentUrl}`
 		// )}`;
 
-		if (window.location.href.includes('_x_tr_hist=true')) {
-			console.log('return')
-			return
+		const target = event.target;
+		if (target.tagName === "A" && target.href) {
+			const href = target.getAttribute("href");
+
+			// Пропускаем пустые ссылки
+			if (!href || href === "#" || href.trim() === "") {
+				return;
+			}
+
+			event.preventDefault();
+
+			const baseURL = new URL('/', `${process.env.NEXT_PUBLIC_APP_URL || 'http://react-project-zdxg.vercel.app'}`).origin;
+			const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
+				`${baseURL}${href}`
+			)}`;
+
+			console.log(translateUrl)
+
+			setTimeout(() => {
+				window.location.assign(translateUrl);
+				// window.location.href = href;
+			}, 0);
 		}
+
+		// if (window.location.href.includes('_x_tr_hist=true')) {
+		// 	console.log('return')
+		// 	return
+		// }
 		// searchParams.has("_x_tr_hist")
 
-		const baseURL = new URL('/', `${process.env.NEXT_PUBLIC_APP_URL || 'http://react-project-zdxg.vercel.app'}`).origin;
-		const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
-			`${baseURL}${pathname}`
-		)}`;
-		window.location.assign(translateUrl);
-		console.log(translateUrl)
 };
 
 // const translatePageToUkrainian = () => {
