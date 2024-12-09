@@ -13,6 +13,9 @@ import rectangle from "@/ui/images/rectangle.svg";
 import { Suspense } from 'react';
 
 export const Footer = () => {
+
+	//https://translate.google.com/translate?hl=uk&sl=en&u=http%3A%2F%2Freact-project-zdxg.vercel.app%2F
+
 	return <div className={styles.body}>
 		<div className={styles.bg}><Image src={backgroudFooter} alt='img' width={0} height={0} sizes='100vw'></Image></div>
 		<div className={cn(styles.body__container, '_container')}>
@@ -21,10 +24,13 @@ export const Footer = () => {
 				<SocialMedia></SocialMedia>
 				<div className={styles.rectangle}><Image src={rectangle} alt='img' width={0} height={0} sizes='100vw'></Image></div>
 			</div>
+			
 
 			<Suspense fallback={<div>Загрузка...</div>}>
 				<Languages></Languages>
 			</Suspense>
+
+			
 
 			<div className={styles.list__wrapper}>
 				<ul className={styles.list}>
