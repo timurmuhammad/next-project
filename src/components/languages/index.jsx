@@ -47,9 +47,9 @@ export function Languages() {
 		});
 		document.addEventListener("click", transition);
 
-		// setTimeout(() => {
-    //   translatePageToUkrainian();
-    // }, 3000);
+		setTimeout(() => {
+      translatePageToUkrainian();
+    }, 3000);
 
     return () => {
       document.removeEventListener("click", transition);
@@ -77,10 +77,9 @@ export function Languages() {
 		if (target.tagName === "A" && target.href) {
 			const href = target.getAttribute("href");
 
-			// Пропускаем пустые ссылки
-			// if (!href || href === "#" || href.trim() === "") {
-			// 	return;
-			// }
+			if (!href || href === "#" || href.trim() === "") {
+				return;
+			}
 
 			event.preventDefault();
 
@@ -93,7 +92,6 @@ export function Languages() {
 
 			
 				window.location.assign(`${baseURL}${href}`);
-				// window.location.assign(translateUrl);
 		}
 };
 
