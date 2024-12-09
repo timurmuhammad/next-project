@@ -42,6 +42,9 @@ export function Languages() {
 
 	useEffect(() => {
 
+		document.querySelectorAll("a").forEach((link) => {
+			link.onclick = null;
+		});
 		document.addEventListener("click", transition);
 
 		// setTimeout(() => {
@@ -53,11 +56,11 @@ export function Languages() {
     };
 	}, [pathname]);
 
-	useEffect(() => {
-		setTimeout(() => {
-      translatePageToUkrainian();
-    }, 3000);
-	}, []);
+	// useEffect(() => {
+	// 	setTimeout(() => {
+  //     translatePageToUkrainian();
+  //   }, 3000);
+	// }, []);
 
 
 	const transition = (event) => {
@@ -95,7 +98,7 @@ export function Languages() {
 			console.log(`${baseURL}${href}`)
 
 			
-				// window.location.assign(`${baseURL}${href}`);
+				window.location.assign(`${baseURL}${href}`);
 				// window.location.assign(translateUrl);
 		}
 };
@@ -111,7 +114,6 @@ const translatePageToUkrainian = () => {
 	)}`;
 
 	console.log(translateUrl)
-
 
 		window.location.assign(translateUrl);
 }
