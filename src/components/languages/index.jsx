@@ -92,10 +92,10 @@ export function Languages() {
 				`${baseURL}${href}`
 			)}`;
 
-			console.log(translateUrl)
+			console.log(`${baseURL}${href}`)
 
 			
-				window.location.assign(`${baseURL}${href}`);
+				// window.location.assign(`${baseURL}${href}`);
 				// window.location.assign(translateUrl);
 		}
 };
