@@ -47,9 +47,9 @@ export function Languages() {
 		});
 		document.addEventListener("click", transition);
 
-		// setTimeout(() => {
-    //   translatePageToUkrainian();
-    // }, 3000);
+		setTimeout(() => {
+      translatePageToUkrainian();
+    }, 3000);
 
     return () => {
       document.removeEventListener("click", transition);
@@ -109,7 +109,7 @@ const translatePageToUkrainian = () => {
 
 	console.log(translateUrl)
 
-		window.location.assign(translateUrl);
+	window.location.assign(translateUrl);
 }
 
 // const translatePageToUkrainian = () => {
