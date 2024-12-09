@@ -44,7 +44,7 @@ export function Languages() {
 
 		document.addEventListener("click", transition);
 
-		translatePageToUkrainian()
+		// translatePageToUkrainian()
 
     return () => {
       document.removeEventListener("click", transition);
