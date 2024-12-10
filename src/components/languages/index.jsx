@@ -40,11 +40,11 @@ export function Languages() {
 	const pathname = usePathname()
 	const searchParams = useSearchParams()
 
-	useEffect(() => {
-    translatePageToUkrainian();
-	}, [pathname]);
+	// useEffect(() => {
+  //   translatePageToUkrainian();
+	// }, [pathname]);
 
-	
+
 const translatePageToUkrainian = () => {
 	if (window.location.href.includes('_x_tr_hist=true')) {
 		return

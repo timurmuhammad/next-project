@@ -11,6 +11,7 @@ import Link from 'next/link';
 import { Languages } from '../languages';
 import rectangle from "@/ui/images/rectangle.svg";
 import { Suspense } from 'react';
+import {TranslatedLink} from '@/components/translatedLink';
 
 export const Footer = () => {
 
@@ -35,7 +36,7 @@ export const Footer = () => {
 			<div className={styles.list__wrapper}>
 				<ul className={styles.list}>
 					<h5 className={styles.title}>Company</h5>
-					<a href={'https://react--project--zdxg-vercel-app.translate.goog/about?_x_tr_sl=en&_x_tr_tl=uk&_x_tr_hl=uk&_x_tr_hist=true'}>About</a>
+					<TranslatedLink href="/about">Help Center</TranslatedLink>
 					<Link href={'/copytrading'}>Copy Trading</Link>
 					<Link href={'/automatictrading'}>Automatic Trading</Link>
 					<Link href={'/helpcenter'}>Help hub</Link>
