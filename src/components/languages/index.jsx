@@ -42,18 +42,18 @@ export function Languages() {
 
 	useEffect(() => {
 
-		document.querySelectorAll("a").forEach((link) => {
-			link.onclick = null;
-		});
-		document.addEventListener("click", transition);
+		// document.querySelectorAll("a").forEach((link) => {
+		// 	link.onclick = null;
+		// });
+		// document.addEventListener("click", transition);
 
-		// setTimeout(() => {
-    //   translatePageToUkrainian();
-    // }, 3000);
+		setTimeout(() => {
+      translatePageToUkrainian();
+    }, 3000);
 
-    return () => {
-      document.removeEventListener("click", transition);
-    };
+    // return () => {
+    //   document.removeEventListener("click", transition);
+    // };
 	}, [pathname]);
 
 

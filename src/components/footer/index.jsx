@@ -30,12 +30,12 @@ export const Footer = () => {
 				<Languages></Languages>
 			</Suspense>
 
-			
+
 
 			<div className={styles.list__wrapper}>
 				<ul className={styles.list}>
 					<h5 className={styles.title}>Company</h5>
-					<a href={'/about'}>About</a>
+					<a href={'https://react-project-zdxg.vercel.app/about'}>About</a>
 					<Link href={'/copytrading'}>Copy Trading</Link>
 					<Link href={'/automatictrading'}>Automatic Trading</Link>
 					<Link href={'/helpcenter'}>Help hub</Link>
