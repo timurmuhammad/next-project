@@ -52,7 +52,7 @@ export function Languages() {
 
 const translatePage = () => {
 	const prevLocale = prevLocaleRef.current;
-	if ((window.location.href.includes('_x_tr_hist=true') || locale === 'EN') && prevLocale === locale) {
+	if ((window.location.href.includes('_x_tr_hist=true') || locale === 'EN') && prevLocaleRef.current === locale) {
 		return
 	}
 
