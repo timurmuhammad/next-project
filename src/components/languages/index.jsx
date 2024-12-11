@@ -55,7 +55,7 @@ export function Languages() {
 				window.scrollTo(scrollPosition.x, scrollPosition.y);
 			}
 			// Удалите сохранённую позицию после восстановления
-			localStorage.removeItem('scrollPosition');
+			// localStorage.removeItem('scrollPosition');
     
 
 	}, [pathname, locale]);
