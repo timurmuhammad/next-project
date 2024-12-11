@@ -33,11 +33,13 @@ import { usePathname, useSearchParams } from 'next/navigation'
 export function Languages() {
 	const pathname = usePathname()
 	const searchParams = useSearchParams()
-	// const locale = getLocalStorage('locale') || 'EN'
-	// const [localStorage, setLocalStorage] = useLocalStorage('locale', 'EN');
+
 	const [locale, setLocale] = useLocalStorage('locale', 'EN');
-	
-	//!x_tr_sl ? 'EN' : locale
+
+	const scrollPosition = JSON.parse(localStorage.getItem('scrollPosition') || '{}');
+	if (scrollPosition && scrollPosition.y !== undefined) {
+		window.scrollTo(scrollPosition.x, scrollPosition.y);
+	}
 
 	useEffect(() => {
 			const prevLocaleRef = localStorage.getItem('prevLocale') || 'en'
@@ -55,9 +57,8 @@ export function Languages() {
 				window.scrollTo(scrollPosition.x, scrollPosition.y);
 			}
 			// Удалите сохранённую позицию после восстановления
-			// localStorage.removeItem('scrollPosition');
+			localStorage.removeItem('scrollPosition');
     
-
 	}, [pathname, locale]);
 
 const translatePage = (prevLocaleRef) => {
