@@ -42,7 +42,7 @@ export function Languages() {
 
 	useEffect(() => {
 		// if (locale !== prevLocaleRef.current) {
-			prevLocaleRef.current = !window.location.href.includes('_x_tr_sl') && 'en'
+			prevLocaleRef.current = !window.location.href.includes('_x_tr_sl') ? 'en' : locale
 			console.log(prevLocaleRef.current, 'prevLocaleRef')
 			console.log(locale, 'locale')
 
@@ -55,7 +55,7 @@ export function Languages() {
 	}, [pathname, locale]);
 
 const translatePage = () => {
-	if ((window.location.href.includes('_x_tr_hist=true') || locale === 'EN') /*&& prevLocaleRef.current === locale*/) {
+	if ((window.location.href.includes('_x_tr_hist=true') || locale === 'EN') && prevLocaleRef.current === locale) {
 		return
 	}
 
