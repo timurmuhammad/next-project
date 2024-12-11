@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { useRef, useState, useEffect } from 'react'
 import { usePathname } from "next/navigation";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/shadcn/ui/breadcrumb';
-import Link from "next/link";
+import {TranslatedLink} from '@/components/translatedLink';
 import { tabs } from '@/types/auth';
 import market_making from '@/ui/icons/market-making.svg'
 import { Switch } from '@/shadcn/ui/switch'
@@ -112,7 +112,7 @@ export default function ActivePlans() {
 				<BreadcrumbList>
 					<BreadcrumbItem>
 						<BreadcrumbLink>
-							<Link href="">Personal account</Link>
+							<TranslatedLink  href="">Personal account</TranslatedLink >
 						</BreadcrumbLink>
 					</BreadcrumbItem>
 					{activeLinks.map((item, index) => {
@@ -127,7 +127,7 @@ export default function ActivePlans() {
 									</BreadcrumbItem>
 									: <BreadcrumbItem>
 										<BreadcrumbLink>
-											<Link className='capitalize' href={currentItem ? `/${currentItem.path}` : `/${item}`}>{currentItem ? currentItem.text : item}</Link>
+											<TranslatedLink  className='capitalize' href={currentItem ? `/${currentItem.path}` : `/${item}`}>{currentItem ? currentItem.text : item}</TranslatedLink >
 										</BreadcrumbLink>
 									</BreadcrumbItem>
 							}

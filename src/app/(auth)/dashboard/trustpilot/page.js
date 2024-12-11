@@ -6,7 +6,7 @@ import cn from 'classnames'
 import { useState } from 'react';
 import { tabs } from '@/types/auth';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/shadcn/ui/breadcrumb';
-import Link from 'next/link';
+import {TranslatedLink} from '@/components/translatedLink';
 import Image from 'next/image';
 import change from '@/ui/icons/check_circle.svg'
 import { ButtonBlue } from '@/components/buttonBlue';
@@ -21,13 +21,13 @@ export default function Trustpilot() {
 	      <BreadcrumbList>
 	        <BreadcrumbItem>
 	          <BreadcrumbLink>
-	            <Link href="/">Personal account</Link>
+	            <TranslatedLink  href="/">Personal account</TranslatedLink >
 	          </BreadcrumbLink>
 	        </BreadcrumbItem>
 	        <BreadcrumbSeparator />
 	        <BreadcrumbItem>
 	          <BreadcrumbLink>
-	            <Link href="/copytrading">Copy Trading</Link>
+	            <TranslatedLink  href="/copytrading">Copy Trading</TranslatedLink >
 	          </BreadcrumbLink>
 	        </BreadcrumbItem>
 	        <BreadcrumbSeparator />

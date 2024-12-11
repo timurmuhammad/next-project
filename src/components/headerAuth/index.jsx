@@ -9,7 +9,7 @@ import cn from 'classnames';
 import { Languages } from '../languages';
 import { SocialMedia } from '@/ui/socialMedia';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/shadcn/ui/breadcrumb';
-import Link from 'next/link';
+import {TranslatedLink} from '@/components/translatedLink';
 import { usePathname } from 'next/navigation';
 import { tabs } from '@/types/auth';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/shadcn/ui/accordion';
@@ -86,7 +86,7 @@ export const HeaderAuth = () => {
 					<BreadcrumbList>
 						<BreadcrumbItem>
 							<BreadcrumbLink>
-								<Link href="">Personal account</Link>
+								<TranslatedLink  href="">Personal account</TranslatedLink >
 							</BreadcrumbLink>
 						</BreadcrumbItem>
 						{activeLinks.map((item, index) => {
@@ -101,7 +101,7 @@ export const HeaderAuth = () => {
 								</BreadcrumbItem>
 								: <BreadcrumbItem>
 									<BreadcrumbLink>
-										<Link className='capitalize' href={currentItem ? `/${currentItem.path}` : `/${item}`}>{currentItem ? currentItem.text : item}</Link>
+										<TranslatedLink  className='capitalize' href={currentItem ? `/${currentItem.path}` : `/${item}`}>{currentItem ? currentItem.text : item}</TranslatedLink >
 									</BreadcrumbLink>
 								</BreadcrumbItem>
 							}

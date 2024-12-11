@@ -25,7 +25,7 @@ import {
   FormMessage,
 } from "@/shadcn/ui/form"
 import { Input } from "@/shadcn/ui/input"
-import Link from 'next/link';
+import {TranslatedLink} from '@/components/translatedLink';
 import { Languages } from '@/components/languages';
 
 
@@ -70,7 +70,7 @@ export default function Login() {
 									<span className=" text-[16px]  text-center text-black">
 										Already have an account?
 									</span>
-									<Link href='/login' className="text-nowrap ml-[4px] underline cursor-pointer text-[16px] text-center text-[#00b2c8]">Login</Link>
+									<TranslatedLink  href='/login' className="text-nowrap ml-[4px] underline cursor-pointer text-[16px] text-center text-[#00b2c8]">Login</TranslatedLink >
 								</p>
 								<div className={styles.country}>
 									<div className={styles.input}>
@@ -179,11 +179,11 @@ export default function Login() {
 										
 										I Accept the
 						
-										<Link href='#' className="mx-[4px] underline cursor-pointer text-[14px] text-center  text-[#00b2c8]">Terms of Use</Link>
+										<TranslatedLink  href='#' className="mx-[4px] underline cursor-pointer text-[14px] text-center  text-[#00b2c8]">Terms of Use</TranslatedLink >
 									
 										and
 								
-										<Link href='#' className="mx-[4px] underline cursor-pointer text-nowrap text-[14px] text-center  text-[#00b2c8]">Privacy Policy</Link>
+										<TranslatedLink  href='#' className="mx-[4px] underline cursor-pointer text-nowrap text-[14px] text-center  text-[#00b2c8]">Privacy Policy</TranslatedLink >
 									</p>
 		
 									<Switch></Switch>

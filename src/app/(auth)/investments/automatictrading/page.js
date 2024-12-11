@@ -13,7 +13,7 @@ import { useEffect, useState } from 'react'
 import { usePathname } from "next/navigation";
 
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/shadcn/ui/breadcrumb';
-import Link from "next/link";
+import {TranslatedLink} from '@/components/translatedLink';
 
 import triangle_blue from '@/ui/icons/triangle_blue.svg'
 import ethereum_auth from '@/ui/icons/ethereum_auth.svg'
@@ -289,7 +289,7 @@ export default function Automatictrading() {
 					<BreadcrumbList>
 						<BreadcrumbItem>
 							<BreadcrumbLink>
-								<Link href="">Personal account</Link>
+								<TranslatedLink  href="">Personal account</TranslatedLink >
 							</BreadcrumbLink>
 						</BreadcrumbItem>
 						{activeLinks.map((item, index) => {
@@ -304,7 +304,7 @@ export default function Automatictrading() {
 								</BreadcrumbItem>
 								: <BreadcrumbItem>
 									<BreadcrumbLink>
-										<Link className='capitalize' href={currentItem ? `/${currentItem.path}` : `/${item}`}>{currentItem ? currentItem.text : item}</Link>
+										<TranslatedLink  className='capitalize' href={currentItem ? `/${currentItem.path}` : `/${item}`}>{currentItem ? currentItem.text : item}</TranslatedLink >
 									</BreadcrumbLink>
 								</BreadcrumbItem>
 							}

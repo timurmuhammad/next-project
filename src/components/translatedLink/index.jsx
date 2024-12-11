@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { useEffect } from 'react';
+import { getLocalStorage } from '@/hooks/getLocalStorage'
 
-export const TranslatedLink = ({ href, children, locale = 'uk', ...props }) => {
+export const TranslatedLink = ({ href, children, locale = getLocalStorage('locale') || 'uk', ...props }) => {
   const baseUrl = 'https://react-project-zdxg.vercel.app';
 
   // Создаём переведённый URL
@@ -10,19 +11,9 @@ export const TranslatedLink = ({ href, children, locale = 'uk', ...props }) => {
   )}`;
 
   // Предварительная загрузка данных
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const link = document.createElement('link');
-      link.rel = 'prefetch';
-      link.href = `${baseUrl}${href}`;
-      link.as = 'document';
-      document.head.appendChild(link);
-
-      return () => {
-        document.head.removeChild(link);
-      };
-    }
-  }, [href]);
+  // useEffect(() => {
+    
+  // }, [href]);
 
   return (
     <Link href={translatedHref} {...props} target="_blank" rel="noopener noreferrer">

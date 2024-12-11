@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from "react"
-import Link from "next/link"
+import {TranslatedLink} from '@/components/translatedLink'
 import cn from "classnames" 
 import styles from './botlist.module.scss'
 import { Product } from "@/components/product"
@@ -57,13 +57,13 @@ export default function BotList() {
 	      <BreadcrumbList>
 	        <BreadcrumbItem>
 	          <BreadcrumbLink>
-	            <Link href="/">Personal account</Link>
+	            <TranslatedLink  href="/">Personal account</TranslatedLink >
 	          </BreadcrumbLink>
 	        </BreadcrumbItem>
 	        <BreadcrumbSeparator />
 	        <BreadcrumbItem>
 	          <BreadcrumbLink>
-	            <Link href="/copytrading">Copy Trading</Link>
+	            <TranslatedLink  href="/copytrading">Copy Trading</TranslatedLink >
 	          </BreadcrumbLink>
 	        </BreadcrumbItem>
 	        <BreadcrumbSeparator />

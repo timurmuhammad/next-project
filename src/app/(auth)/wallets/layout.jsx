@@ -5,7 +5,7 @@ import cn from 'classnames'
 import { usePathname } from "next/navigation";
 import {  useState } from "react";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/shadcn/ui/breadcrumb';
-import Link from "next/link";
+import {TranslatedLink} from '@/components/translatedLink';
 import { tabs } from '@/types/auth';
 import btc from "@/ui/icons/btc.svg";
 import usdt from "@/ui/icons/usdt.svg";
@@ -31,7 +31,7 @@ export default function WalletsLayout({ children }) {
 					<BreadcrumbList>
 						<BreadcrumbItem>
 							<BreadcrumbLink>
-								<Link href="">Personal account</Link>
+								<TranslatedLink  href="">Personal account</TranslatedLink >
 							</BreadcrumbLink>
 						</BreadcrumbItem>
 						{activeLinks.map((item, index) => {
@@ -46,7 +46,7 @@ export default function WalletsLayout({ children }) {
 								</BreadcrumbItem>
 								: <BreadcrumbItem>
 									<BreadcrumbLink>
-										<Link className='capitalize' href={currentItem ? `/${currentItem.path}` : `/${item}`}>{currentItem ? currentItem.text : item}</Link>
+										<TranslatedLink  className='capitalize' href={currentItem ? `/${currentItem.path}` : `/${item}`}>{currentItem ? currentItem.text : item}</TranslatedLink >
 									</BreadcrumbLink>
 								</BreadcrumbItem>
 							}
@@ -59,12 +59,12 @@ export default function WalletsLayout({ children }) {
 			{pathname === '/wallets/exchange' ? children : <div className={styles.body}>
 			<div className="flex flex-col gap-[16px] w-full min-w-[300px] max-w-[384px]">
 				<div className="flex overflow-hidden border border-solid rounded-[6px] border-[#e6e6e6]  h-[56px]">
-					<Link href='/wallets/replenishment' onClick={() => setWallet('replenishment')} className={cn(styles.wallet, { [styles.active]: wallet === 'replenishment' })}>
+					<TranslatedLink  href='/wallets/replenishment' onClick={() => setWallet('replenishment')} className={cn(styles.wallet, { [styles.active]: wallet === 'replenishment' })}>
 						Replenishment
-					</Link>
-					<Link href='/wallets/withdrawal' onClick={() => setWallet('withdrawal')} className={cn(styles.wallet, { [styles.active]: wallet === 'withdrawal' })}>
+					</TranslatedLink >
+					<TranslatedLink  href='/wallets/withdrawal' onClick={() => setWallet('withdrawal')} className={cn(styles.wallet, { [styles.active]: wallet === 'withdrawal' })}>
 						withdrawal
-					</Link>
+					</TranslatedLink >
 				</div>
 
 				<div className={styles.counter}>

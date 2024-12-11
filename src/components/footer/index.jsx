@@ -7,11 +7,10 @@ import { Logo } from '@/ui/logo';
 import email from '@/ui/icons/email.svg';
 import t_me from '@/ui/icons/t_me.svg';
 import chat from '@/ui/icons/chat.svg'; 
-import Link from 'next/link';
+import {TranslatedLink} from '@/components/translatedLink';
 import { Languages } from '../languages';
 import rectangle from "@/ui/images/rectangle.svg";
 import { Suspense } from 'react';
-import {TranslatedLink} from '@/components/translatedLink';
 
 export const Footer = () => {
 
@@ -37,38 +36,38 @@ export const Footer = () => {
 				<ul className={styles.list}>
 					<h5 className={styles.title}>Company</h5>
 					<TranslatedLink href="/about">Help Center</TranslatedLink>
-					<Link href={'/copytrading'}>Copy Trading</Link>
-					<Link href={'/automatictrading'}>Automatic Trading</Link>
-					<Link href={'/helpcenter'}>Help hub</Link>
-					<Link href={'/blog'}>Blog</Link>
-					<Link href={'/'}>Contacts</Link>
-					<Link href={'/security'}>Security</Link>
+					<TranslatedLink  href={'/copytrading'}>Copy Trading</TranslatedLink >
+					<TranslatedLink  href={'/automatictrading'}>Automatic Trading</TranslatedLink >
+					<TranslatedLink  href={'/helpcenter'}>Help hub</TranslatedLink >
+					<TranslatedLink  href={'/blog'}>Blog</TranslatedLink >
+					<TranslatedLink  href={'/'}>Contacts</TranslatedLink >
+					<TranslatedLink  href={'/security'}>Security</TranslatedLink >
 				</ul>
 	
 				<ul className={styles.list}>
 					<h5 className={styles.title}>Other links</h5>
-					<Link href={'/login'}>Login</Link>
-					<Link href={'/registration'}>Sign Up</Link>
-					<Link href={''}>Privacy Policy</Link>
-					<Link href={''}>User Agreement</Link>
-					<Link href={''}>PDF Presentation</Link>
-					<Link href={'/dashboard'}>Dashboard</Link>
+					<TranslatedLink  href={'/login'}>Login</TranslatedLink >
+					<TranslatedLink  href={'/registration'}>Sign Up</TranslatedLink >
+					<TranslatedLink  href={''}>Privacy Policy</TranslatedLink >
+					<TranslatedLink  href={''}>User Agreement</TranslatedLink >
+					<TranslatedLink  href={''}>PDF Presentation</TranslatedLink >
+					<TranslatedLink  href={'/dashboard'}>Dashboard</TranslatedLink >
 				</ul>
 	
 				<ul className={styles.contacts}>
 					<Logo></Logo>
-					<Link href={''}>
+					<TranslatedLink  href={''}>
 						<p>support@website.com</p>
 						<Image src={email} alt='img' width={48} height={48}></Image>
-					</Link>
-					<Link href={''}>
+					</TranslatedLink >
+					<TranslatedLink  href={''}>
 						<p>https://t.me/website_support</p>
 						<Image src={t_me} alt='img' width={48} height={48}></Image>
-					</Link>
-					<Link href={''}>
+					</TranslatedLink >
+					<TranslatedLink  href={''}>
 						<p>24/7 Online Chat Support</p>
 						<Image src={chat} alt='img' width={48} height={48}></Image>
-					</Link>
+					</TranslatedLink >
 				</ul>
 			</div>
 

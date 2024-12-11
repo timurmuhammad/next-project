@@ -14,7 +14,7 @@ import arrow from '@/ui/icons/arrow_up.svg';
 import polygon from '@/ui/icons/polygon.svg';
 import { Languages } from '../languages';
 import { SocialMedia } from '@/ui/socialMedia';
-import Link from 'next/link';
+import {TranslatedLink} from '@/components/translatedLink';
 
 
 
@@ -54,7 +54,7 @@ export const Header = () => {
 			<Logo></Logo>
 
 			<ul className={styles.nav_desktop}>
-				<Link href='/about' className={styles.nav_desktop__item}>About</Link>
+				<TranslatedLink  href='/about' className={styles.nav_desktop__item}>About</TranslatedLink >
 				<li className={cn(styles.nav_desktop__item, styles.popup_list)}>
 
 					<p 
@@ -65,7 +65,7 @@ export const Header = () => {
 
 					<ul className={cn(styles.popup_list__body, {[styles.active]: open}) }>
 						{ productsType.map( (listItem, index) => (
-							<Link href={listItem.link} key={index} className="flex relative gap-[24px] px-[30px] py-[16px] rounded-[6px]">
+							<TranslatedLink  href={listItem.link} key={index} className="flex relative gap-[24px] px-[30px] py-[16px] rounded-[6px]">
 								<Image src={listItem.icon} alt='icon' width={36} height={36}></Image>
 								<div className="flex flex-col justify-center">
 									<p className=" text-[16px]  text-black">
@@ -75,14 +75,14 @@ export const Header = () => {
 										{listItem.description}
 									</p>
 								</div>
-							</Link>
+							</TranslatedLink >
 						))}
 					</ul>
 
 				</li>
-				<Link href='/security' className={styles.nav_desktop__item}>Security</Link>
-				<Link href='/blog' className={styles.nav_desktop__item}>Blog</Link>
-				<Link href='/helpcenter' className={styles.nav_desktop__item}>Help Hub</Link>
+				<TranslatedLink  href='/security' className={styles.nav_desktop__item}>Security</TranslatedLink >
+				<TranslatedLink  href='/blog' className={styles.nav_desktop__item}>Blog</TranslatedLink >
+				<TranslatedLink  href='/helpcenter' className={styles.nav_desktop__item}>Help Hub</TranslatedLink >
 			</ul>
 
 			<ul className={cn(styles.nav_mobile, {[styles.active]: burgerActive})}>
@@ -123,8 +123,8 @@ export const Header = () => {
 
 			<div className={styles.auth}>
 				<button className={styles.dashboard}><Image src={dashboard} alt='icon' width={21} height={20}></Image></button>
-				<Link href='/login' className={styles.login}><p>Login</p></Link>
-				<Link href='/registration' className={styles.sign_up}>Sign Up</Link>
+				<TranslatedLink  href='/login' className={styles.login}><p>Login</p></TranslatedLink >
+				<TranslatedLink  href='/registration' className={styles.sign_up}>Sign Up</TranslatedLink >
 			</div>
 		</div>
 	</div>

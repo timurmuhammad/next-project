@@ -6,7 +6,7 @@ import cn from 'classnames'
 import Image from 'next/image';
 import { usePathname } from "next/navigation";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/shadcn/ui/breadcrumb';
-import Link from "next/link";
+import {TranslatedLink} from '@/components/translatedLink';
 import { tabs } from '@/types/auth';
 import invested from "@/ui/icons/invested.svg";
 import gift from '@/ui/icons/gift.svg'
@@ -127,7 +127,7 @@ export default function Affiliate() {
 				<BreadcrumbList>
 					<BreadcrumbItem>
 						<BreadcrumbLink>
-							<Link href="">Personal account</Link>
+							<TranslatedLink  href="">Personal account</TranslatedLink >
 						</BreadcrumbLink>
 					</BreadcrumbItem>
 					{activeLinks.map((item, index) => {
@@ -142,7 +142,7 @@ export default function Affiliate() {
 									</BreadcrumbItem>
 									: <BreadcrumbItem>
 										<BreadcrumbLink>
-											<Link className='capitalize' href={currentItem ? `/${currentItem.path}` : `/${item}`}>{currentItem ? currentItem.text : item}</Link>
+											<TranslatedLink  className='capitalize' href={currentItem ? `/${currentItem.path}` : `/${item}`}>{currentItem ? currentItem.text : item}</TranslatedLink >
 										</BreadcrumbLink>
 									</BreadcrumbItem>
 							}

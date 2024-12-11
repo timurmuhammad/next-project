@@ -3,7 +3,7 @@
 import { ButtonBlue } from '@/components/buttonBlue'
 import styles from './withdrawal.module.scss'
 import cn from 'classnames'
-import Link from 'next/link'
+import {TranslatedLink} from '@/components/translatedLink'
 
 export default function Withdrawal() {
 	return 	<div className={styles.body}>
@@ -109,11 +109,11 @@ export default function Withdrawal() {
 		</div>
 
 
-		<Link href='/wallets/confirmation' className={styles.buttons}>
+		<TranslatedLink  href='/wallets/confirmation' className={styles.buttons}>
 				<ButtonBlue
 					text='Next'
 				></ButtonBlue>
-			</Link>
+			</TranslatedLink >
 
 	</div>
 }

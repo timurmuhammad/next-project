@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { Input } from '@/shadcn/ui/input';
 import { UnderlineButton } from '@/components/underlineButton'
 import { ButtonBorder } from '@/components/buttonBorder'
-import Link from 'next/link'
+import {TranslatedLink} from '@/components/translatedLink'
 
 export default function Processing() {
 	return 	<div className={styles.body}>
@@ -124,11 +124,11 @@ export default function Processing() {
 
 
 		<div className={styles.buttons}>
-			<Link href='/wallets/withdrawal'>
+			<TranslatedLink  href='/wallets/withdrawal'>
 				<ButtonBlue
 					text='Close'
 				></ButtonBlue>
-			</Link>
+			</TranslatedLink >
 			</div>
 
 	</div>

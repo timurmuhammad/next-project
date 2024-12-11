@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { useState } from 'react'
 import { usePathname } from "next/navigation";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/shadcn/ui/breadcrumb';
-import Link from "next/link";
+import {TranslatedLink} from '@/components/translatedLink';
 import { tabs } from '@/types/auth';
 import invested from "@/ui/icons/invested.svg";
 import withdrawn from "@/ui/icons/withdrawn.svg";
@@ -28,7 +28,7 @@ export default function LayoutStatistics({ children }) {
 				<BreadcrumbList>
 					<BreadcrumbItem>
 						<BreadcrumbLink>
-							<Link href="">Personal account</Link>
+							<TranslatedLink  href="">Personal account</TranslatedLink >
 						</BreadcrumbLink>
 					</BreadcrumbItem>
 					{activeLinks.map((item, index) => {
@@ -43,7 +43,7 @@ export default function LayoutStatistics({ children }) {
 									</BreadcrumbItem>
 									: <BreadcrumbItem>
 										<BreadcrumbLink>
-											<Link className='capitalize' href={currentItem ? `/${currentItem.path}` : `/${item}`}>{currentItem ? currentItem.text : item}</Link>
+											<TranslatedLink  className='capitalize' href={currentItem ? `/${currentItem.path}` : `/${item}`}>{currentItem ? currentItem.text : item}</TranslatedLink >
 										</BreadcrumbLink>
 									</BreadcrumbItem>
 							}

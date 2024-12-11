@@ -7,7 +7,7 @@ import cn from 'classnames'
 import { useState, useEffect } from 'react'
 import { usePathname } from "next/navigation";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from '@/shadcn/ui/breadcrumb';
-import Link from "next/link";
+import {TranslatedLink} from '@/components/translatedLink';
 import { tabs } from '@/types/auth';
 import exchange_arbitrage from '@/ui/icons/exchange_arbitrage.svg'
 import market_making from '@/ui/icons/market-making.svg'
@@ -169,7 +169,7 @@ export default function Crossсhain() {
 				<BreadcrumbList>
 					<BreadcrumbItem>
 						<BreadcrumbLink>
-							<Link href="">Personal account</Link>
+							<TranslatedLink  href="">Personal account</TranslatedLink >
 						</BreadcrumbLink>
 					</BreadcrumbItem>
 					{activeLinks.map((item, index) => {
@@ -184,7 +184,7 @@ export default function Crossсhain() {
 									</BreadcrumbItem>
 									: <BreadcrumbItem>
 										<BreadcrumbLink>
-											<Link className='capitalize' href={currentItem ? `/${currentItem.path}` : `/${item}`}>{currentItem ? currentItem.text : item}</Link>
+											<TranslatedLink  className='capitalize' href={currentItem ? `/${currentItem.path}` : `/${item}`}>{currentItem ? currentItem.text : item}</TranslatedLink >
 										</BreadcrumbLink>
 									</BreadcrumbItem>
 							}

@@ -15,6 +15,8 @@ import hi from "@/ui/icons/hi.png";
 import hu from "@/ui/icons/hu.png";
 
 import Image from 'next/image';
+import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { getLocalStorage } from "@/hooks/getLocalStorage";
 
 import {
   DropdownMenu,
@@ -24,133 +26,41 @@ import {
 } from "@/shadcn/ui/dropdown-menu"
 
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation'
 
 
 export function Languages() {
-	// const translatePageToUkrainian = () => {
-  //   const currentUrl = window.location.href;
-  //   const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
-  //     currentUrl
-  //   )}`;
-  //   window.location.href = translateUrl;
-  // };
-
 	const pathname = usePathname()
 	const searchParams = useSearchParams()
+	// const locale = getLocalStorage('locale') || 'EN'
+	// const [localStorage, setLocalStorage] = useLocalStorage('locale', 'EN');
+	const [locale, setLocale] = useLocalStorage('locale', 'EN');
+	const prevLocaleRef = useRef(locale)
 
-	// useEffect(() => {
-  //   translatePageToUkrainian();
-	// }, [pathname]);
+	useEffect(() => {
+		// if (locale !== prevLocaleRef.current) {
+      translatePage();
+      prevLocaleRef.current = locale; // Обновляем предыдущее значение
+    // }
 
+		console.log(prevLocaleRef, 'prevLocaleRef')
+		console.log(locale, 'locale')
+	}, [pathname, locale]);
 
-const translatePageToUkrainian = () => {
-	if (window.location.href.includes('_x_tr_hist=true')) {
+const translatePage = () => {
+	const prevLocale = prevLocaleRef.current;
+	if ((window.location.href.includes('_x_tr_hist=true') || locale === 'EN') && prevLocale === locale) {
 		return
 	}
 
 	const baseURL = new URL('/', `${'http://react-project-zdxg.vercel.app'}`).origin;
-	const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
+	const translateUrl = `https://translate.google.com/translate?hl=${locale}&sl=en&u=${encodeURIComponent(
 		`${baseURL}${pathname}`
 	)}`;
 
-	console.log(translateUrl)
-
 	window.location.assign(translateUrl);
 }
-
-// const translatePageToUkrainian = () => {
-// 	const currentUrl = window.location.href;
-// 	const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
-// 			currentUrl
-// 	)}`;
-
-// 	// Добавляем небольшой таймер для более надёжного поведения
-// 	setTimeout(() => {
-// 			window.location.assign(translateUrl);
-// 	}, 0);
-// };
-
-
-
-// const translatePageToUkrainian = () => {
-// 	let currentUrl = window.location.href;
-
-// 	if (currentUrl.includes('.translate.goog')) {
-// 			currentUrl = currentUrl.replace(/\.translate\.goog\/(.*?)\?hl=uk&sl=en/, '$1');
-// 	}
-
-// 	const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
-// 			currentUrl
-// 	)}`;
-
-// 	setTimeout(() => {
-// 			window.location.assign(translateUrl);
-// 	}, 0);
-// };
-
-// const translatePageToUkrainian = () => {
-// 	const cleanUrl = (url) => {
-// 			if (url.includes('.translate.goog')) {
-// 					return url.replace(/https:\/\/(.*?)\.translate\.goog\/(.*?)\?hl=uk&sl=en/, 'https://$2');
-// 			}
-// 			return url;
-// 	};
-
-// 	const currentUrl = cleanUrl(window.location.href);
-
-// 	const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(
-// 			currentUrl
-// 	)}`;
-
-// 	setTimeout(() => {
-// 			window.location.assign(translateUrl);
-// 	}, 0);
-// };
-
-	// let currentUrl = window.location.href;
-
-	// if (!currentUrl.includes('=true') && currentUrl.includes('.translate.goog/')) {
-	// 	currentUrl = currentUrl.replace('.translate.goog', '');
-	// 	currentUrl = currentUrl.replace('https://react--project--zdxg-vercel-app', 'https://react-project-zdxg.vercel.app');
-
-	// 	console.log(currentUrl)
-
-	// 	const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(currentUrl)}`;
-
-	// 	setTimeout(() => {
-	// 		window.location.assign(translateUrl);
-	// 	}, 0);
-	// }
-
-
-// useEffect(() => {
-// 	const handleUrlChange = () => {
-// 		let currentUrl = window.location.href;
-
-// 		if (!currentUrl.includes('=true') && currentUrl.includes('.translate.goog/')) {
-// 			currentUrl = currentUrl.replace('.translate.goog', '');
-// 			currentUrl = currentUrl.replace('https://react--project--zdxg-vercel-app', 'https://react-project-zdxg.vercel.app');
-
-// 			console.log(currentUrl)
-
-// 			const translateUrl = `https://translate.google.com/translate?hl=uk&sl=en&u=${encodeURIComponent(currentUrl)}`;
-
-// 			setTimeout(() => {
-// 				window.location.assign(translateUrl);
-// 			}, 0);
-// 		}
-// 	};
-
-// 	window.addEventListener('popstate', handleUrlChange);
-
-// 	handleUrlChange();
-
-// 	return () => {
-// 		window.removeEventListener('popstate', handleUrlChange);
-// 	};
-// }, []);
 
 
   return (
@@ -163,7 +73,7 @@ const translatePageToUkrainian = () => {
 					</DropdownMenuTrigger>
 					<DropdownMenuContent className='w-[186px] my-[8px] mr-[16px]'>
 						<div className="flex  flex-wrap  justify-between gap-[16px] p-[16px] rounded-[6px] bg-neutral-50 border border-solid border-[#d9d9d9]">
-							<DropdownMenuItem className={styles.lang}>
+							<DropdownMenuItem onClick={() => setLocale('EN')} className={styles.lang}>
 								<Image
 									src={en}
 									width={25}
@@ -173,8 +83,7 @@ const translatePageToUkrainian = () => {
 								></Image>
 								<p className=" text-[16px]  text-black">EN</p>
 							</DropdownMenuItem>
-							<div onClick={translatePageToUkrainian}>
-								<DropdownMenuItem className={styles.lang}>
+								<DropdownMenuItem onClick={() => setLocale('NL')} className={styles.lang}>
 									<Image
 										src={nl}
 										width={25}
@@ -184,8 +93,7 @@ const translatePageToUkrainian = () => {
 									></Image>
 									<p className=" text-[16px]  text-black">NL</p>
 								</DropdownMenuItem>
-							</div>
-							<DropdownMenuItem className={styles.lang}>
+							<DropdownMenuItem onClick={() => setLocale('ES')} className={styles.lang}>
 								<Image
 									src={es}
 									width={25}
@@ -195,7 +103,7 @@ const translatePageToUkrainian = () => {
 								></Image>
 								<p className=" text-[16px]  text-black">ES</p>
 							</DropdownMenuItem>
-							<DropdownMenuItem className={styles.lang}>
+							<DropdownMenuItem onClick={() => setLocale('DE')} className={styles.lang}>
 								<Image
 									src={de}
 									width={25}
@@ -205,7 +113,7 @@ const translatePageToUkrainian = () => {
 								></Image>
 								<p className=" text-[16px]  text-black">DE</p>
 							</DropdownMenuItem>
-							<DropdownMenuItem className={styles.lang}>
+							<DropdownMenuItem onClick={() => setLocale('FR')} className={styles.lang}>
 								<Image
 									src={fr}
 									width={25}
@@ -215,7 +123,7 @@ const translatePageToUkrainian = () => {
 								></Image>
 								<p className=" text-[16px]  text-black">FR</p>
 							</DropdownMenuItem>
-							<DropdownMenuItem className={styles.lang}>
+							<DropdownMenuItem onClick={() => setLocale('PH')} className={styles.lang}>
 								<Image
 									src={pg}
 									width={25}
@@ -225,7 +133,7 @@ const translatePageToUkrainian = () => {
 								></Image>
 								<p className=" text-[16px]  text-black">PH</p>
 							</DropdownMenuItem>
-							<DropdownMenuItem className={styles.lang}>
+							<DropdownMenuItem onClick={() => setLocale('ZH')} className={styles.lang}>
 								<Image
 									src={zh}
 									width={25}
@@ -235,7 +143,7 @@ const translatePageToUkrainian = () => {
 								></Image>
 								<p className=" text-[16px]  text-black">ZH</p>
 							</DropdownMenuItem>
-							<DropdownMenuItem className={styles.lang}>
+							<DropdownMenuItem onClick={() => setLocale('JP')} className={styles.lang}>
 								<Image
 									src={jp}
 									width={25}
@@ -245,7 +153,7 @@ const translatePageToUkrainian = () => {
 								></Image>
 								<p className=" text-[16px]  text-black">JP</p>
 							</DropdownMenuItem>
-							<DropdownMenuItem className={styles.lang}>
+							<DropdownMenuItem onClick={() => setLocale('ID')} className={styles.lang}>
 								<Image
 									src={id}
 									width={25}
@@ -255,7 +163,7 @@ const translatePageToUkrainian = () => {
 								></Image>
 								<p className=" text-[16px]  text-black">ID</p>
 							</DropdownMenuItem>
-							<DropdownMenuItem className={styles.lang}>
+							<DropdownMenuItem onClick={() => setLocale('CZ')} className={styles.lang}>
 								<Image
 									src={cz}
 									width={25}
@@ -265,7 +173,7 @@ const translatePageToUkrainian = () => {
 								></Image>
 								<p className=" text-[16px]  text-black">CZ</p>
 							</DropdownMenuItem>
-							<DropdownMenuItem className={styles.lang}>
+							<DropdownMenuItem onClick={() => setLocale('HI')} className={styles.lang}>
 								<Image
 									src={hi}
 									width={25}
@@ -275,7 +183,7 @@ const translatePageToUkrainian = () => {
 								></Image>
 								<p className=" text-[16px]  text-black">HI</p>
 							</DropdownMenuItem>
-							<DropdownMenuItem className={styles.lang}>
+							<DropdownMenuItem onClick={() => setLocale('HU')} className={styles.lang}>
 								<Image
 									src={hu}
 									width={25}

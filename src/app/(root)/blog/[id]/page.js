@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { ButtonBorder } from '@/components/buttonBorder';
 import { media, pinned, popular, latestPosts } from '@/types/blogType'
 import { PostDetails } from '@/components/postDetails';
-import Link from 'next/link';
+import {TranslatedLink} from '@/components/translatedLink';
 
 export default function( {params} ) {
 	const post = media.find((item, index) => item.id === params.id)
@@ -30,11 +30,11 @@ export default function( {params} ) {
 				consectetur.
 			</p>
 
-			<Link className={styles.button} href='/blog'>
+			<TranslatedLink  className={styles.button} href='/blog'>
 				<ButtonBorder
 					text='Back to Blog'
 				></ButtonBorder>
-			</Link>
+			</TranslatedLink >
 		</div>
 	</div>
 }

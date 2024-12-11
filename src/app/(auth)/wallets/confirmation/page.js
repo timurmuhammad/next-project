@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { Input } from '@/shadcn/ui/input';
 import { UnderlineButton } from '@/components/underlineButton'
 import { ButtonBorder } from '@/components/buttonBorder'
-import Link from 'next/link'
+import {TranslatedLink} from '@/components/translatedLink'
 
 export default function Confirmation() {
 	return 	<div className={styles.body}>
@@ -112,16 +112,16 @@ export default function Confirmation() {
 
 
 		<div className={styles.buttons}>
-			<Link href='/wallets/withdrawal'>
+			<TranslatedLink  href='/wallets/withdrawal'>
 				<ButtonBorder
 					text='Back'
 				></ButtonBorder>
-			</Link>
-			<Link href='/wallets/processing'>
+			</TranslatedLink >
+			<TranslatedLink  href='/wallets/processing'>
 				<ButtonBlue
 					text='Next'
 				></ButtonBlue>
-			</Link>
+			</TranslatedLink >
 			</div>
 
 	</div>

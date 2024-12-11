@@ -22,7 +22,7 @@ import {
   FormMessage,
 } from "@/shadcn/ui/form"
 import { Input } from "@/shadcn/ui/input"
-import Link from 'next/link';
+import {TranslatedLink} from '@/components/translatedLink';
 
 
 const FormSchema = z.object({
@@ -61,7 +61,7 @@ export default function Login() {
 							<span className=" text-[16px]  text-center text-black">
 								Don’t have an account?
 							</span>
-							<Link href='/registration' className="text-nowrap ml-[4px] underline cursor-pointer text-[16px] text-center text-[#00b2c8]">Sign up</Link>
+							<TranslatedLink  href='/registration' className="text-nowrap ml-[4px] underline cursor-pointer text-[16px] text-center text-[#00b2c8]">Sign up</TranslatedLink >
 						</p>
 						<div className={styles.input}>
 							<FormField
@@ -123,7 +123,7 @@ export default function Login() {
 							<span className=" text-[14px]  text-center text-black">
 								Forgot your password?
 							</span>
-							<Link href='/recovery' className="ml-[4px] underline cursor-pointer text-nowrap text-[14px] text-center  text-[#00b2c8]">Recovery</Link>
+							<TranslatedLink  href='/recovery' className="ml-[4px] underline cursor-pointer text-nowrap text-[14px] text-center  text-[#00b2c8]">Recovery</TranslatedLink >
 						</p>
 					</div>
 				</div>

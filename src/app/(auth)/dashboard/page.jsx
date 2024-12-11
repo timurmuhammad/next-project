@@ -21,7 +21,7 @@ import eth from "@/ui/icons/eth.svg";
 import { DiagramAuth } from '@/components/diagramAuth';
 import rocket from "@/ui/icons/rocket.png";
 import { Carousel, CarouselContent, CarouselItem } from '@/shadcn/ui/carousel';
-import Link from 'next/link';
+import {TranslatedLink} from '@/components/translatedLink';
 import { media } from '@/types/blogType';
 import automatic_trading from "@/ui/icons/automatic_trading.svg";
 import copy_trading_auth from "@/ui/icons/copy_trading_auth.svg";
@@ -1117,7 +1117,7 @@ export default function Dashboard() {
 					</div>
 					<div className={styles.accordion_content}>
 					<div className="flex flex-col justify-center relative gap-[8px]">
-					<Link href='' className={styles.accordion_item}>
+					<TranslatedLink  href='' className={styles.accordion_item}>
 						<svg
 							width={32}
 							height={32}
@@ -1149,9 +1149,9 @@ export default function Dashboard() {
 								account.
 							</p>
 						</div>
-					</Link>
+					</TranslatedLink >
 					<div className=" flex-shrink-0 w-[2px] h-[63px] relative bg-[#00b2c8] left-[33px]"></div>
-					<Link href='' className={styles.accordion_item}>
+					<TranslatedLink  href='' className={styles.accordion_item}>
 						<svg
 							width={32}
 							height={32}
@@ -1182,9 +1182,9 @@ export default function Dashboard() {
 								Open the “Wallets” page and top up any available cryptocurrency.
 							</p>
 						</div>
-					</Link>
+					</TranslatedLink >
 					<div className=" flex-shrink-0 w-[2px] h-[63px] relative bg-[#00b2c8] left-[33px]"></div>
-					<Link href='' className={styles.accordion_item}>
+					<TranslatedLink  href='' className={styles.accordion_item}>
 						<div className={styles.number}>
 							<p className="text-[14px] text-center text-[#242e39]">3</p>
 						</div>
@@ -1196,9 +1196,9 @@ export default function Dashboard() {
 								Select a suitable investment offer and activate your investment
 							</p>
 						</div>
-					</Link>
+					</TranslatedLink >
 					<div className=" flex-shrink-0 w-[2px] h-[63px] relative bg-[#a1aebe] left-[33px]"></div>
-					<Link href='' className={styles.accordion_item}>
+					<TranslatedLink  href='' className={styles.accordion_item}>
 						<div className={styles.number}>
 							<p className="text-[14px] text-center text-[#242e39]">4</p>
 						</div>
@@ -1210,9 +1210,9 @@ export default function Dashboard() {
 								Open your profile settings to set 2FA and PIN Code
 							</p>
 						</div>
-					</Link>
+					</TranslatedLink >
 					<div className=" flex-shrink-0 w-[2px] h-[63px] relative bg-[#a1aebe] left-[33px]"></div>
-					<Link href='' className={styles.accordion_item}>
+					<TranslatedLink  href='' className={styles.accordion_item}>
 						<div className={styles.number}>
 							<p className="text-[14px] text-center text-[#242e39]">5</p>
 						</div>
@@ -1224,7 +1224,7 @@ export default function Dashboard() {
 								After accrual, go to “Wallets” to withdraw profit
 							</p>
 						</div>
-					</Link>
+					</TranslatedLink >
 				</div>
 					</div>
 				</div>
@@ -1354,7 +1354,7 @@ export default function Dashboard() {
 					<CarouselContent>
 						{media.map((item, index) => (
 							<CarouselItem key={index}>
-								<Link href={`/blog/${encodeURIComponent(item.id)}`} className="flex flex-col gap-[16px] cursor-pointer">
+								<TranslatedLink  href={`/blog/${encodeURIComponent(item.id)}`} className="flex flex-col gap-[16px] cursor-pointer">
 									<div className={styles.image} />
 									<p className="text-[12px] text-wrap w-full">
 										<span>
@@ -1366,7 +1366,7 @@ export default function Dashboard() {
 											Read more
 										</span>
 									</p>
-								</Link>
+								</TranslatedLink >
 							</CarouselItem>
 						))}
 					</CarouselContent>
