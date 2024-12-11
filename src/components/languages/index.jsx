@@ -61,13 +61,13 @@ export function Languages() {
 	}, [pathname, locale]);
 
 const translatePage = (prevLocaleRef) => {
-	const scrollPosition = { x: window.scrollX, y: window.scrollY };
-  localStorage.setItem('scrollPosition', JSON.stringify(scrollPosition));
 
 	if ((window.location.href.includes('_x_tr_hist=true') || locale === 'EN') && prevLocaleRef === locale) {
 		return
 	}
 
+	const scrollPosition = { x: window.scrollX, y: window.scrollY };
+  localStorage.setItem('scrollPosition', JSON.stringify(scrollPosition));
 	const baseURL = new URL('/', `${'http://react-project-zdxg.vercel.app'}`).origin;
 	const translateUrl = `https://translate.google.com/translate?hl=${locale}&sl=${prevLocaleRef || 'en'}&u=${encodeURIComponent(
 		`${baseURL}${pathname}`
@@ -78,7 +78,7 @@ const translatePage = (prevLocaleRef) => {
 
 
   return (
-				<DropdownMenu modal={false} translate="no">
+				<DropdownMenu modal={false} translate="no" lang="x-ignore">
 					<DropdownMenuTrigger asChild>
 						<div className={styles.body}>
 							<Image src={en} alt='icon' width={25} height={18}></Image>
