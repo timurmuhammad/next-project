@@ -16,7 +16,7 @@ export const TranslatedLink = ({ href, children, locale = getLocalStorage('local
   // }, [href]);
 
   return (
-    <Link href={translatedHref} {...props} target="_blank" rel="noopener noreferrer">
+    <Link href={translatedHref} {...props}>
       {children}
     </Link>
   );

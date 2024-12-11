@@ -40,12 +40,14 @@ export function Languages() {
 
 	useEffect(() => {
 		// if (locale !== prevLocaleRef.current) {
+			console.log(prevLocaleRef.current, 'prevLocaleRef')
+			console.log(locale, 'locale')
+
       translatePage();
+			
       prevLocaleRef.current = locale; // Обновляем предыдущее значение
     // }
 
-		console.log(prevLocaleRef, 'prevLocaleRef')
-		console.log(locale, 'locale')
 	}, [pathname, locale]);
 
 const translatePage = () => {
@@ -55,7 +57,7 @@ const translatePage = () => {
 	}
 
 	const baseURL = new URL('/', `${'http://react-project-zdxg.vercel.app'}`).origin;
-	const translateUrl = `https://translate.google.com/translate?hl=${locale}&sl=en&u=${encodeURIComponent(
+	const translateUrl = `https://translate.google.com/translate?hl=${locale}&sl=${prevLocaleRef.current || 'en'}&u=${encodeURIComponent(
 		`${baseURL}${pathname}`
 	)}`;
 
