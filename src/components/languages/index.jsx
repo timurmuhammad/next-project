@@ -36,7 +36,7 @@ export function Languages() {
 	// const locale = getLocalStorage('locale') || 'EN'
 	// const [localStorage, setLocalStorage] = useLocalStorage('locale', 'EN');
 	const [locale, setLocale] = useLocalStorage('locale', 'EN');
-	const prevLocaleRef = useRef(locale)
+	const prevLocaleRef = useRef('EN')
 
 	useEffect(() => {
 		// if (locale !== prevLocaleRef.current) {
