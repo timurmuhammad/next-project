@@ -42,7 +42,7 @@ export function Languages() {
 
 	useEffect(() => {
 		// if (locale !== prevLocaleRef.current) {
-			prevLocaleRef.current = !window.location.href.includes('_x_tr_sl') && 'EN'
+			prevLocaleRef.current = !window.location.href.includes('_x_tr_sl') && 'en'
 			console.log(prevLocaleRef.current, 'prevLocaleRef')
 			console.log(locale, 'locale')
 
@@ -55,9 +55,9 @@ export function Languages() {
 	}, [pathname, locale]);
 
 const translatePage = () => {
-	// if ((window.location.href.includes('_x_tr_hist=true') || locale === 'EN') && prevLocaleRef.current === locale) {
-	// 	return
-	// }
+	if ((window.location.href.includes('_x_tr_hist=true') || locale === 'EN') && prevLocaleRef.current === locale) {
+		return
+	}
 
 	const baseURL = new URL('/', `${'http://react-project-zdxg.vercel.app'}`).origin;
 	const translateUrl = `https://translate.google.com/translate?hl=${locale}&sl=${prevLocaleRef.current || 'en'}&u=${encodeURIComponent(
