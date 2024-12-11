@@ -55,7 +55,7 @@ export function Languages() {
 	}, [pathname, locale]);
 
 const translatePage = () => {
-	if ((window.location.href.includes('_x_tr_hist=true') || locale === 'EN') && prevLocaleRef.current === locale) {
+	if ((window.location.href.includes('_x_tr_hist=true') || locale === 'EN') /*&& prevLocaleRef.current === locale*/) {
 		return
 	}
 
