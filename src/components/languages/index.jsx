@@ -36,28 +36,27 @@ export function Languages() {
 	// const locale = getLocalStorage('locale') || 'EN'
 	// const [localStorage, setLocalStorage] = useLocalStorage('locale', 'EN');
 	const [locale, setLocale] = useLocalStorage('locale', 'EN');
-	const prevLocaleRef = useRef('EN')
+	const [prevLocale, setPrevLocale] = useLocalStorage('prevLocale', 'EN');
 
 	useEffect(() => {
 		// if (locale !== prevLocaleRef.current) {
-			console.log(prevLocaleRef.current, 'prevLocaleRef')
+			console.log(prevLocale, 'prevLocale')
 			console.log(locale, 'locale')
 
       translatePage();
 			
-      prevLocaleRef.current = locale; // Обновляем предыдущее значение
+      setPrevLocale(locale) // Обновляем предыдущее значение
     // }
 
 	}, [pathname, locale]);
 
 const translatePage = () => {
-	const prevLocale = prevLocaleRef.current;
-	if ((window.location.href.includes('_x_tr_hist=true') || locale === 'EN') && prevLocaleRef.current === locale) {
+	if ((window.location.href.includes('_x_tr_hist=true') || locale === 'EN') && prevLocale === locale) {
 		return
 	}
 
 	const baseURL = new URL('/', `${'http://react-project-zdxg.vercel.app'}`).origin;
-	const translateUrl = `https://translate.google.com/translate?hl=${locale}&sl=${prevLocaleRef.current || 'en'}&u=${encodeURIComponent(
+	const translateUrl = `https://translate.google.com/translate?hl=${locale}&sl=${prevLocale}&u=${encodeURIComponent(
 		`${baseURL}${pathname}`
 	)}`;
 
