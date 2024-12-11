@@ -1,8 +1,13 @@
-'use client'
-
 export function getLocalStorage(key: string) {
-	const data = localStorage.getItem(key)
-	const parseData = data && JSON.parse(data)
+  if (typeof window === 'undefined') {
+    return null; // Возврат `null` на сервере
+  }
 
-	return parseData // possible null
+  const data = localStorage.getItem(key);
+  try {
+    return data ? JSON.parse(data) : null;
+  } catch (error) {
+    console.error(`Error parsing localStorage item "${key}":`, error);
+    return null;
+  }
 }
