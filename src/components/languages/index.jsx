@@ -41,7 +41,7 @@ export function Languages() {
 
 	useEffect(() => {
 			const prevLocaleRef = localStorage.getItem('prevLocale') || 'en'
-		// if (locale !== prevLocaleRef.current) {
+
 			localStorage.setItem('prevLocale', !window.location.href.includes('_x_tr_sl') ? 'en' : locale)
 			console.log(prevLocaleRef, 'prevLocaleRef')
 			console.log(locale, 'locale')
@@ -49,13 +49,21 @@ export function Languages() {
       translatePage(prevLocaleRef);
 
 			localStorage.setItem('prevLocale', locale);
-      // prevLocaleRef.current = locale;
-			// localStorage.setItem('prevLocale', JSON.stringify(locale));
-    // }
+
+			const scrollPosition = JSON.parse(localStorage.getItem('scrollPosition') || '{}');
+			if (scrollPosition && scrollPosition.y !== undefined) {
+				window.scrollTo(scrollPosition.x, scrollPosition.y);
+			}
+			// Удалите сохранённую позицию после восстановления
+			localStorage.removeItem('scrollPosition');
+    
 
 	}, [pathname, locale]);
 
 const translatePage = (prevLocaleRef) => {
+	const scrollPosition = { x: window.scrollX, y: window.scrollY };
+  localStorage.setItem('scrollPosition', JSON.stringify(scrollPosition));
+
 	if ((window.location.href.includes('_x_tr_hist=true') || locale === 'EN') && prevLocaleRef === locale) {
 		return
 	}
@@ -70,7 +78,7 @@ const translatePage = (prevLocaleRef) => {
 
 
   return (
-				<DropdownMenu modal={false}>
+				<DropdownMenu modal={false} translate="no">
 					<DropdownMenuTrigger asChild>
 						<div className={styles.body}>
 							<Image src={en} alt='icon' width={25} height={18}></Image>
