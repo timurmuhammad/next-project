@@ -49,27 +49,27 @@ export function Languages() {
 	}
 
 	useEffect(() => {
-			const prevLocaleRef = localStorage.getItem('prevLocale') || 'en'
-
-			localStorage.setItem('prevLocale', !window.location.href.includes('_x_tr_sl') ? 'en' : locale)
-			// console.log(prevLocaleRef, 'prevLocaleRef')
-			// console.log(locale, 'locale')
-
-			if (!window.location.href.includes('_x_tr_sl')) {
-				localStorage.removeItem('scrollPosition');
-			}
-			const scrollPosition = JSON.parse(localStorage.getItem('scrollPosition') || '{}');
-			if (scrollPosition && scrollPosition.y !== undefined) {
-				window.scrollTo(scrollPosition.x, scrollPosition.y);
-				console.log(scrollPosition)
-			}
+		if (!window.location.href.includes('_x_tr_sl')) {
 			localStorage.removeItem('scrollPosition');
+		}
+		const scrollPosition = JSON.parse(localStorage.getItem('scrollPosition') || '{}');
+		if (scrollPosition && scrollPosition.y !== undefined) {
+			window.scrollTo(scrollPosition.x, scrollPosition.y);
+			console.log(scrollPosition)
+		}
+		localStorage.removeItem('scrollPosition');
 
-      translatePage(prevLocaleRef);
+		const prevLocaleRef = localStorage.getItem('prevLocale') || 'en'
 
-			localStorage.setItem('prevLocale', locale);
+		localStorage.setItem('prevLocale', !window.location.href.includes('_x_tr_sl') ? 'en' : locale)
+		// console.log(prevLocaleRef, 'prevLocaleRef')
+		// console.log(locale, 'locale')
 
-			// Удалите сохранённую позицию после восстановления
+		translatePage(prevLocaleRef);
+
+		localStorage.setItem('prevLocale', locale);
+
+		// Удалите сохранённую позицию после восстановления
 
     
 	}, [pathname, locale]);
@@ -122,7 +122,7 @@ const translatePage = (prevLocaleRef) => {
 										></Image>
 										<p className=" text-[16px]  text-black">NL</p>
 									</DropdownMenuItem>
-								<DropdownMenuItem onClick={() => onChangeToLocale('ES')} className={styles.lang}>
+								<DropdownMenuItem translate="no" onClick={() => onChangeToLocale('ES')} className={styles.lang}>
 									<Image
 										src={es}
 										width={25}
