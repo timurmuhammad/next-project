@@ -49,11 +49,11 @@ export function Languages() {
 			// console.log(locale, 'locale')
 
 			const scrollPosition = JSON.parse(localStorage.getItem('scrollPosition') || '{}');
-			// if (scrollPosition && scrollPosition.y !== undefined) {
+			if (scrollPosition && scrollPosition.y !== undefined) {
 				window.scrollTo(scrollPosition.x, scrollPosition.y);
 				console.log(scrollPosition)
-			// }
-			localStorage.removeItem('scrollPosition');
+			}
+			// localStorage.removeItem('scrollPosition');
 
       translatePage(prevLocaleRef);
 			
@@ -83,7 +83,7 @@ const translatePage = (prevLocaleRef) => {
 
 
   return (
-				<div translate="no" lang="x-ignore">
+				<div className={styles.notranslate} translate="no" lang="x-ignore">
 					<DropdownMenu modal={false}>
 						<DropdownMenuTrigger asChild>
 							<div className={styles.body}>
