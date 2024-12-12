@@ -53,10 +53,10 @@ export function Languages() {
 			localStorage.removeItem('scrollPosition');
 		}
 		const scrollPosition = JSON.parse(localStorage.getItem('scrollPosition') || '{}');
-		if (scrollPosition && scrollPosition.y !== undefined) {
+		// if (scrollPosition && scrollPosition.y !== undefined) {
 			window.scrollTo(scrollPosition.x, scrollPosition.y);
 			console.log(scrollPosition)
-		}
+		// }
 		localStorage.removeItem('scrollPosition');
 
 		const prevLocaleRef = localStorage.getItem('prevLocale') || 'en'
