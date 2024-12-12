@@ -87,7 +87,7 @@ const translatePage = (prevLocaleRef) => {
 		`${baseURL}${pathname}`
 	)}`;
 
-	window.location.assign(translateUrl);
+	window.location.replace(translateUrl);
 }
 
 
@@ -102,7 +102,7 @@ const translatePage = (prevLocaleRef) => {
 						</DropdownMenuTrigger>
 						<DropdownMenuContent className='w-[186px] my-[8px] mr-[16px]'>
 							<div className="flex  flex-wrap  justify-between gap-[16px] p-[16px] rounded-[6px] bg-neutral-50 border border-solid border-[#d9d9d9]">
-								<DropdownMenuItem onClick={() => onChangeToLocale('EN')} className={styles.lang}>
+								<DropdownMenuItem translate="no" onClick={() => onChangeToLocale('EN')} className={styles.lang}>
 									<Image
 										src={en}
 										width={25}
@@ -112,7 +112,7 @@ const translatePage = (prevLocaleRef) => {
 									></Image>
 									<p className=" text-[16px]  text-black">EN</p>
 								</DropdownMenuItem>
-									<DropdownMenuItem translate="no" onClick={() => onChangeToLocale('NL')} className={cn(styles.lang, styles.notranslate)}>
+									<DropdownMenuItem translate="no" onClick={() => onChangeToLocale('NL')} className={styles.lang}>
 										<Image
 											src={nl}
 											width={25}
@@ -132,7 +132,7 @@ const translatePage = (prevLocaleRef) => {
 									></Image>
 									<p className=" text-[16px]  text-black">ES</p>
 								</DropdownMenuItem>
-								<DropdownMenuItem onClick={() => onChangeToLocale('DE')} className={styles.lang}>
+								<DropdownMenuItem translate="no" onClick={() => onChangeToLocale('DE')} className={styles.lang}>
 									<Image
 										src={de}
 										width={25}
@@ -142,7 +142,7 @@ const translatePage = (prevLocaleRef) => {
 									></Image>
 									<p className=" text-[16px]  text-black">DE</p>
 								</DropdownMenuItem>
-								<DropdownMenuItem onClick={() => onChangeToLocale('FR')} className={styles.lang}>
+								<DropdownMenuItem translate="no" onClick={() => onChangeToLocale('FR')} className={styles.lang}>
 									<Image
 										src={fr}
 										width={25}
@@ -152,7 +152,7 @@ const translatePage = (prevLocaleRef) => {
 									></Image>
 									<p className=" text-[16px]  text-black">FR</p>
 								</DropdownMenuItem>
-								<DropdownMenuItem onClick={() => onChangeToLocale('PH')} className={styles.lang}>
+								<DropdownMenuItem translate="no" onClick={() => onChangeToLocale('PH')} className={styles.lang}>
 									<Image
 										src={pg}
 										width={25}
@@ -162,7 +162,7 @@ const translatePage = (prevLocaleRef) => {
 									></Image>
 									<p className=" text-[16px]  text-black">PH</p>
 								</DropdownMenuItem>
-								<DropdownMenuItem onClick={() => onChangeToLocale('ZH')} className={styles.lang}>
+								<DropdownMenuItem translate="no" onClick={() => onChangeToLocale('ZH')} className={styles.lang}>
 									<Image
 										src={zh}
 										width={25}
@@ -172,7 +172,7 @@ const translatePage = (prevLocaleRef) => {
 									></Image>
 									<p className=" text-[16px]  text-black">ZH</p>
 								</DropdownMenuItem>
-								<DropdownMenuItem onClick={() => onChangeToLocale('JP')} className={styles.lang}>
+								<DropdownMenuItem translate="no" onClick={() => onChangeToLocale('JP')} className={styles.lang}>
 									<Image
 										src={jp}
 										width={25}
@@ -182,7 +182,7 @@ const translatePage = (prevLocaleRef) => {
 									></Image>
 									<p className=" text-[16px]  text-black">JP</p>
 								</DropdownMenuItem>
-								<DropdownMenuItem onClick={() => onChangeToLocale('ID')} className={styles.lang}>
+								<DropdownMenuItem translate="no" onClick={() => onChangeToLocale('ID')} className={styles.lang}>
 									<Image
 										src={id}
 										width={25}
@@ -192,7 +192,7 @@ const translatePage = (prevLocaleRef) => {
 									></Image>
 									<p className=" text-[16px]  text-black">ID</p>
 								</DropdownMenuItem>
-								<DropdownMenuItem onClick={() => onChangeToLocale('CZ')} className={styles.lang}>
+								<DropdownMenuItem translate="no" onClick={() => onChangeToLocale('CZ')} className={styles.lang}>
 									<Image
 										src={cz}
 										width={25}
@@ -202,7 +202,7 @@ const translatePage = (prevLocaleRef) => {
 									></Image>
 									<p className=" text-[16px]  text-black">CZ</p>
 								</DropdownMenuItem>
-								<DropdownMenuItem onClick={() => onChangeToLocale('HI')} className={styles.lang}>
+								<DropdownMenuItem translate="no" onClick={() => onChangeToLocale('HI')} className={styles.lang}>
 									<Image
 										src={hi}
 										width={25}
@@ -212,7 +212,7 @@ const translatePage = (prevLocaleRef) => {
 									></Image>
 									<p className=" text-[16px]  text-black">HI</p>
 								</DropdownMenuItem>
-								<DropdownMenuItem onClick={() => onChangeToLocale('HU')} className={styles.lang}>
+								<DropdownMenuItem translate="no" onClick={() => onChangeToLocale('HU')} className={styles.lang}>
 									<Image
 										src={hu}
 										width={25}
