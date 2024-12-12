@@ -72,7 +72,7 @@ export function Languages() {
 		// Удалите сохранённую позицию после восстановления
 
     
-	}, [pathname, locale]);
+	}, [pathname, locale, searchParams]);
 
 const translatePage = (prevLocaleRef) => {
 
