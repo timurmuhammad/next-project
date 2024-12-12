@@ -34,6 +34,7 @@ import { usePathname, useSearchParams } from 'next/navigation'
 export function Languages() {
 	const pathname = usePathname()
 	const searchParams = useSearchParams()
+	const searchKey = searchParams.get('_x_tr_sl')
 
 	const [locale, setLocale] = useLocalStorage('locale', 'EN');
 
@@ -53,10 +54,10 @@ export function Languages() {
 			localStorage.removeItem('scrollPosition');
 		}
 		const scrollPosition = JSON.parse(localStorage.getItem('scrollPosition') || '{}');
-		// if (scrollPosition && scrollPosition.y !== undefined) {
+		if (scrollPosition && scrollPosition.y !== undefined) {
 			window.scrollTo(scrollPosition.x, scrollPosition.y);
 			console.log(scrollPosition)
-		// }
+		}
 		localStorage.removeItem('scrollPosition');
 
 		const prevLocaleRef = localStorage.getItem('prevLocale') || 'en'
@@ -72,7 +73,7 @@ export function Languages() {
 		// Удалите сохранённую позицию после восстановления
 
     
-	}, [pathname, locale, searchParams]);
+	}, [pathname, locale, searchKey]);
 
 const translatePage = (prevLocaleRef) => {
 
