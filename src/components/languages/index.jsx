@@ -45,16 +45,18 @@ export function Languages() {
 			const prevLocaleRef = localStorage.getItem('prevLocale') || 'en'
 
 			localStorage.setItem('prevLocale', !window.location.href.includes('_x_tr_sl') ? 'en' : locale)
-			console.log(prevLocaleRef, 'prevLocaleRef')
-			console.log(locale, 'locale')
+			// console.log(prevLocaleRef, 'prevLocaleRef')
+			// console.log(locale, 'locale')
 
 			const scrollPosition = JSON.parse(localStorage.getItem('scrollPosition') || '{}');
-			if (scrollPosition && scrollPosition.y !== undefined) {
+			// if (scrollPosition && scrollPosition.y !== undefined) {
 				window.scrollTo(scrollPosition.x, scrollPosition.y);
-			}
+				console.log(scrollPosition)
+			// }
 			localStorage.removeItem('scrollPosition');
 
       translatePage(prevLocaleRef);
+			
 
 			localStorage.setItem('prevLocale', locale);
 
