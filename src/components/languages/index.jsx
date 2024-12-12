@@ -17,6 +17,7 @@ import hu from "@/ui/icons/hu.png";
 import Image from 'next/image';
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { getLocalStorage } from "@/hooks/getLocalStorage";
+import cn from 'classnames'
 
 import {
   DropdownMenu,
@@ -54,6 +55,9 @@ export function Languages() {
 			// console.log(prevLocaleRef, 'prevLocaleRef')
 			// console.log(locale, 'locale')
 
+			if (!window.location.href.includes('_x_tr_sl')) {
+				localStorage.removeItem('scrollPosition');
+			}
 			const scrollPosition = JSON.parse(localStorage.getItem('scrollPosition') || '{}');
 			if (scrollPosition && scrollPosition.y !== undefined) {
 				window.scrollTo(scrollPosition.x, scrollPosition.y);
@@ -88,7 +92,7 @@ const translatePage = (prevLocaleRef) => {
 
 
   return (
-				<div className={styles.notranslate} translate="no">
+				<div>
 					<DropdownMenu modal={false}>
 						<DropdownMenuTrigger asChild>
 							<div className={styles.body}>
@@ -108,7 +112,7 @@ const translatePage = (prevLocaleRef) => {
 									></Image>
 									<p className=" text-[16px]  text-black">EN</p>
 								</DropdownMenuItem>
-									<DropdownMenuItem onClick={() => onChangeToLocale('NL')} className={styles.lang}>
+									<DropdownMenuItem translate="no" onClick={() => onChangeToLocale('NL')} className={cn(styles.lang, styles.notranslate)}>
 										<Image
 											src={nl}
 											width={25}
