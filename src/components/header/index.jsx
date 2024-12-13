@@ -22,46 +22,104 @@ import { usePathname, useSearchParams } from 'next/navigation'
 const accordion = 'Products'
 
 export const Header = () => {
+
+	// const [md, setMd] = useState(false)
+  // const [lg, setLg] = useState(false)
+
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     const mdMatch = window.matchMedia("(max-width: 768px)")
+  //     const lgMatch = window.matchMedia("(max-width: 1024px)")
+
+  //     setMd(mdMatch.matches)
+  //     setLg(lgMatch.matches)
+
+  //     mdMatch.addEventListener('change', e => setMd(e.matches))
+  //     lgMatch.addEventListener('change', e => setLg(e.matches))
+  //   }
+  // }, [])
+
+
+
+
+
 	const pathname = usePathname()
 	const lineRef = useRef(null);
+	const [screenWidth, setScreenWidth] = useState(() => window.innerWidth);
 
 	function runAnim(obj, data) {
-		const fpsdelay = 1000 / data.fps;
-		const { x_start: from, x_end: to, duration } = data;
+    const fpsdelay = 1000 / data.fps;
+    const { x_start: from, x_end: to, duration } = data;
 
-		const start = new Date().getTime();
+    let start = new Date().getTime(); // Начало анимации
 
-		function animate() {
-			const now = new Date().getTime() - start;
-			let progress = now / duration;
+    function animate() {
+        const now = new Date().getTime() - start;
+        let progress = now / duration;
 
-			if (progress > 1.0) progress = 1;
+        const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
 
-			const newval = (to - from) * progress * progress + from;
+        // Добавляем blur ко всем подходящим элементам
+        elements.forEach((el) => {
+            if (
+                el.textContent.trim().length > 0 && // У элемента есть текст
+                !el.hasAttribute("no-translate") // У элемента нет атрибута no-translate
+            ) {
+                el.style.filter = `blur(5px)`; // Постоянный эффект blur
+                el.style.transition = "filter 0.2s";
+            }
+        });
 
-			obj.style.transform = `translate(${Math.round(newval)}px, 0)`;
-			obj.style.width = `${+ from}`;
+        if (progress > 1.0) progress = 1;
 
-			console.log('Progress:', progress);
+        const newval = (to - from) * progress * progress + from;
 
-			if (progress < 1) {
-				setTimeout(animate, fpsdelay); // Используем именованную функцию
-			}
-		}
-	
-		animate(); // Запускаем анимацию
-	}
+        obj.style.transform = `translate(${Math.round(newval)}px, 0)`;
+				obj.style.opacity = 1;
+
+
+        if (progress < 1) {
+            setTimeout(animate, fpsdelay); // Используем именованную функцию
+        } else {
+            // Проверяем условие после завершения круга
+						
+						setTimeout(() => {
+            if (window.location.href.includes('_x_tr_hist=true')) {
+                // Снимаем blur, если условие выполнено
+                elements.forEach((el) => {
+                    if (
+                        el.textContent.trim().length > 0 &&
+                        !el.hasAttribute("no-translate")
+                    ) {
+                        el.style.filter = "none"; // Убираем эффект blur
+                    }
+                });
+            } else {
+                // Перезапускаем анимацию
+								obj.style.opacity = 0;
+								obj.style.transform = `translate(${from}px, 0)`;
+                start = new Date().getTime();
+                animate();
+            }
+					}, 500);
+        }
+    }
+
+    animate(); // Запускаем анимацию
+}
+
+
 
 	useLayoutEffect(() => {
 		if (lineRef.current) {
 			// if (window.location.href.includes('_x_tr_sl') && !window.location.href.includes('_x_tr_hist=true')) {
 				const screenWidth = window.innerWidth;
-				const objWidth = screenWidth * 0.3
+				// console.log(screenWidth)
 				
 				runAnim(lineRef.current, {
-					fps: 25, 
-					x_start: -objWidth,
-					x_end: screenWidth + objWidth, 
+					fps: 50, 
+					x_start: -screenWidth,
+					x_end: screenWidth * 2, 
 					duration: 1000
 				})
 			// }
@@ -75,8 +133,6 @@ export const Header = () => {
 
 	function onChangeCategory() { 
 		category !== accordion ? setOpen(true) : setOpen(!open)
-		console.log(category)
-		console.log(open)
 	}
 
 	useEffect(() => {
@@ -176,7 +232,7 @@ export const Header = () => {
 		</div>
 
 		<div className={styles.progress}>
-			<div ref={lineRef} className={styles.line}></div>
+			<div ref={lineRef} style={{ width: `${window.innerWidth}px`, transform: `translateX(-${window.innerWidth}px)` }} className={styles.line}></div>
 		</div>
 	</div>
 }

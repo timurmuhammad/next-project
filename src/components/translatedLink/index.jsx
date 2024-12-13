@@ -9,7 +9,7 @@ export const TranslatedLink = ({ href, children, locale = getLocalStorage('local
   )}`;
 
   return (
-    <Link href={translatedHref} {...props}>
+    <Link href={locale.toLowerCase() === 'en' ? href : translatedHref} {...props}>
       {children}
     </Link>
   );
