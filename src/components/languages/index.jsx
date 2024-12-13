@@ -27,56 +27,33 @@ import {
 } from "@/shadcn/ui/dropdown-menu"
 
 
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation'
 
 
 export function Languages() {
 	const pathname = usePathname()
 	const searchParams = useSearchParams()
-	const searchKey = searchParams.get('_x_tr_sl')
-
 	const [locale, setLocale] = useLocalStorage('locale', 'EN');
-
-	// const scrollPosition = JSON.parse(localStorage.getItem('scrollPosition') || '{}');
-	// if (scrollPosition && scrollPosition.y !== undefined) {
-	// 	window.scrollTo(scrollPosition.x, scrollPosition.y);
-	// }
 
 	const onChangeToLocale = (lang) => {
 		setLocale(lang)
-		const scrollPosition = { x: window.scrollX, y: window.scrollY };
-  	localStorage.setItem('scrollPosition', JSON.stringify(scrollPosition));
 	}
 
 	useEffect(() => {
 		if (!window.location.href.includes('_x_tr_sl')) {
 			localStorage.removeItem('scrollPosition');
 		}
-		const scrollPosition = JSON.parse(localStorage.getItem('scrollPosition') || '{}');
-		if (scrollPosition && scrollPosition.y !== undefined) {
-			window.scrollTo(scrollPosition.x, scrollPosition.y);
-			console.log(scrollPosition)
-		}
-		localStorage.removeItem('scrollPosition');
 
 		const prevLocaleRef = localStorage.getItem('prevLocale') || 'en'
-
 		localStorage.setItem('prevLocale', !window.location.href.includes('_x_tr_sl') ? 'en' : locale)
-		// console.log(prevLocaleRef, 'prevLocaleRef')
-		// console.log(locale, 'locale')
 
 		translatePage(prevLocaleRef);
-
 		localStorage.setItem('prevLocale', locale);
+	}, [pathname, locale]);
 
-		// Удалите сохранённую позицию после восстановления
-
-    
-	}, [pathname, locale, searchKey]);
 
 const translatePage = (prevLocaleRef) => {
-
 	if ((window.location.href.includes('_x_tr_hist=true') || locale === 'EN') && prevLocaleRef === locale) {
 		return
 	}
@@ -88,7 +65,7 @@ const translatePage = (prevLocaleRef) => {
 		`${baseURL}${pathname}`
 	)}`;
 
-	window.location.replace(translateUrl);
+	// window.location.replace(translateUrl);
 }
 
 

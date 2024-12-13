@@ -3,7 +3,7 @@
 import styles from './header.module.scss';
 import { Logo } from '@/ui/logo';
 import {productsType} from '../../types/products.ts';
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useState, useRef } from "react";
 import burgerClose from '@/ui/icons/burger_close.svg';
 import burgerOpen from '@/ui/icons/burger_open.svg';
 import Image from 'next/image';
@@ -15,13 +15,60 @@ import polygon from '@/ui/icons/polygon.svg';
 import { Languages } from '../languages';
 import { SocialMedia } from '@/ui/socialMedia';
 import {TranslatedLink} from '@/components/translatedLink';
-
+import { usePathname, useSearchParams } from 'next/navigation'
 
 
 
 const accordion = 'Products'
 
 export const Header = () => {
+	const pathname = usePathname()
+	const lineRef = useRef(null);
+
+	function runAnim(obj, data) {
+		const fpsdelay = 1000 / data.fps;
+		const { x_start: from, x_end: to, duration } = data;
+
+		const start = new Date().getTime();
+
+		function animate() {
+			const now = new Date().getTime() - start;
+			let progress = now / duration;
+
+			if (progress > 1.0) progress = 1;
+
+			const newval = (to - from) * progress * progress + from;
+
+			obj.style.transform = `translate(${Math.round(newval)}px, 0)`;
+			obj.style.width = `${+ from}`;
+
+			console.log('Progress:', progress);
+
+			if (progress < 1) {
+				setTimeout(animate, fpsdelay); // Используем именованную функцию
+			}
+		}
+	
+		animate(); // Запускаем анимацию
+	}
+
+	useEffect(() => {
+		if (lineRef.current) {
+			// if (window.location.href.includes('_x_tr_sl') && !window.location.href.includes('_x_tr_hist=true')) {
+				const screenWidth = window.innerWidth;
+				const objWidth = screenWidth * 0.3
+				
+				runAnim(lineRef.current, {
+					fps: 25, 
+					x_start: -objWidth,
+					x_end: screenWidth + objWidth, 
+					duration: 1000
+				})
+			// }
+		}
+	}, [/*pathname*/])
+
+
 	const [ burgerActive, setBurgerActive ] = useState(false)
 	const [ category, setCategory] = useState('')
 	const [ open, setOpen ] =  useState(false)
@@ -126,6 +173,10 @@ export const Header = () => {
 				<TranslatedLink  href='/login' className={styles.login}><p>Login</p></TranslatedLink >
 				<TranslatedLink  href='/registration' className={styles.sign_up}>Sign Up</TranslatedLink >
 			</div>
+		</div>
+
+		<div className={styles.progress}>
+			<div ref={lineRef} className={styles.line}></div>
 		</div>
 	</div>
 }
