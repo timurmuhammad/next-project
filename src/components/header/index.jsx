@@ -145,6 +145,12 @@ export const Header = () => {
 		}   
 	}, [burgerActive]);
 
+	const innerWidth = () => {
+		return window.innerWidth
+	}
+
+	const width = innerWidth()
+
 	return <div className={cn(styles.body, {[styles.active]: burgerActive})}>
 		<div className={styles.container + ' _container'}>
 			<div className={styles.burger} onClick={() => setBurgerActive(!burgerActive)}>
@@ -232,7 +238,7 @@ export const Header = () => {
 		</div>
 
 		<div className={styles.progress}>
-			<div ref={lineRef} style={{ width: `${window.innerWidth}px`, transform: `translateX(-${window.innerWidth}px)` }} className={styles.line}></div>
+			<div ref={lineRef} style={{ width: `${width}px`, transform: `translateX(-${width}px)` }} className={styles.line}></div>
 		</div>
 	</div>
 }

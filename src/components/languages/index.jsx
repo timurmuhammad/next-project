@@ -65,7 +65,7 @@ const translatePage = (prevLocaleRef) => {
 		`${baseURL}${pathname}`
 	)}`;
 
-	// window.location.replace(translateUrl);
+	window.location.replace(translateUrl);
 }
 
 
