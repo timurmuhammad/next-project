@@ -45,7 +45,6 @@ export const Header = () => {
 
 	const pathname = usePathname()
 	const lineRef = useRef(null);
-	const [screenWidth, setScreenWidth] = useState(() => window.innerWidth);
 
 	function runAnim(obj, data) {
     const fpsdelay = 1000 / data.fps;
@@ -108,9 +107,10 @@ export const Header = () => {
     animate(); // Запускаем анимацию
 }
 
-
+let width
 
 	useLayoutEffect(() => {
+		width = innerWidth()
 		if (lineRef.current) {
 			// if (window.location.href.includes('_x_tr_sl') && !window.location.href.includes('_x_tr_hist=true')) {
 				const screenWidth = window.innerWidth;
@@ -149,7 +149,6 @@ export const Header = () => {
 		return window.innerWidth
 	}
 
-	const width = innerWidth()
 
 	return <div className={cn(styles.body, {[styles.active]: burgerActive})}>
 		<div className={styles.container + ' _container'}>
