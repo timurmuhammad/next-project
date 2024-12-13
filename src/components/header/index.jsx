@@ -3,7 +3,7 @@
 import styles from './header.module.scss';
 import { Logo } from '@/ui/logo';
 import {productsType} from '../../types/products.ts';
-import { Suspense, useEffect, useState, useRef } from "react";
+import { Suspense, useEffect, useState, useRef, useLayoutEffect } from "react";
 import burgerClose from '@/ui/icons/burger_close.svg';
 import burgerOpen from '@/ui/icons/burger_open.svg';
 import Image from 'next/image';
@@ -52,9 +52,9 @@ export const Header = () => {
 		animate(); // Запускаем анимацию
 	}
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		if (lineRef.current) {
-			// if (window.location.href.includes('_x_tr_sl') && !window.location.href.includes('_x_tr_hist=true')) {
+			if (window.location.href.includes('_x_tr_sl') && !window.location.href.includes('_x_tr_hist=true')) {
 				const screenWidth = window.innerWidth;
 				const objWidth = screenWidth * 0.3
 				
@@ -64,9 +64,9 @@ export const Header = () => {
 					x_end: screenWidth + objWidth, 
 					duration: 1000
 				})
-			// }
+			}
 		}
-	}, [/*pathname*/])
+	}, [pathname])
 
 
 	const [ burgerActive, setBurgerActive ] = useState(false)
