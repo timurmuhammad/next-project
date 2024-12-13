@@ -54,7 +54,7 @@ export const Header = () => {
 
 	useLayoutEffect(() => {
 		if (lineRef.current) {
-			if (window.location.href.includes('_x_tr_sl') && !window.location.href.includes('_x_tr_hist=true')) {
+			// if (window.location.href.includes('_x_tr_sl') && !window.location.href.includes('_x_tr_hist=true')) {
 				const screenWidth = window.innerWidth;
 				const objWidth = screenWidth * 0.3
 				
@@ -64,9 +64,9 @@ export const Header = () => {
 					x_end: screenWidth + objWidth, 
 					duration: 1000
 				})
-			}
+			// }
 		}
-	}, [pathname])
+	}, [/*pathname*/])
 
 
 	const [ burgerActive, setBurgerActive ] = useState(false)
