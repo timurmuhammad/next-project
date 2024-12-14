@@ -67,7 +67,7 @@ const translatePage = (prevLocaleRef) => {
 	const translateUrl = `https://translate.google.com/translate?hl=${locale}&sl=${prevLocaleRef || 'en'}&u=${encodeURIComponent(
 		`${baseURL}${pathname}`
 	)}`;
-	localStorage.setItem('prevLocale', locale);
+	// localStorage.setItem('prevLocale', locale);
 	window.location.replace(translateUrl);
 }
 
