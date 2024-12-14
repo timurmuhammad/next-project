@@ -37,6 +37,7 @@ export function Languages() {
 	const [locale, setLocale] = useLocalStorage('locale', 'EN');
 
 	const onChangeToLocale = (lang) => {
+		localStorage.setItem('prevLocale', locale);
 		setLocale(lang)
 	}
 
@@ -52,7 +53,6 @@ export function Languages() {
 		console.log('locale - ' + locale)
 
 		translatePage(prevLocaleRef);
-		localStorage.setItem('prevLocale', locale);
 	}, [pathname, locale]);
 
 
@@ -67,7 +67,7 @@ const translatePage = (prevLocaleRef) => {
 	const translateUrl = `https://translate.google.com/translate?hl=${locale}&sl=${prevLocaleRef || 'en'}&u=${encodeURIComponent(
 		`${baseURL}${pathname}`
 	)}`;
-
+	localStorage.setItem('prevLocale', locale);
 	window.location.replace(translateUrl);
 }
 
