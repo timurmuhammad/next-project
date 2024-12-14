@@ -113,7 +113,7 @@ let width
 		const prevLocale = localStorage.getItem('prevLocale') || 'en'
 		width = innerWidth()
 		if (lineRef.current) {
-			if (/*(prevLocale === locale && locale.toLowerCase() !== 'en') || */
+			if ((prevLocale === locale && locale.toLowerCase() !== 'en') ||
 			(prevLocale !== locale && (prevLocale.toLowerCase() !== 'en' || locale.toLowerCase() !== 'en'))) {
 
 				// if (window.location.href.includes('_x_tr_sl') && !window.location.href.includes('_x_tr_hist=true')) {
