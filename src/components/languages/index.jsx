@@ -46,7 +46,7 @@ export function Languages() {
 		// }
 
 		const prevLocaleRef = localStorage.getItem('prevLocale') || 'en'
-		localStorage.setItem('prevLocale', !window.location.href.includes('_x_tr_sl') ? 'en' : locale)
+		// localStorage.setItem('prevLocale', !window.location.href.includes('_x_tr_sl') ? 'en' : locale)
 
 		console.log('prevLocale - ' + prevLocaleRef)
 		console.log('locale - ' + locale)

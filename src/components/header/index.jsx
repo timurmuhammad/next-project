@@ -243,7 +243,7 @@ let width
 		</div>
 
 		<div className={styles.progress}>
-			<div ref={lineRef} style={{ width: `${width}px`, transform: `translateX(-${width}px)` }} className={styles.line}></div>
+			<div ref={lineRef} style={{ width: `${width}px`, transform: `translateX(-${width}px)`, opacity: 0 }} className={styles.line}></div>
 		</div>
 	</div>
 }
