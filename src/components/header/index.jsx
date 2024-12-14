@@ -102,24 +102,25 @@ export const Header = () => {
 const isFirstRender = useRef(true);
 
 const blurAction = () => {
-    if (typeof document !== 'undefined') { // Проверяем, доступен ли document
+    if (typeof document !== 'undefined') {
         const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
-        if (isFirstRender.current) {
             elements.forEach((el) => {
                 if (
-                    el.textContent.trim().length > 0 && // У элемента есть текст
-                    !el.hasAttribute("no-translate") // У элемента нет атрибута no-translate
+                    el.textContent.trim().length > 0 &&
+                    !el.hasAttribute("no-translate")
                 ) {
-                    el.style.filter = `blur(5px)`; // Постоянный эффект blur
+                    el.style.filter = `blur(5px)`;
                     el.style.transition = "filter 0s";
                 }
             });
-            isFirstRender.current = false;
-        }
     }
 };
 				
-blurAction()
+
+if (isFirstRender.current) {
+	blurAction()
+	isFirstRender.current = false;
+}
 
 let width
 	useLayoutEffect(() => {
