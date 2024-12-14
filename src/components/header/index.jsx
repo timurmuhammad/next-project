@@ -20,9 +20,6 @@ import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 
 
-const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
-
-
 const accordion = 'Products'
 
 export const Header = () => {
@@ -50,6 +47,7 @@ export const Header = () => {
 	const pathname = usePathname()
 	const lineRef = useRef(null);
 
+	
 	function runAnim(obj, data) {
     const fpsdelay = 1000 / data.fps;
     const { x_start: from, x_end: to, duration } = data;
@@ -60,18 +58,7 @@ export const Header = () => {
         const now = new Date().getTime() - start;
         let progress = now / duration;
 
-        const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
-
-        // Добавляем blur ко всем подходящим элементам
-        elements.forEach((el) => {
-            if (
-                el.textContent.trim().length > 0 && // У элемента есть текст
-                !el.hasAttribute("no-translate") // У элемента нет атрибута no-translate
-            ) {
-                el.style.filter = `blur(5px)`; // Постоянный эффект blur
-                el.style.transition = "filter 0s";
-            }
-        });
+        blurAction()
 
         if (progress > 1.0) progress = 1;
 
@@ -113,20 +100,24 @@ export const Header = () => {
 
 
 const isFirstRender = useRef(true);
-    
-if (isFirstRender.current) {
-	elements.forEach((el) => {
-		if (
-				el.textContent.trim().length > 0 && // У элемента есть текст
-				!el.hasAttribute("no-translate") // У элемента нет атрибута no-translate
-		) {
-				el.style.filter = `blur(5px)`; // Постоянный эффект blur
-				el.style.transition = "filter 0s";
-		}
-	});
-	isFirstRender.current = false
+
+const blurAction = () => {
+	const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
+	if (isFirstRender.current) {
+		elements.forEach((el) => {
+			if (
+					el.textContent.trim().length > 0 && // У элемента есть текст
+					!el.hasAttribute("no-translate") // У элемента нет атрибута no-translate
+			) {
+					el.style.filter = `blur(5px)`; // Постоянный эффект blur
+					el.style.transition = "filter 0s";
+			}
+		});
+		isFirstRender.current = false
+	}
 }
 				
+blurAction()
 
 let width
 	useLayoutEffect(() => {
