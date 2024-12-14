@@ -27,7 +27,7 @@ import {
 } from "@/shadcn/ui/dropdown-menu"
 
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation'
 
 
@@ -43,7 +43,7 @@ export function Languages() {
 		changeLangRef.current = true
 	}
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		// if (!window.location.href.includes('_x_tr_sl')) {
 		// 	localStorage.removeItem('scrollPosition');
 		// }
