@@ -47,7 +47,7 @@ export const Header = () => {
 	const pathname = usePathname()
 	const lineRef = useRef(null);
 
-	
+
 	function runAnim(obj, data) {
     const fpsdelay = 1000 / data.fps;
     const { x_start: from, x_end: to, duration } = data;
@@ -102,20 +102,22 @@ export const Header = () => {
 const isFirstRender = useRef(true);
 
 const blurAction = () => {
-	const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
-	if (isFirstRender.current) {
-		elements.forEach((el) => {
-			if (
-					el.textContent.trim().length > 0 && // У элемента есть текст
-					!el.hasAttribute("no-translate") // У элемента нет атрибута no-translate
-			) {
-					el.style.filter = `blur(5px)`; // Постоянный эффект blur
-					el.style.transition = "filter 0s";
-			}
-		});
-		isFirstRender.current = false
-	}
-}
+    if (typeof document !== 'undefined') { // Проверяем, доступен ли document
+        const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
+        if (isFirstRender.current) {
+            elements.forEach((el) => {
+                if (
+                    el.textContent.trim().length > 0 && // У элемента есть текст
+                    !el.hasAttribute("no-translate") // У элемента нет атрибута no-translate
+                ) {
+                    el.style.filter = `blur(5px)`; // Постоянный эффект blur
+                    el.style.transition = "filter 0s";
+                }
+            });
+            isFirstRender.current = false;
+        }
+    }
+};
 				
 blurAction()
 
