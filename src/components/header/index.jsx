@@ -20,6 +20,9 @@ import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 
 
+const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
+
+
 const accordion = 'Products'
 
 export const Header = () => {
@@ -110,8 +113,6 @@ export const Header = () => {
 
 
 const isFirstRender = useRef(true);
-
-const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
     
 if (isFirstRender.current) {
 	elements.forEach((el) => {
