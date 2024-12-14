@@ -27,8 +27,8 @@ import {
 } from "@/shadcn/ui/dropdown-menu"
 
 
-import { useEffect } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation'
+import { useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation'
 
 
 export function Languages() {
