@@ -116,7 +116,7 @@ let width
 			if (/*(prevLocale === locale && (prevLocale.toLowerCase() !== 'en' || locale.toLowerCase() !== 'en')) ||*/
 			(prevLocale !== locale)) {
 				console.log(true)
-				if (/*window.location.href.includes('_x_tr_sl') && */!window.location.href.includes('_x_tr_hist=true')) {
+				// if (window.location.href.includes('_x_tr_sl') && !window.location.href.includes('_x_tr_hist=true')) {
 					const screenWidth = window.innerWidth;
 					// console.log(screenWidth)
 					
@@ -126,7 +126,7 @@ let width
 						x_end: screenWidth * 2, 
 						duration: 1000
 					})
-				}
+				// }
 
 			}
 		}
