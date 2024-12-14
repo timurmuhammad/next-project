@@ -35,10 +35,12 @@ export function Languages() {
 	const pathname = usePathname()
 	// const searchParams = useSearchParams()
 	const [locale, setLocale] = useLocalStorage('locale', 'EN');
+	const changeLangRef = useRef(false)
 
 	const onChangeToLocale = (lang) => {
 		localStorage.setItem('prevLocale', locale);
 		setLocale(lang)
+		changeLangRef.current = true
 	}
 
 	useEffect(() => {
@@ -57,7 +59,7 @@ export function Languages() {
 
 
 const translatePage = (prevLocaleRef) => {
-	if ((window.location.href.includes('_x_tr_hist=true') || locale === 'EN') && prevLocaleRef === locale) {
+	if (window.location.href.includes('_x_tr_hist=true') && !changeLangRef.current) {
 		return
 	}
 
@@ -68,6 +70,7 @@ const translatePage = (prevLocaleRef) => {
 		`${baseURL}${pathname}`
 	)}`;
 	// localStorage.setItem('prevLocale', locale);
+	changeLangRef.current = false
 	window.location.replace(translateUrl);
 }
 
