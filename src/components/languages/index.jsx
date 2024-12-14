@@ -33,7 +33,7 @@ import { usePathname, useSearchParams } from 'next/navigation'
 
 export function Languages() {
 	const pathname = usePathname()
-	const searchParams = useSearchParams()
+	// const searchParams = useSearchParams()
 	const [locale, setLocale] = useLocalStorage('locale', 'EN');
 
 	const onChangeToLocale = (lang) => {
@@ -41,12 +41,15 @@ export function Languages() {
 	}
 
 	useEffect(() => {
-		if (!window.location.href.includes('_x_tr_sl')) {
-			localStorage.removeItem('scrollPosition');
-		}
+		// if (!window.location.href.includes('_x_tr_sl')) {
+		// 	localStorage.removeItem('scrollPosition');
+		// }
 
 		const prevLocaleRef = localStorage.getItem('prevLocale') || 'en'
 		localStorage.setItem('prevLocale', !window.location.href.includes('_x_tr_sl') ? 'en' : locale)
+
+		console.log('prevLocale - ' + prevLocaleRef)
+		console.log('locale - ' + locale)
 
 		translatePage(prevLocaleRef);
 		localStorage.setItem('prevLocale', locale);
@@ -58,8 +61,8 @@ const translatePage = (prevLocaleRef) => {
 		return
 	}
 
-	const scrollPosition = { x: window.scrollX, y: window.scrollY };
-  localStorage.setItem('scrollPosition', JSON.stringify(scrollPosition));
+	// const scrollPosition = { x: window.scrollX, y: window.scrollY };
+  // localStorage.setItem('scrollPosition', JSON.stringify(scrollPosition));
 	const baseURL = new URL('/', `${'http://react-project-zdxg.vercel.app'}`).origin;
 	const translateUrl = `https://translate.google.com/translate?hl=${locale}&sl=${prevLocaleRef || 'en'}&u=${encodeURIComponent(
 		`${baseURL}${pathname}`

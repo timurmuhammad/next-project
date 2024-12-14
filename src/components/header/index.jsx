@@ -16,6 +16,7 @@ import { Languages } from '../languages';
 import { SocialMedia } from '@/ui/socialMedia';
 import {TranslatedLink} from '@/components/translatedLink';
 import { usePathname, useSearchParams } from 'next/navigation'
+import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 
 
@@ -42,7 +43,7 @@ export const Header = () => {
 
 
 
-
+	const [locale, setLocale] = useLocalStorage('locale', 'EN');
 	const pathname = usePathname()
 	const lineRef = useRef(null);
 
@@ -65,7 +66,7 @@ export const Header = () => {
                 !el.hasAttribute("no-translate") // У элемента нет атрибута no-translate
             ) {
                 el.style.filter = `blur(5px)`; // Постоянный эффект blur
-                el.style.transition = "filter 0.2s";
+                el.style.transition = "filter 0s";
             }
         });
 
@@ -108,23 +109,28 @@ export const Header = () => {
 }
 
 let width
-
 	useLayoutEffect(() => {
+		const prevLocale = localStorage.getItem('prevLocale') || 'en'
 		width = innerWidth()
 		if (lineRef.current) {
-			// if (window.location.href.includes('_x_tr_sl') && !window.location.href.includes('_x_tr_hist=true')) {
-				const screenWidth = window.innerWidth;
-				// console.log(screenWidth)
-				
-				runAnim(lineRef.current, {
-					fps: 50, 
-					x_start: -screenWidth,
-					x_end: screenWidth * 2, 
-					duration: 1000
-				})
-			// }
+			if (/*(prevLocale === locale && locale.toLowerCase() !== 'en') || */
+			(prevLocale !== locale && (prevLocale.toLowerCase() !== 'en' || locale.toLowerCase() !== 'en'))) {
+
+				// if (window.location.href.includes('_x_tr_sl') && !window.location.href.includes('_x_tr_hist=true')) {
+					const screenWidth = window.innerWidth;
+					// console.log(screenWidth)
+					
+					runAnim(lineRef.current, {
+						fps: 50, 
+						x_start: -screenWidth,
+						x_end: screenWidth * 2, 
+						duration: 1000
+					})
+				// }
+
+			}
 		}
-	}, [/*pathname*/])
+	}, [/*pathname*/ locale])
 
 
 	const [ burgerActive, setBurgerActive ] = useState(false)
