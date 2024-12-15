@@ -29,18 +29,28 @@ export const Header = () => {
 	const pathname = usePathname()
 	const lineRef = useRef(null);
 	const blurCoverRef = useRef(null)
+	const isFirstRender = useRef(true);
+	let width
 
 	function runAnim(obj, data) {
     const fpsdelay = 1000 / data.fps;
     const { x_start: from, x_end: to, duration } = data;
 
-    let start = new Date().getTime(); // Начало анимации
+		const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
+		blurAction(elements)
+		if (isFirstRender.current) {
+			if (blurCoverRef.current) {
+				blurCoverRef.current.classList.add("hidden"); // Скрываем обложку
+			}
+	
+			isFirstRender.current = false;
+		}
+
+		let start = new Date().getTime(); // Начало анимации
 
     function animate() {
         const now = new Date().getTime() - start;
         let progress = now / duration;
-
-        blurAction()
 
         if (progress > 1.0) progress = 1;
 
@@ -56,23 +66,24 @@ export const Header = () => {
             // Проверяем условие после завершения круга
 						
 						
-            if (window.location.href.includes('_x_tr_hist=true')) {
+            // if (window.location.href.includes('_x_tr_hist=true')) {
                 // Снимаем blur, если условие выполнено
+								obj.style.opacity = 0;
+								// const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
                 elements.forEach((el) => {
                     if (
                         el.textContent.trim().length > 0 &&
                         !el.hasAttribute("no-translate")
                     ) {
-                        el.style.filter = "none"; // Убираем эффект blur
+                        el.style.filter = "none";
                     }
                 });
-            } else {
-                // Перезапускаем анимацию
-								obj.style.opacity = 0;
-								obj.style.transform = `translate(${from}px, 0)`;
-                start = new Date().getTime();
-                animate();
-            }
+            // } else {
+						// 		obj.style.opacity = 0;
+						// 		obj.style.transform = `translate(${from}px, 0)`;
+            //     start = new Date().getTime();
+            //     animate();
+            // }
 					
         }
     }
@@ -82,10 +93,9 @@ export const Header = () => {
 
 
 
-const blurAction = () => {
-
+const blurAction = (elements) => {
 	if (typeof document !== 'undefined') {
-			const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
+		// const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
 					elements.forEach((el) => {
 							if (
 									el.textContent.trim().length > 0 &&
@@ -100,28 +110,14 @@ const blurAction = () => {
 
 
 
-const isFirstRender = useRef(true);
-
-
-let width
-	useLayoutEffect(() => {
-		if (isFirstRender.current) {
-			blurAction()
-			if (blurCoverRef.current) {
-				blurCoverRef.current.classList.add("hidden"); // Скрываем обложку
-			}
-	
-			isFirstRender.current = false;
-		}
+	useEffect(() => {
 		const prevLocale = localStorage.getItem('prevLocale') || 'en'
 		width = innerWidth()
 		if (lineRef.current) {
 			// if ((prevLocale === locale && (prevLocale.toLowerCase() !== 'en' || locale.toLowerCase() !== 'en')) ||
 			// (prevLocale !== locale)) {
-				console.log(true)
 				// if (window.location.href.includes('_x_tr_sl') && !window.location.href.includes('_x_tr_hist=true')) {
 					const screenWidth = window.innerWidth;
-					// console.log(screenWidth)
 					
 					runAnim(lineRef.current, {
 						fps: 50, 
