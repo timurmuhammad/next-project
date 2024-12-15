@@ -20,33 +20,15 @@ import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 
 
+
 const accordion = 'Products'
 
+
 export const Header = () => {
-
-	// const [md, setMd] = useState(false)
-  // const [lg, setLg] = useState(false)
-
-  // useEffect(() => {
-  //   if (typeof window !== "undefined") {
-  //     const mdMatch = window.matchMedia("(max-width: 768px)")
-  //     const lgMatch = window.matchMedia("(max-width: 1024px)")
-
-  //     setMd(mdMatch.matches)
-  //     setLg(lgMatch.matches)
-
-  //     mdMatch.addEventListener('change', e => setMd(e.matches))
-  //     lgMatch.addEventListener('change', e => setLg(e.matches))
-  //   }
-  // }, [])
-
-
-
-
 	const [locale, setLocale] = useLocalStorage('locale', 'EN');
 	const pathname = usePathname()
 	const lineRef = useRef(null);
-
+	const blurCoverRef = useRef(null)
 
 	function runAnim(obj, data) {
     const fpsdelay = 1000 / data.fps;
@@ -99,38 +81,43 @@ export const Header = () => {
 }
 
 
-const isFirstRender = useRef(true);
 
 const blurAction = () => {
-    if (typeof document !== 'undefined') {
-        const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
-            elements.forEach((el) => {
-                if (
-                    el.textContent.trim().length > 0 &&
-                    !el.hasAttribute("no-translate")
-                ) {
-                    el.style.filter = `blur(5px)`;
-                    el.style.transition = "filter 0s";
-                }
-            });
-    }
-};
-				
 
-if (isFirstRender.current) {
-	blurAction()
-	isFirstRender.current = false;
-}
+	if (typeof document !== 'undefined') {
+			const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
+					elements.forEach((el) => {
+							if (
+									el.textContent.trim().length > 0 &&
+									!el.hasAttribute("no-translate")
+							) {
+									el.style.filter = `blur(5px)`;
+									el.style.transition = "filter 0s";
+							}
+					});
+	}
+};
+
+
+
+const isFirstRender = useRef(true);
+
 
 let width
 	useLayoutEffect(() => {
-		
-
+		if (isFirstRender.current) {
+			blurAction()
+			if (blurCoverRef.current) {
+				blurCoverRef.current.classList.add("hidden"); // Скрываем обложку
+			}
+	
+			isFirstRender.current = false;
+		}
 		const prevLocale = localStorage.getItem('prevLocale') || 'en'
 		width = innerWidth()
 		if (lineRef.current) {
-			if (/*(prevLocale === locale && (prevLocale.toLowerCase() !== 'en' || locale.toLowerCase() !== 'en')) ||*/
-			(prevLocale !== locale)) {
+			// if ((prevLocale === locale && (prevLocale.toLowerCase() !== 'en' || locale.toLowerCase() !== 'en')) ||
+			// (prevLocale !== locale)) {
 				console.log(true)
 				// if (window.location.href.includes('_x_tr_sl') && !window.location.href.includes('_x_tr_hist=true')) {
 					const screenWidth = window.innerWidth;
@@ -144,9 +131,9 @@ let width
 					})
 				// }
 
-			}
+			// }
 		}
-	}, [/*pathname*/ locale])
+	}, [pathname, locale])
 
 
 	const [ burgerActive, setBurgerActive ] = useState(false)
@@ -173,6 +160,8 @@ let width
 
 
 	return <div className={cn(styles.body, {[styles.active]: burgerActive})}>
+		<div className={styles.blurCover} ref={blurCoverRef}></div> {/* Обложка размытия */}
+
 		<div className={styles.container + ' _container'}>
 			<div className={styles.burger} onClick={() => setBurgerActive(!burgerActive)}>
 				{
