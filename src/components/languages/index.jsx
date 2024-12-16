@@ -68,7 +68,7 @@ const translatePage = (prevLocaleRef) => {
 	)}`;
 	// localStorage.setItem('prevLocale', locale);
 	changeLangRef.current = false
-	window.location.replace(translateUrl);
+	// window.location.replace(translateUrl);
 }
 
 
