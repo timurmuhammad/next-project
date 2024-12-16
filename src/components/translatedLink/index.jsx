@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link';
 import { getLocalStorage } from '@/hooks/getLocalStorage'
 import { useLocalStorage } from '@/hooks/useLocalStorage';
@@ -10,7 +12,6 @@ export const TranslatedLink = ({ href, children, ...props }) => {
     `${baseUrl}${href}`
   )}`;
 
-  console.log(locale)
 
   return (
     <Link href={locale.toLowerCase() === 'en' ? href : translatedHref} {...props}>

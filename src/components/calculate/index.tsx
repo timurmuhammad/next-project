@@ -12,6 +12,7 @@ import dollarCrosshairBlack from "@/ui/icons/dollar-crosshair-black.svg";
 import dollarSwirlBlack from "@/ui/icons/dollar-swirl-black.svg";
 import bag from "@/ui/icons/bag.svg";
 import { AllTooltip } from '../allTooltip'
+import { DivideCircleIcon } from 'lucide-react'
 
 
 const planCalculate = [
@@ -70,17 +71,17 @@ export const Calculate = () => {
 
 						<div className={styles.plan__calculation}>
 							<div>
-								<p className={styles.calc}>
-									<span>Daily
-									</span>
-									<span> ${profitDinamic}</span>
-								</p>
+								<div className={styles.calc}>
+									<p>Daily
+									</p>
+									<p> ${profitDinamic}</p>
+								</div>
 		
-								<p className={styles.calc}>
-									<span>Weekly
-									</span>
-									<span> ${profitDinamic}</span>
-								</p>
+								<div className={styles.calc}>
+									<p>Weekly
+									</p>
+									<p> ${profitDinamic}</p>
+								</div>
 		
 								<div className={styles.calc}>
 									<div className='flex items-center gap-[6px]'>

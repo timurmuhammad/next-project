@@ -6,7 +6,8 @@ import styles from './login.module.scss'
 import cn from 'classnames'
 import logo_icon from "@/ui/icons/logo_icon.svg";
 import { Switch } from "@/shadcn/ui/switch";
-import eye from '@/ui/icons/eye.svg'
+import eye from '@/ui/icons/eye.svg';
+import eye_visible from '@/ui/icons/eye_visible.svg';
 import domain from "@/ui/icons/domain.png";
 import lock from "@/ui/icons/lock.png";
 import auth from "@/ui/icons/auth.png";
@@ -88,7 +89,7 @@ export default function Login() {
 										<FormControl>
 											<div className="rounded-[6px] relative border border-[#9897a0] border-solid">
 												<Input type={showPassword ? 'text' : 'password'} className='pr-[40px]' placeholder="Password" {...field} />
-												<div className={cn(styles.password, {[styles.active]: showPassword})} onClick={() => togglePasswordVisibility()} ><Image src={eye} width={18} height={13} alt='logo'></Image></div>
+												<div className={cn(styles.password, {[styles.active]: showPassword})} onClick={() => togglePasswordVisibility()} ><Image className='select-none' src={showPassword ? eye_visible : eye} width={20} height={20} alt='logo'></Image></div>
 											</div>
 										</FormControl>
 										<FormMessage />

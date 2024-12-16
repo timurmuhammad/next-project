@@ -591,7 +591,7 @@ in London."
         <div className="absolute z-10 top-0 left-0 w-full h-full flex justify-center items-center flex-col text-center gap-[48px]">
           <h3 className="font-normal text-[32px]">Join Company today</h3>
           <p className="font-normal text-[24px]">Earn crypto around the clock with high-tech solutions</p>
-          <button className="font-normal text-xl flex items-center last:justify-center rounded py-0 px-[48px] h-[62px] bg-[#E4FAFC] text-black w-fit mx-auto hover:">Sign Up</button>
+          <button className="font-normal text-xl flex items-center last:justify-center rounded py-0 px-[48px] h-[62px] bg-[#E4FAFC] text-black w-fit mx-auto hover:bg-[#ffffff]">Sign Up</button>
         </div>
       </div>
     </div>

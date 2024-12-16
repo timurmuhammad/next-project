@@ -7,7 +7,8 @@ import cn from 'classnames'
 import logo_icon from "@/ui/icons/logo_icon.svg";
 import trustpilot from "@/ui/icons/trustpilot.svg";
 import { Switch } from "@/shadcn/ui/switch";
-import eye from '@/ui/icons/eye.svg'
+import eye from '@/ui/icons/eye.svg';
+import eye_visible from '@/ui/icons/eye_visible.svg';
 import media_screen_mobile from "@/ui/images/media_screen_mobile.png";
 import domain from "@/ui/icons/domain.png";
 import lock from "@/ui/icons/lock.png";
@@ -141,11 +142,11 @@ export default function Login() {
 											render={({ field }) => (
 												<FormItem>
 													<FormControl>
-														<div className="rounded-[6px] relative border border-[#9897a0] border-solid">
-															<Input type={showPassword ? 'text' : 'password'} className='pr-[40px]' placeholder="Password" {...field} />
-															<div className={cn(styles.password, {[styles.active]: showPassword})} onClick={() => togglePasswordVisibility()} ><Image src={eye} width={18} height={13} alt='logo'></Image></div>
-														</div>
-													</FormControl>
+											<div className="rounded-[6px] relative border border-[#9897a0] border-solid">
+												<Input type={showPassword ? 'text' : 'password'} className='pr-[40px]' placeholder="Password" {...field} />
+												<div className={cn(styles.password, {[styles.active]: showPassword})} onClick={() => togglePasswordVisibility()} ><Image src={showPassword ? eye_visible : eye} width={20} height={20} alt='logo'></Image></div>
+											</div>
+										</FormControl>
 													<div className='flex gap-[12px] mt-[7px] items-center'>{Array.from({ length: 5 }, (_, index) => <div className="flex-1 h-[4px] bg-[#dfdfdf]"></div>)}</div>
 													<FormMessage />
 												</FormItem>

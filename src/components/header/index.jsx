@@ -36,16 +36,6 @@ export const Header = () => {
     const fpsdelay = 1000 / data.fps;
     const { x_start: from, x_end: to, duration } = data;
 
-		const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
-		blurAction(elements)
-		if (isFirstRender.current) {
-			if (blurCoverRef.current) {
-				blurCoverRef.current.classList.add("hidden"); // Скрываем обложку
-			}
-	
-			isFirstRender.current = false;
-		}
-
 		let start = new Date().getTime(); // Начало анимации
 
     function animate() {
@@ -88,7 +78,20 @@ export const Header = () => {
         }
     }
 
-    animate(); // Запускаем анимацию
+		if (isFirstRender.current) {
+			if (blurCoverRef.current) {
+				blurCoverRef.current.classList.add("hidden"); // Скрываем обложку
+			}
+	
+			isFirstRender.current = false;
+		}
+
+		if (window.location.href.includes('_x_tr_sl')) {
+			const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
+			blurAction(elements)
+
+			animate(); // Запускаем анимацию
+		}
 }
 
 

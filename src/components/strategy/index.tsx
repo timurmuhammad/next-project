@@ -144,24 +144,25 @@ export const Strategy = () => {
 									<span> ${profitDinamic}</span>
 								</p>
 		
-								<p className={styles.calc}>
-									<span>Total Profit
+								<div className={styles.calc}>
+									<div className='flex items-center gap-[6px]'>
+										<p>Total Profit</p>
 										<AllTooltip
-							text='Adds profit to the invested amount, increasing profits for subsequent days. Can be changed at any time'
-						></AllTooltip>
-									</span>
-									<span> ${profitDinamic}</span>
-								</p>
-		
-								<p className={styles.calc}>
-									<span>Total with investment amount
+											text='Adds profit to the invested amount, increasing profits for subsequent days. Can be changed at any time'
+										></AllTooltip>
+									</div>
+									<p> ${profitDinamic}</p>
+								</div>
+
+								<div className={styles.calc}>
+									<div className='flex items-center gap-[6px]'>
+										<p>Total with investment amount</p>
 										<AllTooltip
-							text='Adds profit to the invested amount, increasing profits for subsequent days. Can be changed at any time'
-						></AllTooltip>
-									</span>
-									<span> ${profitDinamic}</span>
-								</p>
-								
+											text='Adds profit to the invested amount, increasing profits for subsequent days. Can be changed at any time'
+										></AllTooltip>
+									</div>
+									<p> ${profitDinamic}</p>
+								</div>
 							</div>
 						</div>
 		
@@ -298,23 +299,27 @@ export const Strategy = () => {
 									<span> ${profitStatic}</span>
 								</p>
 		
-								<p className={styles.calc}>
-									<span>Total Profit
-										<AllTooltip
-							text='Adds profit to the invested amount, increasing profits for subsequent days. Can be changed at any time'
-						></AllTooltip>
-									</span>
-									<span> ${profitStatic}</span>
-								</p>
-		
-								<p className={styles.calc}>
-									<span>Total with investment amount
-										<AllTooltip
-							text='Adds profit to the invested amount, increasing profits for subsequent days. Can be changed at any time'
-						></AllTooltip>
-									</span>
-									<span> ${profitStatic}</span>
-								</p>
+							<div className={styles.calc}>
+								<div className='flex items-center gap-[6px]'>
+									<p>Total Profit
+									</p>
+									<AllTooltip
+										text='Adds profit to the invested amount, increasing profits for subsequent days. Can be changed at any time'
+									></AllTooltip>
+								</div>
+								<span> ${profitStatic}</span>
+							</div>
+
+							<div className={styles.calc}>
+								<div className='flex items-center gap-[6px]'>
+									<p>Total with investment amount
+									</p>
+									<AllTooltip
+										text='Adds profit to the invested amount, increasing profits for subsequent days. Can be changed at any time'
+									></AllTooltip>
+								</div>
+								<span> ${profitStatic}</span>
+							</div>
 							</div>
 						</div>
 		

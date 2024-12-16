@@ -134,9 +134,9 @@ export const AllTooltip: React.FC<Props> = ({ type = '', title = '', text = '', 
                     <p className={styles.frame}>
                       {text}
                     </p>
-                    <p className={styles.arrow}>
+                    {/* <p className={styles.arrow}>
                       <Image src={beak_bottom} width={16} height={9} alt=''></Image>
-                    </p>
+                    </p> */}
                   </div>
           }
         </TooltipContent>

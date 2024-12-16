@@ -36,4 +36,16 @@
 			color: #fff;
 		}
 	}
+
+	&.active{
+		font-weight: 400;
+		background-color: #00b2c8;
+		opacity: 0.5;
+		pointer-events: none;
+
+		P{
+			transition: 0.1s;
+			color: #fff;
+		}
+	}
 }
