@@ -19,8 +19,6 @@ import { usePathname, useSearchParams } from 'next/navigation'
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 
-
-
 const accordion = 'Products'
 
 
@@ -29,7 +27,7 @@ export const Header = () => {
 	const pathname = usePathname()
 	const lineRef = useRef(null);
 	const blurCoverRef = useRef(null)
-	const isFirstRender = useRef(true);
+	// const isFirstRender = useRef(true);
 	let width
 
 	function runAnim(obj, data) {
@@ -78,16 +76,20 @@ export const Header = () => {
         }
     }
 
-		if (isFirstRender.current) {
+		// if (isFirstRender.current) {
+		// 	if (blurCoverRef.current) {
+		// 		blurCoverRef.current.classList.add("hidden"); // Скрываем обложку
+		// 	}
+
+		// 	isFirstRender.current = false;
+		// }
+
 			if (blurCoverRef.current) {
 				blurCoverRef.current.classList.add("hidden"); // Скрываем обложку
 			}
-	
-			isFirstRender.current = false;
-		}
 
 		if (window.location.href.includes('_x_tr_sl')) {
-			const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
+			const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6, button");
 			blurAction(elements)
 
 			animate(); // Запускаем анимацию

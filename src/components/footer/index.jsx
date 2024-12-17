@@ -57,21 +57,21 @@ export const Footer = () => {
 				<ul className={styles.contacts}>
 					<Logo></Logo>
 					<TranslatedLink  href={''}>
-						<p>support@website.com</p>
+						<p translate="no">support@website.com</p>
 						<Image src={email} alt='img' width={48} height={48}></Image>
 					</TranslatedLink >
 					<TranslatedLink  href={''}>
-						<p>https://t.me/website_support</p>
+						<p translate="no">https://t.me/website_support</p>
 						<Image src={t_me} alt='img' width={48} height={48}></Image>
 					</TranslatedLink >
 					<TranslatedLink  href={''}>
-						<p>24/7 Online Chat Support</p>
+						<p translate="no">24/7 Online Chat Support</p>
 						<Image src={chat} alt='img' width={48} height={48}></Image>
 					</TranslatedLink >
 				</ul>
 			</div>
 
-			<p className={styles.bottom}>© 2024 Company Holdings. All rights reserved</p>
+			<p translate="no" className={styles.bottom}>© 2024 Company Holdings. All rights reserved</p>
 		</div>
 	</div>
 }
