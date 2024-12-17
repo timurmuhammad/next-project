@@ -19,12 +19,28 @@ import { usePathname, useSearchParams } from 'next/navigation'
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 
+import { tabs } from '@/types/auth';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/shadcn/ui/accordion';
+import arrow_up from '@/ui/icons/arrow_up.svg'
+
+
 const accordion = 'Products'
 
 
 export const Header = () => {
-	const [locale, setLocale] = useLocalStorage('locale', 'EN');
+	const [ value, setValue ] = useState('')
 	const pathname = usePathname()
+  const params = pathname.split('/')
+  const activeLinks = params.filter((item, index) => index !== 0).join();
+	const [ current, setCurrent ] = useState(menuMobileType.find((item) => item.path === activeLinks))
+
+	const [ burgerActive, setBurgerActive ] = useState(false)
+	const [ category, setCategory] = useState('')
+	const [ open, setOpen ] =  useState(false)
+
+	console.log(burgerActive)
+
+	const [locale, setLocale] = useLocalStorage('locale', 'EN');
 	const lineRef = useRef(null);
 	const blurCoverRef = useRef(null)
 	// const isFirstRender = useRef(true);
@@ -98,6 +114,36 @@ export const Header = () => {
 
 
 
+function handleClick(item) {
+	setCurrent(item)
+
+	for(let i = 0; i < tabs.length; i++) {
+
+		if (tabs[i].key === item.key) {
+			setValue(tabs[i].key)
+		}
+		if(current && item.key === current.key && tabs[i].key === item.key) {
+			setCurrent()
+			setValue('')
+		} 
+
+		const child = tabs[i].childs
+		if (child) {
+			for(let j = 0; j < child.length; j++) {
+				if (child[j] === item) {
+					setValue(tabs[i].key)
+				}
+				if (current && child[j].key === current.key && item.key === tabs[i].key) {
+					setCurrent()
+					setValue('')
+				}
+			}
+		}
+	}
+}
+
+
+
 const blurAction = (elements) => {
 	if (typeof document !== 'undefined') {
 		// const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
@@ -116,6 +162,7 @@ const blurAction = (elements) => {
 
 
 	useEffect(() => {
+		setBurgerActive(false)
 		const prevLocale = localStorage.getItem('prevLocale') || 'en'
 		width = innerWidth()
 		if (lineRef.current) {
@@ -136,10 +183,6 @@ const blurAction = (elements) => {
 		}
 	}, [pathname, locale])
 
-
-	const [ burgerActive, setBurgerActive ] = useState(false)
-	const [ category, setCategory] = useState('')
-	const [ open, setOpen ] =  useState(false)
 
 	function onChangeCategory() { 
 		category !== accordion ? setOpen(true) : setOpen(!open)
@@ -205,7 +248,7 @@ const blurAction = (elements) => {
 				<TranslatedLink  href='/helpcenter' className={styles.nav_desktop__item}>Help Hub</TranslatedLink >
 			</ul>
 
-			<ul className={cn(styles.nav_mobile, {[styles.active]: burgerActive})}>
+			{/* <ul className={cn(styles.nav_mobile, {[styles.active]: burgerActive})}>
 
 				<div>
 					{menuMobileType.map((item, index) => (
@@ -239,7 +282,51 @@ const blurAction = (elements) => {
 					
 					<SocialMedia></SocialMedia>
 				</div>
-			</ul>
+			</ul> */}
+
+
+<ul className={cn(styles.nav_mobile, {[styles.active]: burgerActive})}>
+
+<Accordion type="single" collapsible value={value} onValueChange={setValue}>
+	<div className={cn(styles.advantages)}>
+		{menuMobileType.map((item, index) => {
+			return item.childs ? <AccordionItem className={styles.item} key={item.key} value={item.key}>
+				<div onClick={() => handleClick(item)}>
+					<AccordionTrigger className="pb-0 pt-0 pl-0 pr-0">
+						<div className={styles.box}>
+							<Image src={item.icon} alt='icon' width={24} height={24}></Image>
+							<a className={styles.text}>{item.text}</a>
+							<Image className={styles.arrov} src={arrow_up} alt='icon' width={14} height={8}></Image>
+						</div>
+					</AccordionTrigger>
+
+				</div>
+				<AccordionContent className={styles.content}>
+					{item.childs && item.childs.map((child, childsIndex) => <TranslatedLink href={child.path} className={cn(styles.child, { [styles.active]: child === current })} key={childsIndex} onClick={() => handleClick(child)}>
+						<Image src={child.icon} alt='icon' width={24} height={24}></Image>
+						<p className='text-[14px]'>{child.text}</p>
+					</TranslatedLink>)}
+				</AccordionContent>
+			</AccordionItem>
+			: <TranslatedLink href={item.path} onClick={() => handleClick(item)} key={item.key} className={cn(styles.box, {[styles.active]: item === current})}>
+				<Image src={item.icon} alt='icon' width={24} height={24}></Image>
+				<span className={styles.text}>{item.text}</span>
+			</TranslatedLink>
+		})
+		}
+	</div>
+</Accordion>
+
+
+
+<div className={styles.nav_mobile__icons}>
+<Suspense fallback={<div>Загрузка...</div>}>
+<Languages></Languages>
+</Suspense>
+	
+	<SocialMedia></SocialMedia>
+</div>
+</ul>
 
 			<div className={styles.auth}>
 				<button className={styles.dashboard}><Image src={dashboard} alt='icon' width={21} height={20}></Image></button>

@@ -26,7 +26,7 @@ export function Languages() {
 	const [locale, setLocale] = useLocalStorage('locale', 'EN');
 	const changeLangRef = useRef(false)
 
-	console.log(locale)
+
 
 	const onChangeToLocale = (lang) => {
 		localStorage.setItem('prevLocale', locale);
