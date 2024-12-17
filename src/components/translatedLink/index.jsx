@@ -14,7 +14,7 @@ export const TranslatedLink = ({ href, children, ...props }) => {
 
 
   return (
-    <Link href={/*locale.toLowerCase() === 'en' ? */href/* : translatedHref*/} {...props}>
+    <Link href={locale.toLowerCase() === 'en' ? href : translatedHref} {...props}>
       {children}
     </Link>
   );
