@@ -37,17 +37,16 @@ export function Languages() {
   };
 
   const translatePage = (prevLocaleRef) => {
-    if (window.location.href.includes('_x_tr_hist=true') && !changeLangRef.current) {
+    console.log(locale)
+    if ((window.location.href.includes('_x_tr_hist=true') && !changeLangRef.current) || locale === prevLocaleRef) {
       return;
     }
 
     const baseURL = new URL('/', `${'http://react-project-zdxg.vercel.app'}`).origin;
-    const translateUrl = `https://translate.google.com/translate?hl=${locale}&sl=${prevLocaleRef || 'en'}&tl=${locale}&u=${encodeURIComponent(
+    const translateUrl = `https://translate.google.com/translate?hl=${locale}&sl=${prevLocaleRef}&tl=${locale}&u=${encodeURIComponent(
     `${baseURL}${pathname}`
   )}`;
     changeLangRef.current = false;
-    console.log(locale)
-    console.log(translateUrl)
     window.location.replace(translateUrl);
   };
 
