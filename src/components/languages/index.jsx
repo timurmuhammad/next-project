@@ -46,6 +46,8 @@ export function Languages() {
     `${baseURL}${pathname}`
   )}`;
     changeLangRef.current = false;
+    console.log(locale)
+    console.log(translateUrl)
     window.location.replace(translateUrl);
   };
 

@@ -38,7 +38,6 @@ export const Header = () => {
 	const [ category, setCategory] = useState('')
 	const [ open, setOpen ] =  useState(false)
 
-	console.log(burgerActive)
 
 	const [locale, setLocale] = useLocalStorage('locale', 'en');
 	const lineRef = useRef(null);
@@ -102,6 +101,7 @@ export const Header = () => {
 		// }
 
 			if (blurCoverRef.current) {
+				blurAction(elements)
 				blurCoverRef.current.classList.add("hidden"); // Скрываем обложку
 			}
 
