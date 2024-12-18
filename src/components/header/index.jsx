@@ -153,7 +153,7 @@ const blurAction = (elements) => {
 									!el.hasAttribute("no-translate")
 							) {
 									el.style.filter = `blur(5px)`;
-									el.style.transition = "filter 0s";
+									el.style.transition = "filter 0s, all 0.2s";
 							}
 					});
 	}

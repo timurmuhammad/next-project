@@ -42,9 +42,9 @@ export function Languages() {
     }
 
     const baseURL = new URL('/', `${'http://react-project-zdxg.vercel.app'}`).origin;
-    const translateUrl = `https://translate.google.com/translate?hl=${locale}&sl=${prevLocaleRef || 'en'}&u=${encodeURIComponent(
-      `${baseURL}${pathname}`
-    )}`;
+    const translateUrl = `https://translate.google.com/translate?hl=${locale}&sl=${prevLocaleRef || 'en'}&tl=${locale}&u=${encodeURIComponent(
+    `${baseURL}${pathname}`
+  )}`;
     changeLangRef.current = false;
     window.location.replace(translateUrl);
   };
