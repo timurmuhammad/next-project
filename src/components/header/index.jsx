@@ -45,11 +45,11 @@ export const Header = () => {
 	const blurCoverRef = useRef(null)
 	// const isFirstRender = useRef(true);
 	let width
-	const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6, button");
 
 	function runAnim(obj, data) {
     const fpsdelay = 1000 / data.fps;
     const { x_start: from, x_end: to, duration } = data;
+		const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6, button");
 
 		let start = new Date().getTime(); // Начало анимации
 
