@@ -38,14 +38,18 @@ export function Languages() {
 
   const translatePage = (prevLocaleRef) => {
     console.log(locale)
+    console.log(prevLocaleRef)
     if ((window.location.href.includes('_x_tr_hist=true') && !changeLangRef.current) || locale === prevLocaleRef) {
       return;
     }
 
     const baseURL = new URL('/', `${'http://react-project-zdxg.vercel.app'}`).origin;
+    console.log(baseURL)
     const translateUrl = `https://translate.google.com/translate?hl=${locale}&sl=${prevLocaleRef}&tl=${locale}&u=${encodeURIComponent(
     `${baseURL}${pathname}`
   )}`;
+    console.log(translateUrl)
+
     changeLangRef.current = false;
     window.location.replace(translateUrl);
   };
