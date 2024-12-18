@@ -165,6 +165,10 @@ const blurAction = (elements) => {
 		setBurgerActive(false)
 		const prevLocale = localStorage.getItem('prevLocale') || 'en'
 		width = innerWidth()
+		if (prevLocale === locale) {
+			blurCoverRef.current.classList.add("hidden"); // Скрываем обложку
+		}
+
 		if (lineRef.current && prevLocale !== locale) {
 			// if ((prevLocale === locale && (prevLocale.toLowerCase() !== 'en' || locale.toLowerCase() !== 'en')) ||
 			// (prevLocale !== locale)) {

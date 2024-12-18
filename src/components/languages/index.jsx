@@ -46,13 +46,13 @@ export function Languages() {
     `${baseURL}${pathname}`
   )}`;
     console.log(translateUrl)
-    
+
     if ((window.location.href.includes('_x_tr_hist=true') && !changeLangRef.current) || locale === prevLocaleRef) {
       return;
     }
 
     changeLangRef.current = false;
-    window.location.replace(translateUrl);
+    window.location.assign(translateUrl);
   };
 
   useEffect(() => {
