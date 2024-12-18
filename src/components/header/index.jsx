@@ -45,6 +45,7 @@ export const Header = () => {
 	const blurCoverRef = useRef(null)
 	// const isFirstRender = useRef(true);
 	let width
+	const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6, button");
 
 	function runAnim(obj, data) {
     const fpsdelay = 1000 / data.fps;
@@ -105,7 +106,6 @@ export const Header = () => {
 			}
 
 		if (window.location.href.includes('_x_tr_sl')) {
-			const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6, button");
 			blurAction(elements)
 
 			animate(); // Запускаем анимацию
