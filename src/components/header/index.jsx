@@ -40,7 +40,7 @@ export const Header = () => {
 
 	console.log(burgerActive)
 
-	const [locale, setLocale] = useLocalStorage('locale', 'EN');
+	const [locale, setLocale] = useLocalStorage('locale', 'en');
 	const lineRef = useRef(null);
 	const blurCoverRef = useRef(null)
 	// const isFirstRender = useRef(true);

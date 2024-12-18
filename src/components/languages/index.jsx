@@ -16,51 +16,50 @@ import {
 } from "@/shadcn/ui/dropdown-menu"
 
 
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation'
 
 
 export function Languages() {
-	const pathname = usePathname()
-	// const searchParams = useSearchParams()
-	const [locale, setLocale] = useLocalStorage('locale', 'EN');
-	const changeLangRef = useRef(false)
+	const pathname = usePathname();
+  const [locale, setLocale] = useLocalStorage('locale', 'en');
+  const [isHydrated, setIsHydrated] = useState(false); // Для отслеживания гидратации
+  const changeLangRef = useRef(false);
 
+  useEffect(() => {
+    setIsHydrated(true); // Устанавливаем флаг гидратации после монтирования
+  }, []);
 
+  const onChangeToLocale = (lang) => {
+    localStorage.setItem('prevLocale', locale);
+    setLocale(lang);
+    changeLangRef.current = true;
+  };
 
-	const onChangeToLocale = (lang) => {
-		localStorage.setItem('prevLocale', locale);
-		setLocale(lang)
-		changeLangRef.current = true
-	}
+  const translatePage = (prevLocaleRef) => {
+    if (window.location.href.includes('_x_tr_hist=true') && !changeLangRef.current) {
+      return;
+    }
 
-	useLayoutEffect(() => {
-		// if (!window.location.href.includes('_x_tr_sl')) {
-		// 	localStorage.removeItem('scrollPosition');
-		// }
+    const baseURL = new URL('/', `${'http://react-project-zdxg.vercel.app'}`).origin;
+    const translateUrl = `https://translate.google.com/translate?hl=${locale}&sl=${prevLocaleRef || 'en'}&u=${encodeURIComponent(
+      `${baseURL}${pathname}`
+    )}`;
+    changeLangRef.current = false;
+    window.location.replace(translateUrl);
+  };
 
-		const prevLocaleRef = localStorage.getItem('prevLocale') || 'en'
-		// localStorage.setItem('prevLocale', !window.location.href.includes('_x_tr_sl') ? 'en' : locale)
+  useEffect(() => {
+    if (isHydrated) {
+      const prevLocaleRef = localStorage.getItem('prevLocale') || 'en';
+      translatePage(prevLocaleRef);
+    }
+  }, [pathname, locale, isHydrated]);
 
-		translatePage(prevLocaleRef);
-	}, [pathname, locale]);
+  // if (!isHydrated) {
+  //   return null;
+  // }
 
-
-const translatePage = (prevLocaleRef) => {
-	if (window.location.href.includes('_x_tr_hist=true') && !changeLangRef.current) {
-		return
-	}
-
-	// const scrollPosition = { x: window.scrollX, y: window.scrollY };
-  // localStorage.setItem('scrollPosition', JSON.stringify(scrollPosition));
-	const baseURL = new URL('/', `${'http://react-project-zdxg.vercel.app'}`).origin;
-	const translateUrl = `https://translate.google.com/translate?hl=${locale}&sl=${prevLocaleRef || 'en'}&u=${encodeURIComponent(
-		`${baseURL}${pathname}`
-	)}`;
-	// localStorage.setItem('prevLocale', locale);
-	changeLangRef.current = false
-	window.location.replace(translateUrl);
-}
 
 
   return (
@@ -68,8 +67,8 @@ const translatePage = (prevLocaleRef) => {
 					<DropdownMenu modal={false}>
 						<DropdownMenuTrigger asChild>
 							<div className={styles.body}>
-								<Image src={(localeType.find((item) => item.lang === locale.toUpperCase())).img} alt='icon' width={25} height={18}></Image>
-								<p translate="no">{locale}</p>
+								<Image src={isHydrated ? (localeType.find((item) => item.lang === locale.toUpperCase())).img : localeType[0].img} alt='icon' width={25} height={18}></Image>
+								<p translate="no">{isHydrated ? locale : localeType[0].lang}</p>
 							</div>
 						</DropdownMenuTrigger>
 						<DropdownMenuContent className='w-[186px] my-[8px] mr-[16px]'>
