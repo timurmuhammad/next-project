@@ -39,9 +39,6 @@ export function Languages() {
   const translatePage = (prevLocaleRef) => {
     console.log(locale)
     console.log(prevLocaleRef)
-    if ((window.location.href.includes('_x_tr_hist=true') && !changeLangRef.current) || locale === prevLocaleRef) {
-      return;
-    }
 
     const baseURL = 'https://react-project-zdxg.vercel.app';
     console.log(baseURL)
@@ -49,6 +46,10 @@ export function Languages() {
     `${baseURL}${pathname}`
   )}`;
     console.log(translateUrl)
+    
+    if ((window.location.href.includes('_x_tr_hist=true') && !changeLangRef.current) || locale === prevLocaleRef) {
+      return;
+    }
 
     changeLangRef.current = false;
     window.location.replace(translateUrl);
