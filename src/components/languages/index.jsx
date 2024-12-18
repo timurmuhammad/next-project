@@ -43,7 +43,7 @@ export function Languages() {
       return;
     }
 
-    const baseURL = new URL('/', `${'http://react-project-zdxg.vercel.app'}`).origin;
+    const baseURL = 'https://react-project-zdxg.vercel.app';
     console.log(baseURL)
     const translateUrl = `https://translate.google.com/translate?hl=${locale}&sl=${prevLocaleRef}&tl=${locale}&u=${encodeURIComponent(
     `${baseURL}${pathname}`
