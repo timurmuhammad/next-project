@@ -3,10 +3,12 @@
 import styles from './languages.module.scss';
 
 import Image from 'next/image';
-import { useLocalStorage } from "@/hooks/useLocalStorage";
+// import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { getLocalStorage } from "@/hooks/getLocalStorage";
 import cn from 'classnames'
 import {localeType} from '@/types/locale'
+import { useLocale } from '@/global/locale';
+
 
 import {
   DropdownMenu,
@@ -22,9 +24,10 @@ import { usePathname } from 'next/navigation'
 
 export function Languages() {
 	const pathname = usePathname();
-  const [locale, setLocale] = useLocalStorage('locale', 'en');
+  // const [locale, setLocale] = useLocalStorage('locale', 'en');
   const [isHydrated, setIsHydrated] = useState(false); // Для отслеживания гидратации
   const changeLangRef = useRef(false);
+  const { locale, setLocale } = useLocale();
 
   useEffect(() => {
     setIsHydrated(true); // Устанавливаем флаг гидратации после монтирования
