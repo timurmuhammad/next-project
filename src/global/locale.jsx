@@ -18,13 +18,14 @@
 
 
 import React, { createContext, useContext, useEffect, useState } from "react";
+import {getLocalStorage} from '@/hooks/getLocalStorage'
 
 // Создаем контекст
 const LocaleContext = createContext();
 
 // Провайдер контекста
 export const LocaleProvider = ({ children }) => {
-  const [locale, setLocale] = useState(localStorage.getItem("locale") || "en");
+  const [locale, setLocale] = useState(/*localStorage.getItem("locale") || "en"*/ getLocalStorage('locale', 'en'));
 
   // useEffect(() => {
   //   const storedLocale = localStorage.getItem("locale") || "en";
