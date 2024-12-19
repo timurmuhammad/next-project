@@ -7,8 +7,6 @@ import Image from 'next/image';
 import { getLocalStorage } from "@/hooks/getLocalStorage";
 import cn from 'classnames'
 import {localeType} from '@/types/locale'
-import { useLocale } from '@/global/locale';
-
 
 import {
   DropdownMenu,
@@ -20,14 +18,15 @@ import {
 
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation'
-
+import { useLocale } from '@/global/locale';
 
 export function Languages() {
 	const pathname = usePathname();
   // const [locale, setLocale] = useLocalStorage('locale', 'en');
+  const { locale, setLocale } = useLocale();
+  
   const [isHydrated, setIsHydrated] = useState(false); // Для отслеживания гидратации
   const changeLangRef = useRef(false);
-  const { locale, setLocale } = useLocale();
 
   useEffect(() => {
     setIsHydrated(true); // Устанавливаем флаг гидратации после монтирования
@@ -40,15 +39,15 @@ export function Languages() {
   };
 
   const translatePage = (prevLocaleRef) => {
-    console.log(locale)
-    console.log(prevLocaleRef)
+    // console.log(locale)
+    // console.log(prevLocaleRef)
 
     const baseURL = 'https://react-project-zdxg.vercel.app';
-    console.log(baseURL)
+    // console.log(baseURL)
     const translateUrl = `https://translate.google.com/translate?hl=${locale}&sl=${prevLocaleRef}&tl=${locale}&u=${encodeURIComponent(
     `${baseURL}${pathname}`
   )}`;
-    console.log(translateUrl)
+    // console.log(translateUrl)
     
     if ((window.location.href.includes('_x_tr_hist=true') && !changeLangRef.current) || locale === prevLocaleRef) {
       return;
@@ -76,14 +75,14 @@ export function Languages() {
 					<DropdownMenu modal={false}>
 						<DropdownMenuTrigger asChild>
 							<div className={styles.body}>
-								<Image src={isHydrated ? (localeType.find((item) => item.lang === locale.toUpperCase())).img : localeType[0].img} alt='icon' width={25} height={18}></Image>
+								<Image src={isHydrated ? (localeType.find((item) => item.lang.toUpperCase() === locale.toUpperCase())).img : localeType[0].img} alt='icon' width={25} height={18}></Image>
 								<p translate="no">{isHydrated ? locale : localeType[0].lang}</p>
 							</div>
 						</DropdownMenuTrigger>
 						<DropdownMenuContent className='w-[186px] my-[8px] mr-[16px]'>
 							<div className="flex  flex-wrap  justify-between gap-[16px] p-[16px] rounded-[6px] bg-neutral-50 border border-solid border-[#d9d9d9]">
-								{localeType.map((item) => (
-									<DropdownMenuItem translate="no" onClick={() => onChangeToLocale(item.lang)} className={cn(styles.lang, {[styles.active]: locale === item.lang})}>
+								{localeType.map((item, index) => (
+									<DropdownMenuItem translate="no" key={index} onClick={() => onChangeToLocale(item.lang)} className={cn(styles.lang, {[styles.active]: locale === item.lang})}>
 										<Image
 											src={item.img}
 											width={25}
