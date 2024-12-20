@@ -1,6 +1,6 @@
 import { sofiaPro } from "../ui/fonts/index";
 import "@/ui/globals.scss";
-import { LocaleProvider } from '@/global/locale';
+// import { LocaleProvider } from '@/global/locale';
 // import { Suspense } from "react";
 
 export default function RootLayout({ children }) {
@@ -8,9 +8,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={sofiaPro.className}>
         {/* <Suspense fallback={<div>Loading...</div>}> */}
-          <LocaleProvider>
+          {/* <LocaleProvider> */}
             {children}
-          </LocaleProvider>
+          {/* </LocaleProvider> */}
         {/* </Suspense> */}
       </body>
     </html>
