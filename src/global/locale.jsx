@@ -25,7 +25,7 @@ const LocaleContext = createContext();
 
 // Провайдер контекста
 export const LocaleProvider = ({ children }) => {
-  const [locale, setLocale] = useState(/*localStorage.getItem("locale") || "en"*/ /*getLocalStorage('locale') || 'EN'*/);
+  const [locale, setLocale] = useState(/*localStorage.getItem("locale") || "en"*/ getLocalStorage('locale') || 'EN');
 
   // useEffect(() => {
   //   const storedLocale = localStorage.getItem("locale") || "en";
