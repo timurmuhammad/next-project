@@ -32,7 +32,7 @@ export const LocaleProvider = ({ children }) => {
   //   setLocale(storedLocale);
   // }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const storedLocale = localStorage.getItem('locale') || 'EN';
     setLocale(storedLocale);
   }, []);
