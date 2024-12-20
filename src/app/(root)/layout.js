@@ -6,7 +6,7 @@ import { HelpHeader } from "@/components/helpHeader";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from 'react'
 import cn from 'classnames'
-
+// import { Suspense } from "react";
 
 export default function MainLayout({ children }) {
 	const pathname = usePathname()
@@ -29,8 +29,10 @@ export default function MainLayout({ children }) {
   return (
 		<div className='wrapper'>
 			{isHelpCenterPage && !md ? <HelpHeader></HelpHeader> : <Header></Header>}
-			<main>{children}</main>
-			{isRegistrationPage && !lg ? null : <Footer /> }
+      <Suspense fallback={<div>Loading...</div>}>
+        <main>{children}</main>
+        {isRegistrationPage && !lg ? null : <Footer /> }
+      </Suspense>
 		</div>
   );
 }
