@@ -17,7 +17,7 @@
 // export const useLocale = () => useContext(LocaleContext);
 
 
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useLayoutEffect, useState } from "react";
 import {getLocalStorage} from '@/hooks/getLocalStorage'
 
 // Создаем контекст
@@ -25,12 +25,17 @@ const LocaleContext = createContext();
 
 // Провайдер контекста
 export const LocaleProvider = ({ children }) => {
-  const [locale, setLocale] = useState(/*localStorage.getItem("locale") || "en"*/ getLocalStorage('locale') || 'EN');
+  const [locale, setLocale] = useState(/*localStorage.getItem("locale") || "en"*/ /*getLocalStorage('locale') || 'EN'*/);
 
   // useEffect(() => {
   //   const storedLocale = localStorage.getItem("locale") || "en";
   //   setLocale(storedLocale);
   // }, []);
+
+  useLayoutEffect(() => {
+    const storedLocale = localStorage.getItem('locale') || 'EN';
+    setLocale(storedLocale);
+  }, []);
 
   const updateLocale = (newLocale) => {
     setLocale(newLocale);
