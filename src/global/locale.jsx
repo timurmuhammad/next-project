@@ -29,8 +29,8 @@ export const LocaleProvider = ({ children }) => {
   const searchParams = () => {
     return window.location.search
   }
-  const params = new URLSearchParams(searchParams);
-  const search = params.get('_x_tr_tl');
+  const params = new URLSearchParams(searchParams());
+  const search = params?.get('_x_tr_tl');
   // const params = useSearchParams()
   // const search = params?.get('_x_tr_tl');
   const [locale, setLocale] = useState(/*localStorage.getItem("locale") || "en"*/ getLocalStorage('locale') || search || 'EN');
