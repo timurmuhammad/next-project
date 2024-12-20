@@ -27,7 +27,7 @@ const accordion = 'Products'
 
 export const SuspenceHeader = () => {
 
-	return <div className={cn(styles.body, {[styles.active]: burgerActive})}>
+	return <div className={styles.body}>
 
 		<div className={styles.container + ' _container'}>
 			<div className={styles.burger}>
