@@ -10,15 +10,16 @@ export const TranslatedLink = ({ href, children, ...props}) => {
   const { locale } = useLocale();
   const baseUrl = 'https://react-project-zdxg.vercel.app';
 
-  // console.log(locale)
+  console.log(locale)
 
   const translatedHref = `https://translate.google.com/translate?hl=${locale}&sl=en&tl=${locale}&u=${encodeURIComponent(
     `${baseUrl}${href}`
   )}`;
 
-  const link = locale.toLowerCase() === 'en' ? href : translatedHref
+  const link = locale === 'en' ? href : translatedHref
 
-  // console.log(link)
+  console.log(link)
+  console.log(translatedHref)
 
   return (
     <Link href={link} {...props}>

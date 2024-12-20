@@ -103,6 +103,16 @@ export const Header = () => {
 			if (blurCoverRef.current) {
 				blurAction(elements)
 				blurCoverRef.current.classList.add("hidden"); // Скрываем обложку
+				obj.style.opacity = 0;
+								// const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
+                elements.forEach((el) => {
+                    if (
+                        el.textContent.trim().length > 0 &&
+                        !el.hasAttribute("no-translate")
+                    ) {
+                        el.style.filter = "none";
+                    }
+                });
 			}
 
 		if (window.location.href.includes('_x_tr_sl')) {

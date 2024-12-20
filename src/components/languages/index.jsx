@@ -54,7 +54,7 @@ export function Languages() {
     }
 
     changeLangRef.current = false;
-    window.location.replace(translateUrl);
+    // window.location.replace(translateUrl);
   };
 
   useEffect(() => {
