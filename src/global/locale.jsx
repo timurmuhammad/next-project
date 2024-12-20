@@ -26,7 +26,10 @@ const LocaleContext = createContext();
 
 // Провайдер контекста
 export const LocaleProvider = ({ children }) => {
-  const params = new URLSearchParams(window.location.search);
+  const searchParams = () => {
+    return window.location.search
+  }
+  const params = new URLSearchParams(searchParams);
   const search = params.get('_x_tr_tl');
   // const params = useSearchParams()
   // const search = params?.get('_x_tr_tl');
