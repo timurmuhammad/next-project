@@ -29,8 +29,8 @@ export default function MainLayout({ children }) {
 
   return (
 		<div className='wrapper'>
-			{isHelpCenterPage && !md ? <HelpHeader></HelpHeader> : <Header></Header>}
       <Suspense fallback={<div>Loading...</div>}>
+			{isHelpCenterPage && !md ? <HelpHeader></HelpHeader> : <Header></Header>}
         <LocaleProvider>
           <main>{children}</main>
           {isRegistrationPage && !lg ? null : <Footer /> }
