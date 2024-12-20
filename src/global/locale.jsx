@@ -27,7 +27,7 @@ const LocaleContext = createContext();
 // Провайдер контекста
 export const LocaleProvider = ({ children }) => {
   const params = useSearchParams()
-  const search = params?.get('tl');
+  const search = params?.get('_x_tr_tl');
   const [locale, setLocale] = useState(/*localStorage.getItem("locale") || "en"*/ getLocalStorage('locale') || search || 'EN');
 
   // useEffect(() => {
