@@ -25,7 +25,7 @@ import Link from 'next/link';
 
 const accordion = 'Products'
 
-export const Header = () => {
+export const SuspenceHeader = () => {
 	const [ value, setValue ] = useState('')
 	const pathname = usePathname()
   const params = pathname.split('/')
