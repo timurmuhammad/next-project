@@ -6,8 +6,7 @@ import { HelpHeader } from "@/components/helpHeader";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from 'react'
 import cn from 'classnames'
-import { LocaleProvider } from '@/global/locale';
-import { Suspense } from "react";
+
 
 export default function MainLayout({ children }) {
 	const pathname = usePathname()
@@ -29,13 +28,9 @@ export default function MainLayout({ children }) {
 
   return (
 		<div className='wrapper'>
-      <Suspense fallback={<div>Loading...</div>}>
-        <LocaleProvider>
-			    {isHelpCenterPage && !md ? <HelpHeader></HelpHeader> : <Header></Header>}
-            <main>{children}</main>
-          {isRegistrationPage && !lg ? null : <Footer /> }
-        </LocaleProvider>
-      </Suspense>
+			{isHelpCenterPage && !md ? <HelpHeader></HelpHeader> : <Header></Header>}
+			<main>{children}</main>
+			{isRegistrationPage && !lg ? null : <Footer /> }
 		</div>
   );
 }
