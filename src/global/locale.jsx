@@ -29,7 +29,7 @@ export const LocaleProvider = ({ children }) => {
   const searchParams = () => {
     return window.location.search
   }
-  const params = new URLSearchParams(searchParams());
+  const params = new URLSearchParams(searchParams);
   const search = params?.get('_x_tr_tl');
   // const params = useSearchParams()
   // const search = params?.get('_x_tr_tl');
