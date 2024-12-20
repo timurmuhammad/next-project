@@ -81,13 +81,8 @@ function handleClick(item) {
 		}   
 	}, [burgerActive]);
 
-	const innerWidth = () => {
-		return window.innerWidth
-	}
-
 
 	return <div className={cn(styles.body, {[styles.active]: burgerActive})}>
-		<div className={styles.blurCover}></div> {/* Обложка размытия */}
 
 		<div className={styles.container + ' _container'}>
 			<div className={styles.burger} onClick={() => setBurgerActive(!burgerActive)}>
@@ -177,10 +172,6 @@ function handleClick(item) {
 				<Link  href='/login' className={styles.login}><p>Login</p></Link >
 				<Link  href='/registration' className={styles.sign_up}>Sign Up</Link >
 			</div>
-		</div>
-
-		<div className={styles.progress}>
-			<div style={{ width: `${width}px`, transform: `translateX(-${width}px)`, opacity: 0 }} className={styles.line}></div>
 		</div>
 	</div>
 }
