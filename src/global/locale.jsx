@@ -19,29 +19,28 @@
 
 import React, { createContext, useContext, useEffect, useLayoutEffect, useState } from "react";
 import {getLocalStorage} from '@/hooks/getLocalStorage'
+import { useSearchParams } from 'next/navigation'
 
 // Создаем контекст
 const LocaleContext = createContext();
 
 // Провайдер контекста
 export const LocaleProvider = ({ children }) => {
-  const [locale, setLocale] = useState(/*localStorage.getItem("locale") || "en"*/ getLocalStorage('locale') || 'EN');
+  const params = useSearchParams()
+  const search = params.get('tl')
+  const [locale, setLocale] = useState(/*localStorage.getItem("locale") || "en"*/ getLocalStorage('locale') || search || 'EN');
 
   // useEffect(() => {
   //   const storedLocale = localStorage.getItem("locale") || "en";
   //   setLocale(storedLocale);
   // }, []);
 
-  useEffect(() => {
-    const storedLocale = localStorage.getItem('locale') || 'EN';
-    setLocale(storedLocale);
-  }, []);
-
   const updateLocale = (newLocale) => {
     setLocale(newLocale);
     localStorage.setItem("locale", newLocale);
   };
 
+  console.log(search)
   console.log(locale)
 
   return (
