@@ -127,9 +127,7 @@ export default function Profile() {
 
 						<div className={cn(styles.input, styles.languages)}>
 							<p className="text-[14px] font-[400]">Language</p>
-							<Suspense fallback={<div>Загрузка...</div>}>
 								<Languages></Languages>
-							</Suspense>
 						</div>
 					</div>
 				</div>

@@ -26,9 +26,7 @@ export const Footer = () => {
 			</div>
 			
 
-			<Suspense fallback={<div>Загрузка...</div>}>
 				<Languages></Languages>
-			</Suspense>
 
 
 

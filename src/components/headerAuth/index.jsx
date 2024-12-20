@@ -147,9 +147,7 @@ export const HeaderAuth = () => {
 
 
 				<div className={styles.nav_mobile__icons}>
-				<Suspense fallback={<div>Загрузка...</div>}>
 				<Languages></Languages>
-			</Suspense>
 					
 					<SocialMedia></SocialMedia>
 				</div>
@@ -158,9 +156,9 @@ export const HeaderAuth = () => {
 			<div className={styles.auth}>
 				<ProfileMenu></ProfileMenu>
 				<Notifications></Notifications>
-				<div className={styles.lang}><Suspense fallback={<div>Загрузка...</div>}>
+				<div className={styles.lang}>
 				<Languages></Languages>
-			</Suspense></div>
+			</div>
 			</div>
 		</div>
 	</div>

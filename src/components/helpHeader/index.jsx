@@ -30,9 +30,7 @@ export const HelpHeader = () => {
 					</p>
 				</div>
 
-				<Suspense fallback={<div>Загрузка...</div>}>
 				<Languages></Languages>
-			</Suspense>
 			</div>
 		</div>
 	</div>

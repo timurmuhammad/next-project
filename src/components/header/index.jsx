@@ -333,9 +333,7 @@ const blurAction = (elements) => {
 
 
 <div className={styles.nav_mobile__icons}>
-<Suspense fallback={<div>Загрузка...</div>}>
 <Languages></Languages>
-</Suspense>
 	
 	<SocialMedia></SocialMedia>
 </div>
