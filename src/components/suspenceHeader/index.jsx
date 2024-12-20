@@ -1,6 +1,6 @@
 'use client'
 
-import styles from './header.module.scss';
+import styles from './suspenceHeader.module.scss';
 import { Logo } from '@/ui/logo';
 import {productsType} from '../../types/products.ts';
 import {useEffect, useState, useRef} from "react";
