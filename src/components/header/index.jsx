@@ -30,10 +30,11 @@ const accordion = 'Products'
 export const Header = () => {
 	const [ value, setValue ] = useState('')
 	const pathname = usePathname()
-  const params = pathname.split('/')
-  const activeLinks = params.filter((item, index) => index !== 0).join();
-	const [ current, setCurrent ] = useState(menuMobileType.find((item) => item.path === activeLinks))
+  // const params = pathname.split('/')
+  // const activeLinks = params.filter((item, index) => index !== 0).join();
+	const [ current, setCurrent ] = useState(menuMobileType.find((item) => item.path === pathname))
 
+	
 	const [ burgerActive, setBurgerActive ] = useState(false)
 	const [ category, setCategory] = useState('')
 	const [ open, setOpen ] =  useState(false)

@@ -6,20 +6,14 @@ import { useLocalStorage } from '@/hooks/useLocalStorage';
 import { useLocale } from '@/global/locale';
 
 export const TranslatedLink = ({ href, children, ...props}) => {
-  // const [locale, setLocale] = useLocalStorage('locale', 'en');
   const { locale } = useLocale();
   const baseUrl = 'https://react-project-zdxg.vercel.app';
-
-  console.log(locale)
 
   const translatedHref = `https://translate.google.com/translate?hl=${locale}&sl=en&tl=${locale}&u=${encodeURIComponent(
     `${baseUrl}${href}`
   )}`;
 
   const link = locale === 'en' ? href : translatedHref
-
-  console.log(link)
-  console.log(translatedHref)
 
   return (
     <Link href={link} {...props}>
