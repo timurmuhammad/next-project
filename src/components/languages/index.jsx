@@ -49,7 +49,7 @@ export function Languages() {
   )}`;
     // console.log(translateUrl)
     
-    if ((window.location.href.includes('_x_tr_hist=true') && !changeLangRef.current) || locale.toUpperCase() === prevLocaleRef.toUpperCase()) {
+    if ((window.location.href.includes('_x_tr_hist=true') && !changeLangRef.current) || locale === prevLocaleRef) {
       return;
     }
 
