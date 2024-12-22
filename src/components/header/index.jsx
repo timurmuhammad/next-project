@@ -180,7 +180,7 @@ const blurAction = (elements) => {
 			blurCoverRef.current.classList.add("hidden"); // Скрываем обложку
 		}
 
-		if (lineRef.current && prevLocale !== locale) {
+		if (lineRef.current && prevLocale.toUpperCase() !== locale.toUpperCase()) {
 			// if ((prevLocale === locale && (prevLocale.toLowerCase() !== 'en' || locale.toLowerCase() !== 'en')) ||
 			// (prevLocale !== locale)) {
 				// if (window.location.href.includes('_x_tr_sl') && !window.location.href.includes('_x_tr_hist=true')) {
