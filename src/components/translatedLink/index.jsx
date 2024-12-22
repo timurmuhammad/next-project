@@ -13,7 +13,7 @@ export const TranslatedLink = ({ href, children, ...props}) => {
     `${baseUrl}${href}`
   )}`;
 
-  const link = locale === 'en' || locale === 'EN' ? href : translatedHref
+  const link = locale === 'en' ? href : translatedHref
 
   return (
     <Link href={link} {...props}>
