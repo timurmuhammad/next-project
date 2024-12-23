@@ -3,7 +3,7 @@
 import styles from './header.module.scss';
 import { Logo } from '@/ui/logo';
 import {productsType} from '../../types/products.ts';
-import { useEffect, useState, useRef } from "react";
+import { Suspense, useEffect, useState, useRef, useLayoutEffect } from "react";
 import burgerClose from '@/ui/icons/burger_close.svg';
 import burgerOpen from '@/ui/icons/burger_open.svg';
 import Image from 'next/image';
@@ -15,7 +15,7 @@ import polygon from '@/ui/icons/polygon.svg';
 import { Languages } from '../languages';
 import { SocialMedia } from '@/ui/socialMedia';
 import {TranslatedLink} from '@/components/translatedLink';
-import { usePathname } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 
@@ -30,6 +30,8 @@ const accordion = 'Products'
 export const Header = () => {
 	const [ value, setValue ] = useState('')
 	const pathname = usePathname()
+  // const params = pathname.split('/')
+  // const activeLinks = params.filter((item, index) => index !== 0).join();
 	const [ current, setCurrent ] = useState(menuMobileType.find((item) => item.path === pathname))
 
 	
@@ -41,6 +43,7 @@ export const Header = () => {
 	const [locale, setLocale] = useLocalStorage('locale', 'en');
 	const lineRef = useRef(null);
 	const blurCoverRef = useRef(null)
+	// const isFirstRender = useRef(true);
 	let width
 
 	function runAnim(obj, data) {
@@ -48,7 +51,7 @@ export const Header = () => {
     const { x_start: from, x_end: to, duration } = data;
 		const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6, button");
 
-		let start = new Date().getTime();
+		let start = new Date().getTime(); // Начало анимации
 
     function animate() {
         const now = new Date().getTime() - start;
@@ -63,10 +66,15 @@ export const Header = () => {
 
 
         if (progress < 1) {
-            setTimeout(animate, fpsdelay);
+            setTimeout(animate, fpsdelay); // Используем именованную функцию
         } else {
+            // Проверяем условие после завершения круга
 						
+						
+            // if (window.location.href.includes('_x_tr_hist=true')) {
+                // Снимаем blur, если условие выполнено
 								obj.style.opacity = 0;
+								// const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
                 elements.forEach((el) => {
                     if (
                         el.textContent.trim().length > 0 &&
@@ -75,14 +83,29 @@ export const Header = () => {
                         el.style.filter = "none";
                     }
                 });
+            // } else {
+						// 		obj.style.opacity = 0;
+						// 		obj.style.transform = `translate(${from}px, 0)`;
+            //     start = new Date().getTime();
+            //     animate();
+            // }
 					
         }
     }
 
+		// if (isFirstRender.current) {
+		// 	if (blurCoverRef.current) {
+		// 		blurCoverRef.current.classList.add("hidden"); // Скрываем обложку
+		// 	}
+
+		// 	isFirstRender.current = false;
+		// }
+
 			if (blurCoverRef.current) {
 				blurAction(elements)
-				blurCoverRef.current.classList.add("hidden");
+				blurCoverRef.current.classList.add("hidden"); // Скрываем обложку
 				obj.style.opacity = 0;
+								// const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
                 elements.forEach((el) => {
                     if (
                         el.textContent.trim().length > 0 &&
@@ -96,7 +119,7 @@ export const Header = () => {
 		if (window.location.href.includes('_x_tr_sl')) {
 			blurAction(elements)
 
-			animate();
+			animate(); // Запускаем анимацию
 		}
 }
 
@@ -134,6 +157,7 @@ function handleClick(item) {
 
 const blurAction = (elements) => {
 	if (typeof document !== 'undefined') {
+		// const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
 					elements.forEach((el) => {
 							if (
 									el.textContent.trim().length > 0 &&
@@ -157,6 +181,9 @@ const blurAction = (elements) => {
 		}
 
 		if (lineRef.current && prevLocale !== locale) {
+			// if ((prevLocale === locale && (prevLocale.toLowerCase() !== 'en' || locale.toLowerCase() !== 'en')) ||
+			// (prevLocale !== locale)) {
+				// if (window.location.href.includes('_x_tr_sl') && !window.location.href.includes('_x_tr_hist=true')) {
 					const screenWidth = window.innerWidth;
 						runAnim(lineRef.current, {
 							fps: 50, 
@@ -164,6 +191,9 @@ const blurAction = (elements) => {
 							x_end: screenWidth * 2, 
 							duration: 1000
 						})
+				// }
+
+			// }
 		}
 	}, [pathname, locale])
 
@@ -231,6 +261,43 @@ const blurAction = (elements) => {
 				<TranslatedLink  href='/blog' className={styles.nav_desktop__item}>Blog</TranslatedLink >
 				<TranslatedLink  href='/helpcenter' className={styles.nav_desktop__item}>Help Hub</TranslatedLink >
 			</ul>
+
+			{/* <ul className={cn(styles.nav_mobile, {[styles.active]: burgerActive})}>
+
+				<div>
+					{menuMobileType.map((item, index) => (
+						<div onClick={() => {
+							burgerActive && setCategory(item)
+						}}
+							key={index} 
+							className={(item === accordion ? styles.nav__accordion : styles.nav_mobile__item)}>
+								{item === accordion ? <div className={cn(styles.nav_accordion__body, {[styles.active]: category === item && open})}>
+									
+									<p onClick={() => onChangeCategory()} className={styles.nav_accordion__title}>
+										<a>{item}</a>
+										<Image src={arrow} alt='icon' width={14} height={8}></Image>
+									</p>
+	
+									<ul className={styles.nav_accordion__list}>
+										{productsType.map((item, index) => (
+											<p className={styles.nav_accordion__item} key={index}>{item.name}</p>
+										))}
+									</ul>
+	
+								</div> : <p onClick={() => onChangeCategory()} className={cn(styles.nav_mobile__text, {[styles.active]: category === item})}>{item}</p>}
+						</div>
+					))}
+				</div>
+
+				<div className={styles.nav_mobile__icons}>
+				<Suspense fallback={<div>Загрузка...</div>}>
+				<Languages></Languages>
+			</Suspense>
+					
+					<SocialMedia></SocialMedia>
+				</div>
+			</ul> */}
+
 
 <ul className={cn(styles.nav_mobile, {[styles.active]: burgerActive})}>
 
