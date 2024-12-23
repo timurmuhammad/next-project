@@ -7,7 +7,7 @@ import { useLocale } from '@/global/locale';
 
 export const TranslatedLink = ({ href, children, ...props}) => {
   const { locale } = useLocale();
-  const baseUrl = 'https://react-project-zdxg.vercel.app';
+  const baseUrl = 'https://danish-mukhammad.vercel.app';
 
   const translatedHref = `https://translate.google.com/translate?hl=${locale}&sl=en&tl=${locale}&u=${encodeURIComponent(
     `${baseUrl}${href}`

@@ -1,6 +1,3 @@
-// export const menuMobileType = [
-// 	'Home', 'About Us', 'Products', 'Help Center', 'Security', 'Login', 'Registration'
-// ]
 
 
 import home from "@/ui/icons/home.svg";

@@ -3,9 +3,6 @@
 import styles from './languages.module.scss';
 
 import Image from 'next/image';
-// import { useLocalStorage } from "@/hooks/useLocalStorage";
-import { getLocalStorage } from "@/hooks/getLocalStorage";
-import cn from 'classnames'
 import {localeType} from '@/types/locale'
 
 import {
@@ -16,20 +13,19 @@ import {
 } from "@/shadcn/ui/dropdown-menu"
 
 
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import { usePathname } from 'next/navigation'
 import { useLocale } from '@/global/locale';
 
 export function Languages() {
 	const pathname = usePathname();
-  // const [locale, setLocale] = useLocalStorage('locale', 'en');
   const { locale, setLocale } = useLocale();
   
-  const [isHydrated, setIsHydrated] = useState(false); // Для отслеживания гидратации
+  const [isHydrated, setIsHydrated] = useState(false); 
   const changeLangRef = useRef(false);
 
   useEffect(() => {
-    setIsHydrated(true); // Устанавливаем флаг гидратации после монтирования
+    setIsHydrated(true);
   }, []);
 
   const onChangeToLocale = (lang) => {
@@ -39,15 +35,11 @@ export function Languages() {
   };
 
   const translatePage = (prevLocaleRef) => {
-    // console.log(locale)
-    // console.log(prevLocaleRef)
 
-    const baseURL = 'https://react-project-zdxg.vercel.app';
-    // console.log(baseURL)
+    const baseURL = 'https://danish-mukhammad.vercel.app';
     const translateUrl = `https://translate.google.com/translate?hl=${locale}&sl=${prevLocaleRef}&tl=${locale}&u=${encodeURIComponent(
     `${baseURL}${pathname}`
   )}`;
-    // console.log(translateUrl)
     
     if ((window.location.href.includes('_x_tr_hist=true') && !changeLangRef.current) || locale === prevLocaleRef) {
       return;
@@ -63,11 +55,6 @@ export function Languages() {
       translatePage(prevLocaleRef);
     }
   }, [pathname, locale, isHydrated]);
-
-  // if (!isHydrated) {
-  //   return null;
-  // }
-
 
 
   return (
