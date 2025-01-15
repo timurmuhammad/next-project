@@ -1,6 +1,5 @@
 'use client'
 
-
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/shadcn/ui/accordion';
 import styles from './help_center.module.scss'
 import cn from "classnames";

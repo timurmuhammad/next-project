@@ -4,7 +4,7 @@ import styles from './languages.module.scss';
 
 import Image from 'next/image';
 // import { useLocalStorage } from "@/hooks/useLocalStorage";
-import { getLocalStorage } from "@/hooks/getLocalStorage";
+// import { getLocalStorage } from "@/hooks/getLocalStorage";
 import cn from 'classnames'
 import {localeType} from '@/types/locale'
 
@@ -17,11 +17,11 @@ import {
 
 
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { usePathname } from 'next/navigation'
+// import { usePathname } from 'next/navigation'
 import { useLocale } from '@/global/locale';
 
 export function Languages() {
-	const pathname = usePathname();
+	// const pathname = usePathname();
   // const [locale, setLocale] = useLocalStorage('locale', 'en');
   const { locale, setLocale } = useLocale();
   
@@ -29,7 +29,7 @@ export function Languages() {
   const changeLangRef = useRef(false);
 
   useEffect(() => {
-    setIsHydrated(true); // Устанавливаем флаг гидратации после монтирования
+    setIsHydrated(true);
   }, []);
 
   const onChangeToLocale = (lang) => {
@@ -38,31 +38,31 @@ export function Languages() {
     changeLangRef.current = true;
   };
 
-  const translatePage = (prevLocaleRef) => {
+  // const translatePage = (prevLocaleRef) => {
     // console.log(locale)
     // console.log(prevLocaleRef)
 
-    const baseURL = 'https://danish-mukhammad.vercel.app';
+    // const baseURL = 'https://danish-mukhammad.vercel.app';
     // console.log(baseURL)
-    const translateUrl = `https://translate.google.com/translate?hl=${locale}&sl=${prevLocaleRef}&tl=${locale}&u=${encodeURIComponent(
-    `${baseURL}${pathname}`
-  )}`;
+  //   const translateUrl = `https://translate.google.com/translate?hl=${locale}&sl=${prevLocaleRef}&tl=${locale}&u=${encodeURIComponent(
+  //   `${baseURL}${pathname}`
+  // )}`;
     // console.log(translateUrl)
     
-    if ((window.location.href.includes('_x_tr_hist=true') && !changeLangRef.current) || locale === prevLocaleRef) {
-      return;
-    }
+  //   if ((window.location.href.includes('_x_tr_hist=true') && !changeLangRef.current) || locale === prevLocaleRef) {
+  //     return;
+  //   }
 
-    changeLangRef.current = false;
-    window.location.replace(translateUrl);
-  };
+  //   changeLangRef.current = false;
+  //   window.location.replace(translateUrl);
+  // };
 
-  useEffect(() => {
-    if (isHydrated) {
-      const prevLocaleRef = localStorage.getItem('prevLocale') || 'en';
-      translatePage(prevLocaleRef);
-    }
-  }, [pathname, locale, isHydrated]);
+  // useEffect(() => {
+  //   if (isHydrated) {
+  //     const prevLocaleRef = localStorage.getItem('prevLocale') || 'en';
+  //     translatePage(prevLocaleRef);
+  //   }
+  // }, [pathname, locale, isHydrated]);
 
   // if (!isHydrated) {
   //   return null;

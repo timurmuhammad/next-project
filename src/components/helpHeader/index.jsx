@@ -3,8 +3,11 @@ import logo_icon from "@/ui/icons/logo_icon.svg";
 import Image from 'next/image';
 import { Languages } from '../languages';
 import { Suspense } from 'react';
+import { useRouter } from 'next/navigation'
 
 export const HelpHeader = () => {
+	const router = useRouter();
+
 	return <div className={styles.body}>
 		<div className={styles.container + ' _container'}>
 			<div className="flex justify-between items-center w-[166px] relative">
@@ -13,7 +16,7 @@ export const HelpHeader = () => {
 			</div>
 
 			<div className="flex gap-[8px] items-center">
-				<div className="flex items-center gap-[8px] px-[2px]">
+				<div onClick={() => router.back()} className="flex items-center gap-[8px] px-[2px] cursor-pointer">
 					<svg
 						width={14}
 						height={16}

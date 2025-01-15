@@ -30,59 +30,59 @@ const accordion = 'Products'
 export const Header = () => {
 	const [ value, setValue ] = useState('')
 	const pathname = usePathname()
-  // const params = pathname.split('/')
-  // const activeLinks = params.filter((item, index) => index !== 0).join();
+  const params = pathname.split('/')
+  //const activeLinks = params.filter((item, index) => index !== 0).join();
 	const [ current, setCurrent ] = useState(menuMobileType.find((item) => item.path === pathname))
 
 	
 	const [ burgerActive, setBurgerActive ] = useState(false)
-	const [ category, setCategory] = useState('')
+	//const [ category, setCategory] = useState('')
 	const [ open, setOpen ] =  useState(false)
 
 
-	const [locale, setLocale] = useLocalStorage('locale', 'en');
-	const lineRef = useRef(null);
+	// const [locale, setLocale] = useLocalStorage('locale', 'en');
+	// const lineRef = useRef(null);
 	const blurCoverRef = useRef(null)
 	// const isFirstRender = useRef(true);
-	let width
+	// let width
 
-	function runAnim(obj, data) {
-    const fpsdelay = 1000 / data.fps;
-    const { x_start: from, x_end: to, duration } = data;
-		const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6, button");
+	// function runAnim(obj, data) {
+  //   const fpsdelay = 1000 / data.fps;
+  //   const { x_start: from, x_end: to, duration } = data;
+	// 	const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6, button");
 
-		let start = new Date().getTime(); // Начало анимации
+	// 	let start = new Date().getTime(); 
 
-    function animate() {
-        const now = new Date().getTime() - start;
-        let progress = now / duration;
+  //   function animate() {
+  //       const now = new Date().getTime() - start;
+  //       let progress = now / duration;
 
-        if (progress > 1.0) progress = 1;
+  //       if (progress > 1.0) progress = 1;
 
-        const newval = (to - from) * progress * progress + from;
+  //       const newval = (to - from) * progress * progress + from;
 
-        obj.style.transform = `translate(${Math.round(newval)}px, 0)`;
-				obj.style.opacity = 1;
+  //       obj.style.transform = `translate(${Math.round(newval)}px, 0)`;
+	// 			obj.style.opacity = 1;
 
 
-        if (progress < 1) {
-            setTimeout(animate, fpsdelay); // Используем именованную функцию
-        } else {
+        // if (progress < 1) {
+        //     setTimeout(animate, fpsdelay);
+        // } else {
             // Проверяем условие после завершения круга
 						
 						
             // if (window.location.href.includes('_x_tr_hist=true')) {
                 // Снимаем blur, если условие выполнено
-								obj.style.opacity = 0;
+								// obj.style.opacity = 0;
 								// const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
-                elements.forEach((el) => {
-                    if (
-                        el.textContent.trim().length > 0 &&
-                        !el.hasAttribute("no-translate")
-                    ) {
-                        el.style.filter = "none";
-                    }
-                });
+                // elements.forEach((el) => {
+                //     if (
+                //         el.textContent.trim().length > 0 &&
+                //         !el.hasAttribute("no-translate")
+                //     ) {
+                //         el.style.filter = "none";
+                //     }
+                // });
             // } else {
 						// 		obj.style.opacity = 0;
 						// 		obj.style.transform = `translate(${from}px, 0)`;
@@ -90,8 +90,8 @@ export const Header = () => {
             //     animate();
             // }
 					
-        }
-    }
+    //     }
+    // }
 
 		// if (isFirstRender.current) {
 		// 	if (blurCoverRef.current) {
@@ -101,27 +101,27 @@ export const Header = () => {
 		// 	isFirstRender.current = false;
 		// }
 
-			if (blurCoverRef.current) {
-				blurAction(elements)
-				blurCoverRef.current.classList.add("hidden"); // Скрываем обложку
-				obj.style.opacity = 0;
+			// if (blurCoverRef.current) {
+			// 	blurAction(elements)
+			// 	blurCoverRef.current.classList.add("hidden"); 
+			// 	obj.style.opacity = 0;
 								// const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
-                elements.forEach((el) => {
-                    if (
-                        el.textContent.trim().length > 0 &&
-                        !el.hasAttribute("no-translate")
-                    ) {
-                        el.style.filter = "none";
-                    }
-                });
-			}
+//                 elements.forEach((el) => {
+//                     if (
+//                         el.textContent.trim().length > 0 &&
+//                         !el.hasAttribute("no-translate")
+//                     ) {
+//                         el.style.filter = "none";
+//                     }
+//                 });
+// 			}
 
-		if (window.location.href.includes('_x_tr_sl')) {
-			blurAction(elements)
+// 		if (window.location.href.includes('_x_tr_sl')) {
+// 			blurAction(elements)
 
-			animate(); // Запускаем анимацию
-		}
-}
+// 			animate(); 
+// 		}
+// }
 
 
 
@@ -155,52 +155,52 @@ function handleClick(item) {
 
 
 
-const blurAction = (elements) => {
-	if (typeof document !== 'undefined') {
-		// const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
-					elements.forEach((el) => {
-							if (
-									el.textContent.trim().length > 0 &&
-									!el.hasAttribute("no-translate")
-							) {
-									el.style.filter = `blur(5px)`;
-									el.style.transition = "filter 0s, all 0.2s";
-							}
-					});
-	}
-};
+// const blurAction = (elements) => {
+// 	if (typeof document !== 'undefined') {
+// 		// const elements = document.querySelectorAll("a, p, span, h1, h2, h3, h4, h5, h6");
+// 					elements.forEach((el) => {
+// 							if (
+// 									el.textContent.trim().length > 0 &&
+// 									!el.hasAttribute("no-translate")
+// 							) {
+// 									el.style.filter = `blur(5px)`;
+// 									el.style.transition = "filter 0s, all 0.2s";
+// 							}
+// 					});
+// 	}
+// };
 
 
 
 	useEffect(() => {
 		setBurgerActive(false)
-		const prevLocale = localStorage.getItem('prevLocale') || 'en'
-		width = innerWidth()
-		if (prevLocale === locale) {
-			blurCoverRef.current.classList.add("hidden"); // Скрываем обложку
-		}
+		// const prevLocale = localStorage.getItem('prevLocale') || 'en'
+		// width = innerWidth()
+		// if (prevLocale === locale) {
+		// 	blurCoverRef.current.classList.add("hidden"); // Скрываем обложку
+		// }
 
-		if (lineRef.current && prevLocale !== locale) {
+		// if (lineRef.current && prevLocale !== locale) {
 			// if ((prevLocale === locale && (prevLocale.toLowerCase() !== 'en' || locale.toLowerCase() !== 'en')) ||
 			// (prevLocale !== locale)) {
 				// if (window.location.href.includes('_x_tr_sl') && !window.location.href.includes('_x_tr_hist=true')) {
-					const screenWidth = window.innerWidth;
-						runAnim(lineRef.current, {
-							fps: 50, 
-							x_start: -screenWidth,
-							x_end: screenWidth * 2, 
-							duration: 1000
-						})
+					// const screenWidth = window.innerWidth;
+					// 	runAnim(lineRef.current, {
+					// 		fps: 50, 
+					// 		x_start: -screenWidth,
+					// 		x_end: screenWidth * 2, 
+					// 		duration: 1000
+					// 	})
 				// }
 
 			// }
-		}
-	}, [pathname, locale])
+		// }
+	}, [pathname/*, locale*/])
 
 
-	function onChangeCategory() { 
-		category !== accordion ? setOpen(true) : setOpen(!open)
-	}
+	// function onChangeCategory() { 
+	// 	category !== accordion ? setOpen(true) : setOpen(!open)
+	// }
 
 	useEffect(() => {
 		if (typeof document !== 'undefined') {
@@ -212,9 +212,9 @@ const blurAction = (elements) => {
 		}   
 	}, [burgerActive]);
 
-	const innerWidth = () => {
-		return window.innerWidth
-	}
+	// const innerWidth = () => {
+	// 	return window.innerWidth
+	// }
 
 
 	return <div className={cn(styles.body, {[styles.active]: burgerActive})}>
@@ -347,9 +347,9 @@ const blurAction = (elements) => {
 			</div>
 		</div>
 
-		<div className={styles.progress}>
+		{/* <div className={styles.progress}>
 			<div ref={lineRef} style={{ width: `${width}px`, transform: `translateX(-${width}px)`, opacity: 0 }} className={styles.line}></div>
-		</div>
+		</div> */}
 	</div>
 }
 

@@ -62,7 +62,7 @@ export const Calculate = () => {
 		
 					<div className='flex flex-col gap-[30px] w-full'>
 						<h5 className='text-[16px] font-[400] flex justify-between items-center gap-[12px]'>Profit calculation
-							<div className="border-[1px] border-solid border-[#e6e6e6] rounded-[6px] flex items-center h-[40px]">
+							<div className="border-[1px] border-solid border-[#e6e6e6] rounded-[6px] flex items-center h-[40px] overflow-hidden">
 							<p onClick={() => onChangeProfit(plan.interest, 'interest')} className={cn(styles.tab, { [styles.active]: profit === 'interest' })} ><span className='' >% </span> INTEREST</p>		
 
 <p onClick={() => onChangeProfit(plan.usd, 'usd')} className={cn(styles.tab, { [styles.active]: profit === 'usd' })} >$ USD</p>						

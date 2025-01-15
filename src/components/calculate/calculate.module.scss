@@ -291,6 +291,7 @@
 
 .tab{
 	@apply px-[16px] flex gap-[4px] items-center font-[300] h-full text-[#4a4a4a] text-[14px];
+	overflow: hidden;
 	transition: all 0.2s;
 	user-select: none;
 	cursor: pointer;
