@@ -336,7 +336,7 @@ function handleClick(item) {
 <div className={styles.nav_mobile__icons}>
 <Languages></Languages>
 	
-	<SocialMedia></SocialMedia>
+	{/* <SocialMedia></SocialMedia> */}
 </div>
 </ul>
 

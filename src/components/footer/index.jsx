@@ -54,7 +54,7 @@ export const Footer = () => {
 	
 				<ul className={styles.contacts}>
 					<Logo></Logo>
-					<TranslatedLink  href={''}>
+					{/* <TranslatedLink  href={''}>
 						<p translate="no">support@website.com</p>
 						<Image src={email} alt='img' width={48} height={48}></Image>
 					</TranslatedLink >
@@ -65,7 +65,7 @@ export const Footer = () => {
 					<TranslatedLink  href={''}>
 						<p translate="no">24/7 Online Chat Support</p>
 						<Image src={chat} alt='img' width={48} height={48}></Image>
-					</TranslatedLink >
+					</TranslatedLink > */}
 				</ul>
 			</div>
 
